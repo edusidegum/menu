@@ -1,0 +1,40 @@
+================================================================================
+DIRETRIZES PARA SITES DO CONSULTOR HERBALIFE
+Consultor: Edu Sidegum
+Versão: 2.0 (Revisado com Spin Selling + Ética + Conformidade)
+Data: Junho 2026
+================================================================================
+
+SUMÁRIO EXECUTIVO
+
+Este documento estabelece os pilares estratégicos, técnicos e operacionais para 
+a criação e otimização de sites do Consultor Herbalife Edu Sidegum. A estratégia 
+combina Spin Selling como estrutura de conversação, conformidade legal rigorosa 
+(Manual Herbalife Brasil + LGPD), rastreamento completo de dados (GA4 + GTM) e 
+automação pragmática via WhatsApp Business.
+
+Objetivo: Converter visitantes em clientes através de páginas informacionais e 
+transacionais, com CTA claro, tom consultivo e social proof validado.
+
+================================================================================
+1. PILARES ESTRATÉGICOS
+================================================================================
+
+PILAR 1: ÉTICA E CONFORMIDADE LEGAL
+─────────────────────────────────────
+• Spin Selling como estrutura de conversação (Situação → Problema → Implicação → 
+  Necessidade de Solução)
+• Manual de Normas Herbalife Brasil como referência obrigatória
+• Linguagem precisa (sem exageros, sem promessas infundadas)
+• LGPD mínima: banner de cookies + política de privacidade enxuta (300-400 palavras)
+• Sem TCLE formal (não necessário neste estágio)
+• Sem auditoria de conformidade (pragmático por enquanto)
+
+PILAR 2: TOM DE VOZ HÍBRIDO
+────────────────────────────
+• Direto quando apropriado (urgência, oferta)
+• Consultivo como base (perguntas, entendimento do problema)
+• Social proof para validar (depoimentos, histórias de sucesso)
+• Estrutura Spin Selling em cada página:
+  - Situação: Questionador e empático
+  - Problema: Alerta e focado no
