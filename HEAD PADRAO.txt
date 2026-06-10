@@ -1,0 +1,27 @@
+<!-- ═══════════ HEAD PADRÃO ═══════════ -->
+
+<!-- ═══════════ Incluir ═══════════ -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SUBSTITUIR_TITULO</title>
+
+<meta name="description" content="SUBSTITUIR_DESCRICAO">
+<meta name="keywords" content="SUBSTITUIR_KEYWORDS">
+<meta name="author" content="edusidegum W">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph -->
+<meta property="og:title" content="SUBSTITUIR_OG_TITULO">
+<meta property="og:description" content="SUBSTITUIR_OG_DESCRICAO">
+<meta property="og:url" content="SUBSTITUIR_OG_URL">
+<meta property="og:type" content="website">
+<meta property="og:image" content="SUBSTITUIR_OG_IMAGEM">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta property="og:site_name" content="SUBSTITUIR_SITE">
+<meta property="og:locale" content="pt_BR">
+
+<!-- Google Tag Manager -->
+<!-- SUBSTITUIR_GTM -->
