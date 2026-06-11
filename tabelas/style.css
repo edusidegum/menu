@@ -1,0 +1,47 @@
+:root{
+  --green:#7AC143; /* RGB: 122,193,6 */
+  --light-gray:#f3f4f6;
+  --white:#ffffff;
+  --accent:#266431;
+  --muted:#666;
+  --border:#e6edf3;
+}
+
+*{box-sizing:border-box}
+body{font-family:Arial,Helvetica,sans-serif;background:#f7f9fb;color:#111;margin:20px}
+.wrap{max-width:1200px;margin:0 auto;background:var(--white);padding:18px;border-radius:6px;border:1px solid var(--border)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.contact{margin:0;color:var(--accent);font-size:1.05rem}
+.actions{display:flex;gap:8px;align-items:center}
+.btn{display:inline-block;padding:8px 12px;border-radius:6px;text-decoration:none;color:#fff;background:var(--accent);font-weight:600}
+.btn.whatsapp{background:#25D366}
+.btn.catalog{background:var(--accent)}
+.btn.large{padding:12px 18px;font-size:1rem}
+
+/* Table base */
+.table-wrap{overflow-x:auto;margin-top:12px}
+table.fracionados{width:100%;border-collapse:separate;border-spacing:0;font-size:14px}
+.fracionados thead th{background:var(--accent);color:#fff;padding:10px;text-align:left;position:sticky;top:0}
+.fracionados th, .fracionados td{padding:10px;border-bottom:1px dotted var(--green);vertical-align:top;}
+
+/* Alternating column backgrounds: odd/evens */
+.fracionados tbody td:nth-child(odd){background:var(--light-gray)}
+.fracionados tbody td:nth-child(even){background:var(--white)}
+
+/* Fixed portions column styling */
+.fixed-portions{text-align:center;font-weight:600}
+
+/* Category rows: double green line between categories */
+.fracionados tbody tr.category td{
+  background:linear-gradient(90deg,var(--light-gray),var(--white));
+  font-weight:700;
+  border-bottom:4px double var(--green);
+}
+
+/* Product rows: dotted single line between products (already set by default border-bottom) */
+.fracionados tbody tr.product td{
+  border-bottom:1px dotted var(--green);
+}
+
+/* CTA row: prominent */
+.fracionados tbody tr
