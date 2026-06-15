@@ -1,0 +1,64 @@
+Input
+  periodo34(34);
+  periodo89(89);
+  periodo144(144);
+  periodo377(377);
+  periodo610(610);
+Var
+  media34  : Float;
+  media89  : Float;
+  media144 : Float;
+  media377 : Float;
+  media610 : Float;
+  sub34  : Boolean;
+  sub89  : Boolean;
+  sub144 : Boolean;
+  des34  : Boolean;
+  des89  : Boolean;
+  des144 : Boolean;
+  sinal_c1 : Boolean;
+  sinal_c2 : Boolean;
+  sinal_c3 : Boolean;
+  sinal_v1 : Boolean;
+  sinal_v2 : Boolean;
+  sinal_v3 : Boolean;
+  sinal_compra : Boolean;
+  sinal_venda : Boolean;
+Begin
+  // ── Médias Fibonacci ────────────────────────────
+  media34  := MediaExp(periodo34, Close);
+  media89  := MediaExp(periodo89, Close);
+  media144 := MediaExp(periodo144, Close);
+  media377 := MediaExp(periodo377, Close);
+  media610 := MediaExp(periodo610, Close);
+  // ── Direção — Inclinação ───────────────────────
+  sub34  := media34 > media34[1];
+  sub89  := media89 > media89[1];
+  sub144 := media144 > media144[1];
+  des34  := media34 < media34[1];
+  des89  := media89 < media89[1];
+  des144 := media144 < media144[1];
+  // ── Crossovers (Compra) ────────────────────────
+  // C1: Azul 89 > Amarela 244 → A1 Azul 377, A2 Amarela 610
+  sinal_c1 := (media89 > media144) and (media89[1] <= media144[1]) and sub34;
+  // C2: Amarela 144 > Azul 377 → A1 Amarela 610, A2 Azul 1597
+  sinal_c2 := (media144 > media377) and (media144[1] <= media377[1]) and sub34 and sub89;
+  // C3: Azul 377 > Amarela 610 → A1 Azul 1597, A2 Amarela 2584
+  sinal_c3 := (media377 > media610) and (media377[1] <= media610[1]) and sub34 and sub89 and sub144;
+  // ── Crossunders (Venda) ────────────────────────
+  sinal_v1 := (media89 < media144) and (media89[1] >= media144[1]) and des34;
+  sinal_v2 := (media144 < media377) and (media144[1] >= media377[1]) and des34 and des89;
+  sinal_v3 := (media377 < media610) and (media377[1] >= media610[1]) and des34 and des89 and des144;
+  // ── Condição Agregada ──────────────────────────
+  sinal_compra := sinal_c1 or sinal_c2 or sinal_c3;
+  sinal_venda  := sinal_v1 or sinal_v2 or sinal_v3;
+  // ── Coloração ──────────────────────────────────
+  if sinal_compra then
+  begin
+    PaintBar(clGreen);
+  end;
+  if sinal_venda then
+  begin
+    PaintBar(clYellow);
+  end;
+End.
