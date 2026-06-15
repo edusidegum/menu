@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <style>
+        body {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            font-family: 'Courier New', Courier, monospace;
+            line-height: 1.5;
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 40px;
+        }
+        pre {
+            background-color: #252526;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            border: 1px solid #333;
+        }
+        h1 { color: #569cd6; }
+    </style>
+    <title>Lógica FiboRules - Pascal/NTSL</title>
+</head>
+<body>
+
+    <h1>Implementação Pascal: FiboRules</h1>
+
+    <pre>
+Periodo34(34);
+Periodo89(89);
+Periodo144(144);
+Periodo377(377);
+Periodo610(610);
+
+Var
+  media34, media89, media144, media377, media610 : Float;
+  sub34, sub89, sub144, des34, des89, des144 : Boolean;
+  sinal_c1, sinal_c2, sinal_c3 : Boolean;
+  sinal_v1, sinal_v2, sinal_v3 : Boolean;
+  sinal_compra, sinal_venda : Boolean;
+
+Begin
+  // ── Médias Móveis Exponenciais ──
+  media34  := MediaExp(34, Close);
+  media89  := MediaExp(89, Close);
+  media144 := MediaExp(144, Close);
+  media377 := MediaExp(377, Close);
+  media610 := MediaExp(610, Close);
+
+  // ── Filtros de Inclinação ──
+  sub34 := media34 > media34[1]; sub89 := media89 > media89[1]; sub144 := media144 > media144[1];
+  des34 := media34 < media34[1]; des89 := media89 < media89[1]; des144 := media144 < media144[1];
+
+  // ── Sinais de Compra ──
+  sinal_c1 := (media89 > media144) and (media89[1] <= media144[1]) and sub34;
+  sinal_c2 := (media144 > media377) and (media144[1] <= media377[1]) and sub34 and sub89;
+  sinal_c3 := (media377 > media610) and (media377[1] <= media610[1]) and sub34 and sub89 and sub144;
+
+  // ── Sinais de Venda ──
+  sinal_v1 := (media89 < media144) and (media89[1] >= media144[1]) and des34;
+  sinal_v2 := (media144 < media377) and (media144[1] >= media377[1]) and des34 and des89;
+  sinal_v3 := (media377 < media610) and (media377[1] >= media610[1]) and des34 and des89 and des144;
+
+  sinal_compra := sinal_c1 or sinal_c2 or sinal_c3;
+  sinal_venda  := sinal_v1 or sinal_v2 or sinal_v3;
+
+  if sinal_compra then PaintBar(clGreen);
+  if sinal_venda then PaintBar(clYellow);
+End.
+    </pre>
+
+</body>
+</html>
