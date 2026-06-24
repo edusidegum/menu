@@ -1,0 +1,7 @@
+<!-- Google Tag Manager (noscript) -->
+
+<!-- ═══════════ GOOGLE TAG MANAGER   No <body>, logo após a abertura, adicione o fallback do GTM:   GOOGLE TAG MANAGER ═══════════ -->
+
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=SEU_GTM_ID"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
