@@ -59,7 +59,10 @@
     var footer = document.querySelector('footer') || document.querySelector('.footer') || document.body;
     var div = document.createElement('div');
     div.style.cssText = 'text-align:center;margin-top:12px;font-size:0.7rem;color:#888;';
-     div.innerHTML = ' [Política de Privacidade](https://edusidegum.github.io/menu/scripts/' + BASE + 'compartihado/politicadeprivacidade.html)';
+
+    div.innerHTML = '<a href="' + BASE + 'compartilhado/politicadeprivacidade.html" style="color:#888;text-decoration:none;">Política de Privacidade</a>';
+
+    
     footer.appendChild(div);
   });
 
