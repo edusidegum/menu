@@ -2,52 +2,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Script leve, inline e não-bloqueante -->
+    <!-- Script leve, inline e não-bloqueante -->
     <script defer src="https://edusidegum.github.io/menu/bloco-includes.js"></script>
-    <script defer>
 
     <!-- SEO On-Page -->
     <meta name="description" content="Distribuidor Independente Herbalife - RS / BR. Conheça o Hype Drink, nutrição de alta performance com desconto de até 32%. Acompanhamento personalizado e entrega em todo Brasil.">
-    <!-- Autor -->
     <meta name="author" content="Edu Sidegum — Consultor Independente Herbalife">
-    <!-- Cor do tema (mobile: barra do navegador) -->
     <meta name="theme-color" content="#78BE20">
-    <!-- Canonical URL -->
     <link rel="canonical" href="https://edusidegum.github.io/hypedrink/">
-    <!-- Localização (SEO local) -->
     <meta name="geo.region" content="BR-RS">
     <meta name="geo.placename" content="Novo Hamburgo">
     <meta name="robots" content="index, follow">
-    <!-- Open Graph (WhatsApp, Instagram, Facebook) -->
+
+    <!-- Open Graph -->
     <meta property="og:title" content="Hype Drink — Nutrição de Alta Performance | Herbalife">
     <meta property="og:description" content="Refrescância, foco e queima calórica inteligente. Seja Cliente Premium com até 32% de desconto. Entrega grátis em todo Brasil.">
     <meta property="og:image" content="https://edusidegum.github.io/hypedrink/img/HypeDrink.webp">
     <meta property="og:url" content="https://edusidegum.github.io/hypedrink/">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="pt_BR">
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Hype Drink — Nutrição de Alta Performance | Herbalife">
     <meta name="twitter:description" content="Refrescância, foco e queima calórica inteligente. Seja Cliente Premium com até 32% de desconto.">
     <meta name="twitter:image" content="https://edusidegum.github.io/hypedrink/img/HypeDrink.webp">
-    <!-- Protecao contra copia --->
+
+    <!-- Proteção contra cópia (condicional via bloco-includes) -->
     <meta name="protecao-copia" content="ativado">
-    
+
     <title>Hype Drink — Nutrição de Alta Performance | Distribuidor Herbalife</title>
+
+    <!-- Fontes: preconnect + carregamento assíncrono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.onload=null;this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"></noscript>  
-    <!-- Preload da imagem LCP (above the fold) -->
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"></noscript>
+
+    <!-- Preload LCP -->
     <link rel="preload" as="image" href="img/HypeDrink.webp" fetchpriority="high">
+
+    <!-- CSS externo: preload assíncrono -->
     <link rel="preload" href="assets/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    
     <noscript><link rel="stylesheet" href="assets/css/style.css"></noscript>
-<!-- ✗ REMOVER a linha original abaixo -->
-<!-- <link rel="stylesheet" href="assets/css/style.css"> -->
-    <!-- CSS Crítico Inline (Above the Fold — evita bloqueio de renderização) -->
+
+    <!-- CSS Crítico Inline (Above the Fold) -->
     <style>
-        /* Critico: Sticky Header + espaçador (aparece antes do scroll) */
         .sticky-header {
             position: fixed;
             top: 0; left: 0;
@@ -67,33 +67,19 @@
             letter-spacing: 0.5px;
         }
         .header-spacer { height: 56px; }
-
-           /* Fallback com as mesmas métricas da fonte final */
-    body { font-family: 'Open Sans', Arial, Helvetica, sans-serif; }
-    h1, h2, h3 { font-family: 'Montserrat', Arial Black, sans-serif; }
-        
-        
+        body { font-family: 'Open Sans', Arial, Helvetica, sans-serif; }
+        h1, h2, h3 { font-family: 'Montserrat', Arial Black, sans-serif; }
     </style>
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-        {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://edusidegum.github.io/hypedrink/"
-        },
-        {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Hype Drink",
-            "item": "https://edusidegum.github.io/hypedrink/"
-        }
-    ]
-}
-</script>
 
-  
+    <!-- JSON-LD Breadcrumb -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://edusidegum.github.io/hypedrink/" },
+            { "@type": "ListItem", "position": 2, "name": "Hype Drink", "item": "https://edusidegum.github.io/hypedrink/" }
+        ]
+    }
+    </script>
 </head>
