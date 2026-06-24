@@ -138,6 +138,76 @@
 
     <!-- ⛔ SCRIPTS -->
     <script src="novo_dir_dinamico.js"></script>
+<!-- ═══════════ PROTEÇÃO CONTRA CÓPIA (JS) ═══════════ -->
+<script>
+(function() {
+    'use strict';
+
+    // ── Bloqueia botão direito ──
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+    });
+
+    // ── Bloqueia arrastar (selecionar + arrastar para fora) ──
+    document.addEventListener('dragstart', function(e) {
+        e.preventDefault();
+        return false;
+    });
+
+    // ── Bloqueia atalhos de teclado ──
+    document.addEventListener('keydown', function(e) {
+        // F12
+        if (e.key === 'F12' || e.keyCode === 123) {
+            e.preventDefault();
+            return false;
+        }
+        // Ctrl+Shift+I / Ctrl+Shift+J / Ctrl+Shift+C (DevTools)
+        if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C' || e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) {
+            e.preventDefault();
+            return false;
+        }
+        // Ctrl+U (ver fonte)
+        if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.keyCode === 85)) {
+            e.preventDefault();
+            return false;
+        }
+        // Ctrl+S (salvar)
+        if (e.ctrlKey && (e.key === 's' || e.key === 'S' || e.keyCode === 83)) {
+            e.preventDefault();
+            return false;
+        }
+        // Ctrl+P (imprimir)
+        if (e.ctrlKey && (e.key === 'p' || e.key === 'P' || e.keyCode === 80)) {
+            e.preventDefault();
+            return false;
+        }
+        // Ctrl+C (copiar) — só bloqueia se houver seleção de texto
+        if (e.ctrlKey && (e.key === 'c' || e.key === 'C' || e.keyCode === 67)) {
+            var sel = window.getSelection();
+            if (sel && sel.toString().length > 0) {
+                e.preventDefault();
+                return false;
+            }
+        }
+    });
+
+    // ── Limpa seleção ao tentar copiar ──
+    document.addEventListener('copy', function(e) {
+        e.preventDefault();
+        e.clipboardData.setData('text/plain', 'Cópia não autorizada.');
+        return false;
+    });
+
+    // ── Aviso no console ──
+    console.log('%c⚠️ Painel Privado %c— Cópia não autorizada.',
+        'color:#78BE20;font-weight:bold;font-size:16px;',
+        'color:#ff6b6b;');
+    console.log('%cTodo o conteúdo deste painel é de uso exclusivo do Consultor Independente.',
+        'color:#888;');
+
+})();
+</script>
 
 </body>
 </html>
