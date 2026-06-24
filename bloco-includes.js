@@ -16,15 +16,15 @@
   }
 
   // Banner de cookies
-  injetar('bloco-cookies.html', 'body', 'beforeend');
+  injetar('compartilhado/bloco-cookies.html', 'body', 'beforeend');  
 
   // GA4 / GTM
-  injetar('bloco-ga4-gtm.html', 'head', 'beforeend');
+  injetar('compartilhado/bloco-ga4-gtm.html', 'head', 'beforeend');
 
   // Proteção contra cópia (condicional)
   if (document.querySelector('meta[name="protecao-copia"]')) {
     var s = document.createElement('script');
-    s.src = BASE + 'bloco-protecao.js?v=' + Date.now();
+    s.src = BASE + 'scripts/bloco-protecao.js?v=' + Date.now();
     document.head.appendChild(s);
   }
 
@@ -59,7 +59,7 @@
     var footer = document.querySelector('footer') || document.querySelector('.footer') || document.body;
     var div = document.createElement('div');
     div.style.cssText = 'text-align:center;margin-top:12px;font-size:0.7rem;color:#888;';
-    div.innerHTML = '<a href="' + BASE + 'politicadeprivacidade.html" style="color:#888;text-decoration:none;">Política de Privacidade</a>';
+    div.innerHTML = '<a href="' + BASE + 'compartihado/politicadeprivacidade.html" style="color:#888;text-decoration:none;">Política de Privacidade</a>';
     footer.appendChild(div);
   });
 
