@@ -3,7 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Script leve, inline e não-bloqueante -->
-    <script defer src="https://edusidegum.github.io/menu/bloco-includes.js"></script>
+    <script defer src="https://edusidegum.github.io/menu/scripts/bloco-incluir.js"></script>
 
     <!-- SEO On-Page -->
     <meta name="description" content="Distribuidor Independente Herbalife - RS / BR. Conheça o Hype Drink, nutrição de alta performance com desconto de até 32%. Acompanhamento personalizado e entrega em todo Brasil.">
