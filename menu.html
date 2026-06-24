@@ -9,7 +9,6 @@
     <title>📂 Painel de Controle — Edu Sidegum</title>
     <meta name="description" content="Painel de controle privado para gestão de modelos de código, scripts de integração e links de repositórios do ecossistema SNDLimp. Acesso restrito e não indexado.">
     <meta name="author" content="Edu Sidegum — Consultor Independente Herbalife">
-
     <meta name="theme-color" content="#266431">
     <link rel="canonical" href="https://edusidegum.github.io/menu/">
     <meta property="og:title" content="📂 Painel de Controle — Edu Sidegum">
@@ -20,29 +19,8 @@
     <meta property="og:locale" content="pt_BR">
     <script src="bloco-includes.js" defer></script>
 </head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- ═══════════ PROTEÇÃO CONTRA CÓPIA ═══════════ -->
-<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<style>
-    body {
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-    }
-</style>
- <!-- ⛔ SCRIPTS -->
-    <script src="https://edusidegum.github.io/menu/bloco-includes.js" defer></script>
-    <script src="novo_dir_dinamico.js" defer></script>
-
-    <!-- ⛔ BLOQUEAR INDEXAÇÃO -->
-    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
-    <meta name="googlebot" content="noindex, nofollow">
-
-    <title>📂 Painel de Controle — Edu Sidegum</title>
 
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -56,9 +34,17 @@
             text-align: center;
             color: #78BE20;
             font-size: 1.5rem;
-            margin-bottom: 30px;
+            margin-bottom: 10px;
             letter-spacing: 1px;
             text-transform: uppercase;
+        }
+        .page-description {
+            text-align: center;
+            color: #888;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            font-size: 0.85rem;
+            line-height: 1.5;
         }
         .table-wrapper {
             overflow-x: auto;
@@ -105,6 +91,7 @@
         }
         .tag-on { background: rgba(120, 190, 32, 0.2); color: #78BE20; }
         .tag-off { background: rgba(255, 70, 70, 0.2); color: #ff6b6b; }
+        .tag-checking { background: rgba(255, 193, 7, 0.2); color: #ffc107; }
 
         .info {
             text-align: center;
@@ -112,34 +99,20 @@
             font-size: 0.7rem;
             color: #555;
         }
+        .loading-row td {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+        }
     </style>
 </head>
 <body>
 
-    <header class="page-header">
-  <h1 class="page-title">📂 Painel de Controle — Edu Sidegum</h1>
-  <p class="page-description">
-    Bem-vindo ao meu painel centralizado de projetos. Aqui você encontra uma lista organizada de todos os repositórios públicos disponíveis no meu GitHub, facilitando o acesso ao código-fonte e à documentação de cada ferramenta desenvolvida.
-  </p>
-</header>
-
-<style>
-  .page-header {
-    padding: 2rem 1rem;
-    text-align: center;
-    font-family: sans-serif;
-  }
-  .page-title {
-    color: #333;
-    margin-bottom: 0.5rem;
-  }
-  .page-description {
-    color: #666;
-    max-width: 600px;
-    margin: 0 auto 2rem auto;
-    line-height: 1.6;
-  }
-</style>
+    <h1>📂 Painel de Controle — Edu Sidegum</h1>
+    <p class="page-description">
+        Projetos ativos no GitHub Pages. A tabela é gerada dinamicamente via API.
+        Novos repositórios públicos são detectados automaticamente.
+    </p>
 
     <div class="table-wrapper">
         <table>
@@ -154,67 +127,17 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>hypedrink</td>
-                    <td><a href="https://edusidegum.github.io/hypedrink/" target="_blank" rel="noopener">hypedrink ↗</a></td>
-                    <td><a href="https://github.com/edusidegum/hypedrink" target="_blank" rel="noopener">repo ↗</a></td>
-                    <td><span class="tag-status tag-on">● ativo</span></td>
-                    <td>2026-06-09</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>clientepremium</td>
-                    <td><a href="https://edusidegum.github.io/clientepremium/" target="_blank" rel="noopener">clientepremium ↗</a></td>
-                    <td><a href="https://github.com/edusidegum/clientepremium" target="_blank" rel="noopener">repo ↗</a></td>
-                    <td><span class="tag-status tag-on">● ativo</span></td>
-                    <td>2026-06-09</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>cadastro</td>
-                    <td><a href="https://edusidegum.github.io/cadastro/" target="_blank" rel="noopener">cadastro ↗</a></td>
-                    <td><a href="https://github.com/edusidegum/cadastro" target="_blank" rel="noopener">repo ↗</a></td>
-                    <td><span class="tag-status tag-on">● ativo</span></td>
-                    <td>2026-06-09</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>novoconsultor</td>
-                    <td><a href="https://edusidegum.github.io/novoconsultor/" target="_blank" rel="noopener">novoconsultor ↗</a></td>
-                    <td><a href="https://github.com/edusidegum/novoconsultor" target="_blank" rel="noopener">repo ↗</a></td>
-                    <td><span class="tag-status tag-on">● ativo</span></td>
-                    <td>2026-06-09</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>wille</td>
-                    <td><a href="https://edusidegum.github.io/wille/" target="_blank" rel="noopener">wille ↗</a></td>
-                    <td><a href="https://github.com/edusidegum/wille" target="_blank" rel="noopener">repo ↗</a></td>
-                    <td><span class="tag-status tag-on">● ativo</span></td>
-                    <td>2026-06-09</td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>sndlimp</td>
-                    <td><a href="https://edusidegum.github.io/sndlimp/" target="_blank" rel="noopener">sndlimp ↗</a></td>
-                    <td><a href="https://github.com/edusidegum/sndlimp" target="_blank" rel="noopener">repo ↗</a></td>
-                    <td><span class="tag-status tag-on">● ativo</span></td>
-                    <td>2026-06-09</td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>transformacao21</td>
-                    <td><a href="https://edusidegum.github.io/transformacao21/" target="_blank" rel="noopener">transformacao21 ↗</a></td>
-                    <td><a href="https://github.com/edusidegum/transformacao21" target="_blank" rel="noopener">repo ↗</a></td>
-                    <td><span class="tag-status tag-off">● pendente</span></td>
-                    <td>—</td>
+                <tr class="loading-row">
+                    <td colspan="6">🔍 Buscando repositórios...</td>
                 </tr>
             </tbody>
         </table>
     </div>
 
     <p class="info">🔒 Painel privado · Não indexado · Uso exclusivo do Consultor Independente</p>
+
+    <!-- ⛔ SCRIPTS -->
+    <script src="novo_dir_dinamico.js"></script>
 
 </body>
 </html>
