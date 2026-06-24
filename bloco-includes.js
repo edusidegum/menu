@@ -5,9 +5,8 @@
 (function() {
   const BASE = 'https://edusidegum.github.io/menu/';
 
- function injetar(arquivo, seletorAlvo, posicao) {
+  function injetar(arquivo, seletorAlvo, posicao) {
     return fetch(BASE + arquivo + '?v=' + Date.now())
-
       .then(r => r.text())
       .then(html => {
         const alvo = document.querySelector(seletorAlvo);
@@ -21,6 +20,13 @@
 
   // GA4 / GTM
   injetar('bloco-ga4-gtm.html', 'head', 'beforeend');
+
+  // Proteção contra cópia (condicional)
+  if (document.querySelector('meta[name="protecao-copia"]')) {
+    var s = document.createElement('script');
+    s.src = BASE + 'bloco-protecao.js?v=' + Date.now();
+    document.head.appendChild(s);
+  }
 
   // ═══ LÓGICA COOKIES (delegação no document — sempre funciona) ═══
   document.addEventListener('click', function(e) {
@@ -58,5 +64,3 @@
   });
 
 })();
-
-	
