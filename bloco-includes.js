@@ -1,6 +1,6 @@
 // ══════════ INCLUDE DINÂMICO ═══════════
 // Salve em: https://edusidegum.github.io/menu/bloco-includes.js
-// Adicione no <head>: <script src="https://edusidegum.github.io/menu/bloco-includes.js" defer></script>
+// Adicione no <head>: <script defer src="https://edusidegum.github.io/menu/bloco-includes.js"></script>
 
 (function() {
   const BASE = 'https://edusidegum.github.io/menu/';
@@ -16,7 +16,7 @@
   }
 
   // Banner de cookies
-  injetar('compartilhado/bloco-cookies.html', 'body', 'beforeend');  
+  injetar('compartilhado/bloco-cookies.html', 'body', 'beforeend');
 
   // GA4 / GTM
   injetar('compartilhado/bloco-ga4-gtm.html', 'head', 'beforeend');
@@ -28,7 +28,7 @@
     document.head.appendChild(s);
   }
 
-  // ═══ LÓGICA COOKIES (delegação no document — sempre funciona) ═══
+  // ═══ LÓGICA COOKIES ═══
   document.addEventListener('click', function(e) {
     if (e.target.id === 'btn-aceitar-cookies') {
       var banner = document.getElementById('cookie-banner');
@@ -37,7 +37,7 @@
     }
   });
 
-  // ═══ VERIFICA SE JÁ ACEITOU (polling até o banner existir) ═══
+  // ═══ VERIFICA SE JÁ ACEITOU ═══
   function esconderSeAceito() {
     var banner = document.getElementById('cookie-banner');
     if (banner && localStorage.getItem('lgpd_cookies_aceitos') === '1') {
@@ -54,12 +54,12 @@
     }, 300);
   }
 
-  // ═══ LINK "POLÍTICA DE PRIVACIDADE" NO RODAPÉ ═══
+  // ═══ LINK PRIVACIDADE ═══
   document.addEventListener('DOMContentLoaded', function() {
     var footer = document.querySelector('footer') || document.querySelector('.footer') || document.body;
     var div = document.createElement('div');
     div.style.cssText = 'text-align:center;margin-top:12px;font-size:0.7rem;color:#888;';
-    div.innerHTML = '<a href="' + BASE + 'compartihado/politicadeprivacidade.html" style="color:#888;text-decoration:none;">Política de Privacidade</a>';
+    div.innerHTML = '<a href="' + BASE + 'compartilhado/politicadeprivacidade.html" style="color:#888;text-decoration:none;">Política de Privacidade</a>';
     footer.appendChild(div);
   });
 
