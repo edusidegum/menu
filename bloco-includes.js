@@ -5,8 +5,9 @@
 (function() {
   const BASE = 'https://edusidegum.github.io/menu/';
 
-  function injetar(arquivo, seletorAlvo, posicao) {
-    return fetch(BASE + arquivo)
+ function injetar(arquivo, seletorAlvo, posicao) {
+    return fetch(BASE + arquivo + '?v=' + Date.now())
+
       .then(r => r.text())
       .then(html => {
         const alvo = document.querySelector(seletorAlvo);
