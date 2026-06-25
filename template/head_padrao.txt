@@ -9,13 +9,16 @@
     <meta name="description" content="Distribuidor Independente Herbalife - RS / BR. Conheça o Hype Drink, nutrição de alta performance com desconto de até 32%. Acompanhamento personalizado e entrega em todo Brasil.">
     <meta name="author" content="Edu Sidegum — Consultor Independente Herbalife">
     <meta name="theme-color" content="#78BE20">
-    <link rel="canonical" href="https://edusidegum.github.io/hypedrink/">
+    
     <meta name="geo.region" content="BR-RS">
     <meta name="geo.placename" content="Novo Hamburgo">
+
+    <meta name="protecao-copia" content="ativado">
    
     <!--  INDEXAÇÃO -->
     <meta name="robots" content="index, follow, archive, snippet">
     <meta name="googlebot" content="index, follow">
+    <link rel="canonical" href="https://edusidegum.github.io/hypedrink/">
 
     <!-- ⛔ BLOQUEAR INDEXAÇÃO     --    Apenas nos casos de bloqueio intencional 
     <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
