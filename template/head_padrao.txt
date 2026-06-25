@@ -1,9 +1,70 @@
-<head>
+Diretrizes para Landing Pages Herbalife.
+
+Paginas Herbalife Devem seguir o Manual de Normas Herbalife Disponivel. Deve seguir Politicas LGPD e politicas. 
+
+Sempre executar, devidamente adequadas, adicionando as informações abaixo, para melhor SEO: 
+
+README.TXT
+
+# SUBSTITUIR_NOME_PROJETO
+
+**Cliente:** SUBSTITUIR_CLIENTE
+**URL:** [SUBSTITUIR_DOMINIO](https://SUBSTITUIR_DOMINIO)
+
+## Stack
+
+- HTML5 semântico
+- CSS3 (mobile-first, classes utilitárias)
+- JavaScript vanilla (mínimo)
+- Hospedagem: GitHub Pages
+
+## SEO
+
+- Meta tags completas (og:title, og:description, og:image)
+- `robots.txt` configurado
+- `sitemap.xml` gerado
+- `author`: edusidegum W
+
+## Estrutura
+
+
+SITEMAP.XML
+
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <url>
+        <loc>https://SUBSTITUIR_DOMINIO/</loc>
+        <lastmod>SUBSTITUIR_DATA</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- SUBSTITUIR_URLS -->
+
+</urlset>
+
+
+
+ROBOTS.TXT
+
+User-agent: *
+Allow: /
+
+Disallow: /assets/
+Disallow: /admin/
+
+Sitemap: https://SUBSTITUIR_DOMINIO/sitemap.xml
+
+HEAD Melhor SEO até o momento <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Script leve, inline e não-bloqueante -->
+    <!-- Script leve, inline e não-bloqueante - Adicionar antes do Fechamento de Body, após footer, se for mais conveniente-->
     <script defer src="https://edusidegum.github.io/menu/scripts/bloco-incluir.js"></script>
+
+    <!-- Ativação do Bloco, se Necessário -->
+    <meta name="protecao-copia" content="ativado">
 
     <!-- SEO On-Page -->
     <meta name="description" content="Distribuidor Independente Herbalife - RS / BR. Conheça o Hype Drink, nutrição de alta performance com desconto de até 32%. Acompanhamento personalizado e entrega em todo Brasil.">
@@ -91,5 +152,10 @@
             { "@type": "ListItem", "position": 2, "name": "Hype Drink", "item": "https://edusidegum.github.io/hypedrink/" }
         ]
     }
+.
+.
+.
+.
+
     </script>
 </head>
