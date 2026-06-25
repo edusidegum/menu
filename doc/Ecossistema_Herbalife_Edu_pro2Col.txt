@@ -1,0 +1,206 @@
+```markdown
+# PRO2COL — EDU SIDEGUM
+
+## ORIENTAÇÃO AO PROJETO EXECUTIVO — ECOSSISTEMA PRO2COL V5
+
+**Diretrizes consolidadas para implantação de ecossistema digital de alta conversão**
+
+**25 de junho de 2026**
+
+---
+
+## 1. ARQUITETURA DO ECOSSISTEMA
+
+O projeto adota uma arquitetura flat (plana), otimizada para hospedagem no GitHub Pages, garantindo máxima velocidade de carregamento e indexação direta pelos motores de busca. A estrutura elimina subdiretórios complexos para favorecer a autoridade de domínio em todas as frentes de conversão.
+
+### 1.1 Mapa de Navegação e Arquivos
+
+O fluxo de navegação segue a lógica: **HOME (diagnóstico) → Protocolo (conversão) → Negócio (fechamento)**, com páginas de apoio e geo-páginas acessíveis por cross-linking a partir de qualquer ponto.
+
+| Categoria | Arquivos (.html) | Função Estratégica |
+|---|---|---|
+| Núcleo | `index.html` | Filtro de qualificação e diagnóstico inicial (SPIN). |
+| Conversão | `hypedrink.html`, `transf21.html`, `detox.html`, `nutricao-atletas.html` | Páginas de destino focadas em protocolos específicos. |
+| Oportunidade | `cliente-premium.html`, `oportunidade.html` | Conversão para base de membros e consultores. |
+| Apoio/Autoridade | `ciencia.html`, `manifesto.html`, `preparo.html`, `investimento.html` | Quebra de objeções e fundamentação técnica. |
+| Geo-Páginas | `lajeado.html`, `novo-hamburgo.html`, `vale-do-taquari.html`, `vale-do-sinos.html` | SEO Local e captura de tráfego regionalizado. |
+| Legal | `privacidade.html` | Conformidade com LGPD e normas Herbalife. |
+
+### 1.2 Status das Páginas
+
+| Página | Status |
+|---|---|
+| `hypedrink.html` | Conteúdo já existe (atual `index.html`). Será migrado. |
+| `manifesto.html` | ✅ Pronto |
+| `preparo.html` | ✅ Pronto |
+| `investimento.html` | ✅ Pronto |
+| Demais páginas | A criar conforme cronograma (Seção 7) |
+
+---
+
+## 2. ABORDAGEM SPIN SELLING
+
+A comunicação em todas as páginas de conversão deve abandonar o modelo de "venda direta de produto" para adotar a venda consultiva. O lead deve ser conduzido por um funil de consciência antes da oferta final.
+
+1. **Situação:** Identificar o momento atual do lead (ex: "Como está seu nível de energia ao acordar?").
+2. **Problema:** Evidenciar dores latentes (ex: "A fadiga vespertina tem afetado sua produtividade no trabalho?").
+3. **Implicação:** Mostrar as consequências da inércia (ex: "A longo prazo, a falta de nutrientes essenciais acelera o envelhecimento celular").
+4. **Necessidade de Solução:** Apresentar o protocolo Pro2Col como a resposta lógica e eficiente para os problemas identificados.
+
+---
+
+## 3. DIRETRIZES TÉCNICAS (SEO & PERFORMANCE)
+
+### 3.1 Template Head e Dados Estruturados
+
+O cabeçalho deve conter a implementação completa de JSON-LD `@graph` para Agentic Browsing, permitindo que IAs e motores de busca compreendam a entidade "Edu Sidegum" e seus serviços.
+
+- **Organization:** Dados globais, redes sociais e logo.
+- **LocalBusiness:** IDs únicos por geo-página (ex: `lajeado.html/#localbusiness`) para evitar conflitos de NAP (Name, Address, Phone).
+- **Service/Product:** Uso de `Service` para protocolos de acompanhamento e `Product` exclusivamente para o Hype Drink.
+- **FAQPage:** Implementação de perguntas frequentes para captura de Rich Snippets.
+
+### 3.2 Performance e Core Web Vitals
+
+A meta técnica é atingir PageSpeed > 90 em dispositivos móveis. Para isso, devem ser seguidas as seguintes normas:
+
+- **Imagens:** Formato WebP com compressão de 80% e atributos `width` e `height` definidos.
+- **CSS:** Injeção de CSS crítico inline no `<head>` e carregamento assíncrono do arquivo `style.css`.
+- **Scripts:** Uso de `defer` em todos os scripts não críticos, incluindo o `bloco-incluir.js`.
+
+---
+
+## 4. IDENTIDADE VISUAL
+
+A paleta de cores e tipografia devem ser consistentes para garantir o reconhecimento da marca e a confiança do usuário.
+
+- **Deep Navy (#1A1A2E):** Utilizado em headers, footers e seções de contraste. Transmite autoridade.
+- **Verde Herbalife (#78BE20):** Utilizado em ícones de benefícios e elementos de marca. Transmite saúde.
+- **Action Red (#E94560):** Cor exclusiva para botões de CTA (Call to Action). Alta visibilidade e urgência.
+- **Tipografia:** Montserrat para títulos (H1 a H4) e Open Sans para textos de apoio e parágrafos.
+
+---
+
+## 5. SEO LOCAL E GOOGLE BUSINESS PROFILE (GBP)
+
+A estratégia multi-cidade depende da consistência entre o site e as fichas do Google.
+
+- **Geotagging:** Todas as fotos enviadas ao GBP e usadas nas geo-páginas devem conter metadados de latitude/longitude da região alvo.
+- **Reviews:** Implementar fluxo de solicitação de avaliação 7 dias após a entrega do protocolo, garantindo que o cliente já tenha percebido os primeiros benefícios.
+- **Citações NAP:** O nome, endereço e telefone devem ser idênticos em todas as menções na web (site, redes sociais, diretórios).
+
+---
+
+## 6. CONFORMIDADE HERBALIFE (MANUAL 2025)
+
+> **Atenção:** O descumprimento das normas abaixo pode resultar em sanções administrativas e suspensão do ID de consultor.
+
+1. **Fotos de Resultados:** Proibição absoluta de fotos "Antes e Depois" ou promessas de perda de peso em quilos/prazo.
+2. **Preços:** Não exibir preços públicos com descontos ou comparativos de "de/por".
+3. **Disclaimers:** Inclusão obrigatória do aviso de que os produtos não têm finalidade terapêutica ou medicinal.
+4. **Oportunidade:** A página `oportunidade.html` deve conter obrigatoriamente o link para o Statement of Average Gross Compensation (Declaração de Rendimentos Médios).
+
+---
+
+## 7. CRONOGRAMA DE IMPLANTAÇÃO (33 DIAS ÚTEIS)
+
+| Fase | Atividades Principais | Páginas | Prazo |
+|---|---|---|---|
+| 1. Setup & SEO Local | Otimização GBP, geotagging de fotos, setup GitHub Pages. | — | Dias 1-5 |
+| 2. Core & Hype | Migração `hypedrink.html`, criação HOME filtro (`index.html`), implementação do Head V5. | `index.html`, `hypedrink.html` | Dias 6-12 |
+| 3. Geo-Expansão | Criação das 4 geo-páginas e JSON-LD local. | `lajeado.html`, `novo-hamburgo.html`, `vale-do-taquari.html`, `vale-do-sinos.html` | Dias 13-19 |
+| 4. Protocolos | Desenvolvimento das páginas de conversão e oportunidade. | `transf21.html`, `detox.html`, `nutricao-atletas.html`, `cliente-premium.html`, `oportunidade.html` | Dias 20-27 |
+| 5. Apoio & QA | Páginas de apoio, sitemap, robots.txt, GA4, GTM, Search Console, testes PageSpeed, validação de links, indexação manual. | `ciencia.html`, `privacidade.html`, `sitemap.xml`, `robots.txt` | Dias 28-33 |
+
+**Nota:** `manifesto.html`, `preparo.html` e `investimento.html` já estão prontos e não consomem tempo de desenvolvimento. Link building digital e parcerias ocorrem em paralelo durante todas as fases.
+
+---
+
+## 8. KPIs (INDICADORES CHAVE DE DESEMPENHO)
+
+- **Conversão:** Taxa de cliques (CTR) nos botões de WhatsApp > 5%.
+- **SEO Local:** Aparecimento no "Local Pack" (Top 3) para buscas como "Nutrição em Lajeado".
+- **Performance:** LCP (Largest Contentful Paint) abaixo de 2.5 segundos.
+- **Engajamento:** Tempo médio de permanência na página `manifesto.html` > 1:30 min.
+
+---
+
+## 9. ESTRUTURA DE ARQUIVOS (GITHUB)
+
+```
+hypedrink/
+│
+├── index.html                    # HOME (filtro de entrada)
+├── hypedrink.html                # Hype Drink (migrado do index.html atual)
+├── transf21.html                 # Protocolo Transformação 21
+├── detox.html                    # Reset Metabólico 7 dias
+├── nutricao-atletas.html         # Performance para atletas
+├── cliente-premium.html          # Desconto progressivo
+├── oportunidade.html             # Negócio / Oportunidade
+├── ciencia.html                  # Autoridade científica
+├── manifesto.html                # ✅ Pronto
+├── preparo.html                  # ✅ Pronto
+├── investimento.html             # ✅ Pronto
+├── privacidade.html              # LGPD
+│
+├── lajeado.html                  # Geo-página: Lajeado
+├── novo-hamburgo.html            # Geo-página: Novo Hamburgo
+├── vale-do-taquari.html          # Geo-página: Vale do Taquari
+├── vale-do-sinos.html            # Geo-página: Vale do Sinos
+│
+├── assets/
+│   └── css/
+│       └── style.css
+│
+├── img/
+│   ├── Herbalife-Logo.webp
+│   ├── HypeDrink.webp
+│   ├── HypeSelo.webp
+│   ├── HypeVantagens.webp
+│   ├── laboratorio.webp
+│   ├── numeroumdomundo.webp
+│   ├── composicaocorporal.webp
+│   ├── cr7_20anos.webp
+│   └── selos/
+│       └── selo1.webp ... selo914.webp
+│
+├── robots.txt
+├── sitemap.xml
+└── README.md
+```
+
+---
+
+## NOTAS DE VERSÃO V5
+
+Esta versão consolida as seguintes melhorias em relação às versões anteriores:
+
+- **Ajuste de JSON-LD:** Diferenciação técnica entre `Service` (protocolos) e `Product` (Hype Drink).
+- **Resiliência de Script:** Adição de placeholder estático para o disclaimer de privacidade caso o `bloco-incluir.js` falhe.
+- **Otimização de Conversão:** Inclusão da página `nutricao-atletas.html` como 4ª frente de conversão direta.
+- **Refinamento de SEO:** Implementação de IDs únicos por geo-página para evitar canibalização de resultados locais.
+- **Cronograma completo:** Todas as 16 páginas e artefatos (sitemap, robots.txt) cobertos nas 5 fases.
+- **Versionamento unificado:** Versão 5 aplicada em todo o documento (título, notas, referências).
+- **Correção técnica:** Tag `<head>` corretamente escapada na Seção 3.2.
+
+---
+
+**Local e data:** Lajeado/RS, 25 de junho de 2026
+
+*Documento elaborado em 25 de junho de 2026. As informações contidas são de responsabilidade do solicitante.*
+```
+
+---
+
+## O que foi corrigido da V4 para V5
+
+| # | Problema | Correção |
+|---|---|---|
+| 1 | Título "V4" vs notas "V2.1" | ✅ Unificado como V5 |
+| 2 | Tag `<head>` escapada | ✅ Corrigido na Seção 3.2 |
+| 3 | Cronograma não cobria todas as páginas | ✅ 5 fases cobrindo todas as 16 páginas + sitemap + robots.txt |
+| 4 | Faltava estrutura de arquivos | ✅ Adicionada Seção 9 |
+| 5 | Faltava status das páginas | ✅ Adicionada Seção 1.2 |
+| 6 | Fluxo de navegação implícito | ✅ Adicionada nota de fluxo na Seção 1.1 |
+
+Pronto para sua leitura final.
