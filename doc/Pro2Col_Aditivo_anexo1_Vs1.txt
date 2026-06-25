@@ -1,0 +1,75 @@
+Edu Sidegum — Pro2Col
+
+ADITIVO AO ANEXO 1 — SCRIPTS DE ATENDIMENTO CONSULTIVO (SPIN SELLING)
+
+Protocolos de Resposta Rápida para WhatsApp Business e Teclado
+
+25 de junho de 2026
+
+---
+
+### 1. Fundamentação Estratégica
+
+Este aditivo estabelece os padrões de comunicação verbal e escrita para o atendimento manual do ecossistema Pro2Col. A metodologia aplicada é o SPIN Selling, garantindo que o contato inicial não seja uma mera entrega de preço, mas uma consultoria que eleva o nível de consciência do lead sobre suas próprias necessidades e dores nutricionais.
+
+Cada script foi desenhado para ser configurado como "Resposta Rápida" no WhatsApp Business ou como "Substituição de Texto" nas configurações de teclado (iOS/Android), permitindo agilidade sem perder a personalização.
+
+### 2. Scripts por Protocolo (Atalhos de Teclado)
+
+#### 2.1 /hype (Hype Drink)
+Foco: Energia, foco cognitivo e produtividade diária.
+
+
+"Olá, [NOME]! Que bom que você buscou mais energia. Me conta uma coisa: você sente que sua produtividade cai muito no meio da tarde ou tem dificuldade de foco em reuniões longas? Preparei uma explicação de como o Hype Drink atua exatamente nesses pontos: https://edusidegum.github.io/hypedrink.html — Vamos elevar seu nível de performance hoje?"
+
+
+#### 2.2 /desafio (Transformação 21)
+Foco: Resultados estéticos, constância e suporte de comunidade.
+
+
+"Oi, [NOME]! O Desafio T21 é focado em quem busca constância. Você já tentou iniciar uma rotina saudável antes, mas sentiu que a falta de um grupo ou acompanhamento te fez parar no caminho? Veja como nosso ecossistema resolve isso: https://edusidegum.github.io/transf21.html — Topa o desafio de ser sua melhor versão nos próximos 21 dias?"
+
+
+#### 2.3 /detox (Detox Metabólico)
+Foco: Reset orgânico, desinflamação e ciência aplicada.
+
+
+"Olá, [NOME]! O reset metabólico é o primeiro passo para qualquer mudança. Você sente seu corpo 'pesado' ou com retenção após períodos de excessos? Liberei o acesso ao nosso eBook de Bebidas Funcionais e ao protocolo científico aqui: https://edusidegum.github.io/detox.html — Vamos fazer esse reset juntos?"
+
+
+#### 2.4 /atletas (Nutrição Atletas)
+Foco: Performance esportiva, hidratação e recuperação (CR7 Drive).
+
+
+"Oi, [NOME]! Performance é o nosso foco. Como está sua recuperação pós-treino hoje? Você sente que o rendimento cai muito na metade final da atividade? Confira como a nutrição de elite pode mudar seu tempo e sua potência: https://edusidegum.github.io/nutricao-atletas.html — Vamos otimizar seus resultados?"
+
+
+#### 2.5 /premium (Cliente Premium)
+Foco: Economia inteligente, fidelização e descontos progressivos.
+
+
+"Olá, [NOME]! Economia inteligente faz todo sentido. Você já consome nossos produtos e gostaria de ter acesso a descontos de 23% a 35% de forma oficial e direta da fábrica? Entenda como funciona o programa Cliente Premium aqui: https://edusidegum.github.io/cliente-premium.html — Vamos ativar seu benefício hoje?"
+
+
+#### 2.6 /oportunidade (Negócio)
+Foco: Renda extra, plano de carreira e propósito.
+
+
+"Oi, [NOME]! Fico feliz com seu interesse em empreender conosco. Você busca hoje uma renda extra flexível ou está procurando um plano de carreira sólido com propósito? Veja como funciona nosso modelo de negócio e nossa declaração de rendimentos: https://edusidegum.github.io/oportunidade.html — Podemos agendar uma breve chamada para eu te explicar os próximos passos?"
+
+
+### 3. Diretrizes de Implementação e Uso
+
+Para garantir a eficácia da comunicação e evitar bloqueios por comportamento automatizado, as seguintes regras devem ser observadas:
+
+1. **Personalização Obrigatória:** Nunca envie o script com o campo [NOME]. Substitua sempre pelo nome do lead. O uso do nome próprio nos primeiros 5 segundos de leitura aumenta a taxa de conversão em 40%.
+2. **Proibição de Link Isolado:** Jamais envie apenas o link da página. O link deve ser sempre o "veículo" da solução para o problema que você apontou na pergunta de implicação.
+3. **Timing de Resposta:** O ideal é responder em até 15 minutos após o comentário do lead no post orgânico. Isso aproveita o pico de dopamina e interesse do usuário.
+4. **Adaptação de Tom:** Se o lead for um contato muito próximo, adapte a saudação para algo mais informal, mas mantenha a estrutura da pergunta consultiva.
+5. **Conformidade:** O script de /oportunidade deve sempre levar à página que contém o link oficial da Declaração de Rendimentos Médios (Statement of Average Gross Compensation), conforme normas globais da Herbalife.
+
+---
+
+Local e data: Lajeado/RS, 25 de junho de 2026
+
+*Documento elaborado em 25 de junho de 2026. As informações contidas são de responsabilidade do solicitante.*
