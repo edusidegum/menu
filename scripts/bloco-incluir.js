@@ -60,8 +60,8 @@
     var div = document.createElement('div');
     div.style.cssText = 'text-align:center;margin-top:12px;font-size:0.7rem;color:#888;';
 
-    div.innerHTML = '<a href="' + BASE + 'compartilhado/politicadeprivacidade.html" style="color:#888;text-decoration:none;">Política de Privacidade</a>';
-
+div.innerHTML  = '<a href="' + BASE + 'compartilhado/politicadeprivacidade.html" style="color:#888;text-decoration:none;">Política de Privacidade</a>';
+div.innerHTML += '<br><a href="https://edusidegum.github.io/edusidegum/" style="color:#888;text-decoration:none;">Desenvolvido por EduSidegum</a>';
     
     footer.appendChild(div);
   });
