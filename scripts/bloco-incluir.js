@@ -1,6 +1,6 @@
-// ══════════ INCLUDE DINÂMICO ═══════════
-// Salve em: https://edusidegum.github.io/menu/bloco-includes.js
-// Adicione no <head>: <script src="https://edusidegum.github.io/menu/bloco-includes.js" defer></script>
+// ══════════ INCLUIR DINÂMICO ═══════════
+// Salve em: https://edusidegum.github.io/menu/scripts/bloco-incluir.js
+// Adicione no HTML: <script src="https://edusidegum.github.io/menu/scripts/bloco-incluir.js" defer></script>
 
 (function() {
   const BASE = 'https://edusidegum.github.io/menu/';
