@@ -12,7 +12,14 @@
     <link rel="canonical" href="https://edusidegum.github.io/hypedrink/">
     <meta name="geo.region" content="BR-RS">
     <meta name="geo.placename" content="Novo Hamburgo">
-    <meta name="robots" content="index, follow">
+   
+    <!--  INDEXAÇÃO -->
+    <meta name="robots" content="index, follow, archive, snippet">
+    <meta name="googlebot" content="index, follow">
+
+    <!-- ⛔ BLOQUEAR INDEXAÇÃO     --    Apenas nos casos de bloqueio intencional 
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <meta name="googlebot" content="noindex, nofollow">       -->
 
     <!-- Open Graph -->
     <meta property="og:title" content="Hype Drink — Nutrição de Alta Performance | Herbalife">
