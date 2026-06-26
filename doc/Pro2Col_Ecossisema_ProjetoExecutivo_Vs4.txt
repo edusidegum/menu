@@ -106,7 +106,7 @@ A estratégia multi-cidade depende da consistência entre o site e as fichas do 
 
 | Fase | Atividades Principais | Páginas | Prazo |
 |---|---|---|---|
-| 1. Setup & SEO Local | Otimização GBP, geotagging de fotos, setup GitHub Pages. | — | Dias 1-5 |
+| 1. Setup & SEO Local | Ga4, configurar bloco incluir , Otimização GBP, geotagging de fotos, setup GitHub Pages. | — | Dias 1-5 |
 | 2. Core & Hype | Migração `hypedrink.html`, criação HOME filtro (`index.html`), implementação do Head V5. | `index.html`, `hypedrink.html` | Dias 6-12 |
 | 3. Geo-Expansão | Criação das 4 geo-páginas e JSON-LD local. | `lajeado.html`, `novo-hamburgo.html`, `vale-do-taquari.html`, `vale-do-sinos.html` | Dias 13-19 |
 | 4. Protocolos | Desenvolvimento das páginas de conversão e oportunidade. | `transf21.html`, `detox.html`, `nutricao-atletas.html`, `cliente-premium.html`, `oportunidade.html` | Dias 20-27 |
