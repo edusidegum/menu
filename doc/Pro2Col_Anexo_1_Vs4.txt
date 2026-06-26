@@ -1,121 +1,91 @@
-Edu Sidegum — Distribuidor Independente Herbalife
+# 📑 ANEXO 1 — PROTOCOLO OPERACIONAL: SUCESSO ORGÂNICO 90 DIAS
 
-ANEXO 1 — PROTOCOLO OPERACIONAL: SUCESSO ORGÂNICO 90 DIAS V3.1
+**Versão:** 3.2 (Junho 2026 — Foco: Precisão Técnica e Rastreamento)
+**Objetivo:** Tração local em Lajeado/NH sem custos de ferramentas ou anúncios.
+**Uso:** Checklist diário de bolso. Complementa o Anexo 3.0 (manual completo com GBP, Collabs, métricas e cronograma).
 
-Diretrizes de tração local e conversão manual para o ecossistema Pro2Col
 
-25 de junho de 2026
+## 1. ESTRATÉGIA DE ENTRADA (SEM AUTOMAÇÃO)
+
+### 1.1 Palavra-Chave de Gatilho + DM Manual
+
+Substituímos links em legendas por chamadas de engajamento.
+
+- **Ação:** No final do vídeo/post, peça o comentário (ex: "Comente **HYPE** que eu te explico").
+- **Resposta:** Use o atalho de teclado para enviar o link personalizado instantaneamente.
+- **Por que:** Gera sinal de relevância (comentários) e inicia uma conversa humana (SPIN).
+
+### 1.2 Agregador de Links Próprio (links.html)
+
+- **URL Oficial:** `https://edusidegum.github.io/hypedrink/links.html`
+- **Rastreamento:** O GA4 deve estar ativo **antes do primeiro post que direcione tráfego ao site**. Na prática, isso significa ativá-lo assim que a HOME filtro (`index.html`) estiver no ar (Fase 2 do cronograma, ~Dia 12). Até lá, o Agregador pode ir ao ar sem rastreamento — você não perderá dados porque ainda não haverá tráfego.
+- **Vantagem:** 100% gratuito, carrega instantaneamente, sem dependência de terceiros.
+
+### 1.3 Atalhos de Teclado (Respostas Salvas)
+
+Configure no seu celular (Android: Dicionário / iOS: Substituição de Texto):
+
+| Atalho | Expande para | Link enviado |
+|---|---|---|
+| `/hype` | "Olá! Vi seu interesse no Hype Drink. Aqui está o link com tudo explicado: https://edusidegum.github.io/hypedrink/links.html — qualquer dúvida, só me chamar!" | Agregador |
+| `/desafio` | "Que legal seu interesse no Desafio Pro2Col! Aqui está o diagnóstico inicial: https://edusidegum.github.io/hypedrink/links.html — me conta depois o que achou!" | Agregador |
+| `/premium` | "Opa! Sobre o Cliente Premium, aqui está o link com as condições especiais: https://edusidegum.github.io/hypedrink/links.html — qualquer dúvida, estou aqui!" | Agregador |
+
+
+## 2. REGRAS DE OURO DO ALGORITMO 2026
+
+- **SEO de Áudio:** Fale "Lajeado", "Novo Hamburgo" ou "Vale do Taquari" nos primeiros 3 segundos do vídeo.
+- **Frequência Lo-Fi:** 5 Reels por semana (vídeos de 10-15s). O foco é autenticidade, não edição complexa.
+- **Interação Local:** 10 min/dia interagindo com a localização "Lajeado" e "Novo Hamburgo" no Instagram.
+
+
+## 3. ROTINA DO CONSULTOR (CHECKLIST)
+
+### Manhã (~10 min)
+- [ ] 2 Stories (1 Enquete SPIN + 1 Bastidor)
+- [ ] Responder comentários e DMs pendentes
+
+### Tarde (~10 min)
+- [ ] Postar Reels (Áudio Trending + Palavra-chave falada nos 3s iniciais)
+- [ ] Interagir em 3 posts de perfis locais (academias, atletas RS)
+
+### Noite (~15 min)
+- [ ] Responder comentários do Reels (primeiros 15 min são críticos)
+- [ ] Enviar links via DM para quem comentou a palavra de gatilho (use atalhos `/hype`, `/desafio`, `/premium`)
+- [ ] Verificar notificações do GBP e Chat do Maps
+
+### Semanal (1h — Domingo ou Segunda)
+- [ ] Gravar 5 Reels em lote
+- [ ] Criar 1 Carrossel
+- [ ] Solicitar reviews para clientes que completaram 7 dias
+- [ ] 1 post no GBP
+
+
+## 4. CONFORMIDADE (MANUAL §3.3)
+
+- Atendimento pessoal mediado pelo consultor.
+- Uso de atalhos de teclado (Android/iOS) é 100% permitido — é atalho de digitação, não bot.
+- Evite ferramentas que "respondem por você" para não ferir a política de atendimento pessoal.
+
+
+## 5. LEMBRETES RÁPIDOS
+
+| Situação | Ação |
+|---|---|
+| Alguém comentou "HYPE" | Responder o comentário + enviar DM com `/hype` em até 1h |
+| Alguém comentou "DESAFIO" | Responder o comentário + enviar DM com `/desafio` em até 1h |
+| Alguém comentou "PREMIUM" | Responder o comentário + enviar DM com `/premium` em até 1h |
+| Recebeu review nova no Google | Responder em até 24h agradecendo |
+| Mensagem no Chat do Maps | Responder em até 1h |
+| Cliente completou 7 dias com o produto | Solicitar review no Google |
+| Perfil local postou algo relevante | Comentar com 5+ palavras |
+| Dia de gravar Reels | Falar a cidade nos primeiros 3 segundos |
+
 
 ---
 
-### 1. ESTRATÉGIA DE ENTRADA (SEM AUTOMAÇÃO)
+**Local e data:** Lajeado/RS, 25 de junho de 2026
 
-Em conformidade com as tendências de algoritmos de 2026, o uso de links diretos em legendas e comentários deve ser substituído pela estratégia de Palavra-Chave de Gatilho. Esta abordagem aumenta o engajamento público, sinaliza relevância para a plataforma e permite o início de um atendimento consultivo humanizado.
-
-#### 1.1 Fluxo de Conversão Manual
-1. **O Gatilho:** Todo post (Reels ou Carrossel) deve terminar com uma chamada de ação específica. Exemplo: "Comente DESAFIO para receber o protocolo no seu Direct".
-2. **O Sinal:** O comentário do lead é um sinal positivo para o algoritmo, aumentando o alcance orgânico do post.
-3. **A Resposta:** O consultor deve responder ao comentário com um texto curto (ex: "Enviado! Confira seu Direct") e, em seguida, iniciar a conversa privada.
-4. **O Primeiro Contato (SPIN):** A mensagem no Direct não deve ser apenas o link, mas uma pergunta de Situação para validar o interesse do lead.
-
-
-"O objetivo da DM não é vender o produto imediatamente, mas qualificar o lead e levá-lo para a HOME filtro ou para o WhatsApp Business."
-
-
----
-
-### 2. REGRAS DOS ALGORITMOS (JUNHO 2026)
-
-#### 2.1 SEO de Áudio (Indexação por IA)
-Os algoritmos da Meta e do Google agora realizam a transcrição automática de áudio para fins de indexação e busca local. É obrigatório falar as palavras-chave geográficas e de nicho nos primeiros 5 segundos de cada vídeo.
-
-- **Palavras Obrigatórias:** "Lajeado", "Novo Hamburgo", "Vale do Taquari", "Nutrição", "Performance".
-- **Exemplo de Script:** "Se você busca mais energia para sua rotina em Lajeado, este protocolo é para você..."
-
-#### 2.2 Frequência Lo-Fi (Autenticidade)
-Vídeos com produção excessiva são identificados como anúncios e sofrem redução de alcance orgânico. A meta é a publicação de 5 Reels por semana, com duração entre 10 e 15 segundos, utilizando estética Lo-Fi (gravação direta pelo celular, luz natural, sem edições complexas).
-
-#### 2.3 Interação Local Estratégica
-Dedicar 10 minutos diários para interagir com postagens marcadas nas localizações geográficas alvo (Lajeado e Novo Hamburgo). A interação deve ser feita em perfis de academias, parques e centros comerciais, comentando de forma genuína para atrair visitas orgânicas ao perfil Pro2Col.
-
----
-
-### 3. INTEGRAÇÃO DE CANAIS
-
-#### 3.1 Meta Business Suite
-Toda a gestão de postagens e respostas deve ser centralizada no Meta Business Suite. Isso garante que a "impressão digital" do conteúdo seja reconhecida como original em ambas as redes (Instagram e Facebook), evitando penalizações por republicação.
-
-#### 3.2 Agregador de Links Próprio (links.html)
-Para manter a autoridade de domínio e garantir o rastreamento total via Google Analytics 4 (GA4), não serão utilizadas ferramentas externas (Linktree, etc.). O consultor utilizará a página links.html hospedada no próprio GitHub Pages.
-
-- **Vantagem:** Carregamento instantâneo e zero custo.
-- **Rastreamento:** Cada botão deve conter parâmetros UTM para identificar a origem do clique (ex: utm_source=instagram&utm_medium=bio).
-
----
-
-### 4. ROTINA DIÁRIA DO CONSULTOR
-
-
-
-
-Período
-Atividade
-Objetivo
-
-
-
-
-Manhã
-2-3 Stories (Enquete SPIN + Bastidor)
-Diagnóstico de dores e conexão humana.
-
-
-Tarde
-Publicação de Reels (Áudio SEO + Trending)
-Alcance de novos públicos e indexação local.
-
-
-Noite
-Respostas manuais e Prospecção Ativa
-Conversão de leads e atração por localização.
-
-
-
-
----
-
-### 5. SCRIPTS DE RESPOSTAS RÁPIDAS (WHATSAPP / TECLADO)
-
-Estes scripts devem ser configurados como "Respostas Rápidas" no WhatsApp Business ou como "Substituição de Texto" no teclado do iOS/Android para garantir agilidade sem perder a pessoalidade.
-
-#### Atalho: `/hype`
-"Olá! Que bom que você quer elevar sua energia com o Hype Drink. 🚀 Antes de te passar o link, você sente que seu cansaço é maior pela manhã ou após o almoço? Para conhecer os benefícios completos, acesse: https://edusidegum.github.io/hypedrink.html"
-
-#### Atalho: `/desafio`
-"Oi! O Desafio Transformação 21 é focado em resultados consistentes. Para que eu possa te orientar melhor, você já segue alguma rotina de exercícios em [Cidade]? Confira como funciona aqui: https://edusidegum.github.io/transf21.html"
-
-#### Atalho: `/premium`
-"Excelente escolha! O Cliente Premium garante descontos de 14% a 32% em todos os produtos. Você já é cadastrado na Herbalife ou seria sua primeira vez? Veja as vantagens: https://edusidegum.github.io/cliente-premium.html"
-
----
-
-### 6. CONFORMIDADE E SEGURANÇA
-
-Manual Herbalife §3.3: O atendimento deve ser pessoal e direto. O uso de scripts manuais (Respostas Rápidas) é permitido, desde que o consultor esteja presente para mediar a conversa. É proibido o uso de bots que simulem a presença humana de forma autônoma para fechamento de vendas.
-
-LGPD: O agregador de links (links.html) deve exibir o banner de cookies e o link para a Política de Privacidade, conforme implementado no script bloco-incluir.js. A proteção contra cópia deve estar ativa para preservar a integridade do conteúdo estratégico.
-
----
-
-### NOTAS DE IMPLEMENTAÇÃO
-
-#### Como configurar as Respostas Rápidas:
-1. **Android (WhatsApp Business):** Configurações > Ferramentas Comerciais > Respostas Rápidas > "+" > Definir atalho e mensagem.
-2. **iOS (Teclado):** Ajustes > Geral > Teclado > Substituição de Texto > "+" > Frase (Script) e Atalho (ex: /hype).
-3. **Adapta ONE:** Utilize a ferramenta para gerar variações dos scripts caso sinta necessidade de personalizar o tom de voz para diferentes perfis de leads (ex: atletas vs. executivos).
-
-
-Atenção: Nunca envie o link isolado. Sempre faça uma pergunta de qualificação antes ou junto ao link para manter o controle da conversa.
-
-
-*Documento elaborado em 25 de junho de 2026. As informações contidas são de responsabilidade do solicitante.*
+*Versão 3.2 — Checklist Diário de Bolso.*
+*Edu Sidegum — Distribuidor Independente Herbalife.*
+*Ecosystema Pro2Col — Performance e Propósito.*
