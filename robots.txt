@@ -1,2 +1,5 @@
 User-agent: *
 Disallow: /
+Allow: /compartilhado/termosdeusodistribuidorindependenteHerbalife.html
+Allow: /compartilhado/politicadeprivacidade.html
+Allow: /em-Obras.html
