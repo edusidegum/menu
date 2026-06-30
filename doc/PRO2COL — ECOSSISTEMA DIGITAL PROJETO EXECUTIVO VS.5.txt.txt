@@ -1,0 +1,185 @@
+30 de junho de 2026
+
+Edu Sidegum — Consultor Independente Herbalife
+
+PRO2COL — ECOSSISTEMA DIGITAL PROJETO EXECUTIVO VS.4
+
+Estratégia de SEO Local, Estrutura Semântica e Arquitetura de Conteúdo
+
+30 de junho de 2026
+
+---
+
+## 1. Premissas Estratégicas
+
+### 1.1 Propósito do Ecossistema
+O ecossistema Pro2Col não é um conjunto de landing pages soltas. É uma rede semântica de autoridade regional que demonstra ao Google E-E-A-T (Experiência, Especialidade, Autoridade e Confiança) por meio de conteúdo estruturado, interligação contextual e identificação clara do Distribuidor Independente.
+
+### 1.2 Pilar Geográfico
+A estratégia está fundamentada na dominância de mercado em Novo Hamburgo / RS como cidade âncora, com expansão planejada para o Vale do Sinos, Região Metropolitana de Porto Alegre e Vale do Taquari (Teutônia). O diferencial competitivo reside no atendimento presencial e acompanhamento personalizado na região.
+
+### 1.3 Conformidade Herbalife (2026)
+Todas as propriedades digitais devem seguir rigorosamente as diretrizes de compliance da marca, incluindo a identificação Distribuidor Independente Herbalife visível acima da dobra, ativação do pop-up oficial via bloco-incluir.js, uso de imagens autorizadas e a inclusão obrigatória do disclaimer de resultados individuais.
+
+---
+
+## 2. Arquitetura Semântica (DOM para Googlebot)
+
+### 2.1 Hierarquia de Títulos
+A estrutura de cabeçalhos deve respeitar a unicidade do H1 por página, focando na intenção principal e localização (ex: Consultoria de Controle de Peso em Novo Hamburgo | Protocolo Pro2Col). Os H2 devem endereçar as dores do usuário, enquanto os H3 detalham os processos metodológicos.
+
+### 2.2 Estrutura de Página (Template)
+1. **Header:** Link para o Manifesto, Catálogo e Topbar padrão.
+2. **Hero Section (Above the Fold):** H1 rico em palavra-chave local, subtítulo de valor, CTA direto para WhatsApp e identificação de Distribuidor Independente.
+3. **Body:** Seções de dores/problemas, tabelas comparativas de densidade nutricional para Featured Snippets, listas de tópicos do protocolo e bloco de conexão local.
+4. **Footer semântico:** Implementação de cross-linking para todas as páginas do ecossistema.
+
+### 2.3 Schema Markup (JSON-LD)
+A implementação de dados estruturados é obrigatória no head de todas as páginas, contemplando os tipos LocalBusiness (foco em Novo Hamburgo/RS), Person (autoridade do consultor), Product (detalhamento de ofertas Herbalife), BreadcrumbList e WebSite.
+
+---
+
+## 3. Estratégia de Conteúdo e SEO Local
+
+### 3.1 Palavras-chave Principais (Produto + Marca)
+Foco em termos de alta conversão: Shake Herbalife, Herbalife Novo Hamburgo, Herbalife Vale do Sinos, Shake Herbalife preço, Shake Herbalife emagrecimento e Distribuidor Herbalife Novo Hamburgo.
+
+### 3.2 Palavras-chave por Sabor (Landing Pages Específicas)
+Desenvolvimento de conteúdo segmentado para os sabores: baunilha, morango, cookies and cream, chocolate, coco, doce de leite, pistache e torta de limão.
+
+### 3.3 Palavras-chave por Objetivo (Intenção de Busca)
+Segmentação por intenção: Shake para emagrecer Novo Hamburgo, Suplementos para emagrecimento RS, Whey protein Herbalife e Herbalife para ganhar massa muscular.
+
+### 3.4 Palavras-chave Locais (GEO Targeting)
+Otimização para buscas de proximidade: Herbalife perto de mim, Shake Herbalife Novo Hamburgo RS e Herbalife Vale do Taquari Teutônia.
+
+### 3.5 Estratégia de Aplicação
+A aplicação deve priorizar o SEO Local acima da dobra, criação de landing pages por sabor, artigos de blog otimizados para dores específicas e a gestão ativa do Google Meu Negócio com reforço de termos regionais e avaliações de clientes locais.
+
+---
+
+## 4. Metadados e Exif (Padronização de Assets)
+
+### 4.1 Comando ExifTool Padrão
+```bash
+exiftool -Artist="Edu Sidegum" `
+         -Copyright="© IEEE3S" `
+         -XMP:Creator="Edusidegum Distribuidor Independente Herbalife" `
+         -XMP:Title="Herbalife" `
+         -XMP:Description="Distribuidor Independente Herbalife, vendedor herbalife, representante herbalife, Shake Herbalife, Herbalife Novo Hamburgo, Herbalife Vale do Sinos, Shake Herbalife preço, Shake Herbalife emagrecimento, Shake Herbalife onde comprar, Distribuidor Herbalife Novo Hamburgo, Herbalife suplementos RS, Shake para emagrecer Novo Hamburgo, Suplementos para emagrecimento RS, Whey protein Herbalife, Herbalife para ganhar massa muscular, Herbalife para perder peso rápido, Shake substituto de refeição, Shake saudável para dieta, Herbalife perto de mim, Shake Herbalife Novo Hamburgo RS, Herbalife Vale do Taquari Teutônia, Herbalife Porto Alegre região metropolitana, Google Meu Negócio: reforçar termos como Herbalife perto de mim e Distribuidor Herbalife Novo Hamburgo" `
+         -XMP:WebStatement="https://edusidegum.github.io/menu/compartilhado/termosdeusodistribuidorindependenteherbalife.html" `
+         -XMP:City="Novo Hamburgo" `
+         -XMP:State="RS" `
+         -GPSLatitude=-29.67778 -GPSLatitudeRef=S `
+         -GPSLongitude=-51.13083 -GPSLongitudeRef=W `
+         -overwrite_original "caminho/para/imagens/"
+```
+
+### 4.2 Justificativa
+O uso de metadados EXIF/XMP é fundamental para o enriquecimento semântico dos assets visuais. A inclusão de coordenadas GPS e descrições ricas em palavras-chave regionais fortalece o sinal de relevância local para o algoritmo de busca de imagens do Google.
+
+---
+
+## 5. Estrutura do Repositório (Ecossistema)
+
+**edusidegum/**
+- **hypedrink/** → Landing page Hype Drink + nutrição
+- **transformacao21/** → Desafio 21 Dias + protocolo completo
+- **cadastro/** → Captura de leads Cliente Premium / Novo Consultor
+- **menu/** → Componentes compartilhados
+  - **templates/** → head_padrao.txt (template base)
+  - **scripts/** → bloco-incluir.js, bloco-protecao.js
+  - **compartilhado/** → topbar.html, cookies, GA4, programas HLF
+  - **doc/** → Contextos, diretrizes, SEO
+- **(futuros)** → Páginas por sabor, blog, manifesto
+
+---
+
+## 6. Checklist de Auditoria por Página
+
+- [ ] Possui **apenas um ``** por página?
+- [ ] O `` menciona **benefício principal + Novo Hamburgo/RS**?
+- [ ] Usa **tabelas** para comparar dados nutricionais ou de custos?
+- [ ] O **rodapé** linka para o Manifesto e Catálogo?
+- [ ] Texto escrito para humanos (SPIN Selling) mas estruturado com ``/`` para robôs?
+- [ ] Identificação "**Distribuidor Independente**" visível acima da dobra?
+- [ ] **Schema JSON-LD** (LocalBusiness + Product + BreadcrumbList) no ``?
+- [ ] **Pop-up oficial Herbalife** ativo?
+- [ ] **Cross-linking contextual** entre páginas do ecossistema?
+- [ ] **Metadados EXIF** aplicados nas imagens?
+
+---
+
+## 7. Recomendações de Expansão
+
+### 7.1 Fase 1 — Consolidação Local (Novo Hamburgo/Vale do Sinos)
+Foco total na otimização do Google Meu Negócio e publicação de artigos âncora sobre o Protocolo Pro2Col em Novo Hamburgo. Auditoria completa de todas as páginas existentes conforme o checklist técnico.
+
+### 7.2 Fase 2 — Expansão Regional
+Criação de landing pages específicas para cada sabor de shake e expansão da autoridade para Porto Alegre e Vale do Taquari (Teutônia) através de conteúdo segmentado e campanhas geolocalizadas.
+
+### 7.3 Fase 3 — Autoridade de Conteúdo
+Desenvolvimento de blog focado em AIO (AI Overviews) e Featured Snippets, com materiais ricos para captura de leads qualificados e páginas de solução de problemas específicos do público-alvo.
+
+---
+
+## 8. Otimização para AIO (AI Overviews / Featured Snippets)
+
+Para maximizar a visibilidade em AI Overviews, o conteúdo deve utilizar parágrafos curtos com definições diretas, tabelas comparativas (prioridade de extração do Google) e listas numeradas para processos. As respostas devem ser estruturadas de forma objetiva para perguntas como "O que é", "Como funciona" e "Quanto custa".
+
+---
+
+## 9. Métricas de Sucesso
+
+
+
+
+Indicador
+Meta (3 meses)
+Meta (6 meses)
+
+
+
+
+PageSpeed Mobile
+≥ 90
+≥ 95
+
+
+PageSpeed Desktop
+≥ 95
+≥ 98
+
+
+CLS
+≤ 0,05
+≤ 0,01
+
+
+Posição "Herbalife Novo Hamburgo"
+Top 5
+Top 3
+
+
+Posição "Shake Herbalife preço"
+Top 10
+Top 5
+
+
+Tráfego orgânico mensal
++50%
++200%
+
+
+Taxa de conversão (CTA WhatsApp)
+≥ 3%
+≥ 5%
+
+
+
+
+---
+
+Local e data: Novo Hamburgo, RS, 30 de junho de 2026
+
+*Documento elaborado em 30 de junho de 2026. As informações contidas são de responsabilidade do solicitante.*
