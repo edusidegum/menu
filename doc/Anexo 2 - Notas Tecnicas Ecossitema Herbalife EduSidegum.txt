@@ -1,0 +1,456 @@
+Edu Sidegum — Distribuidor Independente Herbalife
+
+ANEXO — NOTAS TÉCNICAS DE IMPLEMENTAÇÃO (Vs1)
+
+Diretrizes de Uniformidade Técnica e Performance para o Ecossistema Pro2Col
+
+30 de junho de 2026
+
+---
+
+## 📘 ANEXO — NOTAS TÉCNICAS DE IMPLEMENTAÇÃO (Vs1)
+
+**Versão:** 1.0 (Junho 2026)
+**Propósito:** Garantir uniformidade técnica em todas as páginas do ecossistema Pro2Col (hypedrink, transformacao21, cadastro, e futuras). Este documento elimina a necessidade de "lembrar" templates a cada nova página — tudo está documentado aqui.
+**Escopo:** HTML, CSS, JavaScript, SEO on-page, performance, assets, conformidade Herbalife e metadados de imagem.
+**Autor:** Edu Sidegum — Distribuidor Independente Herbalife
+
+---
+
+### 1. Template de Head Padrão
+
+Toda página do ecossistema DEVE conter o seguinte `` como base. As únicas variações permitidas são: `description`, `title`, `og:*`, `canonical`, e `preload` da imagem LCP.
+
+```html
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    [TÍTULO — até 60 chars] | Distribuidor Herbalife
+    
+    
+    
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    
+    
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    
+        .sticky-header {
+            position: fixed; top: 0; left: 0; width: 100%;<br/>
+            background: #78BE20; z-index: 1000; text-align: center;<br/>
+            padding: 12px 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .sticky-header a {
+            color: #fff; font-family: 'Montserrat', sans-serif;<br/>
+            font-weight: 700; font-size: 15px; text-decoration: none;<br/>
+            letter-spacing: 0.5px;
+        }
+        .header-spacer { height: 56px; }<br/>
+        body { font-family: 'Open Sans', Arial, Helvetica, sans-serif; }<br/>
+        h1, h2, h3 { font-family: 'Montserrat', Arial Black, sans-serif; }
+    
+    
+    
+    {
+        "@context": "https://schema.org",<br/>
+        "@graph": [
+            {
+                "@type": "Organization",<br/>
+                "name": "Edu Sidegum — Consultor Independente Herbalife",<br/>
+                "url": "https://edusidegum.github.io/[PROJETO]/",<br/>
+                "contactPoint": {<br/>
+                    "@type": "ContactPoint",<br/>
+                    "telephone": "+55 51 99966-3200",<br/>
+                    "contactType": "customer service"
+                },
+                "address": {<br/>
+                    "@type": "PostalAddress",<br/>
+                    "addressLocality": "Novo Hamburgo",<br/>
+                    "addressRegion": "RS",<br/>
+                    "addressCountry": "BR"
+                }
+            },
+            {
+                "@type": "Product",<br/>
+                "name": "[NOME DO PRODUTO]",<br/>
+                "brand": { "@type": "Brand", "name": "Herbalife" }
+            },
+            {
+                "@type": "WebSite",<br/>
+                "url": "https://edusidegum.github.io/[PROJETO]/",<br/>
+                "inLanguage": "pt-BR"
+            },
+            {
+                "@type": "BreadcrumbList",<br/>
+                "itemListElement": [<br/>
+                    { "@type": "ListItem", "position": 1, "name": "Home" },<br/>
+                    { "@type": "ListItem", "position": 2, "name": "[PÁGINA ATUAL]" }
+                ]
+            }
+        ]
+    }
+    
+
+```
+
+#### 1.1 Campos Variáveis por Página
+
+- **Campo:** `[DESCRIÇÃO ÚNICA]`
+  - **Onde usar:** meta description
+  - **Exemplo (Hype Drink):** "Distribuidor Independente Herbalife - RS / BR. Conheça o Hype Drink..."
+- **Campo:** `[PROJETO]`
+  - **Onde usar:** URL e caminhos
+  - **Exemplo (Hype Drink):** `hypedrink`
+- **Campo:** `[TÍTULO DA PÁGINA]`
+  - **Onde usar:** og:title e title
+  - **Exemplo (Hype Drink):** "Hype Drink — Nutrição de Alta Performance"
+- **Campo:** `[IMAGEM_PRINCIPAL]`
+  - **Onde usar:** og:image, preload
+  - **Exemplo (Hype Drink):** `HypeDrink.webp`
+- **Campo:** `[LCP_IMAGE]`
+  - **Onde usar:** preload LCP
+  - **Exemplo (Hype Drink):** `HypeDrink.webp`
+- **Campo:** `[NOME DO PRODUTO]`
+  - **Onde usar:** JSON-LD Product
+  - **Exemplo (Hype Drink):** "Hype Drink"
+
+---
+
+### 2. CSS Base — style.css
+
+O arquivo `assets/css/style.css` é o CSS padrão para TODAS as páginas do ecossistema. NUNCA crie um CSS específico por projeto — sempre use `style.css`.
+
+#### 2.1 Carregamento no HTML
+
+```html
+
+<link rel="stylesheet" href="assets/css/style.css">
+```
+
+#### 2.2 Estrutura do style.css
+
+O arquivo começa com `@import` do Google Fonts — o `preconnect` no head elimina o gargalo de DNS, e o carregamento via `preload` + `onload` evita render-blocking.
+
+```css
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap');
+
+:root {
+    --primary: #78BE20;
+    --primary-glow: #8ae029;
+    --dark: #0d0d0d;
+    --card-bg: #1a1a1a;
+    --light-bg: #F8F9FA;
+    --white: #FFFFFF;
+    --text-light: #d6d6d6;
+    --whatsapp: #25D366;
+}
+```
+
+**Seções do style.css em ordem:**
+
+1. **Reset —** `* { box-sizing: border-box; margin: 0; padding: 0 }`, html scroll-behavior
+2. **Body —** font-family 'Open Sans', background var(--dark), line-height
+3. **Container —** max-width: 960px, padding
+4. **Topbar (.sticky-header) —** Fixed, grid 3 colunas, backdrop-filter, .topbar-logo (128px), .topbar-nome, .menu-dropdown, .btn-cta
+5. **Header-spacer —** min-height: 40px
+6. **Hero —** Background, h1 (2rem), .hero-sub, .video-wrapper (16:9), .btn-hero
+7. **Section Prêmios —** .section-premios, .img-premios
+8. **Section Pilares —** .section-pilares, .pilares-grid (4 colunas), .pilar-card, .pilar-img-box (aspect-ratio 1/1)
+9. **Carrossel Resultados —** .selos-carrossel (flex, overflow-x auto), .selos-carrossel img (height: 220px ou 90px)
+10. **Seção Premium —** .section-premium
+11. **Lightbox —** #lightbox (fixed, z-index 99999), #lightbox img (max 90vw/85vh)
+12. **Footer —** .footer
+13. **Disclaimer —** .disclaimer (font-size: 0.8rem, color: #888)
+14. **Responsivo —** @media max-width: 768px e 600px
+
+#### 2.3 Regra Obrigatória para CLS
+
+Sempre que uma imagem for exibida sem width/height explícitos no HTML, adicione aspect-ratio no CSS:
+
+```css
+.selos-carrossel img {
+    height: 90px;
+    width: auto;
+    aspect-ratio: 1 / 1;
+}
+```
+
+---
+
+### 3. JavaScript — Scripts Compartilhados
+
+#### 3.1 bloco-incluir.js
+
+**Local:** `/menu/scripts/bloco-incluir.js`
+**Carregamento:** `` no `<head>`
+
+Injeta componentes HTML compartilhados em todas as páginas via fetch:
+
+```javascript
+function injetar(arquivo, seletorAlvo, posicao) {
+    return fetch(BASE + arquivo + '?v=' + Date.now())
+    .then(r => r.text())
+    .then(html => {
+        const alvo = document.querySelector(seletorAlvo);
+        if (alvo) alvo.insertAdjacentHTML(posicao, html);
+    })
+    .catch(() => {});
+}
+// Banner de cookies
+injetar('compartilhado/bloco-cookies.html', 'body', 'beforeend');
+```
+
+#### 3.2 bloco-protecao.js
+
+**Local:** `/menu/scripts/bloco-protecao.js`
+
+Ativado quando `<meta name="protecao-copia" content="ativado">` está presente. Bloqueia seleção de texto via CSS (`user-select: none`), intercepta Ctrl+C (substitui por "Cópia não autorizada.") e previne menu de contexto.
+
+#### 3.3 Estrutura de Pastas dos Scripts
+
+- **menu/scripts/bloco-incluir.js:** Injetor de componentes<br/>
+- **menu/scripts/bloco-incluir_Original.js:** Backup<br/>
+- **menu/scripts/bloco-protecao.js:** Anti-cópia<br/>
+- **menu/scripts/dinamico.js:** Funções dinâmicas<br/>
+- **menu/scripts/novo_dir_dinamico.js:** Navegação dinâmica<br/>
+- **menu/compartilhado/bloco-cookies.html:** Banner LGPD<br/>
+- **menu/compartilhado/bloco-ga4-gtm.html:** Google Tag Manager / GA4<br/>
+- **menu/compartilhado/politicadeprivacidade.html:** Política de Privacidade (LGPD)<br/>
+- **menu/compartilhado/programashlf2026.html:** Programas Herbalife 2026<br/>
+- **menu/compartilhado/topbar.css:** CSS da topbar<br/>
+- **menu/compartilhado/topbar.html:** HTML da topbar
+
+---
+
+### 4. Componentes HTML Compartilhados
+
+#### 4.1 Topbar Padrão
+
+**Arquivos:** `compartilhado/topbar.html` + `compartilhado/topbar.css`
+
+Estrutura visual de 3 colunas:<br/>
+- **Esquerda:** Logo (Distribuidor Independente)<br/>
+- **Centro:** Menu (Catálogo, Premium, Novo Consultor)<br/>
+- **Direita:** WhatsApp (Fale Conosco)
+
+Notas:
+- Logo deve ter width e height explícitos para evitar CLS.
+- Menu dropdown abre via `:focus-within` e `:hover` — sem necessidade de JS.
+
+#### 4.2 Banner de Cookies (LGPD)
+
+**Local:** `compartilhado/bloco-cookies.html`
+
+Injetado automaticamente pelo `bloco-incluir.js`. Contém texto explicativo, botão "Aceitar" (estilo #78BE20), e fechamento via `localStorage`.
+
+#### 4.3 Política de Privacidade
+
+**Local:** `compartilhado/politicadeprivacidade.html`
+
+Página completa de compliance LGPD: coleta de informações, bases legais, direitos do titular, compartilhamento, segurança e retenção.
+
+---
+
+### 5. Footer Padrão
+
+Toda página DEVE conter este footer:
+
+```html
+<footer role="contentinfo">
+    <p><strong>Distribuidor Independente Herbalife: Edu Sidegum</strong> — Novo Hamburgo/RS/Brasil</p>
+    <p>
+        <a href="https://catalogoherbalife.com.br/edusidegum" target="_blank" rel="noopener"
+           style="color:#78BE20;font-weight:bold;text-decoration:none;<br/>
+                  border-bottom:2px solid rgba(120,190,32,0.4);padding-bottom:2px;">
+            📖 Acesse meu Catálogo Oficial de Produtos
+        </a>
+    </p>
+    <!-- DISCLAIMER OBRIGATÓRIO -->
+    <div style="max-width:650px;margin:10px auto 0;padding:12px 16px;border-top:1px solid #e0e0e0;text-align:center;">
+        <p style="font-size:11px;color:#999;line-height:1.5;margin:0;">
+            <strong>DISCLAIMER:</strong> Os resultados apresentados variam de pessoa para pessoa,
+            dependendo de fatores como metabolismo, adesão ao protocolo e prática de atividades físicas.
+            Os produtos Herbalife são suplementos alimentares e não medicamentos.
+            Consulte um médico ou nutricionista antes de iniciar qualquer programa nutricional.
+            <strong>Edu Sidegum</strong> — Distribuidor Independente Herbalife.
+            Imagens meramente ilustrativas.
+        </p>
+    </div>
+</footer>
+```
+
+Elementos obrigatórios:
+- Nome completo do distribuidor.
+- Cidade/Estado (Novo Hamburgo/RS).
+- Link para catálogo oficial Herbalife.
+- Disclaimer de resultados individuais.
+- Identificação como Distribuidor Independente.
+
+---
+
+### 6. Performance Web
+
+#### 6.1 Checklist de Otimização
+
+- Google Fonts com `media="print" onload`.
+- Google Fonts com `preconnect` para `fonts.googleapis.com` e `fonts.gstatic.com`.
+- CSS externo via `preload` + `onload` (não síncrono).
+- Imagem LCP com `fetchpriority="high"` e `preload`.
+- Imagens com `loading="lazy"` (exceto LCP).
+- Imagens no carrossel com `aspect-ratio`.
+- Imagens em WebP (qualidade 70-75 selos, 80 fotos).
+- Logo do header com width + height explícitos.
+- Meta viewport configurado.
+- Fontes com fallback imediato.
+
+#### 6.2 Metas PageSpeed
+
+- **Métrica:** Performance Score<br/>
+  - **Alvo Mobile:** ≥ 90<br/>
+  - **Alvo Desktop:** ≥ 95<br/>
+- **Métrica:** CLS (Cumulative Layout Shift)<br/>
+  - **Alvo Mobile:** ≤ 0,05<br/>
+  - **Alvo Desktop:** ≤ 0,01<br/>
+- **Métrica:** LCP (Largest Contentful Paint)<br/>
+  - **Alvo Mobile:** ≤ 2,5s<br/>
+  - **Alvo Desktop:** ≤ 1,5s<br/>
+- **Métrica:** TBT (Total Blocking Time)<br/>
+  - **Alvo Mobile:** ≤ 50ms<br/>
+  - **Alvo Desktop:** ≤ 30ms
+
+#### 6.3 Imagens — Script PowerShell
+
+Para recomprimir selos e certificados:
+
+```powershell
+Get-ChildItem -Path "." -Filter "*.webp" | ForEach-Object {
+    & magick $_.FullName -quality 70 $_.FullName
+}
+```
+
+**Tabela de Qualidade:**<br/>
+- **Tipo:** Selos/certificados<br/>
+  - **Qualidade:** 65-70<br/>
+  - **Peso alvo:** 8-20 KB<br/>
+- **Tipo:** Fotos/produtos<br/>
+  - **Qualidade:** 80<br/>
+  - **Peso alvo:** 30-60 KB<br/>
+- **Formato:** WebP (Sempre)
+
+---
+
+### 7. Metadados EXIF — Imagens
+
+Todas as imagens DEVEM receber metadados EXIF/XMP para SEO local:
+
+```powershell
+exiftool -Artist="Edu Sidegum" `
+         -Copyright="© IEEE3S" `
+         -XMP:Creator="Edusidegum Distribuidor Independente Herbalife" `<br/>
+         -XMP:Description="[DESCRIÇÃO RICA EM PALAVRAS-CHAVE REGIONAIS]" `<br/>
+         -XMP:City="Novo Hamburgo" `<br/>
+         -XMP:State="RS" `
+         -GPSLatitude=-29.67778 -GPSLatitudeRef=S `
+         -GPSLongitude=-51.13083 -GPSLongitudeRef=W `
+         -overwrite_original "caminho/para/imagens/"
+```
+
+Campos obrigatórios: Artist ("Edu Sidegum"), Copyright ("© IEEE3S"), City ("Novo Hamburgo"), State ("RS"), GPS (-29.67778, -51.13083).
+
+---
+
+### 8. Conformidade Herbalife — Checklist
+
+- Identificação "Distribuidor Independente Herbalife" visível acima da dobra.
+- Pop-up oficial Herbalife ativo (via `bloco-incluir.js`).
+- Imagens autorizadas.
+- Disclaimer de resultados no footer.
+- Atendimento em compliance com normas da marca.
+- Link para catálogo oficial no footer.
+- Termos de Uso do Distribuidor acessível.
+- Proibido: uso de logotipo como se fosse dono da marca.
+
+---
+
+### 9. Estrutura de Pastas por Projeto
+
+- **[projeto]/index.html**
+- **[projeto]/assets/css/style.css** (SEMPRE style.css)
+- **[projeto]/img/[projeto]-hero.webp**
+- **[projeto]/img/[projeto]-logo.webp**
+- **[projeto]/img/[projeto]-selo.webp**
+- **[projeto]/img/selos/selo1.webp**
+- **[projeto]/robots.txt**
+- **[projeto]/sitemap.xml**
+- **[projeto]/google[HASH].html**
+
+---
+
+### 10. Arquivos Essenciais — Templates
+
+#### 10.1 robots.txt
+
+```
+User-agent: *<br/>
+Allow: /<br/>
+Sitemap: https://edusidegum.github.io/[PROJETO]/sitemap.xml
+```
+
+#### 10.2 sitemap.xml
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://edusidegum.github.io/[PROJETO]/</loc>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
+```
+
+---
+
+### Notas de Implementação (N1 a N6)
+
+1. **N1 —** SEMPRE carregar `style.css`, nunca criar CSS específico por projeto.
+2. **N2 —** O `bloco-incluir.js` com `defer` no `<head>` é obrigatório. Garante cookies, GA4 e topbar sem bloquear render.
+3. **N3 —** As meta tags `geo.region="BR-RS"` e `geo.placename="Novo Hamburgo"` são obrigatórias em todas as páginas.
+4. **N4 —** A meta tag `protecao-copia="ativado"` ativa o `bloco-protecao.js`. Se não precisar de proteção, remova a meta tag.
+5. **N5 —** Ao criar nova página, copie o `head_padrao.txt` do repositório `menu/templates/` e substitua APENAS os campos variáveis da seção 1.1.
+6. **N6 —** O comando ExifTool DEVE ser executado em TODAS as imagens novas antes do primeiro deploy.
+
+---
+
+<p style="text-align: center;"><span style="font-size: 12px; color: #757575;">Local e data: Novo Hamburgo/RS, 30 de junho de 2026</span></p>
+<p style="text-align: center;"><span style="font-size: 12px; color: #757575;">Versão 1.0 — Notas Técnicas de Implementação.</span></p>
+<p style="text-align: center;"><span style="font-size: 12px; color: #757575;">Edu Sidegum — Distribuidor Independente Herbalife.</span></p>
+<p style="text-align: center;"><span style="font-size: 12px; color: #757575;">Ecossistema Pro2Col — Performance e Propósito.</span></p>

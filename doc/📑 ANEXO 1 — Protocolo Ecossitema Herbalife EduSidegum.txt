@@ -1,0 +1,162 @@
+# 📑 ANEXO 1 — PROTOCOLO OPERACIONAL: SUCESSO ORGÂNICO 90 DIAS (Vs5)
+
+**Versão:** 5.0 (Junho 2026 — Consolidado: Operacional + SPIN Selling)
+**Objetivo:** Tração local em Novo Hamburgo/RS sem custos de ferramentas ou anúncios. Unifica o fluxo operacional (checklist diário) com os scripts de atendimento consultivo SPIN Selling.
+**Uso:** Documento único de bolso para a rotina do consultor. Substitui e consolida o Anexo 1 Vs4 e o Aditivo ao Anexo 1 Vs4.
+
+---
+
+## 1. Fundamentação Estratégica
+
+Este protocolo estabelece os padrões de comunicação verbal e operacional para o atendimento manual do ecossistema Pro2Col. A metodologia aplicada é o SPIN Selling, garantindo que o contato inicial não seja uma mera entrega de preço, mas uma consultoria que eleva o nível de consciência do lead sobre suas próprias necessidades e dores nutricionais.
+
+Cada script foi desenhado para ser configurado como "Resposta Rápida" no WhatsApp Business ou como "Substituição de Texto" nas configurações de teclado (iOS/Android), permitindo agilidade sem perder a personalização.
+
+---
+
+## 2. Estratégia de Entrada (Sem Automação)
+
+### 2.1 Palavra-Chave de Gatilho + DM Manual
+
+Substituímos links em legendas por chamadas de engajamento.
+
+- **Ação:** No final do vídeo/post, peça o comentário (ex: "Comente **HYPE** que eu te explico").
+- **Resposta:** Use o atalho de teclado para enviar o link personalizado instantaneamente.
+- **Por que:** Gera sinal de relevância (comentários) e inicia uma conversa humana (SPIN).
+
+### 2.2 Agregador de Links Próprio
+
+- **URL Oficial:** `https://edusidegum.github.io/hypedrink/links.html`
+- **Rastreamento:** O GA4 deve estar ativo **antes do primeiro post que direcione tráfego ao site**. Na prática, isso significa ativá-lo assim que a HOME filtro (`index.html`) estiver no ar (Fase 2 do cronograma, ~Dia 12). Até lá, o Agregador pode ir ao ar sem rastreamento — você não perderá dados porque ainda não haverá tráfego.
+- **Vantagem:** 100% gratuito, carrega instantaneamente, sem dependência de terceiros.
+
+---
+
+## 3. Scripts de Atendimento Consultivo (SPIN Selling)
+
+### 3.1 /hype (Hype Drink)
+**Foco:** Energia, foco cognitivo e produtividade diária.
+
+"Olá, [NOME]! Que bom que você buscou mais energia. Me conta uma coisa: você sente que sua produtividade cai muito no meio da tarde ou tem dificuldade de foco em reuniões longas? Preparei uma explicação de como o Hype Drink atua exatamente nesses pontos: https://edusidegum.github.io/hypedrink/links.html — Vamos elevar seu nível de performance hoje?"
+
+### 3.2 /desafio (Transformação 21)
+**Foco:** Resultados estéticos, constância e suporte de comunidade.
+
+"Oi, [NOME]! O Desafio T21 é focado em quem busca constância. Você já tentou iniciar uma rotina saudável antes, mas sentiu que a falta de um grupo ou acompanhamento te fez parar no caminho? Veja como nosso ecossistema resolve isso: https://edusidegum.github.io/hypedrink/links.html — Topa o desafio de ser sua melhor versão nos próximos 21 dias?"
+
+### 3.3 /detox (Detox Metabólico)
+**Foco:** Reset orgânico, desinflamação e ciência aplicada.
+
+"Olá, [NOME]! O reset metabólico é o primeiro passo para qualquer mudança. Você sente seu corpo 'pesado' ou com retenção após períodos de excessos? Liberei o acesso ao nosso eBook de Bebidas Funcionais e ao protocolo científico aqui: https://edusidegum.github.io/hypedrink/links.html — Vamos fazer esse reset juntos?"
+
+### 3.4 /atletas (Nutrição Atletas)
+**Foco:** Performance esportiva, hidratação e recuperação (CR7 Drive).
+
+"Oi, [NOME]! Performance é o nosso foco. Como está sua recuperação pós-treino hoje? Você sente que o rendimento cai muito na metade final da atividade? Confira como a nutrição de elite pode mudar seu tempo e sua potência: https://edusidegum.github.io/hypedrink/links.html — Vamos otimizar seus resultados?"
+
+### 3.5 /premium (Cliente Premium)
+**Foco:** Economia inteligente, fidelização e descontos progressivos.
+
+"Olá, [NOME]! Economia inteligente faz todo sentido. Você já consome nossos produtos e gostaria de ter acesso a descontos de 23% a 35% de forma oficial e direta da fábrica? Entenda como funciona o programa Cliente Premium aqui: https://edusidegum.github.io/hypedrink/links.html — Vamos ativar seu benefício hoje?"
+
+### 3.6 /oportunidade (Negócio)
+**Foco:** Renda extra, plano de carreira e propósito.
+
+"Oi, [NOME]! Fico feliz com seu interesse em empreender conosco. Você busca hoje uma renda extra flexível ou está procurando um plano de carreira sólido com propósito? Veja como funciona nosso modelo de negócio e nossa declaração de rendimentos: https://edusidegum.github.io/hypedrink/links.html — Podemos agendar uma breve chamada para eu te explicar os próximos passos?"
+
+---
+
+## 4. Regras de Ouro do Algoritmo 2026
+
+- **SEO de Áudio:** Fale "Novo Hamburgo", "Lajeado" ou "Vale do Sinos" nos primeiros 3 segundos do vídeo.
+- **Frequência Lo-Fi:** 5 Reels por semana (vídeos de 10-15s). O foco é autenticidade, não edição complexa.
+- **Interação Local:** 10 min/dia interagindo com a localização "Novo Hamburgo" e "Lajeado" no Instagram.
+
+---
+
+## 5. Diretrizes de Implementação e Uso
+
+1. **Personalização Obrigatória:** Nunca envie o script com o campo [NOME]. Substitua sempre pelo nome do lead. O uso do nome próprio nos primeiros 5 segundos de leitura aumenta a taxa de conversão em 40%.
+2. **Proibição de Link Isolado:** Jamais envie apenas o link da página. O link deve ser sempre o "veículo" da solução para o problema que você apontou na pergunta de implicação.
+3. **Timing de Resposta:** O ideal é responder em até 15 minutos após o comentário do lead no post orgânico. Isso aproveita o pico de dopamina e interesse do usuário.
+4. **Adaptação de Tom:** Se o lead for um contato muito próximo, adapte a saudação para algo mais informal, mas mantenha a estrutura da pergunta consultiva.
+5. **Conformidade:** O script de /oportunidade deve sempre levar à página que contém o link oficial da Declaração de Rendimentos Médios (Statement of Average Gross Compensation), conforme normas globais da Herbalife.
+
+---
+
+## 6. Rotina do Consultor (Checklist)
+
+### Manhã (~10 min)
+- [ ] 2 Stories (1 Enquete SPIN + 1 Bastidor)
+- [ ] Responder comentários e DMs pendentes
+
+### Tarde (~10 min)
+- [ ] Postar Reels (Áudio Trending + Palavra-chave falada nos 3s iniciais)
+- [ ] Interagir em 3 posts de perfis locais (academias, atletas RS)
+
+### Noite (~15 min)
+- [ ] Responder comentários do Reels (primeiros 15 min são críticos)
+- [ ] Enviar links via DM para quem comentou a palavra de gatilho (use atalhos /hype, /desafio, /premium)
+- [ ] Verificar notificações do GBP e Chat do Maps
+
+### Semanal (1h — Domingo ou Segunda)
+- [ ] Gravar 5 Reels em lote
+- [ ] Criar 1 Carrossel
+- [ ] Solicitar reviews para clientes que completaram 7 dias
+- [ ] 1 post no GBP
+
+---
+
+## 7. Conformidade (Manual §3.3)
+
+- Atendimento pessoal mediado pelo consultor.
+- Uso de atalhos de teclado (Android/iOS) é 100% permitido — é atalho de digitação, não bot.
+- Evite ferramentas que "respondem por você" para não ferir a política de atendimento pessoal.
+- O script de /oportunidade deve SEMPRE conter link para a Declaração de Rendimentos Médios oficial.
+- A identificação "Distribuidor Independente Herbalife" deve estar visível em todas as páginas do ecossistema.
+
+---
+
+## 8. Lembretes Rápidos
+
+| Situação | Ação |
+|---|---|
+| Alguém comentou "HYPE" | Responder o comentário + enviar DM com /hype em até 1h |
+| Alguém comentou "DESAFIO" | Responder o comentário + enviar DM com /desafio em até 1h |
+| Alguém comentou "PREMIUM" | Responder o comentário + enviar DM com /premium em até 1h |
+| Recebeu review nova no Google | Responder em até 24h agradecendo |
+| Mensagem no Chat do Maps | Responder em até 1h |
+| Cliente completou 7 dias com o produto | Solicitar review no Google |
+| Perfil local postou algo relevante | Comentar com 5+ palavras |
+| Dia de gravar Reels | Falar a cidade nos primeiros 3 segundos |
+
+---
+
+## Notas de Implementação
+
+### N1 — Configuração Inicial (Dia 1)
+- Configurar os 6 atalhos de teclado no celular (Android: Dicionário Pessoal / iOS: Substituição de Texto)
+- Substituir [NOME] por {Nome do Lead} em cada atalho — o atalho expande o texto base, a personalização é manual
+- Testar cada atalho enviando para si mesmo no WhatsApp antes de usar com leads
+
+### N2 — Agregador de Links
+- O links.html deve ser a única URL divulgada nos scripts. Evita link quebrado se uma página mudar de endereço
+- Atualizar o links.html sempre que uma nova página for criada ou um link for alterado
+
+### N3 — Métricas de Aderência
+- Semana 1-2: foco em consistência da rotina (checklist diário)
+- Semana 3-4: monitorar taxa de conversão dos scripts (DMs que viram vendas)
+- Avaliar qual script tem maior taxa de conversão e priorizar conteúdo para aquele perfil
+
+### N4 — Expansão de Atalhos
+- Conforme novos produtos/páginas forem criados, adicionar novos atalhos seguindo o mesmo padrão SPIN:
+- Pergunta de implicação (Situação + Problema)
+- Link como veículo de solução
+- Chamada para ação
+
+---
+
+**Local e data:** Novo Hamburgo/RS, 30 de junho de 2026
+**Versão 5.0 — Consolidado Operacional + SPIN Selling.**
+**Edu Sidegum — Distribuidor Independente Herbalife.**
+**Ecossistema Pro2Col — Performance e Propósito.**
