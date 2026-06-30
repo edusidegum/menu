@@ -1,0 +1,386 @@
+Edu Sidegum — Distribuidor Independente Herbalife
+
+HLF — ECOSSISTEMA HERBALIFE: DOCUMENTO DE IMPLEMENTAÇÃO
+
+Diretrizes Estratégicas, Especificações Técnicas e Protocolos Operacionais
+
+30 de junho de 2026
+
+---
+
+## ## HLF — ECOSSISTEMA HERBALIFE: DOCUMENTO DE IMPLEMENTAÇÃO
+
+**Versão:** 7.0 (Junho/2026)
+**Propósito:** Documento único e consolidado do ecossistema digital do Consultor Edu Sidegum — Distribuidor Independente Herbalife. Define diretrizes estratégicas, especificações técnicas completas e protocolos operacionais para todas as páginas e ativos do projeto.
+**Autoridade:** Este documento integra o portfólio de arquitetura de sistemas do autor, demonstrando domínio em estruturação semântica, SEO local, performance web e automação assistiva.
+**Escopo:** Diretrizes estratégicas, especificações técnicas completas (head, CSS, JS, footer, disclaimer, header, injeção de componentes), SEO, performance, conformidade Herbalife, operação de atendimento, scripts SPIN Selling, cronograma.
+**Licença de Atendimento:** Nacional (BR) com cobertura internacional autorizada.
+**Referência Obrigatória:** Consultar o Manual de Normas do Distribuidor Independente Herbalife antes de qualquer alteração nas diretrizes de comunicação, ofertas ou identidade visual.
+
+---
+
+### ### 1. CAPÍTULO I — DIRETRIZES ESTRATÉGICAS
+
+#### #### 1.1. Propósito do Ecossistema
+O ecossistema HLF não é um conjunto de landing pages soltas. É uma **rede semântica de autoridade regional** que demonstra ao Google E-E-A-T (Experiência, Especialidade, Autoridade e Confiança) por meio de conteúdo estruturado, interligação contextual e identificação clara do Distribuidor Independente.
+
+Cada página, componente e ativo existe para:
+- Atrair tráfego local qualificado em **Novo Hamburgo/RS**;
+- Educar o lead sobre nutrição de alta performance;
+- Conduzir o prospecto por um funil consultivo (**SPIN Selling**);
+- Converter em Cliente Premium ou Novo Consultor;
+- Fortalecer a autoridade regional do consultor.
+
+#### #### 1.2. Identidade do Ecossistema
+A identidade do projeto baseia-se na figura do consultor como autoridade técnica e ponto de confiança para o consumidor final.
+
+**2.1 Entidade Principal**
+- **Edu Sidegum**, pessoa física;
+- **Consultor especializado em Produtos Herbalife**;
+- **Distribuidor Independente autorizado**;
+- Atuação como **negócio local** com sede em Novo Hamburgo/RS;
+- Licença de **atendimento internacional**.
+
+**2.2 Hierarquia de Representação (para Schema e Comunicação)**
+1. **Person** — entidade-base principal (pessoa física do consultor);
+2. **LocalBusiness** — camada de atuação local (Novo Hamburgo/RS);
+3. **Product** — produtos Herbalife como oferta;
+4. **WebSite** — estrutura do ecossistema digital;
+5. **Organization** — apenas quando houver necessidade institucional complementar.
+
+**2.3 Regra de Apresentação Institucional**
+Toda página do ecossistema DEVE manter visível a identificação **"Distribuidor Independente Herbalife"** acima da dobra, respeitando a clareza entre atuação pessoal, marca, produto e negócio local.
+
+#### #### 1.3. Pilar Geográfico
+
+
+
+
+Nível
+Região
+Estratégia
+
+
+
+
+Âncora
+Novo Hamburgo / RS
+Todas as páginas mencionam a cidade
+
+
+Expansão 1
+Vale do Sinos
+Conteúdo regionalizado
+
+
+Expansão 2
+Porto Alegre (RM)
+Campanhas segmentadas
+
+
+Expansão 3
+Vale do Taquari (Teutônia)
+Conteúdo direcionado
+
+
+
+
+#### #### 1.4. Conformidade Herbalife
+A operação digital deve seguir rigorosamente as normas de ética e conduta da marca para garantir a longevidade do negócio.
+
+- Identificação **"Distribuidor Independente Herbalife"** visível acima da dobra em todas as páginas;
+- Pop-up oficial Herbalife ativo (via `bloco-incluir.js`);
+- Imagens autorizadas e chanceladas para direitos de uso;
+- Disclaimer de resultados individuais no footer de todas as páginas;
+- Atendimento em compliance com as normas da marca;
+- Link para catálogo oficial Herbalife no footer;
+- Termos de Uso do Distribuidor acessível;
+- **Consultar o Manual de Normas do Distribuidor Independente Herbalife** para conformidade atualizada;
+- Proibido: uso de logotipo Herbalife como se fosse dono da marca;
+- Proibido: promessas absolutas de resultados;
+- Proibido: usar linguagem que induza o lead a acreditar que o consultor é funcionário ou representante legal exclusivo da Herbalife.
+
+#### #### 1.5. Palavras-chave e Priorização Semântica
+
+**5.1 Palavras-chave Principais (Produto + Marca)**
+Shake Herbalife, Herbalife Novo Hamburgo, Herbalife Vale do Sinos, Shake Herbalife preço, Shake Herbalife emagrecimento, Shake Herbalife onde comprar, Distribuidor Herbalife Novo Hamburgo, Herbalife suplementos RS.
+
+**5.2 Palavras-chave por Sabor (Landing Pages Futuras)**
+Shake Herbalife baunilha, morango, cookies and cream, chocolate, coco, doce de leite, pistache, torta de limão.
+
+**5.3 Palavras-chave por Objetivo (Intenção de Busca)**
+Shake para emagrecer Novo Hamburgo, Suplementos para emagrecimento RS, Whey protein Herbalife, Herbalife para ganhar massa muscular, Herbalife para perder peso rápido, Shake substituto de refeição, Shake saudável para dieta.
+
+**5.4 Palavras-chave Locais (GEO Targeting)**
+Herbalife perto de mim, Shake Herbalife Novo Hamburgo RS, Herbalife Vale do Taquari Teutônia, Herbalife Porto Alegre região metropolitana.
+
+**5.5 Estratégia de Aplicação**
+- SEO Local: incluir "Novo Hamburgo" e "Vale do Sinos" nas páginas principais e no texto visível acima da dobra;
+- Landing Pages: criar páginas específicas para cada sabor mais buscado;
+- Conteúdo de Blog: artigos otimizados para "shake para emagrecer", "suplementos Herbalife para massa muscular";
+- Google Meu Negócio: reforçar "Herbalife perto de mim" e "Distribuidor Herbalife Novo Hamburgo".
+
+**5.6 Regra de Redação**
+O texto deve ser **escrito para humanos, estruturado para robôs**. Palavras-chave devem aparecer de forma natural em: título, subtítulo, primeiro parágrafo, headings intermediários, links internos e descrições de imagens. Evitar repetição mecânica.
+
+---
+
+### ### 2. CAPÍTULO II — ESPECIFICAÇÕES TÉCNICAS
+
+#### #### 2.1. Estrutura do Projeto HLF
+
+**6.1 Pasta Raiz e Subpastas**
+Todos os arquivos do ecossistema serão organizados sob a pasta raiz **HLF/**. Esta é a pasta-mestre que conterá TODOS os projetos, assets compartilhados e documentação.
+
+```text
+HLF/
+├── .github/                          ← Workflows e templates GitHub
+├── hypedrink/                        ← Landing page Hype Drink
+│   ├── index.html
+│   ├── assets/css/style.css
+│   ├── img/
+│   ├── robots.txt
+│   └── sitemap.xml
+├── transformacao21/                  ← Landing page Desafio 21 Dias
+│   ├── index.html
+│   ├── assets/css/style.css
+│   └── img/
+├── cadastro/                         ← Captura de leads
+├── detox/                            ← Página Reset Metabólico (a criar)
+├── menu/                             ← Componentes compartilhados (Núcleo técnico)
+│   ├── scripts/
+│   │   ├── bloco-incluir.js
+│   │   ├── bloco-protecao.js
+│   ├── compartilhado/
+│   │   ├── bloco-cookies.html
+│   │   ├── topbar.html
+│   │   └── politicadeprivacidade.html
+│   ├── templates/
+│   │   └── head_padrao.txt
+│   └── doc/                          ← Documentação técnica
+├── img_global/                       ← Imagens compartilhadas
+├── js_global/                        ← JavaScript global
+└── README.md
+```
+
+**6.2 Regras da Estrutura**
+1. Cada projeto é independente — tem seu próprio `index.html`, `assets/css/style.css` e `img/`;
+2. O diretório `menu/` é o núcleo técnico compartilhado;
+3. TODAS as páginas usam `assets/css/style.css` como CSS principal;
+4. SEMPRE carregar `style.css` via preload assíncrono no ``;
+5. TODAS as imagens em WebP (qualidade 70-80);
+6. TODAS as imagens com metadados EXIF (Artist, Copyright, City, State, GPS).
+
+#### #### 2.2. Template de Head Padrão
+
+```html
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    [TÍTULO] | Distribuidor Herbalife
+    
+    
+    
+    
+    
+    
+    
+    
+    {
+        "@context": "https://schema.org",<br/>
+        "@graph": [
+            {
+                "@type": "Person",<br/>
+                "name": "Edu Sidegum",<br/>
+                "url": "https://edusidegum.github.io/[PROJETO]/",<br/>
+                "address": { "@type": "PostalAddress", "addressLocality": "Novo Hamburgo", "addressRegion": "RS", "addressCountry": "BR" }
+            },
+            {
+                "@type": "LocalBusiness",<br/>
+                "name": "Edu Sidegum — Consultor Independente Herbalife",<br/>
+                "areaServed": "BR",<br/>
+                "address": { "@type": "PostalAddress", "addressLocality": "Novo Hamburgo", "addressRegion": "RS", "addressCountry": "BR" }
+            },
+            {
+                "@type": "Product",<br/>
+                "name": "[NOME DO PRODUTO]",<br/>
+                "brand": { "@type": "Brand", "name": "Herbalife" }
+            }
+        ]
+    }
+    
+
+```
+
+#### #### 2.3. CSS Base — style.css
+O arquivo `style.css` deve ser a única fonte de estilo para manter a consistência visual.
+
+**Regra Obrigatória para CLS:**
+```css
+.selos-carrossel img {
+    height: 90px; width: auto;
+    aspect-ratio: 1 / 1; /* IMPEDE LAYOUT SHIFT */
+}
+.topbar-logo {
+    height: 128px; width: 128px; /* Dimensões explícitas eliminam CLS */
+}
+```
+
+#### #### 2.4. Sistema de Injeção de Componentes (bloco-incluir.js)
+O sistema permite que componentes HTML compartilhados sejam mantidos em UM ÚNICO local e injetados dinamicamente.
+
+**Código Fonte:**
+```javascript
+function injetar(arquivo, seletorAlvo, posicao) {
+    return fetch(BASE + arquivo + '?v=' + Date.now())
+    .then(r => r.text())
+    .then(html => {
+        const alvo = document.querySelector(seletorAlvo);
+        if (alvo) alvo.insertAdjacentHTML(posicao, html);
+    })
+    .catch(() => {});
+}
+injetar('compartilhado/bloco-cookies.html', 'body', 'beforeend');
+```
+
+#### #### 2.5. Footer Padrão e Disclaimer
+O footer DEVE estar presente no HTML de TODAS as páginas (não injetado).
+
+**Disclaimer Obrigatório (NÃO ALTERAR):**
+
+DISCLAIMER: Os resultados apresentados variam de pessoa para pessoa, dependendo de fatores como metabolismo, adesão ao protocolo e prática de atividades físicas. Os produtos Herbalife são suplementos alimentares e não medicamentos. Consulte um médico ou nutricionista antes de iniciar qualquer programa nutricional. Edu Sidegum — Distribuidor Independente Herbalife. Imagens meramente ilustrativas.
+
+
+#### #### 2.6. Performance e Metadados EXIF
+A meta é atingir score ≥ 90 no PageSpeed Mobile.
+
+**Comando ExifTool Obrigatório:**
+```powershell
+exiftool -Artist="Edu Sidegum" `
+         -Copyright="© IEEE3S" `
+         -XMP:Creator="Edusidegum Distribuidor Independente Herbalife" `
+         -XMP:City="Novo Hamburgo" `
+         -XMP:State="RS" `
+         -GPSLatitude=-29.67778 -GPSLatitudeRef=S `
+         -GPSLongitude=-51.13083 -GPSLongitudeRef=W `
+         -overwrite_original "caminho/para/imagens/"
+```
+
+---
+
+### ### 3. CAPÍTULO III — OPERAÇÃO
+
+#### #### 3.1. Páginas do Ecossistema
+
+
+
+
+Ordem
+Tópico
+Página
+Perfil
+Status
+
+
+
+
+1
+Reset Metabólico
+detox/
+Cético
+Planejado
+
+
+2
+Hype Drink
+hypedrink/
+Pragmático
+No ar
+
+
+3
+Protocolo 21 Dias
+transformacao21/
+Pragmático
+No ar
+
+
+4
+Cliente Premium
+cadastro/
+Qualificados
+No ar
+
+
+
+
+#### #### 3.2. Scripts de Atendimento SPIN Selling
+
+**3.2.1 /hype (Hype Drink)**
+"Olá, **[NOME]**! Que bom que você buscou mais energia. Me conta uma coisa: você sente que sua produtividade cai muito no meio da tarde ou tem dificuldade de foco em reuniões longas? Preparei uma explicação de como o Hype Drink atua exatamente nesses pontos: [links.html] — Vamos elevar seu nível de performance hoje?"
+
+**3.2.2 /desafio (Transformação 21)**
+"Oi, **[NOME]**! O Desafio T21 é focado em quem busca constância. Você já tentou iniciar uma rotina saudável antes, mas sentiu que a falta de um grupo ou acompanhamento te fez parar no caminho? Veja como nosso ecossistema resolve isso: [links.html] — Topa o desafio de ser sua melhor versão nos próximos 21 dias?"
+
+**3.2.3 /oportunidade (Negócio)**
+"Oi, **[NOME]**! Fico feliz com seu interesse em empreender conosco. Você busca hoje uma renda extra flexível ou está procurando um plano de carreira sólido com propósito? Veja como funciona nosso modelo de negócio e nossa declaração de rendimentos: [links.html] — Podemos agendar uma breve chamada?"
+
+#### #### 3.3. Cronograma de Implementação
+
+**Fase 1 — Consolidação Local (Dias 1-30)**
+- Migrar todos os arquivos para a estrutura HLF/;
+- Atualizar JSON-LD de todas as páginas (Person + LocalBusiness);
+- Corrigir CLS em todas as páginas;
+- Aplicar metadados EXIF em todas as imagens.
+
+**Fase 2 — Expansão de Conteúdo (Dias 31-60)**
+- Criar landing pages por sabor;
+- Publicar artigo âncora: "Protocolo Pro2Col em Novo Hamburgo";
+- Otimizar Google Meu Negócio.
+
+**Fase 3 — Autoridade Regional (Dias 61-90)**
+- Blog com conteúdo otimizado para AIO (Featured Snippets);
+- Expansão para Porto Alegre (RM) e Vale do Taquari.
+
+---
+
+### ### 4. APÊNDICES
+
+#### #### 4.1. Notas de Implementação (N1 a N6)
+- **N1:** SEMPRE carregar `style.css`, nunca criar CSS específico por projeto.
+- **N2:** O `bloco-incluir.js` com `defer` no `` é obrigatório.
+- **N3:** As meta tags `geo.region` e `geo.placename` são obrigatórias.
+- **N4:** A meta tag `protecao-copia="ativado"` ativa o anti-cópia.
+- **N5:** Use o `head_padrao.txt` para novas páginas.
+- **N6:** O comando ExifTool DEVE ser executado em TODAS as imagens novas.
+
+#### #### 4.2. Referências Obrigatórias
+- **Manual de Normas do Distribuidor Independente Herbalife**;
+- Diretrizes de SEO do Google (E-E-A-T);
+- LGPD — Lei nº 13.709/2018.
+
+---
+
+Local e data: Novo Hamburgo/RS, 30 de junho de 2026
+
+
+EDU SIDEGUM — DISTRIBUIDOR INDEPENDENTE
+
+*Documento elaborado em 30 de junho de 2026. Este documento integra o portfólio de arquitetura de sistemas de seu autor, demonstrando domínio em estruturação semântica, SEO local, performance web e automação assistiva.*
