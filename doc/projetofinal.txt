@@ -1,0 +1,908 @@
+IA: Perfeito. Vou gerar o documento final diretamente no chat, com todas as correções implementadas.
+
+---
+
+# HLF — ECOSSISTEMA HERBALIFE: DOCUMENTO DE IMPLEMENTAÇÃO
+
+**Versão:** Final (Junho/2026)
+**Autor:** Edu Sidegum — Distribuidor Independente Herbalife
+**Local:** Novo Hamburgo/RS — Brasil
+**Licença:** Nacional (BR), com cobertura internacional
+**Escopo:** Ecossistema digital Pro2Col — páginas de captação e conversão
+
+> Este documento consolida as diretrizes de implementação do ecossistema HLF. Ele complementa — e em nenhum ponto substitui ou contradiz — o **Manual de Normas do Distribuidor Independente Herbalife para o Brasil**, que permanece como documento-base soberano.
+
+---
+
+## 1. Visão Geral e Propósito
+
+O Ecossistema HLF Pro2Col é um conjunto de páginas web, scripts e ativos digitais projetado para:
+- Atrair e qualificar prospects por meio de conteúdo consultivo e geolocalizado
+- Direcionar leads para conversão via WhatsApp, catálogo oficial e cadastro Herbalife
+- Sustentar autoridade local em Novo Hamburgo/RS e região do Vale do Sinos
+- Operar com performance, conformidade e rastreabilidade
+
+### 1.1 Princípios Fundamentais
+
+- **Atendimento humano assistido:** respostas rápidas com apoio de IA consultiva e atalhos de digitação — sem bots conversacionais
+- **Identidade visível:** toda página exibe, acima da dobra, a identificação "Distribuidor Independente Herbalife: Edu Sidegum"
+- **Uso padrão de componentes compartilhados:** CSS, scripts, header, footer e blocos legais são mantidos em diretório comum
+- **Conformidade total:** disclaimer oficial Herbalife presente em todas as páginas
+- **SEO local:** Novo Hamburgo/RS como âncora geográfica principal
+
+---
+
+## 2. Arquitetura do Ecossistema
+
+### 2.1 Estrutura de Diretórios (pasta raiz HLF/)
+
+```
+HLF/
+├── index.html                     # Página principal (home)
+├── manifesto.html                 # Manifesto do consultor
+├── assets/
+│   ├── css/
+│   │   └── style.css              # CSS base compartilhado
+│   └── js/
+│       ├── bloco-incluir.js       # Injeção de componentes
+│       ├── bloco-protecao.js      # Proteção de conteúdo
+│       ├── dinamico.js            # Funcionalidades dinâmicas
+│       └── novo_dir_dinamico.js   # Navegação avançada
+├── img/                           # Imagens otimizadas (WebP)
+├── doc/                           # Documentos institucionais
+│   ├── politicadeprivacidade.html
+│   └── termosdeusodistribuidorindependenteherbalife.html
+├── menu/
+│   ├── templates/
+│   │   └── head_padrao.txt        # Template de 
+│   └── compartilhado/
+│       ├── topbar.html            # Componente topbar
+│       ├── bloco-cookies.html     # Banner LGPD / cookies
+│       └── bloco-ga4-gtm.html     # GA4 e pixel de controle
+├── links.html                     # Agregador central de links do ecossistema
+├── robots.txt
+├── sitemap.xml
+└── google[HASH].html              # Verificação Search Console
+```
+
+### 2.2 Hierarquia de Páginas
+
+| Ordem | Página | Objetivo |
+|---|---|---|
+| 1 | Home (`index.html`) | Porta de entrada do ecossistema; H1 local; autoridade |
+| 2 | Manifesto (`manifesto.html`) | Conexão pessoal, identidade e propósito |
+| 3 | Catálogo (externo) | `https://catalogoherbalife.com.br/edusidegum` — gerido pela organização |
+| 4 | Páginas de Captação (landing pages) | Conversão por intenção de busca |
+| 5 | Cliente Premium | Página fim de direcionamento pós-filtro |
+| 6 | Cadastro (externo) | `https://accounts.myherbalife.com/...` |
+
+### 2.3 Páginas de Captação (Landing Pages por Intenção)
+
+As páginas de captação são adaptáveis conforme campanha, público-alvo, sazonalidade e objetivo de conversão.
+
+**O que PODE variar:** título, hero visual, cores de apoio, oferta específica, CTA contextual e conteúdo editorial.
+
+**O que permanece FIXO:** head template, header/topbar, footer, schema, disclaimer, injeção de scripts, identificação do distribuidor, links oficiais.
+
+| # | Tópico (Keyword) | Foco SEO (Título sugerido) | Perfil Atraído |
+|---|---|---|---|
+| 1 | Reset Metabólico | "Protocolo Detox Inverno: Como reduzir medidas no RS" | Cético |
+| 2 | Hype Drink | "Hype Drink: A estratégia de energia para o inverno gaúcho" | Pragmático |
+| 3 | Emagrecimento | "Shakes Herbalife Novo Hamburgo: Seu jantar prático e nutritivo" | Social |
+| 4 | Performance | "Protocolo 21 Dias: Definição e energia para treinos" | Pragmático |
+| 5 | Transição Imune | "Imunidade e Energia: Nutrição inteligente para a primavera" | Cético |
+
+### 2.4 Agregador de Links (links.html)
+
+O arquivo `links.html` na raiz do projeto funciona como hub centralizador de todos os links do ecossistema. Sua função é:
+
+- Ser a **única URL divulgada** nos scripts de atendimento (atalhos de teclado)
+- Evitar links quebrados quando uma página mudar de endereço
+- Permitir atualização centralizada sem editar scripts individuais
+- Servir como ponto único de entrada para leads em diferentes estágios do funil
+
+**Regra:** Atualizar o `links.html` sempre que uma nova página for criada ou um link for alterado.
+
+### 2.5 Composição Visual de Cada Página
+
+1. **Header/Topbar** — fixa, identidade + navegação
+2. **Header-spacer** — compensa altura da topbar fixa
+3. **Hero acima da dobra** — H1 local, subtítulo, CTA para WhatsApp, identificação visível do distribuidor
+4. **Body** — dores/problemas, tabelas nutricionais, listas do protocolo, conexão local
+5. **Footer** — semântico, cross-linking, disclaimer, links oficiais
+
+---
+
+## 3. Head Template Padrão
+
+O `head_padrao.txt` do diretório `menu/templates/` é o template mestre. Copia-se integralmente para cada página, alterando **apenas** os campos variáveis:
+
+- ``
+- `<meta name="description">`
+- `<meta property="og:title">`
+- `<meta property="og:description">`
+- `<meta property="og:url">`
+- `<link rel="canonical">`
+- `href` do preload da imagem LCP
+- Campos variáveis do JSON-LD
+
+**ATENÇÃO:** O caminho do `bloco-incluir.js` aponta para `assets/js/` dentro do próprio projeto (não para um diretório externo).
+
+### 3.1 Template de Referência
+
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Script de injeção compartilhado (defer = não bloqueante) -->
+  <script src="assets/js/bloco-incluir.js" defer></script>
+
+  <!-- Título e Description (VARIÁVEIS) -->
+  <title>TÍTULO DA PÁGINA | Distribuidor Independente Herbalife
+  
+
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+  
+  
+    <link rel="stylesheet" href="assets/css/style.css">
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap"
+          rel="stylesheet">
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+    {
+      "@context": "https://schema.org",
+      "@graph": [ ... ]
+    }
+  
+
+  
+  
+    .sticky-header {
+      position: fixed; top: 0; left: 0; width: 100%;
+      background: #78BE20; z-index: 1000; text-align: center;
+      padding: 12px 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .sticky-header a {
+      color: #fff; font-family: 'Montserrat', sans-serif;
+      font-weight: 700; font-size: 15px; text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+    .header-spacer { height: 56px; }
+    body { font-family: 'Open Sans', Arial, Helvetica, sans-serif; }
+    h1, h2, h3 { font-family: 'Montserrat', Arial Black, sans-serif; }
+  
+
+```
+
+### 3.2 Campos Variáveis por Página
+
+| Campo | Onde usar | Exemplo (Hype Drink) |
+|---|---|---|
+| `[TÍTULO DA PÁGINA]` | `` e `og:title` | "Hype Drink — Nutrição de Alta Performance" |
+| `[DESCRIÇÃO ÚNICA]` | meta description | "Distribuidor Independente Herbalife - RS / BR. Conheça o Hype Drink..." |
+| `[DESCRIÇÃO OG]` | og:description | "Refrescância, foco e queima calórica inteligente..." |
+| `[PROJETO]` | caminhos de URL | `hypedrink` |
+| `[LCP_IMAGE]` | preload | `HypeDrink.webp` |
+| `[URL_CANÔNICA]` | canonical + og:url | `https://edusidegum.github.io/hypedrink/` |
+
+### 3.3 Regras
+
+- Uso padrão do template para **todas** as páginas
+- Elementos marcados como FIXOS não podem ser removidos
+- Elementos marcados como VARIÁVEIS são alterados por página
+- CSS adicional específico só com justificativa técnica registrada
+- O caminho do `bloco-incluir.js` é **sempre** `assets/js/bloco-incluir.js` (relativo ao projeto)
+
+---
+
+## 4. CSS Base Compartilhado (style.css)
+
+### 4.1 Regras de Uso
+
+- Uso padrão de `style.css` como CSS global do ecossistema
+- O arquivo reside em `assets/css/style.css`
+- CSS adicional por componente (ex.: `topbar.css`) é permitido como complemento, desde que documentado e com justificativa
+- Adaptações pontuais ao perfil declarado como base são permitidas para páginas-fim (Catálogo, Cliente Premium, Cadastro)
+
+### 4.2 Diretrizes Técnicas
+
+```css
+/* Reset base */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+/* Variáveis */
+:root {
+    --primary: #78BE20;
+    --primary-glow: #8ae029;
+    --dark: #0d0d0d;
+    --card-bg: #1a1a1a;
+    --light-bg: #F8F9FA;
+    --white: #FFFFFF;
+    --text-light: #d6d6d6;
+    --whatsapp: #25D366;
+}
+
+/* Fontes */
+body {
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  color: #1a1a1a;
+  background: var(--light-bg);
+  line-height: 1.6;
+}
+
+/* Container */
+.container { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+
+/* Topbar fixa */
+.sticky-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  min-height: 40px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  background: rgba(26,26,26,0.96);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(120,190,32,0.25);
+  padding: 5px 5%;
+}
+
+/* Logo — DIMENSÕES EXPLÍCITAS PARA EVITAR CLS */
+.sticky-header .topbar-logo {
+  width: 128px;
+  height: 128px;
+}
+
+.sticky-header .topbar-nome {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+/* Header spacer — COMPENSA TOPBAR FIXA */
+.header-spacer { height: 56px; }
+
+/* Menu dropdown sem JS */
+.menu-toggle { cursor: pointer; }
+.menu-dropdown { display: none; }
+.menu-toggle:hover .menu-dropdown,
+.menu-toggle:focus-within .menu-dropdown { display: block; }
+
+/* Botão WhatsApp na topbar */
+.sticky-header .btn-cta {
+  background: var(--whatsapp);
+  color: #000;
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 8px 16px;
+  border-radius: 50px;
+  text-decoration: none;
+  white-space: nowrap;
+  justify-self: end;
+  transition: all 0.2s;
+}
+.sticky-header .btn-cta:hover {
+  background: #1da851;
+  transform: scale(1.05);
+}
+
+/* Imagens */
+img { max-width: 100%; height: auto; }
+img[loading="lazy"] { aspect-ratio: attr(width) / attr(height); }
+
+/* CARROSSEL DE SELOS — ASPECT-RATIO FIXO PARA EVITAR CLS */
+.selos-carrossel {
+  display: flex;
+  overflow-x: auto;
+  gap: 12px;
+  scroll-snap-type: x mandatory;
+  padding: 8px 0;
+}
+.selos-carrossel img {
+  height: 90px;
+  width: auto;
+  aspect-ratio: 1 / 1; /* ← IMPEDE LAYOUT SHIFT */
+  scroll-snap-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+/* Footer */
+footer { background: var(--dark); color: var(--text-light); padding: 24px 16px; text-align: center; }
+
+/* Disclaimer */
+.disclaimer { font-size: 0.8rem; color: #888; line-height: 1.5; max-width: 650px; margin: 0 auto; }
+
+/* Lightbox */
+#lightbox {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.9); z-index: 99999;
+  display: none; align-items: center; justify-content: center;
+}
+#lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; }
+#lightbox .close-btn {
+  position: absolute; top: 20px; right: 30px;
+  color: #fff; font-size: 40px; font-weight: bold; cursor: pointer;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .pilares-grid { grid-template-columns: repeat(2, 1fr); }
+  .sticky-header { padding: 5px 3%; }
+}
+@media (max-width: 600px) {
+  .pilares-grid { grid-template-columns: 1fr; }
+  .sticky-header .topbar-logo { width: 80px; height: 80px; }
+}
+```
+
+---
+
+## 5. JavaScript Compartilhado
+
+### 5.1 Scripts do Ecossistema
+
+| Script | Função | Carregamento |
+|---|---|---|
+| `bloco-incluir.js` | Injeção dinâmica de topbar, cookies, GA4 e footer | `defer` no `<head>` |
+| `bloco-protecao.js` | Proteção de conteúdo (anti-cópia, bloqueio de contexto, interceptação Ctrl+C, anti-cache) | `defer` |
+| `dinamico.js` | Funcionalidades interativas complementares | `defer` |
+| `novo_dir_dinamico.js` | Navegação dinâmica entre páginas | `defer` |
+
+**Localização:** `HLF/assets/js/` (dentro de cada projeto, não em diretório global)
+
+### 5.2 Ordem de Injeção (via `bloco-incluir.js`)
+
+1. Topbar (injetada no início do `<header>`)
+2. Banner cookies/LGPD (injetado no final do `<body>`)
+3. GA4 e pixel de controle (injetados no `<head>` condicionalmente)
+4. Footer padrão (presente no HTML, não injetado)
+
+### 5.3 Código do `bloco-incluir.js`
+
+```javascript
+/**
+ * Injetor de Componentes Compartilhados
+ * Garante que cookies, GA4 e topbar sejam injetados
+ * sem bloquear o render da página principal.
+ */
+const BASE = '';  /* mesmo diretório do projeto */
+
+function injetar(arquivo, seletorAlvo, posicao) {
+    return fetch(arquivo + '?v=' + Date.now())
+    .then(r => r.text())
+    .then(html => {
+        const alvo = document.querySelector(seletorAlvo);
+        if (alvo) alvo.insertAdjacentHTML(posicao, html);
+    })
+    .catch(() => {});  // Degradação graciosa
+}
+
+// Banner de cookies — injeta no final do body
+injetar('menu/compartilhado/bloco-cookies.html', 'body', 'beforeend');
+
+// GA4 / GTM — injeta no head (quando configurado)
+// injetar('menu/compartilhado/bloco-ga4-gtm.html', 'head', 'beforeend');
+```
+
+### 5.4 `bloco-protecao.js` — Mecanismos de Proteção
+
+Ativado pela meta tag `<meta name="protecao-copia" content="ativado">`.
+
+| # | Mecanismo | Descrição |
+|---|---|---|
+| 1 | Anti-cópia (seleção) | Aplica `user-select: none` no body via JavaScript |
+| 2 | Bloqueio de menu de contexto | Previne clique direito (botão direito do mouse) |
+| 3 | Interceptação de Ctrl+C | Substitui conteúdo copiado por "Cópia não autorizada." |
+| 4 | Proteção de conteúdo textual | Impede seleção maliciosa de textos longos |
+| 5 | Meta tags anti-cache | Adiciona `Cache-Control`, `Pragma`, `Expires` para evitar cache de conteúdo sensível |
+| 6 | Controle de inserção de componentes | Componentes só são injetados se a meta tag correspondente existe no head |
+| 7 | Prevenção de duplicação indevida | Estrutura modular com referência única — cada componente existe em UM local |
+
+```javascript
+// CSS: bloqueia seleção de texto
+var style = document.createElement('style');
+style.textContent = 'body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}';
+document.head.appendChild(style);
+
+// Intercepta Ctrl+C
+document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey && (e.key==='c'||e.key==='C'||e.keyCode===67)) {
+        var s=window.getSelection();
+        if(s&&s.toString().length>0){ e.preventDefault(); return false; }
+    }
+});
+
+// Substitui conteúdo copiado
+document.addEventListener('copy', function(e) {
+    e.preventDefault();
+    e.clipboardData.setData('text/plain','Cópia não autorizada.');
+});
+
+// Previne menu de contexto
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+```
+
+**Regras de Proteção:**
+- Toda página DEVE ter a meta tag `protecao-copia` ativada, exceto páginas institucionais (política de privacidade, termos de uso)
+- O comportamento pode ser adaptado conforme a sensibilidade do conteúdo da página
+- O bloqueio de contexto NÃO deve impedir navegação acessível (teclado, leitores de tela)
+- O sistema anti-cópia é uma barreira de integridade, não de segurança absoluta
+
+### 5.5 Política de Privacidade, Cookies LGPD, GA4 e Pixel
+
+- Inserção feita **exclusivamente via JavaScript**, por meio do `bloco-incluir.js`
+- O banner de cookies/LGPD é apresentado como pop-up no final do body
+- GA4 e pixel de controle são carregados de forma condicional, respeitando a aceitação de cookies
+- A política de privacidade e os termos de uso são links fixos no footer, com páginas hospedadas em `doc/`
+- **Local dos arquivos institucionais:** `HLF/doc/politicadeprivacidade.html` e `HLF/doc/termosdeusodistribuidorindependenteherbalife.html`
+
+---
+
+## 6. Schema JSON-LD
+
+### 6.1 Hierarquia de Entidades
+
+A entidade principal é a **pessoa física** do consultor. A hierarquia é:
+
+1. **Person** — Edu Sidegum, distribuidor independente (entidade-base)
+2. **LocalBusiness** — Negócio local, operação em Novo Hamburgo/RS
+3. **Product** — Produto Herbalife em destaque na página
+4. **WebSite** — Identidade do ecossistema
+5. **BreadcrumbList** — Navegação estrutural
+
+### 6.2 Template @graph
+
+```json
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Person",
+            "@id": "https://edusidegum.github.io/#person",
+            "name": "Edu Sidegum",
+            "jobTitle": "Distribuidor Independente Herbalife",
+            "url": "https://edusidegum.github.io/",
+            "sameAs": ["https://wa.me/5551999663200"]
+        },
+        {
+            "@type": "LocalBusiness",
+            "@id": "https://edusidegum.github.io/#business",
+            "name": "Edu Sidegum — Consultoria Herbalife",
+            "description": "Consultoria nutricional e distribuição de produtos Herbalife em Novo Hamburgo/RS",
+            "url": "https://edusidegum.github.io/",
+            "telephone": "+5551999663200",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Novo Hamburgo",
+                "addressRegion": "RS",
+                "addressCountry": "BR"
+            },
+            "areaServed": ["BR"],
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+5551999663200",
+                "contactType": "customer service",
+                "availableLanguage": ["Portuguese"]
+            },
+            "founder": { "@id": "https://edusidegum.github.io/#person" }
+        },
+        {
+            "@type": "Product",
+            "@id": "https://edusidegum.github.io/#product",
+            "name": "[NOME DO PRODUTO EM DESTAQUE]",
+            "description": "[DESCRIÇÃO DO PRODUTO]",
+            "brand": { "@type": "Brand", "name": "Herbalife" }
+        },
+        {
+            "@type": "WebSite",
+            "@id": "https://edusidegum.github.io/#website",
+            "url": "https://edusidegum.github.io/",
+            "name": "Ecossistema Edu Sidegum — Herbalife",
+            "publisher": { "@id": "https://edusidegum.github.io/#person" }
+        },
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://edusidegum.github.io/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "[TÍTULO DA PÁGINA]",
+                    "item": "[URL-CANÔNICA]"
+                }
+            ]
+        }
+    ]
+}
+```
+
+### 6.3 Validação
+
+- Uso padrão do [Schema Markup Validator](https://validator.schema.org/) para checagem antes de cada deploy
+- O `@graph` deve ser copiado integralmente, alterando-se apenas os campos de conteúdo variável
+
+---
+
+## 7. Header / Topbar
+
+### 7.1 Estrutura HTML
+
+```html
+<header class="sticky-header" role="banner" aria-label="Barra de navegação principal">
+    <!-- Logo + Identificação à esquerda -->
+    <a href="/" aria-label="Página inicial" class="topbar-brand">
+        <img src="img/logo-edusidegum.webp" alt="Edu Sidegum — Distribuidor Independente Herbalife"
+             class="topbar-logo" width="128" height="128" loading="eager" fetchpriority="high">
+    </a>
+
+    <!-- Menu Dropdown central -->
+    <nav class="menu-toggle" aria-label="Menu principal">
+        <button class="menu-btn" aria-label="Abrir menu">☰ Menu</button>
+        <ul class="menu-dropdown">
+            <li><a href="/">Home</a></li>
+            <li><a href="/manifesto.html">Manifesto</a></li>
+            <li><a href="https://catalogoherbalife.com.br/edusidegum" target="_blank" rel="noopener">Catálogo</a></li>
+            <li><a href="https://edusidegum.github.io/cadastro/cadastro.html" target="_blank" rel="noopener">Cliente Premium</a></li>
+            <li><a href="https://edusidegum.github.io/cadastro/cadastro.html" target="_blank" rel="noopener">Novo Consultor</a></li>
+        </ul>
+    </nav>
+
+    <!-- WhatsApp à direita -->
+    <a href="https://wa.me/5551999663200?text=Quero%20Saber%20mais" class="btn-cta"
+       target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+        💬 Fale Conosco
+    </a>
+</header>
+<div class="header-spacer"></div>
+```
+
+### 7.2 Regras
+
+- A topbar é **fixa** no topo da viewport
+- Logo com dimensões explícitas `width="128" height="128"` — tanto no HTML quanto no CSS
+- Menu dropdown funciona via `:hover` e `:focus-within` — **sem dependência de JavaScript** para abertura/fechamento
+- Imediatamente após `<body>`, inserir `<div class="header-spacer"></div>` para compensar a altura da topbar fixa
+- O componente pode ser injetado pelo `bloco-incluir.js` ou incluído diretamente no HTML conforme o caso
+
+---
+
+## 8. Footer Padrão
+
+### 8.1 Estrutura HTML
+
+```html
+<footer role="contentinfo">
+    <!-- Identificação do Distribuidor -->
+    <p><strong>Distribuidor Independente Herbalife: Edu Sidegum</strong></p>
+    <p>Novo Hamburgo/RS — Brasil</p>
+
+    <!-- Catálogo Oficial -->
+    <p>
+        <a href="https://catalogoherbalife.com.br/edusidegum"
+           target="_blank" rel="noopener"
+           style="color:#78BE20;font-weight:bold;text-decoration:none;
+                  border-bottom:2px solid rgba(120,190,32,0.4);padding-bottom:2px;">
+            📖 Acesse meu Catálogo Oficial de Produtos
+        </a>
+    </p>
+
+    <!-- Cadastro e WhatsApp -->
+    <p>
+        <a href="https://accounts.myherbalife.com/Account/Create?appId=1&qrFlow=1&locale=pt-BR&SponsorId=ZRdWSj1jMGH1aeeGrHPR2A==&cmp=m_pt_br_wbs_dssignup_btn_nap_copylink_20250305"
+           target="_blank" rel="noopener" style="color:#78BE20;text-decoration:none;margin:0 8px;">
+            📝 Cadastre-se
+        </a>
+        <span>|</span>
+        <a href="https://wa.me/5551999663200" target="_blank" rel="noopener"
+           style="color:#78BE20;text-decoration:none;margin:0 8px;">
+            💬 WhatsApp
+        </a>
+    </p>
+
+    <!-- Disclaimer Obrigatório (NÃO ALTERAR) -->
+    <div style="max-width:650px;margin:10px auto 0;padding:12px 16px;border-top:1px solid #333;text-align:center;">
+        <p style="font-size:11px;color:#999;line-height:1.5;margin:0;">
+            <strong>DISCLAIMER:</strong> Os resultados apresentados variam de pessoa para pessoa,
+            dependendo de fatores como metabolismo, adesão ao protocolo e prática de atividades físicas.
+            Os produtos Herbalife são suplementos alimentares e não medicamentos.
+            Consulte um médico ou nutricionista antes de iniciar qualquer programa nutricional.
+            <strong>Edu Sidegum</strong> — Distribuidor Independente Herbalife.
+            Imagens meramente ilustrativas.
+        </p>
+    </div>
+
+    <!-- Links Institucionais -->
+    <div>
+        <a href="https://edusidegum.github.io/doc/politicadeprivacidade.html"
+           target="_blank" rel="noopener">Política de Privacidade</a>
+        <span>|</span>
+        <a href="https://edusidegum.github.io/doc/termosdeusodistribuidorindependenteherbalife.html"
+           target="_blank" rel="noopener">Termos de Uso</a>
+        <span>|</span>
+        <a href="/">Página Inicial</a>
+    </div>
+
+    <p>© 2026 Edu Sidegum — Distribuidor Independente Herbalife. Todos os direitos reservados.</p>
+</footer>
+```
+
+### 8.2 Regras
+
+- O footer está presente em **todas** as páginas do ecossistema (presente no HTML, não injetado)
+- Os links de catálogo, cadastro e WhatsApp são **fixos** — nunca alterados por página
+- O disclaimer é **obrigatório e inalterável** — mesmo texto, mesma posição, mesma formatação
+- Os links de política de privacidade e termos de uso apontam para `doc/` dentro do projeto
+
+---
+
+## 9. Integrações Oficiais
+
+### 9.1 Catálogo
+
+- **URL fixa:** `https://catalogoherbalife.com.br/edusidegum`
+- **Gerido pela:** Organização Herbalife
+- **Acesso:** link presente na topbar e no footer de todas as páginas
+- ❌ Não criar catálogo próprio ou alternativo
+
+### 9.2 Cadastro Oficial
+
+- **URL fixa:** `https://accounts.myherbalife.com/Account/Create?appId=1&qrFlow=1&locale=pt-BR&SponsorId=ZRdWSj1jMGH1aeeGrHPR2A==&cmp=m_pt_br_wbs_dssignup_btn_nap_copylink_20250305`
+- **Uso:** botões de CTA, footer e links de conversão
+- ❌ Não modificar os parâmetros da URL sem validação com suporte Herbalife
+
+### 9.3 WhatsApp
+
+- **Número oficial:** `51999663200`
+- **Link para CTAs:** `https://wa.me/5551999663200`
+- **Uso:** botões acima da dobra, footer e links contextuais no body
+- Inserido como `sameAs` no schema `Person`
+- ❌ Não usar outro número em páginas do ecossistema
+
+---
+
+## 10. SEO e Meta Tags
+
+### 10.1 Estrutura Obrigatória
+
+| Meta Tag | Conteúdo | Status |
+|---|---|---|
+| `geo.region` | `BR-RS` | Fixa |
+| `geo.placename` | `Novo Hamburgo` | Fixa |
+| `protecao-copia` | `ativado` | Fixa |
+| `robots` | `index, follow, max-image-preview:large` | Padrão |
+| `title` | `[Tópico] | Distribuidor Independente Herbalife` | Variável |
+| `description` | Resumo da página (máx. 160 caracteres, linguagem natural) | Variável |
+
+### 10.2 Estrutura de Cabeçalhos (H1-H3)
+
+- Uso padrão de **um único H1** por página, posicionado no hero
+- H2 para blocos temáticos principais (dores, tabelas, protocolo, FAQ)
+- H3 para sub-blocos dentro dos temas
+- Hierarquia respeitada para que o Googlebot entenda a relevância do conteúdo
+
+### 10.3 Palavras-Chave (SEO Local)
+
+As palavras-chave mais buscadas e trabalhadas no ecossistema:
+
+- Suplementos Herbalife Novo Hamburgo
+- Emagrecimento com shakes Herbalife RS
+- Nutrição esportiva Vale do Sinos
+- Reset metabólico detox inverno
+- Protocolo 21 dias Herbalife
+- Hype Drink energia treino
+- Imunidade e nutrição primavera
+- Distribuidor Independente Herbalife Novo Hamburgo
+- Catálogo Herbalife 2026
+
+### 10.4 Cross-Linking
+
+- Todas as páginas principais linkam entre si de forma contextual
+- Footer inclui links para Home, Produtos e páginas institucionais
+- Topbar inclui links para Home, Manifesto, Catálogo e Premium
+- `links.html` funciona como agregador central de todos os links do ecossistema
+
+---
+
+## 11. Performance (Core Web Vitals)
+
+### 11.1 Metas
+
+| Métrica | Mobile | Desktop |
+|---|---|---|
+| Performance Score | ≥ 90 | ≥ 95 |
+| CLS (Cumulative Layout Shift) | ≤ 0,05 | ≤ 0,01 |
+| LCP (Largest Contentful Paint) | ≤ 2,5s | ≤ 1,5s |
+| TBT (Total Blocking Time) | ≤ 50ms | ≤ 30ms |
+
+### 11.2 Otimizações Obrigatórias
+
+| Otimização | Especificação | Impacto |
+|---|---|---|
+| Imagens WebP | Qualidade 70-75% selos, 80% fotos | Redução de peso |
+| `loading="lazy"` | Em todas as imagens exceto LCP | Carregamento sob demanda |
+| `aspect-ratio` explícito | No carrossel `.selos-carrossel img` | ✅ ELIMINA CLS |
+| `width/height` explícitos | No logo da topbar (128x128) | ✅ ELIMINA CLS |
+| CSS preload | `preload` + `media="print" onload` | ✅ Sem render-blocking |
+| Fontes async | `preconnect` + `media="print" onload` | ✅ Sem render-blocking |
+| JavaScript | `defer` em todos os scripts | ✅ Não bloqueia render |
+| Imagem LCP | `fetchpriority="high"` + `loading="eager"` | ✅ Carregamento prioritário |
+
+### 11.3 Verificação
+
+- Uso padrão do [PageSpeed Insights](https://pagespeed.web.dev/) para validação de cada página antes do deploy
+- Métricas registradas e comparadas após cada alteração estrutural
+
+---
+
+## 12. Imagens e Metadados (EXIF)
+
+### 12.1 Formato e Qualidade
+
+- **Formato padrão:** WebP
+- **Qualidade:** 70-75% para selos, logos e ícones; 80% para fotos de produto e hero
+
+### 12.2 Metadados EXIF
+
+Uso padrão de aplicação de metadados EXIF em **todas** as imagens novas antes do primeiro deploy. Executar via ExifTool ou similar.
+
+| Campo | Conteúdo |
+|---|---|
+| Title | Descrição natural e objetiva da imagem |
+| Description | Texto curto e natural, sem sobrecarga de keywords |
+| Author | Edu Sidegum |
+| Copyright | © 2026 Edu Sidegum — Distribuidor Independente Herbalife |
+| GPS | Coordenadas de Novo Hamburgo/RS (quando relevante) |
+
+> Evitar listas extensas de keywords no campo Description. Manter linguagem natural.
+
+---
+
+## 13. Conformidade e Disclaimer
+
+### 13.1 Manual de Normas Herbalife
+
+- O **Manual de Normas do Distribuidor Independente Herbalife** para o Brasil é o **documento-base soberano**
+- Nenhuma diretriz deste documento pode contradizer ou sobrepor o Manual
+- Em caso de conflito, **prevalece o Manual de Normas**
+
+### 13.2 Disclaimer Padrão (Texto Oficial — NÃO ALTERAR)
+
+> **DISCLAIMER:** Os resultados apresentados variam de pessoa para pessoa, dependendo de fatores como metabolismo, adesão ao protocolo e prática de atividades físicas. Os produtos Herbalife são suplementos alimentares e não medicamentos. Consulte um médico ou nutricionista antes de iniciar qualquer programa nutricional. **Edu Sidegum** — Distribuidor Independente Herbalife. Imagens meramente ilustrativas.
+
+### 13.3 Linguagem de Conteúdo
+
+- ❌ Evitar promessas absolutas de resultado ("emagrece rápido", "perder peso garantido")
+- ✅ Usar linguagem consultiva e informativa
+- ✅ Sempre contextualizar os benefícios dentro de um protocolo completo (nutrição + atividade física + acompanhamento)
+- ✅ Termos como "reset metabólico", "desinflamação" e "emagrecimento" devem ser acompanhados de explicação e contexto, nunca como promessas isoladas
+
+---
+
+## 14. Ferramentas de Monitoramento e Validação
+
+| Ferramenta | Função | Frequência |
+|---|---|---|
+| Google Search Console | Indexação, sitemaps, erros de rastreamento, SEO local | Semanal |
+| PageSpeed Insights | Core Web Vitals (CLS, LCP, TBT) | A cada deploy |
+| Google Business Profile | Autoridade local, avaliações, horários | Mensal |
+| Schema Markup Validator | Validação do JSON-LD `@graph` | Antes de cada deploy |
+
+---
+
+## 15. Checklist de Implementação
+
+### Fase 1 — Estrutura Base
+
+- [ ] Criar diretório `HLF/` e todas as subpastas (`assets/css/`, `assets/js/`, `img/`, `doc/`, `menu/templates/`, `menu/compartilhado/`)
+- [ ] Criar `style.css` base conforme Seção 4
+- [ ] Criar `bloco-incluir.js`, `bloco-protecao.js`, `dinamico.js`, `novo_dir_dinamico.js`
+- [ ] Criar `head_padrao.txt` em `menu/templates/`
+- [ ] Criar componentes HTML compartilhados: `topbar.html`, `bloco-cookies.html`, `bloco-ga4-gtm.html`
+- [ ] Criar `robots.txt` e `sitemap.xml`
+- [ ] Criar páginas de política de privacidade e termos de uso em `doc/`
+- [ ] Criar `links.html` como agregador central
+
+### Fase 2 — Página Home
+
+- [ ] `index.html` com head template completo
+- [ ] Topbar e header-spacer funcionais
+- [ ] Hero acima da dobra com H1 local, subtítulo, CTA WhatsApp, identificação do distribuidor
+- [ ] Body com conteúdo consultivo
+- [ ] Footer completo com disclaimer e links institucionais
+- [ ] Schema JSON-LD com `@graph` completo
+- [ ] Imagens em WebP com EXIF aplicado
+- [ ] Verificar no Search Console, PageSpeed Insights e Schema Validator
+
+### Fase 3 — Páginas Satélites
+
+- [ ] `manifesto.html` — identidade e propósito do consultor
+- [ ] Landing pages por intenção (5 páginas) conforme tabela da Seção 2.3
+- [ ] Cada página: head template, topbar, footer, schema, disclaimer, CTAs oficiais
+
+### Fase 4 — Verificação Final
+
+- [ ] Migração completa para `HLF/`
+- [ ] JSON-LD `@graph` validado em todas as páginas
+- [ ] Integrações verificadas: catálogo, cadastro, WhatsApp
+- [ ] CLS ≤ 0,05 em todas as páginas mobile
+- [ ] Imagens WebP otimizadas e com EXIF
+- [ ] Injeções JS funcionais: cookies LGPD, GA4, footer
+- [ ] Proteção de conteúdo ativa (7 mecanismos)
+- [ ] Google Business Profile atualizado
+- [ ] Período de testes e coleta de métricas
+- [ ] Ajustes documentados e aplicados
+
+---
+
+## 16. Regras Gerais de Manutenção
+
+1. Toda alteração no CSS base deve ser documentada e testada em todas as páginas
+2. Toda nova página usa o `head_padrao.txt` como ponto de partida
+3. O footer e o disclaimer **nunca** são alterados — constituem a base de conformidade do ecossistema
+4. Links de catálogo, cadastro e WhatsApp são fixos em todo o ecossistema
+5. Política de privacidade, cookies LGPD, GA4 e pixel de controle são injetados exclusivamente via `bloco-incluir.js`
+6. O caminho dos scripts em `assets/js/` é único — não usar diretório global
+7. Ajustes estruturais após o período de testes devem ser registrados em changelog neste documento
+
+---
+
+**Documento encerrado em 30 de junho de 2026.**
+**Edu Sidegum — Distribuidor Independente Herbalife. Novo Hamburgo/RS.**
