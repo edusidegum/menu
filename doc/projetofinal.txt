@@ -902,64 +902,303 @@ Uso padrão de aplicação de metadados EXIF em **todas** as imagens novas antes
 
 ---
 
-Anexo 1: 
+ANEXO 1
 
 Protocolo de Integridade e Eficiência HLF 2026
 
-.1. Regra de Preservação de Conteúdo (Anti-Simplificação)
-Manifesto de Componentes Obrigatórios: Toda página gerada DEVE conter, nesta ordem: [Header Topbar], [Hero Section], [Context Content Block], [Conversion Loop], [Footer HLF].
-Proibição de Sumarização: É terminantemente proibido reduzir, parafrasear ou omitir blocos de texto fornecidos como "Contexto de Página". O conteúdo deve ser transposto integralmente, otimizando apenas a marcação HTML para semântica (H1-H6).
-2. Injeção Dinâmica via PowerShell (Rastreamento)
-Os scripts de deploy devem utilizar obrigatoriamente as variáveis:
+1. Regra de Preservação de Conteúdo (Anti-Simplificação)
+1.1. Manifesto de Componentes Obrigatórios Toda página gerada DEVE conter, nesta ordem:
 
-$GA4_ID, $GTM_ID, $META_PIXEL_ID.
+[Header Topbar] — com logo, identificação do distribuidor e navegação
+[Hero Section] — com H1 único e subtítulo de contexto
+[Context Content Block] — conteúdo informativo aprovado
+[Conversion Loop] — Trio de Saída (ver Seção 4)
+[Footer HLF] — com disclaimer, links legais e identificação
 
-Se a variável for nula, o script deve injetar um comentário HTML <!-- Tracking ID Missing --> para evitar erros de execução no JS.
+1.2. Proibição de Sumarização É terminantemente proibido reduzir, parafrasear ou omitir blocos de texto fornecidos como "Contexto de Página". O conteúdo deve ser transposto integralmente, otimizando:
+
+Marcação HTML semântica (H1–H6, <article>, <section>, <nav>, <aside>)
+Atributos de performance (loading="lazy" em imagens não-LCP, preload, preconnect, fetchpriority)
+Acessibilidade (ARIA labels, alt descritivo, role, tabindex)
+Estrutura de dados estruturados (JSON-LD)
+Sem jamais reduzir o conteúdo informativo aprovado.
+
+1.3. Exceção de Performance Minificação de CSS e JS é permitida, desde que:
+
+O arquivo original não-minificado seja preservado no repositório
+O arquivo minificado receba sufixo .min.css ou .min.js
+A funcionalidade seja idêntica à versão original
+
+2. Injeção Dinâmica via PowerShell (Rastreamento) 
+2.1. Variáveis Obrigatórias Os scripts de deploy devem utilizar obrigatoriamente as variáveis:
+$GA4_ID
+$GTM_ID
+$META_PIXEL_ID
+
+2.2. Tratamento de Variável Nula Se a variável for nula, o script deve injetar um comentário HTML:
+
+<!-- Tracking ID Missing: [NOME_DA_VARIAVEL] -->
+
+Isso evita erros de execução no JS e mantém rastreabilidade de qual tag faltou.
+
+2.3. Ordem de Inserção As tags devem ser inseridas no <head> nesta ordem:
+
+GTM (dataLayer + script)
+GA4 (se não via GTM)
+Meta Pixel (noscript no <body>)
 3. Blindagem de Bots (Preços e Lógicas)
-Nível de Arquivo: Todo arquivo dentro de /data/ (JSON/CSV) ou que contenha fórmulas de decisão JS deve receber o cabeçalho HTTP X-Robots-Tag: noindex, nofollow via .htaccess ou meta tag inline.
-Nível de Diretório: O robots.txt na raiz deve conter explicitamente:
-markdown  User-agent: *
-  Disallow: /data/
-  Disallow: /scripts/
-  Disallow: /assets/js/novo_dir_dinamico.js4. Fechamento do Círculo (Loop de Conversão) 
+3.1. Nível de Arquivo — Páginas HTML com Valores Explícitos Todo arquivo HTML que exiba tabela de preços, valores de programas ou fórmulas de decisão deve receber, no <head>:
+<meta name="robots" content="noindex, nofollow">
 
-Padrão de informações no códito para robots.txt :
+3.2. Nível de Arquivo — Páginas Dependentes de Estado Páginas que dependem de localStorage, sessionStorage ou interação prévia para renderizar conteúdo (ex: avaliacao.html) devem receber:
+<meta name="robots" content="noindex, follow">
 
-# Robots.txt — regra geral (todos os bots)
+O follow permite que os bots sigam links do footer/topbar, mas não indexem o conteúdo dinâmico.
+
+3.3. Nível de Arquivo — Scripts JS Puros Arquivos .js que contenham lógica de decisão (ex: bloco-proposta.js, novo_dir_dinamico.js) devem receber no topo do arquivo:
+/* HLF — Arquivo protegido: noindex, nofollow */
+
+E ser bloqueados via robots.txt (ver Seção 3.5).
+
+3.4. Nível de Diretório — robots.txt Canônico
+
+O robots.txt na raiz do repositório DEVE conter exatamente:
+# Robots.txt — Ecossistema HLF
+# Regra geral (todos os bots)
 User-agent: *
 Allow: /
 Disallow: /doc
+Disallow: /data/
+Disallow: /scripts/
+Disallow: /assets/js/novo_dir_dinamico.js
 
-# Googlebot — regra específica (sobrepõe a genérica para esse bot)
+# Googlebot — regra específica
 User-agent: Googlebot
 Allow: /
 Disallow: /doc
+Disallow: /data/
+Disallow: /scripts/
+Disallow: /assets/js/novo_dir_dinamico.js
 
-# Bingbot — regra específica (sobrepõe a genérica para esse bot)
+# Bingbot — regra específica
 User-agent: bingbot
 Allow: /
 Disallow: /doc
+Disallow: /data/
+Disallow: /scripts/
+Disallow: /assets/js/novo_dir_dinamico.js
 
-# Sitemap — ajuda o bot a descobrir subpáginas mais rápido
-Sitemap: https://seusite.com.br/sitemap.xml
+# Sitemap
+Sitemap: https://edusidegum.github.io/HLF/sitemap.xml
 
-Paddrão de inserção de meta-tag
+3.5. Observação sobre GitHub Pages O GitHub Pages não suporta .htaccess nem cabeçalhos HTTP customizados (X-Robots-Tag). Portanto, toda proteção deve ser feita via:
 
+Meta tag inline no <head> (para HTML)
+robots.txt (para bloqueio de diretório/arquivo)
+Comentário no topo do arquivo (para JS puro, como documentação)
+
+4. Fechamento do Círculo (Loop de Conversão)
+4.1. Trio de Saída Obrigatório Nenhuma página pode ser considerada "Finalizada" sem o Trio de Saída:
+posição	        Tipo	                              Destino	                                                              Obrigatório
+Primária	      Botão de Cadastro	                  Link oficial https://accounts.myherbalife.com/Account/Create?appId=1&qrFlow=1&locale=pt-BR&SponsorId=ZRdWSj1jMGH1aeeGrHPR2A==&cmp=m_pt_br_wbs_dssignup_btn_nap_copylink_20250305	      Sim
+Secundária	    Link para Catálogo Digital	        https://catalogoherbalife.com.br/edusidegum	                          Sim
+Suporte	        Botão flutuante ou CTA de WhatsApp	https://wa.me/5551999663200 com string de origem	                    Sim
+
+4.2. Convenção de Strings de Origem do WhatsApp As strings de origem devem seguir o formato:
+?text=Vim_da_Pagina_[SLUG]
+
+Onde [SLUG] é o slug do projeto em PascalCase, sem acentos:
+Página	                String
+perfil.html	            Vim_da_Pagina_Perfil
+transformacao21/	      Vim_da_Pagina_Transformacao21
+hypedrink/	            Vim_da_Pagina_Hypedrink
+cadastro/cadastro.html	Vim_da_Pagina_Cadastro
+avaliacao.html	        Vim_da_Pagina_Avaliacao 
+
+4.3. Meta-Tags Padrão para Páginas Indexáveis
+Toda página indexável deve conter, no <head>:
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1, noarchive:false">
+<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large">
 
-Nenhuma página pode ser considerada "Finalizada" sem o Trio de Saída:
+4.4. Meta-Tags Padrão para Páginas Não-Indexáveis
+Toda página protegida deve conter, no <head>:
+<meta name="robots" content="noindex, follow">
+<meta name="googlebot" content="noindex, follow">
+<meta name="bingbot" content="noindex, follow">
 
-Primária: Botão de Cadastro (link oficial myherbalife).
-Secundária: Link para Catálogo Digital.
-Suporte: Botão flutuante ou CTA de WhatsApp com string de origem (ex: ?text=Vim_da_Pagina_Performance).
+ANEXO 2
+Mapa de Indexação e Padrões de SEO por Tipo de Página
 
----
+1. Mapa de Indexação do Ecossistema HLF
+Cada página do ecossistema tem um tratamento de indexação definido. Nenhuma página pode ficar sem classificação.
+
+Página	              Caminho	Indexar?	                        Motivo
+Home                  /Landing principal/index.html	            ✅ index, follow	Porta de entrada
+Transformação 21      /transformacao21/	                        ✅ index, follow	Programa público
+Hypedrink	            /hypedrink/	                              ✅ index, follow	Produto público
+Perfil (formulário)	  /perfil/perfil.html	                      ✅ index, follow	Ferramenta pública de captação
+Avaliação (resultado)	/perfil/avaliacao.html	                  ❌ noindex, follow	Depende de localStorage
+Cadastro	            /cadastro/cadastro.html	                  ✅ index, follow	Conversão pública
+Tabela de Preços	    /menu/tabelas/tabelahlfpremium2026.html	  ❌ noindex, nofollow	Contém valores explícitos
+Programas HLF	        /menu/programashlf2026.html	              ❌ noindex, nofollow	Contém valores explícitos
+Documentos legais	    /doc/*	                                  ❌ noindex, follow	Conteúdo legal, não otimizar SEO
+Scripts de decisão	  /assets/js/bloco-proposta.js	            ❌ Bloqueado via robots.txt	Lógica de negócio
+Scripts dinâmicos	    /assets/js/novo_dir_dinamico.js	          ❌ Bloqueado via robots.txt	Lógica de negócio
+
+2. Padrão de URL Canônica
+2.1. Formato Toda página indexável deve conter:
+<link rel="canonical" href="https://edusidegum.github.io/HLF/[caminho]/[arquivo].html">
+
+2.2. Regras
+Sempre usar URL absoluta com https://
+Sempre terminar com .html (não com /)
+Páginas não-indexáveis não recebem canonical (evita conflito com noindex)
+
+3. Padrão de Open Graph e Twitter Card
+3.1. Páginas Indexáveis — Obrigatório
+<meta property="og:type" content="website">
+<meta property="og:title" content="[TÍTULO] | Distribuidor Herbalife">
+<meta property="og:description" content="[DESCRIÇÃO ÚNICA — máx. 155 chars]">
+<meta property="og:url" content="[URL_CANÔNICA]">
+<meta property="og:image" content="https://edusidegum.github.io/HLF/img/[IMAGEM_OG].webp">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+
+3.2. Páginas Não-Indexáveis — Isento Páginas com noindex não precisam de Open Graph nem Twitter Card.
+
+4. Padrão de JSON-LD por Tipo de Página
+Tipo de página	      JSON-LD obrigatório
+Landing / Programa	  WebPage + Organization + BreadcrumbList
+Ferramenta (perfil)  	WebPage + Organization
+Cadastro	            WebPage + Organization
+Avaliação (noindex)	  Nenhum (não será indexado)
+
+4.1. Estrutura Base do @graph
+
+Todo JSON-LD deve usar @graph com referências @id:
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://edusidegum.github.io/HLF/#person",
+      "name": "Eduardo Sidegum",
+      "jobTitle": "Distribuidor Independente Herbalife"
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://edusidegum.github.io/HLF/#business",
+      "name": "Eduardo Sidegum | Distribuidor Independente Herbalife",
+      "founder": { "@id": "https://edusidegum.github.io/HLF/#person" },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Novo Hamburgo",
+        "addressRegion": "RS",
+        "addressCountry": "BR"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://edusidegum.github.io/HLF/#website",
+      "url": "https://edusidegum.github.io/HLF/",
+      "publisher": { "@id": "https://edusidegum.github.io/HLF/#person" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://edusidegum.github.io/HLF/" },
+        { "@type": "ListItem", "position": 2, "name": "[NOME_DA_PAGINA]", "item": "[URL_CANÔNICA]" }
+      ]
+    }
+  ]
+}
+
+5. Hierarquia de Cabeçalhos (H1–H6)
+5.1. Regra Obrigatória
+
+Um único <h1> por página — deve conter o título principal com a keyword do projeto
+<h2> para seções principais (Hero, Contexto, Conversão)
+<h3> para subseções dentro de cada <h2>
+<h4>–<h6> apenas quando houver profundidade real de conteúdo
+
+5.2. Padrão por Página
+<h1>[Título do Projeto] | Distribuidor Herbalife</h1>
+  <h2>O que é [Projeto]</h2>
+    <h3>Benefícios</h3>
+    <h3>Como funciona</h3>
+  <h2>Seus Resultados</h2>
+  <h2>Próximos Passos</h2>
+6. Sitemap — Padrão de Geração
+6.1. Páginas que DEVEM entrar no sitemap:
+
+Todas as páginas com index, follow
+6.2. Páginas que NÃO DEVEM entrar no sitemap:
+
+Páginas com noindex
+Páginas bloqueadas no robots.txt
+Arquivos .js, .css, .json
+
+6.3. Estrutura
+
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://edusidegum.github.io/HLF/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://edusidegum.github.io/HLF/transformacao21/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://edusidegum.github.io/HLF/perfil/perfil.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://edusidegum.github.io/HLF/cadastro/cadastro.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://edusidegum.github.io/HLF/hypedrink/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+</urlset>
+
+7. Tratamento de Imagens
+7.1. Formato
+
+Todas as imagens devem ser .webp
+LCP image deve ter fetchpriority="high" e preload no <head>
+Imagens não-críticas devem ter loading="lazy"
+7.2. Atributos Obrigatórios
+
+<img src="[URL].webp"
+     alt="[Descrição descritiva e específica]"
+     width="[LARGURA]"
+     height="[ALTURA]"
+     loading="lazy"
+     decoding="async">
+
+7.3. Imagem LCP (acima da dobra)
+
+<link rel="preload" as="image" href="https://edusidegum.github.io/HLF/img/[LCP_IMAGE].webp">
+
+<img src="https://edusidegum.github.io/HLF/img/[LCP_IMAGE].webp"
+     alt="[Descrição]"
+     width="[LARGURA]"
+     height="[ALTURA]"
+     fetchpriority="high"
+     decoding="async">
 
 
+- - - - - 
 
-Orientacao a robots:
-O padrão para as páginas
-**Documento encerrado em 30 de junho de 2026.**
+
+**Documento encerrado em junho de 2026.**
 **Edu Sidegum — Distribuidor Independente Herbalife. Novo Hamburgo/RS.**
