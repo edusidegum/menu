@@ -902,7 +902,7 @@ Uso padrão de aplicação de metadados EXIF em **todas** as imagens novas antes
 
 ---
 
-Anexo: 
+Anexo 1: 
 
 Protocolo de Integridade e Eficiência HLF 2026
 
@@ -921,12 +921,45 @@ Nível de Diretório: O robots.txt na raiz deve conter explicitamente:
 markdown  User-agent: *
   Disallow: /data/
   Disallow: /scripts/
-  Disallow: /assets/js/novo_dir_dinamico.js4. Fechamento do Círculo (Loop de Conversão)
+  Disallow: /assets/js/novo_dir_dinamico.js4. Fechamento do Círculo (Loop de Conversão) 
+
+Padrão de informações no códito para robots.txt :
+
+# Robots.txt — regra geral (todos os bots)
+User-agent: *
+Allow: /
+Disallow: /doc
+
+# Googlebot — regra específica (sobrepõe a genérica para esse bot)
+User-agent: Googlebot
+Allow: /
+Disallow: /doc
+
+# Bingbot — regra específica (sobrepõe a genérica para esse bot)
+User-agent: bingbot
+Allow: /
+Disallow: /doc
+
+# Sitemap — ajuda o bot a descobrir subpáginas mais rápido
+Sitemap: https://seusite.com.br/sitemap.xml
+
+Paddrão de inserção de meta-tag
+
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1, noarchive:false">
+<meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large">
+
 Nenhuma página pode ser considerada "Finalizada" sem o Trio de Saída:
 
 Primária: Botão de Cadastro (link oficial myherbalife).
 Secundária: Link para Catálogo Digital.
 Suporte: Botão flutuante ou CTA de WhatsApp com string de origem (ex: ?text=Vim_da_Pagina_Performance).
 
+---
+
+
+
+Orientacao a robots:
+O padrão para as páginas
 **Documento encerrado em 30 de junho de 2026.**
 **Edu Sidegum — Distribuidor Independente Herbalife. Novo Hamburgo/RS.**
