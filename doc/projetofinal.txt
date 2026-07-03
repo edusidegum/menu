@@ -1,5 +1,3 @@
-IA: Perfeito. Vou gerar o documento final diretamente no chat, com todas as correções implementadas.
-
 ---
 
 # HLF — ECOSSISTEMA HERBALIFE: DOCUMENTO DE IMPLEMENTAÇÃO
@@ -903,6 +901,32 @@ Uso padrão de aplicação de metadados EXIF em **todas** as imagens novas antes
 7. Ajustes estruturais após o período de testes devem ser registrados em changelog neste documento
 
 ---
+
+Anexo: 
+
+Protocolo de Integridade e Eficiência HLF 2026
+
+.1. Regra de Preservação de Conteúdo (Anti-Simplificação)
+Manifesto de Componentes Obrigatórios: Toda página gerada DEVE conter, nesta ordem: [Header Topbar], [Hero Section], [Context Content Block], [Conversion Loop], [Footer HLF].
+Proibição de Sumarização: É terminantemente proibido reduzir, parafrasear ou omitir blocos de texto fornecidos como "Contexto de Página". O conteúdo deve ser transposto integralmente, otimizando apenas a marcação HTML para semântica (H1-H6).
+2. Injeção Dinâmica via PowerShell (Rastreamento)
+Os scripts de deploy devem utilizar obrigatoriamente as variáveis:
+
+$GA4_ID, $GTM_ID, $META_PIXEL_ID.
+
+Se a variável for nula, o script deve injetar um comentário HTML <!-- Tracking ID Missing --> para evitar erros de execução no JS.
+3. Blindagem de Bots (Preços e Lógicas)
+Nível de Arquivo: Todo arquivo dentro de /data/ (JSON/CSV) ou que contenha fórmulas de decisão JS deve receber o cabeçalho HTTP X-Robots-Tag: noindex, nofollow via .htaccess ou meta tag inline.
+Nível de Diretório: O robots.txt na raiz deve conter explicitamente:
+markdown  User-agent: *
+  Disallow: /data/
+  Disallow: /scripts/
+  Disallow: /assets/js/novo_dir_dinamico.js4. Fechamento do Círculo (Loop de Conversão)
+Nenhuma página pode ser considerada "Finalizada" sem o Trio de Saída:
+
+Primária: Botão de Cadastro (link oficial myherbalife).
+Secundária: Link para Catálogo Digital.
+Suporte: Botão flutuante ou CTA de WhatsApp com string de origem (ex: ?text=Vim_da_Pagina_Performance).
 
 **Documento encerrado em 30 de junho de 2026.**
 **Edu Sidegum — Distribuidor Independente Herbalife. Novo Hamburgo/RS.**
