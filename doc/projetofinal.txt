@@ -900,7 +900,7 @@ Uso padrão de aplicação de metadados EXIF em **todas** as imagens novas antes
 6. O caminho dos scripts em `assets/js/` é único — não usar diretório global
 7. Ajustes estruturais após o período de testes devem ser registrados em changelog neste documento
 
----
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 ANEXO 1
 
@@ -1027,6 +1027,8 @@ Toda página protegida deve conter, no <head>:
 <meta name="googlebot" content="noindex, follow">
 <meta name="bingbot" content="noindex, follow">
 
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ANEXO 2
 Mapa de Indexação e Padrões de SEO por Tipo de Página
 
@@ -1196,6 +1198,62 @@ Imagens não-críticas devem ter loading="lazy"
      fetchpriority="high"
      decoding="async">
 
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+ANEXO 3
+Adoção de Métodos de Mercado e Relevância Regional (Novo Hamburgo e Vale do Sinos)
+
+1. Diretriz de Adoção Metodológica
+
+O Ecossistema HLF adota, em escala compatível com projeto de distribuidor independente,
+os mesmos princípios técnicos empregados por agências de SEO de referência no mercado
+brasileiro: estruturação de dados via Schema.org (@graph), otimização de Core Web
+Vitals, cross-linking contextual entre páginas e conteúdo geolocalizado consultivo.
+A diferença de escala não compromete a conformidade técnica: os mesmos sinais que
+determinam relevância para grandes operações (velocidade, estrutura semântica,
+autoridade local, dados estruturados) são os sinais aplicados neste ecossistema.
+
+2. Consistência com os Algoritmos Google e Bing
+
+A relevância local não depende de volume de investimento, mas de consistência entre:
+- Sinal de localização (schema LocalBusiness, geo.region, geo.placename)
+- Sinal de autoridade (NAP consistente: Nome, Endereço, Telefone, em todas as páginas
+  e perfis externos vinculados, ex.: Google Business Profile)
+- Sinal de intenção (conteúdo que responde à busca local de forma direta e verificável)
+- Sinal de performance (Core Web Vitals dentro das metas definidas na Seção 11)
+
+Tanto o algoritmo do Google quanto o do Bing priorizam páginas que demonstram
+E-E-A-T (Experiência, Especialização, Autoridade, Confiança) de forma consistente
+ao longo do tempo — não em picos isolados de otimização.
+
+3. Relevância Primária: Novo Hamburgo/RS
+
+Novo Hamburgo é tratada como âncora geográfica principal do ecossistema (ver Seção 1
+e Seção 6.2). Toda página indexável deve reforçar esse sinal através de:
+- Menção textual natural da cidade no H1, subtítulo ou primeiro parágrafo
+- Presença consistente no schema LocalBusiness (addressLocality: "Novo Hamburgo")
+- Vínculo ativo com Google Business Profile geolocalizado
+
+4. Extensão de Relevância às Cidades Vizinhas (Vale do Sinos)
+
+A autoridade construída em Novo Hamburgo se estende, por proximidade geográfica e
+similaridade de intenção de busca, às cidades da região metropolitana do Vale do
+Sinos — nomeadamente Campo Bom, Estância Velha, Ivoti, São Leopoldo, Sapiranga e
+Dois Irmãos. Essa extensão NÃO deve ser forçada via keyword stuffing (ex.: listar
+todas as cidades em uma mesma página), pois isso é penalizado por ambos os
+algoritmos. A extensão correta ocorre por:
+- Autoridade regional acumulada (backlinks locais, avaliações, tempo de atividade)
+- Uso do termo "Vale do Sinos" como âncora regional secundária, quando natural ao
+  contexto do texto
+- areaServed no schema LocalBusiness pode incluir a região, sem repetir todas as
+  cidades individualmente em texto visível
+
+5. Regra de Não-Diluição
+
+Novo Hamburgo permanece como âncora primária em toda página indexável. A menção a
+cidades vizinhas é sempre secundária e contextual — nunca substitui ou compete com
+o sinal geográfico principal. Isso preserva a força do sinal local sem fragmentar
+a relevância entre múltiplas cidades.
 
 - - - - - 
 
