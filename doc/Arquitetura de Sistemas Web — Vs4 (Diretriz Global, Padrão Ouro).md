@@ -1,0 +1,231 @@
+# Arquitetura de Sistemas Web — Vs4
+Diretriz Global (Padrão Ouro) para projetos Web e Aplicativos — com anexos operacionais
+
+Esta versão substitui referências a repositórios específicos por variáveis de projeto. Os templates operacionais ficam nos anexos ao final, para uso direto pelo implementador.
+
+---
+
+## 1) Propósito e Escopo Global
+- Objetivo: padronizar construção, revisão e publicação de páginas e apps estáticos/dinâmicos, garantindo SEO técnico, performance, acessibilidade, segurança e consistência de marca.
+- Abrangência: sites estáticos (GitHub Pages, S3, etc.) e dinâmicos (VPS/PaaS) com as mesmas regras de markup, SEO e UX.
+- Princípios: conteúdo íntegro (sem sumarização indevida), componentes obrigatórios, paths consistentes, controle de bots por tipo de página, “Trio de Saída” padronizado.
+
+## 2) Briefing mínimo obrigatório (antes da primeira linha de código)
+O implementador deve registrar e confirmar:
+- [BASE_URL]: domínio/host oficial (ex.: https://www.dominio.com/ ou https://sub.dominio.com/)
+- [BASE_PATH]: pasta base quando aplicável (ex.: /, /HLF/, /projeto/). Se não houver, usar “/”.
+- Público-alvo e proposta de valor
+- Objetivo primário de conversão: WhatsApp, Cadastro, Venda
+- Abrangência regional (cidades/UF) para SEO local
+- Stack: Estático (Pages/CDN) ou Dinâmico (VPS/API)
+- Identidade: paleta, fontes locais, tema CSS (style_green.css | style_white.css | style_black.css), emojis de affordance
+
+Observação: todas as referências absolutas nos templates devem usar [BASE_URL][BASE_PATH] como prefixo.
+
+## 3) Arquitetura de Ativos e Performance
+- Fontes Locais: hospedar .woff2 em assets/fonts/ e declarar em CSS dedicado (fonts.css)
+- Ordem de Carga (head):
+  1. <link rel="preload" as="font" href="[BASE_PATH]assets/fonts/Inter-Variable.woff2" type="font/woff2" crossorigin>
+  2. <link rel="stylesheet" href="[BASE_PATH]assets/css/fonts.css">
+  3. <link rel="stylesheet" href="[BASE_PATH]assets/css/style_[TEMA].css">
+- Imagens: WebP obrigatório; LCP com fetchpriority="high"; secundárias com loading="lazy" e decoding="async"; width e height sempre definidos.
+- Componentização: bloco-includes.js com caminhos absolutos baseados em [BASE_URL][BASE_PATH]. Evitar duplicação manual de header/footer/meta.
+
+## 4) SEO Técnico e Governança de Bots
+- Matriz de meta-robots por tipo de página:
+  - Públicas (indexáveis): index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1
+  - Dependentes de estado (ex.: /perfil/avaliacao.html): noindex, follow
+  - Com valores explícitos (tabelas de preço): noindex, nofollow, noimageindex
+  - Scripts/dados (JS/JSON/CSV): bloquear via robots.txt (ver Anexo A)
+- Canonical ≡ og:url: idênticos, absolutos, com path e arquivo .html explícitos (ex.: [BASE_URL][BASE_PATH][SECAO]/[ARQUIVO].html)
+- Hreflang: aplicar pt-BR + x-default nas páginas indexáveis, apontando para a canônica
+- Estruturados (JSON-LD): usar @graph com @id estáveis (#website, #business, #webpage). Preferir referenciar entidades por @id em páginas internas
+- Advanced SEO: aplicar SearchAction (somente na Home), ImageObject para 1–2 imagens-chave (hero/LCP), FAQPage apenas quando houver seção visível — ver Anexo F
+
+## 5) Segurança e Compliance
+- Proteção de Interface: bloqueios seletivos (contextmenu/Ctrl+U/S/I) apenas quando estritamente necessário; reverter se degradar INP ou acessibilidade. Nunca bloquear seleção em formulários ou atalhos assistivos.
+- Segregação de Lógica: manter lógica sensível fora do front-end público; quando necessário, usar APIs externas com autenticação, CORS controlado e sem expor chaves/tokens.
+- LGPD/Privacidade: banner de cookies somente quando rastreadores/embeds gerarem cookies; sempre manter Política de Privacidade acessível.
+
+## 6) UX, Acessibilidade e Conteúdo
+- Conteúdo íntegro: proibido reduzir/omitir conteúdo editorial ao “adaptar” páginas; preservar contexto, benefícios, instruções e CTAs
+- Acessibilidade: contrastes AA+, rótulos/alt significativos, foco visível, sem bloqueios que prejudiquem leitores de tela
+- Navegação: header e footer consistentes; “Trio de Saída” sempre presente e funcional
+- WhatsApp: parâmetro padrão ?text=Vim_da_Pagina_[SLUG] (definir [SLUG] por página)
+
+## 7) Governança, Versionamento e Revisão
+- Padrão de pastas mínimo:
+  - /assets/css/ (fonts.css, style_green.css, style_white.css, style_black.css)
+  - /assets/fonts/ (.woff2 locais)
+  - /img/ (.webp)
+  - /scripts/ (bloco-includes.js e lógicas não indexáveis)
+  - /data/ (catálogos, JSON) — ver robots.txt
+  - /doc/ (documentação)
+- Code Review: checklist obrigatório (ver Seção 9)
+- Publicação: validar Rich Results (FAQ/ImageObject/SearchAction), URL Inspection, Mobile-Friendly e CWV (LCP/INP/CLS ≥ 90)
+
+## 8) Templates Incorporados ao Projeto (anexos)
+Os anexos desta Vs4 fornecem blocos prontos e parametrizados por [BASE_URL] e [BASE_PATH]. Devem ser incluídos por include ou build.
+
+## 9) Checklist de Publicação (Padrão Ouro)
+- Canonical absoluto ≡ og:url, com [BASE_PATH] e .html
+- Meta-robots conforme tipo de página (matriz da Seção 4)
+- Hreflang pt-BR + x-default nas indexáveis
+- JSON-LD válido (Rich Results Test) e @id consistentes (#website, #business)
+- robots.txt publicado (Anexo A) com Disallow de /doc/, /data/, /scripts/ (prefixados por [BASE_PATH])
+- Trio de Saída presente (Cadastro, Catálogo, WhatsApp ?text=Vim_da_Pagina_[SLUG])
+- Imagem LCP com fetchpriority="high"; demais com lazy + decoding="async"; width/height em todas
+- Fontes locais preload + font-display: swap
+- Includes com caminhos absolutos baseados em [BASE_URL][BASE_PATH]
+- CWV ≥ 90 sem quebrar A11y
+
+---
+
+# Anexos Operacionais
+
+## Anexo A — robots.txt (modelo global)
+```
+User-agent: *
+Allow: /
+Disallow: [BASE_PATH]doc/
+Disallow: [BASE_PATH]data/
+Disallow: [BASE_PATH]scripts/
+Sitemap: [BASE_URL][BASE_PATH]sitemap.xml
+
+User-agent: Googlebot
+Allow: /
+Disallow: [BASE_PATH]doc/
+Disallow: [BASE_PATH]data/
+Disallow: [BASE_PATH]scripts/
+
+User-agent: bingbot
+Allow: /
+Disallow: [BASE_PATH]doc/
+Disallow: [BASE_PATH]data/
+Disallow: [BASE_PATH]scripts/
+```
+Notas:
+- Não usar .htaccess/headers neste contexto; somente arquivo robots.txt na raiz pública.
+- [BASE_PATH] deve iniciar e terminar com “/” (ex.: "/" ou "/projeto/").
+
+## Anexo B — Head padrão ouro (páginas indexáveis)
+```
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Indexação e Snippets -->
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+  <!-- Canonical e Social -->
+  <link rel="canonical" href="[BASE_URL][BASE_PATH][SECAO]/[ARQUIVO].html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="[TITULO_PAGINA]">
+  <meta property="og:description" content="[DESCRICAO]">
+  <meta property="og:url" content="[BASE_URL][BASE_PATH][SECAO]/[ARQUIVO].html">
+  <meta property="og:image" content="[BASE_URL][BASE_PATH]img/[HERO].webp">
+
+  <!-- Hreflang -->
+  <link rel="alternate" href="[BASE_URL][BASE_PATH][SECAO]/[ARQUIVO].html" hreflang="pt-BR">
+  <link rel="alternate" href="[BASE_URL][BASE_PATH][SECAO]/[ARQUIVO].html" hreflang="x-default">
+
+  <!-- Fontes e CSS -->
+  <link rel="preload" as="font" href="[BASE_PATH]assets/fonts/Inter-Variable.woff2" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="[BASE_PATH]assets/css/fonts.css">
+  <link rel="stylesheet" href="[BASE_PATH]assets/css/style_[TEMA].css">
+</head>
+```
+
+Páginas “noindex, follow” (ex.: dependentes de estado) devem substituir a meta robots acima por:
+```
+<meta name="robots" content="noindex, follow">
+```
+
+## Anexo C — JSON-LD @graph base
+```
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"Organization",
+      "@id":"[BASE_URL][BASE_PATH]#business",
+      "name":"[NOME_NEGOCIO]",
+      "url":"[BASE_URL][BASE_PATH]",
+      "sameAs":[
+        "[URL_PERFIL1]",
+        "[URL_PERFIL2]"
+      ]
+    },
+    {
+      "@type":"WebSite",
+      "@id":"[BASE_URL][BASE_PATH]#website",
+      "url":"[BASE_URL][BASE_PATH]",
+      "publisher":{"@id":"[BASE_URL][BASE_PATH]#business"},
+      "name":"[TITULO_SITE]",
+      "potentialAction":{
+        "@type":"SearchAction",
+        "target":"[BASE_URL][BASE_PATH]busca.html?q={search_term_string}",
+        "query-input":"required name=search_term_string"
+      }
+    },
+    {
+      "@type":"WebPage",
+      "@id":"[BASE_URL][BASE_PATH][SECAO]/[ARQUIVO].html#webpage",
+      "url":"[BASE_URL][BASE_PATH][SECAO]/[ARQUIVO].html",
+      "isPartOf":{"@id":"[BASE_URL][BASE_PATH]#website"}
+    }
+  ]
+}
+</script>
+```
+Notas:
+- Publicar o bloco WebSite/SearchAction preferencialmente na Home. Em páginas internas, referenciar por @id quando possível.
+
+## Anexo D — Header, Footer e Trio de Saída
+```
+<header class="site-header">
+  <div class="brand"><a href="[BASE_URL][BASE_PATH]">[NOME_PROJETO] [EMOJI]</a></div>
+  <nav class="main-nav">
+    <a href="[BASE_URL][BASE_PATH]cadastro/cadastro.html">📝 Cadastro</a>
+    <a href="[CATALOGO_URL]" rel="noopener nofollow">📚 Catálogo</a>
+    <a href="https://wa.me/[PHONE_E164]?text=Vim_da_Pagina_[SLUG]" rel="noopener">💬 WhatsApp</a>
+  </nav>
+</header>
+
+<footer class="site-footer">
+  <nav class="footer-nav">
+    <a href="[BASE_URL][BASE_PATH]ajuda/index.html">Ajuda</a>
+    <a href="[BASE_URL][BASE_PATH]doc/politica-de-privacidade.html">Privacidade</a>
+    <a href="[BASE_URL][BASE_PATH]doc/termos-de-uso.html">Termos</a>
+  </nav>
+  <small>© [ANO] [NOME_NEGOCIO]. Todos os direitos reservados.</small>
+</footer>
+```
+
+## Anexo E — Fontes e Temas CSS
+- Temas base disponíveis: style_green.css, style_white.css, style_black.css
+- Definição mínima de @font-face (em fonts.css):
+```
+@font-face {
+  font-family: "Inter";
+  src: url("[BASE_PATH]assets/fonts/Inter-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+```
+- Ordem de CSS: fonts.css → style_[TEMA].css
+
+## Anexo F — Sinais Avançados (Resumo prático)
+- Snippets: meta robots com max-snippet:-1; usar <div data-nosnippet> em trechos sensíveis
+- Hreflang: pt-BR + x-default nas indexáveis
+- SearchAction: somente na Home; busca.html funcional
+- ImageObject: 1–2 imagens-chave (hero/LCP) com width/height/fileFormat/thumbnailUrl, representativeOfPage:true na hero
+- FAQPage: 2–4 perguntas reais, visíveis e não promocionais; apenas em páginas indexáveis
+- unavailable_after: apenas campanhas; formato “Fri, 03 Jul 2026 23:59:59 GMT”
+- Canonical ≡ og:url: sempre idênticos com .html
+
+---
+
+Observação final: quando o projeto exigir exceções (ex.: páginas com embed externos críticos), documentar a exceção, a justificativa e o prazo de revisão. O padrão ouro desta Vs4 prevalece por padrão.
