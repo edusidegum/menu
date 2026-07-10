@@ -1,0 +1,55 @@
+Instrução para o Programador — Atualização de Imagens do “Sobre” (Markdown/TXT)
+
+Escopo
+
+Repositório de imagens (gestão/E-E-A-T): https://github.com/edusidegum/edusidegum
+Página alvo: sobre.html
+Objetivo: padronizar caminhos em assets/, preservar metadados e atualizar referências no HTML com ALT semântico.
+Estrutura final de arquivos (confirmada)
+
+assets/social/og-e-sid-tech-social.webp
+assets/content/consultor-e-sid-tec.webp ← se o correto for “tech”, renomear antes do Passo 2
+assets/branding/consultoria-e-sid-tech.webp
+assets/branding/favicon-e-sid-tech.webp
+assets/branding/logo-header-institucional-e-sid-tech.webp
+assets/branding/logo-rodape-e-sid-tech.webp
+assets/branding/logo-vertical-e-sid-tech.webp
+Ordem de Execução
+
+Passo 1 — Renomear e mover
+Garanta que os arquivos estejam exatamente nos caminhos acima. Se precisar ajustar nomes, faça AGORA (antes de metadados).
+Passo 2 — ExifTool (após a movimentação)
+Aplique metadados já no novo caminho:
+XMP: Title, Creator, Description, Subject, Rights, CreatorTool, Source, Identifier
+Localização (XMP:Location/State/Country) se aplicável
+Exemplo de uso (ajuste campos e rode na pasta raiz das imagens): exiftool -overwrite_original -XMP:Title="Eduardo Sidegum — Sobre" -XMP:Creator="Eduardo Sidegum" -XMP:Description="Imagem institucional do ecossistema e-Sid.tech / HLF." -XMP:Subject="Eduardo Sidegum, e-Sid.tech, Ecossistema HLF, branding" -XMP:Rights="(c) 2026 Eduardo Sidegum. Todos os direitos reservados." -XMP:CreatorTool="Ecossistema HLF — Publicação" -XMP:Source="https://edusidegum.github.io/edusidegum/sobre.html" -XMP:Identifier="https://edusidegum.github.io/edusidegum/sobre.html" ` assets\branding*.webp assets\social*.webp assets\content*.webp
+Referenciação no HTML (sobre.html)
+
+Atualize todos os src para apontar à pasta assets/ com os nomes finais.
+Exemplo (substitua conforme necessário):
+Antes: <img src="banner.webp" …>
+Depois: Banner institucional e-Sid.tech
+Download
+Regenerate
+ALT semânticos recomendados
+
+assets/branding/consultoria-e-sid-tech.webp — Banner institucional e-Sid.tech
+assets/branding/logo-header-institucional-e-sid-tech.webp — Logotipo institucional e-Sid.tech para cabeçalho
+assets/branding/logo-rodape-e-sid-tech.webp — Logotipo e-Sid.tech para rodapé
+assets/branding/logo-vertical-e-sid-tech.webp — Logotipo vertical empilhado da marca e-Sid.tech
+assets/branding/favicon-e-sid-tech.webp — Favicon da marca e-Sid.tech
+assets/content/consultor-e-sid-tec.webp — Retrato/ilustração do consultor Eduardo Sidegum
+assets/social/og-e-sid-tech-social.webp — Imagem Open Graph da e-Sid.tech para redes sociais
+Snippets prontos (colar no sobre.html conforme uso)
+
+Hero/Banner: Banner institucional e-Sid.tech
+
+Logotipo header: Logotipo institucional e-Sid.tech para cabeçalho
+
+Logotipo rodapé: Logotipo e-Sid.tech para rodapé
+
+Logotipo vertical: Logotipo vertical empilhado da marca e-Sid.tech
+
+Consultor (conteúdo): Retrato do consultor Eduardo Sidegum
+
+Open Graph (head):
