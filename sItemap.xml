@@ -1,13 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Raiz do projeto (se existir index.html na raiz de /menu). Se não existir, remova este bloco. -->
+  <url>
+    <loc>https://edusidegum.github.io/menu/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <lastmod>2026-07-10</lastmod>
+  </url>
 
-    <url>
-        <loc>https://SUBSTITUIR_DOMINIO/</loc>
-        <lastmod>SUBSTITUIR_DATA</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>1.0</priority>
-    </url>
+  <!-- ArtesOficiais -->
+  <url>
+    <loc>https://edusidegum.github.io/menu/ArtesOficiais/index.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-07-10</lastmod>
+  </url>
 
-    <!-- SUBSTITUIR_URLS -->
-
+  <!-- Compartilhado (componentes HTML públicos) -->
+  <url>
+    <loc>https://edusidegum.github.io/menu/compartilhado/index.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://edusidegum.github.io/menu/compartilhado/politicadeprivacidade.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://edusidegum.github.io/menu/compartilhado/Termos_de_Uso_e_Identificacao_Eduardo_Sidegum.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://edusidegum.github.io/menu/compartilhado/bloco-cookies.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://edusidegum.github.io/menu/compartilhado/bloco-ga4-gtm.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://edusidegum.github.io/menu/compartilhado/em_obras.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://edusidegum.github.io/menu/compartilhado/programashlf2026.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://edusidegum.github.io/menu/compartilhado/programashlf2026_fracionados.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-07-10</lastmod>
+  </url>
 </urlset>
