@@ -1,0 +1,100 @@
+# Instrução Técnica — Arquitetura Universal do Ecossistema HLF (Revisada)
+
+*Versão final com decisão de briefing para MENU/FOOTER, política de autoridade e legais por tipo de projeto*
+
+Instrução Técnica: Arquitetura Universal do Ecossistema HLF (Revisada)
+
+Ao Programador — Escopo e Intenção
+Esta instrução consolida a arquitetura centralizada do Ecossistema HLF com um ajuste crítico: o MENU NÃO É universal. A inclusão de cabeçalho/menu deve ser decidida caso a caso no briefing. O rodapé (footer), os blocos de rastreamento e os documentos legais continuam centralizados por padrão, salvo instrução em contrário.
+
+Premissas Globais
+- Diretriz global não fixa paths de repositório; [BASE_URL] e [BASE_PATH] são definidos no briefing do projeto.
+- Não duplicar código; preferir componentes centralizados quando aplicável e autorizado.
+- Proteções e rastreamento seguem o repositório central (edusidegum/menu), exceto quando explicitamente desativados.
+
+1) Integração de Scripts de Sistema (Core)
+Importar, via URL pública do repositório central, os scripts base:
+- Gestão de Blocos (includes seletivos): https://raw.githubusercontent.com/edusidegum/menu/main/scripts/bloco-incluir.js
+- Segurança (proteção anticópia seletiva): https://raw.githubusercontent.com/edusidegum/menu/main/scripts/bloco-protecao.js
+
+Observações de uso
+- A proteção deve ser aplicada de forma seletiva, sem prejudicar acessibilidade/UX.
+- O bloco-incluir é o orquestrador de componentes, mas sua aplicação ao HEADER/MENU depende do briefing (ver Seção 3).
+
+2) Componentes Compartilhados (Include Modules)
+Injetar conforme necessidade, sempre que centralização for desejada e aprovada:
+Tracking
+- Cookies/Consentimento: https://raw.githubusercontent.com/edusidegum/menu/main/compartilhado/bloco-cookies.html
+- GA4/GTM (ou outro, se substituído globalmente): https://raw.githubusercontent.com/edusidegum/menu/main/compartilhado/bloco-ga4-gtm.html
+
+Legal e Compliance (padrão)
+- Política de Privacidade: https://raw.githubusercontent.com/edusidegum/menu/main/compartilhado/politicadeprivacidade.html
+- Termos de Uso e Identificação (Eduardo Sidegum): https://raw.githubusercontent.com/edusidegum/menu/main/compartilhado/Termos_de_Uso_e_Identificacao_Eduardo_Sidegum.html
+
+3) Política de Cabeçalho/Menu e Rodapé (DECISÃO DE BRIEFING)
+O menu não é universal. Antes de qualquer inclusão automática, RESPONDA às perguntas abaixo:
+Q1. O MENU é compartilhado (padrão do ecossistema) ou específico do projeto?
+- Se COMPARTILHADO: o bloco-incluir pode injetar o menu padrão central.
+- Se ESPECÍFICO: NÃO injetar menu central. O projeto deve fornecer seu próprio header/menu local. O bloco-incluir pode ser usado apenas para o footer.
+
+Q2. O FOOTER será compartilhado (central) ou específico?
+- Recomendação: usar footer central sempre que possível para manter rastreamento/legal/autoridade consistentes.
+- Alternativa: criar um include dedicado somente ao footer (ex.: bloco-footer.html) caso o menu seja específico.
+
+Q3. O projeto é Pessoal (do Eduardo) ou de Terceiros (cliente/parceiro)?
+- Pessoal: documentos legais e autoridade do Eduardo; rodapé deve indicar “Desenvolvido em dd/mm/aaaa”.
+- Terceiros: manter rastreamento/legais conforme contrato; a referência de autoridade difere (ver Seção 4).
+
+4) Estratégia de SEO, Autoridade e Rodapé por Tipo de Projeto
+Autoridade e Links de Relevância
+- Projeto Pessoal (Eduardo): incluir link de autoridade para https://edusidegum.github.io/edusidegum/sobre.html
+- Projeto de Terceiros: apontar para https://edusidegum.github.io/edusidegum/index.html (referência institucional)
+
+Rodapé — Textos e Metainformação
+- Projeto Pessoal: exibir “Desenvolvido em dd/mm/aaaa” (data real de publicação) no footer.
+- Projeto de Terceiros: exibir identificação conforme contrato; manter créditos técnicos quando permitido.
+
+Legais (padrão)
+- Por padrão, usar os legais centralizados do Eduardo Sidegum em projetos pessoais.
+- Em projetos de terceiros, legais podem variar; se necessário, criar include legal específico do cliente e não usar o central.
+
+5) Regras de Estilização e Assets
+- Modularidade: CSS, fontes e imagens são LOCAIS por padrão.
+- Exceção: compartilhamento de assets visuais entre subprojetos somente mediante instrução explícita do Eduardo.
+- Controle de Acesso: classificar conteúdo entre público e restrito; aplicar proteção (bloco-protecao.js) somente onde autorizado.
+
+6) Fluxo Operacional do Desenvolvedor (Passo a Passo)
+1) Briefing obrigatório — registrar:
+   - [BASE_URL] e [BASE_PATH]
+   - MENU: Compartilhado ou Específico?
+   - FOOTER: Compartilhado ou Específico?
+   - TIPO DE PROJETO: Pessoal (Eduardo) ou Terceiros?
+   - Legais: Central (Eduardo) ou Específicos do cliente?
+2) Incluir scripts core (bloco-incluir.js e bloco-protecao.js)
+3) Incluir módulos de tracking e legais conforme decisões do briefing
+4) Se MENU compartilhado: habilitar include de header/menu central
+5) Se MENU específico: não incluir menu central; habilitar apenas footer central (ou footer específico, se decidido)
+6) Inserir link de autoridade correto (Seção 4) e texto de “Desenvolvido em …” quando projeto pessoal
+7) Publicar, revisar acessibilidade e SEO técnico (checklist abaixo)
+
+7) Checklist de Implementação Rápida (Padrão Ouro)
+- Briefing respondido (Q1–Q3) e documentado
+- [BASE_URL]/[BASE_PATH] definidos e aplicados
+- Scripts core importados (includes + proteção) sem quebrar UX/A11y
+- Tracking e legais corretos para o tipo de projeto
+- Header/Menu conforme decisão (central ou específico)
+- Footer ativo (central recomendado) com link de autoridade adequado
+- Texto “Desenvolvido em dd/mm/aaaa” presente em projetos pessoais
+- Caminhos absolutos/relativos coerentes com a estratégia do projeto
+- Medições básicas CWV/A11y sem regressão
+
+8) Notas de Risco e Continuidade
+- Ponto Único de Falha (centralização): se o repositório central ficar indisponível, menu/footer/legais/trackers centralizados podem não carregar.
+- Mitigação: manter backup do repositório central e plano de contingência (cópia local temporária quando necessário, com data de expiração).
+
+9) Governança e Mudanças Globais
+- Qualquer troca de rastreador (ex.: GA4 → outro) será feita no include central (bloco-ga4-gtm.html) e propagada automaticamente aos projetos que o utilizam.
+- Toda inclusão/remoção de componentes centrais deve ser acompanhada de nota de versão e checklist de impacto (menu, footer, legais, trackers, SEO).
+
+Encerramento
+Esta é a instrução definitiva ao programador para integração universal do Ecossistema HLF, com decisão explícita de briefing sobre o MENU e a possibilidade de usar o bloco-incluir exclusivamente para o footer quando necessário. O objetivo é garantir segurança, rastreabilidade e identidade consistentes — sem impor um cabeçalho único onde ele não se aplica.
