@@ -1,0 +1,63 @@
+ANEXO 4
+Vínculo de Entidade Externa via sameAs (Schema.org)
+
+1. Propósito
+
+Este anexo define o bloco `sameAs` a ser inserido dentro da entidade principal
+(Person e/ou LocalBusiness) do JSON-LD já especificado na Seção 6.2. Seu objetivo
+é declarar formalmente, para os mecanismos de busca, que os perfis e páginas
+externas listadas abaixo pertencem à mesma entidade representada pelo Ecossistema
+HLF — incluindo o catálogo eletrônico oficial hospedado e administrado por
+terceiros (Herbalife), sobre o qual não há controle editorial direto.
+
+2. Bloco JSON-LD a ser inserido
+
+Este bloco deve ser adicionado como propriedade `sameAs` dentro do objeto
+`@id: ".../HLF/#person"` (ou `#business`, conforme a entidade escolhida como
+principal na Seção 6.2), mantendo-se a mesma estrutura de `@graph` já definida.
+
+```json
+"sameAs": [
+  "https://catalogoherbalife.com.br/edusidegum",
+  "https://instagram.com/edusidegum",
+  "https://facebook.com/edusidegum",
+  "https://twitter.com/edusidegum"
+]
+```
+
+3. Exemplo de integração ao objeto Person existente (Seção 6.2)
+
+```json
+{
+  "@type": "Person",
+  "@id": "https://edusidegum.github.io/HLF/#person",
+  "name": "Eduardo Sidegum",
+  "sameAs": [
+    "https://catalogoherbalife.com.br/edusidegum",
+    "https://instagram.com/edusidegum",
+    "https://facebook.com/edusidegum",
+    "https://twitter.com/edusidegum"
+  ]
+}
+```
+
+4. Regras de manutenção
+
+- Qualquer alteração de URL de rede social (troca de usuário, migração de
+  plataforma) deve ser refletida neste bloco e replicada em todas as páginas
+  que carregam o JSON-LD principal.
+- O catálogo eletrônico (`catalogoherbalife.com.br/edusidegum`) permanece como
+  ativo de terceiros, sem controle editorial do Ecossistema HLF. Sua inclusão
+  em `sameAs` é estritamente para fins de vínculo de entidade perante os
+  mecanismos de busca, não implica qualquer forma de gestão ou responsabilidade
+  editorial sobre o conteúdo daquele domínio.
+- Novos perfis oficiais (ex.: LinkedIn, TikTok) devem ser adicionados à lista
+  assim que criados, seguindo o mesmo padrão de URL completa (com `https://`).
+
+5. Consistência com o Anexo 3
+
+Este vínculo de entidade reforça diretamente os sinais de E-E-A-T e autoridade
+local definidos no Anexo 3 — múltiplas fontes externas confirmando a mesma
+entidade (nome, número de WhatsApp, localização) aumentam a confiança dos
+algoritmos do Google e Bing na legitimidade e relevância local do Ecossistema
+HLF para Novo Hamburgo e Vale do Sinos.
