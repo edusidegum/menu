@@ -1,0 +1,1446 @@
+Documento Mestre de Arquitetura, SEO, Compliance e Operação
+
+Ecossistema Web Edu Sidegum / HLF
+
+Versão consolidada para GitHub Pages + VSCode + JavaScript no cliente
+
+1. Finalidade do documento
+
+Este documento consolida as diretrizes técnicas, editoriais, operacionais e de compliance para construção, manutenção e expansão do ecossistema web de Edu Sidegum, com foco principal no contexto HLF / Herbalife / suplementação personalizada / alto rendimento / nutrição de precisão.
+
+Ele existe para reduzir:
+
+retrabalho
+desalinhamento entre páginas
+erro técnico
+erro regulatório
+inconsistência de SEO
+canibalização semântica
+perda de autoridade por mistura indevida de entidades
+
+Este documento também formaliza a separação entre:
+
+norma universal de arquitetura e SEO
+norma operacional específica do ecossistema HLF
+aprendizados técnicos experimentais
+templates de referência
+
+
+2. Escopo e princípio de uso
+
+Este documento se aplica a:
+
+projetos em GitHub Pages
+edição e manutenção via VSCode
+páginas estáticas com:HTML
+CSS
+JavaScript executado no cliente
+
+
+componentes centralizados carregados por include
+páginas institucionais
+páginas educativas
+páginas comerciais permitidas
+páginas com controle de indexação diferenciado
+páginas HLF / Herbalife
+futuras frentes como Bioniq, dentro das restrições regulatórias aplicáveis
+
+Não se aplica automaticamente, sem briefing, a:
+
+projetos de terceiros com contrato próprio
+sistemas com backend dedicado
+aplicações com autenticação server-side
+estruturas fora do padrão GitHub Pages
+projetos que exijam regras legais específicas divergentes
+
+
+3. Princípios-mãe do ecossistema
+
+3.1. Diagnóstico precede intervenção
+
+Toda página, fluxo, conteúdo ou decisão técnica deve partir do entendimento do sistema:
+
+qual é a intenção da página
+qual entidade a página fortalece
+qual CTA é permitido
+qual risco regulatório existe
+qual é o papel da página dentro do ecossistema
+
+3.2. Precisão acima de velocidade
+
+Não se publica solução “plausível”.
+Só se publica o que estiver:
+
+tecnicamente coerente
+semanticamente claro
+normativamente permitido
+alinhado ao objetivo do projeto
+
+3.3. Marca ampla, páginas específicas
+
+A estratégia do ecossistema não deve ser genérica para tudo ao mesmo tempo.
+
+A regra é:
+
+mensagem institucional ampla
+entrada por páginas específicas de intenção
+
+3.4. Conteúdo semântico antes de volume
+
+O objetivo não é publicar mais páginas.
+O objetivo é publicar páginas que:
+
+cubram intenção real
+tenham information gain
+reforcem entidade
+sejam rastreáveis
+não disputem entre si pelo mesmo espaço semântico
+
+3.5. Autoridade real, não simulada
+
+E-E-A-T deve ser construído por sinais concretos:
+
+autoria visível
+experiência real
+coerência institucional
+documentação consistente
+presença entre páginas relacionadas
+vinculação clara entre entidade, método e operação
+
+
+4. Estrutura macro do documento
+
+Este documento foi consolidado em quatro camadas:
+
+Norma Universal
+Norma Operacional do Ecossistema HLF
+Padrões Experimentais e Aprendizados Técnicos
+Templates
+
+Essa separação é obrigatória para evitar que regras locais sejam tratadas como universais.
+
+
+PARTE I — NORMA UNIVERSAL
+
+5. Briefing obrigatório antes da primeira linha de código
+
+Nenhum projeto deve começar sem briefing mínimo documentado.
+
+O briefing deve registrar:
+
+[BASE_URL]
+[BASE_PATH]
+tipo do projeto:pessoal
+terceiro
+HLF
+experimental
+
+
+objetivo principal
+público-alvo
+conversão principal:WhatsApp
+cadastro
+consulta
+página informativa
+
+
+escopo geográfico
+política de indexação
+necessidade ou não de:menu compartilhado
+footer compartilhado
+blocos legais centralizados
+tracking
+proteção seletiva
+
+
+tipo de conteúdo:institucional
+educativo
+comercial
+protegido
+experimental
+
+5.1. Regra decisória de menu
+
+Menu nunca é universal por padrão.
+
+A decisão sobre menu sempre vem do briefing.
+
+O que é permitido padronizar:
+
+estrutura sugerida
+padrão de navegação
+convenções de rotulagem
+topbar, header e footer como templates de referência
+
+O que não é permitido presumir:
+
+que todo projeto deve usar o mesmo menu
+que o include central sempre deve injetar header completo
+que o menu de um projeto serve para todos os demais
+
+5.2. Regra decisória de footer
+
+O footer pode ser:
+
+compartilhado
+específico do projeto
+
+Recomendação padrão:
+
+manter footer centralizado quando isso não conflitar com o briefing nem com o tipo de projeto
+
+
+6. Base tecnológica padrão
+
+6.1. Stack principal
+
+GitHub Pages
+VSCode
+HTML semântico
+CSS modular
+JavaScript no cliente
+componentes reutilizáveis
+assets locais
+SEO técnico explícito
+
+6.2. Filosofia de implementação
+
+A criatividade do programador é permitida, desde que:
+
+respeite a arquitetura proposta
+não quebre governança
+não introduza dependência desnecessária
+preserve performance
+preserve clareza semântica
+preserve rastreabilidade técnica
+
+6.3. Regra de peso de front-end
+
+Evitar:
+
+JS pesado no LCP
+blocos duplicados
+animações que causem reflow desnecessário
+dependências externas sem justificativa
+
+Priorizar:
+
+HTML bem estruturado
+CSS previsível
+JS pequeno, funcional e de baixo impacto
+
+
+7. Paths, repositórios e ativos
+
+7.1. Variáveis-base
+
+Toda referência estrutural deve respeitar:
+
+[BASE_URL]
+[BASE_PATH]
+
+Essas variáveis existem para evitar hardcode indevido.
+
+7.2. Estrutura mínima recomendada
+
+/assets/css/
+/assets/fonts/
+/assets/img/
+/scripts/
+/data/
+/doc/
+
+7.3. Regra de scripts centrais
+
+Padrão final consolidado:
+
+usar somente URLs publicadas em GitHub Pages
+
+Padrão aprovado:
+
+https://edusidegum.github.io/menu/...
+
+Proibido como padrão final:
+
+raw.githubusercontent.com/...
+
+Justificativa:
+
+menor risco operacional
+melhor previsibilidade
+menor acoplamento a comportamento de raw delivery
+mais coerente com arquitetura de publicação
+
+
+8. Componentização e includes
+
+8.1. Objetivo
+
+Centralizar o que faz sentido centralizar, sem impor universalidade artificial.
+
+8.2. Pode ser centralizado
+
+footer
+blocos legais
+blocos de privacidade
+tracking
+alguns fragmentos estruturais
+scripts de proteção seletiva
+blocos técnicos recorrentes
+
+8.3. Não deve ser presumido como central
+
+menu
+topbar
+header integral
+estrutura de navegação específica de cada projeto
+
+8.4. Regra de uso do include
+
+O include serve para:
+
+reduzir duplicação
+manter consistência
+facilitar manutenção global
+
+O include não serve para:
+
+ignorar briefing
+impor navegação errada
+uniformizar o que precisa ser contextual
+
+
+9. SEO técnico universal
+
+9.1. Fundamentos obrigatórios
+
+Toda página deve ter, conforme seu tipo:
+
+title
+meta description
+canonical absoluto
+og:url absoluto
+og:title
+og:description
+og:image quando aplicável
+hreflang quando indexável
+robots coerente com a função da página
+heading hierarchy coerente
+links internos coerentes
+
+9.2. Regra de canonical
+
+Canonical deve ser:
+
+absoluto
+explícito
+com path correto
+com arquivo .html quando esse for o padrão do projeto
+
+9.3. Regra de og:url
+
+og:url deve ser idêntico ao canonical.
+
+9.4. Regra de hreflang
+
+Aplicar apenas onde fizer sentido em páginas indexáveis.
+Se a página é monolíngue e pública, usar:
+
+pt-BR
+x-default
+
+9.5. Busca interna
+
+Não há necessidade de busca interna como norma padrão do ecossistema.
+Motores de busca externos já cumprem esse papel.
+
+Consequência prática:
+
+SearchAction não é padrão obrigatório
+só deve existir se houver busca real e funcional
+
+9.6. llms.txt
+
+Não é necessário no padrão atual do ecossistema.
+
+
+10. Governança de indexação
+
+A indexação deve seguir a função da página, nunca uma regra única.
+
+10.1. Páginas públicas indexáveis
+
+Usar quando a página:
+
+tem valor informacional real
+fortalece entidade
+não expõe informação restrita
+não conflita com norma comercial
+não expõe preço público proibido
+
+10.2. Páginas públicas não indexáveis
+
+Usar quando a página:
+
+contém valores
+contém desconto
+contém comparação sensível
+serve a fluxos de apoio
+existe por usabilidade, não por descoberta orgânica
+
+10.3. Arquivos não editoriais
+
+Bloquear via robots.txt quando aplicável:
+
+/doc/
+/data/
+/scripts/
+
+10.4. Regras especiais
+
+Páginas com:
+
+preços
+kits
+desconto
+tabelas comerciais
+ofertas protegidas
+conteúdo com restrição normativa
+
+devem receber tratamento específico de:
+
+noindex
+nofollow quando necessário
+noimageindex quando necessário
+proteção adicional quando aplicável
+
+
+11. Sitemap e robots
+
+11.1. Sitemap
+
+Cada repositório deve ter seu próprio sitemap.xml na raiz.
+
+Regras:
+
+nome em minúsculo
+incluir somente páginas indexáveis
+prioridade conforme hierarquia real
+frequência coerente com o tipo da página
+
+11.2. Robots
+
+O robots.txt deve ser simples, explícito e versionado no repositório.
+
+11.3. Regra de coerência
+
+Não adianta bloquear em robots e deixar head em desacordo.
+A política de indexação deve ser coerente entre:
+
+robots.txt
+meta robots
+arquitetura de links
+uso real da página
+
+
+12. Dados estruturados
+
+12.1. Princípio
+
+Schema não é adorno.
+Ele deve refletir a arquitetura real das entidades.
+
+12.2. Modelo preferencial
+
+Usar @graph com IDs estáveis, como:
+
+#website
+#business
+#webpage
+#person, quando aplicável
+
+12.3. Regra de uso
+
+A entidade principal do projeto pode variar por contexto, mas o grafo deve ser consistente.
+
+12.4. Padrão de publicação
+
+Em páginas internas, preferir referenciar entidades por @id em vez de duplicar definição inteira sem necessidade.
+
+
+13. Performance e Core Web Vitals
+
+13.1. Diretriz geral
+
+O ecossistema deve priorizar:
+
+LCP controlado
+INP saudável
+CLS baixo
+
+13.2. Imagens
+
+WebP como padrão
+LCP com prioridade alta
+secundárias com lazy load
+width e height sempre definidos
+
+13.3. Fontes
+
+fontes locais quando possível
+preload só quando fizer sentido
+font-display: swap
+
+13.4. Animações
+
+Evitar técnicas que causem reflow desnecessário.
+Preferir propriedades mais amigáveis à composição.
+
+13.5. Embeds
+
+Embeds pesados devem ser tratados com estratégia leve sempre que possível.
+
+
+14. Segurança, privacidade e proteção
+
+14.1. Princípio
+
+Proteção existe para reduzir abuso, não para prejudicar experiência.
+
+14.2. Bloco de proteção
+
+Pode ser usado:
+
+em páginas sensíveis
+em páginas com material mais exposto
+em páginas com risco maior de cópia indevida
+
+Não deve ser usado cegamente se:
+
+prejudicar acessibilidade
+prejudicar usabilidade
+prejudicar desempenho
+conflitar com a função da página
+
+14.3. LGPD
+
+Toda coleta de dado deve respeitar:
+
+necessidade
+clareza
+base legal aplicável
+retenção mínima razoável
+transparência
+
+14.4. Banner de cookies
+
+Só quando houver uso real que o justifique.
+
+
+15. UX, conteúdo e acessibilidade
+
+15.1. Conteúdo íntegro
+
+É proibido “adaptar” página removendo conteúdo essencial sem decisão explícita.
+
+15.2. Acessibilidade
+
+Manter:
+
+contraste adequado
+foco visível
+alt significativo
+estrutura semântica correta
+navegação compreensível
+interação que não dependa exclusivamente de script obscuro
+
+15.3. Navegação
+
+A navegação deve reforçar intenção e entidade.
+
+15.4. WhatsApp
+
+Quando utilizado, o parâmetro de origem deve ser padronizado por página para rastreio operacional.
+
+
+PARTE II — NORMA OPERACIONAL DO ECOSSISTEMA HLF
+
+16. Objetivo do ecossistema HLF
+
+Construir autoridade orgânica e indexação inicial no Brasil para:
+
+suplementação personalizada
+alto rendimento
+performance com acompanhamento
+nutrição de precisão
+biomarcadores
+educação de mercado para novas soluções
+
+Tudo isso sem violar:
+
+normas Herbalife
+LGPD
+restrições comerciais por país
+restrições regulatórias do Brasil
+
+
+17. Resultado esperado
+
+O ecossistema deve:
+
+consolidar Edu Sidegum como entidade confiável
+separar corretamente:conteúdo educativo
+consultoria/diagnóstico
+oferta futura
+acesso a mercados legalizados
+
+
+preparar o terreno orgânico para novas frentes
+evitar confusão entre:autoridade pessoal
+operação HLF
+frente Bioniq
+oportunidade de negócio
+produto
+venda
+
+
+18. Entidades do ecossistema
+
+18.1. Entidade de autoridade
+
+Edu Sidegum
+
+Função:
+
+autoria
+método
+experiência
+credibilidade
+visão sistêmica
+elo entre tecnologia, diagnóstico e aplicação prática
+
+Essa camada sustenta o E-E-A-T do ecossistema.
+
+18.2. Ecossistema HLF / Herbalife
+
+Função:
+
+operação atual
+portfólio permitido
+consultoria
+relacionamento
+acompanhamento
+páginas de apoio
+fluxos de cadastro e atendimento
+
+18.3. Frente Bioniq / nutrição de precisão
+
+Função:
+
+frente estratégica de autoridade futura
+captura semântica antecipada
+educação de mercado
+ocupação do campo de busca antes da entrada massiva de concorrência
+
+18.4. Regra de separação
+
+Nunca misturar, sem contextualização clara:
+
+entidade pessoal
+HLF
+Herbalife
+Bioniq
+conteúdo educativo
+conteúdo comercial
+oferta internacional
+oferta Brasil
+
+
+19. Tese estratégica do projeto
+
+A tese do projeto não é “vender agora”.
+A tese é:
+
+ocupar o campo semântico cedo
+educar antes do pico de publicidade
+construir autoridade antes da disputa pesada
+converter busca em:diagnóstico
+consultoria
+relacionamento
+cadastro permitido
+operação em mercados já liberados, quando aplicável
+
+
+20. Princípio editorial central
+
+A comunicação não deve ser genérica para todos os públicos ao mesmo tempo.
+
+O padrão correto é:
+
+mensagem institucional ampla
+páginas específicas por intenção
+clusters separados por problema, contexto ou objetivo
+
+20.1. Regra operacional
+
+Marca ampla, páginas específicas.
+
+
+21. Frente operacional Brasil
+
+21.1. Regra central
+
+A frente operacional primária é Brasil.
+
+21.2. O que pode no Brasil
+
+educar
+explicar tecnologia
+explicar método
+explicar lógica de suplementação personalizada
+apresentar contexto de biomarcadores
+captar contato para diagnóstico/consultoria
+construir autoridade e indexação
+
+21.3. O que não pode no Brasil
+
+vender Bioniq antes da liberação regulatória
+sugerir disponibilidade comercial local quando ela não existe
+induzir compra local indevida
+estruturar a página como se a venda já estivesse liberada
+
+
+22. Mercados já legalizados
+
+22.1. Regra operacional
+
+A venda online só atende mercados legalizados.
+
+22.2. Consequência
+
+não é possível efetuar cadastro em mercados não liberados
+não se comunica disponibilidade comercial fora da regra
+o encaminhamento comercial deve respeitar o mercado aplicável
+
+22.3. Bônus operacional aceito
+
+É permitido oferecer acesso a quem busca a página para mercados já liberados, mediante fluxo correto de cadastro e atendimento, sem confundir essa operação com disponibilidade no Brasil.
+
+22.4. Regra de separação
+
+Conteúdo e fluxo de mercados legalizados devem ser separados de:
+
+Brasil educativo
+frente de autoridade
+páginas não comerciais
+
+
+23. Regra de venda online no ecossistema
+
+A venda online se dá exclusivamente por:
+
+cadastro.html oficial
+atendimento pessoal via WhatsApp, que encaminha o cadastro para a venda online
+
+23.1. Consequência editorial
+
+Páginas públicas indexadas não devem ser tratadas como páginas de venda aberta.
+
+Elas devem funcionar como:
+
+páginas de autoridade
+páginas de explicação
+páginas de entrada qualificada
+páginas de transição para fluxo permitido
+
+
+24. Preço, valores, kits e páginas restritas
+
+24.1. Regra consolidada
+
+Páginas públicas indexadas não devem mencionar valores.
+
+24.2. Conteúdo restrito
+
+Páginas que contenham:
+
+preços
+kits
+descontos
+tabelas comerciais
+condições especiais
+valores comparativos
+
+devem ter:
+
+política específica de indexação
+restrição via head
+restrição compatível em robots.txt
+proteção adicional quando aplicável
+
+24.3. Justificativa
+
+Isso está alinhado com:
+
+o modelo de posicionamento orgânico
+o fluxo consultivo
+as normas comerciais aplicáveis
+
+
+25. Normas Herbalife incorporadas ao projeto
+
+As normas da Herbalife passam a ser restrição estruturante do ecossistema, não observação opcional.
+
+25.1. Declarações
+
+Só são permitidas declarações que sejam:
+
+verdadeiras
+não enganosas
+compatíveis com documentação
+compatíveis com o rótulo
+compatíveis com a legislação
+sem claims terapêuticos, médicos ou de doença
+
+25.2. O que é proibido afirmar
+
+cura
+tratamento de doença
+promessa garantida
+resultado garantido
+emprego garantido
+renda garantida
+estilo de vida ostensivo como promessa
+
+25.3. Relação com a Herbalife
+
+Deve ficar claro que se trata de Distribuidor Independente Herbalife, sem sugerir vínculo funcional indevido.
+
+25.4. Redes sociais
+
+Redes sociais podem ser usadas para:
+
+promoção
+educação
+relacionamento
+direcionamento
+
+Mas não devem ser usadas como fórum direto de transação pública de venda.
+
+25.5. Preços públicos
+
+Não publicar preços com desconto ao público em geral quando a norma restringir isso.
+
+25.6. Propriedade intelectual
+
+Não modificar material oficial protegido de forma indevida.
+
+25.7. Publicidade paga
+
+Não utilizar o termo Herbalife ou marcas registradas da Herbalife em publicidade paga, conforme a norma.
+
+
+26. Regra operacional para Bioniq
+
+26.1. Posição estratégica
+
+Bioniq não deve ser posicionada como página solta de produto.
+
+26.2. Papel correto
+
+Bioniq deve ser posicionada como:
+
+frente de autoridade
+educação de mercado
+camada de nutrição de precisão
+ativo semântico preparatório
+
+26.3. Regra Brasil
+
+No Brasil:
+
+educativo
+consultivo
+explicativo
+sem venda
+sem falsa disponibilidade
+
+26.4. Regra internacional
+
+Nos mercados legalizados:
+
+pode haver fluxo comercial separado
+com segmentação geográfica clara
+sem confundir a frente Brasil
+
+
+27. Arquitetura editorial do ecossistema HLF
+
+27.1. Camada de autoridade
+
+Páginas que fortalecem entidade, método e autoria:
+
+Sobre
+método
+como funciona o diagnóstico
+princípios da suplementação personalizada
+transparência
+política editorial
+compliance
+
+27.2. Camada de intenção
+
+Clusters separados por intenção real de busca:
+
+suplementação personalizada
+alto rendimento
+performance
+biomarcadores
+energia e rotina
+composição corporal
+mercados liberados x Brasil
+oportunidade de negócio, em camada separada do consumo
+
+27.3. Camada de conversão permitida
+
+No Brasil, por enquanto:
+
+consultoria
+diagnóstico
+contato
+cadastro orientado
+lista de interesse, se houver decisão específica
+
+
+28. Entidade principal no Schema
+
+Padrão aprovado:
+
+modelo híbrido
+
+28.1. Composição
+
+Person para autoridade, autoria e método
+Organization ou equivalente operacional quando fizer sentido
+WebSite e WebPage como estrutura do ecossistema
+
+28.2. Consequência
+
+O schema não deve apagar a pessoa nem esconder a operação.
+Ele deve refletir a arquitetura real.
+
+
+29. sameAs e vínculo de entidade
+
+O uso de sameAs é válido para reforçar sinais de entidade, inclusive com ativos externos oficiais.
+
+29.1. Pode incluir
+
+redes sociais oficiais
+catálogo oficial relacionado
+outros perfis institucionais válidos
+
+29.2. Regra de uso
+
+A inclusão em sameAs serve para:
+
+vínculo de entidade
+coerência de presença
+fortalecimento de E-E-A-T
+
+Não serve para:
+
+sugerir controle editorial sobre domínio de terceiros
+mascarar natureza externa do ativo
+
+
+30. Regras específicas para redes sociais
+
+Este capítulo passa a existir formalmente no documento.
+
+30.1. Função das redes
+
+As redes sociais não são o núcleo inicial da estratégia.
+São camada de apoio para:
+
+distribuição
+reforço de autoridade
+descoberta complementar
+relacionamento
+migração para ativos próprios
+
+30.2. Objetivo das redes no ecossistema
+
+educar
+gerar reconhecimento
+reforçar método
+validar temas
+encaminhar interesse qualificado
+
+30.3. O que não fazer
+
+transformar a rede no principal ambiente comercial
+misturar venda direta com conteúdo educativo sem separação
+usar linguagem invasiva
+depender da rede para sustentar a estratégia de longo prazo
+
+30.4. TikTok
+
+TikTok é canal de descoberta e teste, não base estrutural inicial.
+Seu uso deve ser:
+
+exploratório
+orientado a hipóteses
+conectado aos clusters principais do site
+
+
+31. Páginas públicas, páginas restritas e páginas operacionais
+
+31.1. Páginas públicas indexáveis
+
+Servem para:
+
+capturar busca
+construir autoridade
+responder intenção
+reforçar entidade
+
+31.2. Páginas públicas não indexáveis
+
+Servem para:
+
+suporte
+transição
+páginas com valores
+kits
+tabelas
+contextos comerciais restritos
+
+31.3. Páginas operacionais
+
+Servem para:
+
+cadastro
+atendimento
+fluxo consultivo
+transição para venda permitida
+
+Essas páginas não devem ser tratadas automaticamente como ativos de ranqueamento.
+
+
+32. Regra de CTA no ecossistema HLF
+
+CTA aceitável prioritário para Brasil, nesta fase:
+
+diagnóstico / consultoria com contato
+
+CTAs secundários permitidos, quando fizer sentido:
+
+cadastro orientado
+WhatsApp
+aprofundamento de leitura
+fluxo de interesse
+
+CTAs proibidos no contexto Brasil sem liberação:
+
+compra direta do novo produto
+“compre agora” para produto não liberado
+simulação de ecommerce público local
+
+
+33. Plano de implantação do ecossistema
+
+33.1. Horizonte de 90 dias
+
+Objetivo:
+
+autoridade inicial
+indexação inicial
+organização estrutural
+base semântica
+
+Entregas:
+
+mapa oficial de entidades
+revisão da arquitetura do domínio
+definição de páginas pilar
+definição de páginas-mãe por cluster
+revisão de:title
+description
+H1
+canonical
+robots
+sitemap
+links internos
+
+
+padronização de autoria
+padronização de disclaimers
+
+KPIs:
+
+páginas indexadas
+impressões iniciais
+consultas iniciais
+cobertura semântica
+cliques informacionais iniciais
+
+33.2. Horizonte de 180 dias
+
+Objetivo:
+
+aprofundar autoridade temática
+ampliar cobertura por cluster
+reforçar associação entre entidade e tema
+
+Entregas:
+
+conteúdos secundários por intenção
+FAQs reais
+conteúdos com information gain
+trilhas internas entre páginas
+produção social derivada das páginas principais
+testes em TikTok com foco educativo
+
+KPIs:
+
+impressões por cluster
+aumento de queries não-branded
+CTR orgânico inicial
+páginas com tráfego recorrente
+crescimento de buscas por nome + tema
+
+33.3. Horizonte de 360 dias
+
+Objetivo:
+
+consolidação
+captura qualificada
+domínio temático mais robusto
+
+Entregas:
+
+reforço das páginas vencedoras
+atualização contínua das páginas-chave
+ativos comparativos e decisórios
+estruturação internacional quando necessário
+preparação para transição comercial no Brasil, se e somente se houver liberação
+
+KPIs:
+
+recorrência nas consultas centrais
+crescimento de tráfego orgânico qualificado
+crescimento de contatos por diagnóstico
+associação mais forte entre entidade e tema
+
+
+PARTE III — PADRÕES EXPERIMENTAIS E APRENDIZADOS TÉCNICOS
+
+34. Status dos aprendizados experimentais
+
+O material de Windows 11 Maintenance Hub não compõe regra universal automática do HLF.
+
+Ele deve ser tratado como:
+
+padrão experimental
+aprendizado técnico reutilizável
+fonte de práticas válidas
+anexo de laboratório
+
+34.1. O que pode ser incorporado como norma geral
+
+Quando tecnicamente útil, podem ser incorporados:
+
+melhorias de performance
+lazy loading inteligente
+organização de scripts
+SEO em páginas de redirect
+correções de path
+refinamentos de CSS
+blocos interativos leves
+padrões de embed mais leves
+
+34.2. O que não deve acontecer
+
+Não transformar um caso experimental em regra universal sem qualificação.
+
+
+35. Aprendizados técnicos aceitos como norma geral
+
+35.1. Paths de scripts centrais
+
+Norma final:
+
+usar https://edusidegum.github.io/menu/...
+
+35.2. Redirect page com SEO
+
+Páginas de redirect podem conter metadados completos no head, quando fizer sentido operacional.
+
+35.3. Organização de scripts
+
+Preferir consolidar comportamento em bloco previsível, evitando dispersão arbitrária.
+
+35.4. Embeds pesados
+
+Substituir embed inicial pesado por estratégia mais leve, quando não houver perda funcional relevante.
+
+35.5. Animação e composição
+
+Preferir estratégias de animação menos custosas para renderização.
+
+35.6. CSS defensivo
+
+Pode haver uso de override forte quando houver problema concreto e recorrente de conflito de estilo, desde que documentado.
+
+
+36. Limites dos padrões experimentais
+
+Os padrões experimentais:
+
+não revogam briefing
+não revogam acessibilidade
+não revogam SEO semântico
+não revogam norma HLF
+não substituem avaliação de contexto
+
+
+PARTE IV — GOVERNANÇA OPERACIONAL
+
+37. Regra de consistência documental
+
+Toda mudança estrutural relevante deve gerar:
+
+nota de versão
+justificativa
+impacto esperado
+lista de páginas afetadas
+decisão de rollback quando aplicável
+
+
+38. Regra de publicação
+
+Antes de publicar qualquer página, validar:
+
+intenção da página
+entidade reforçada
+CTA permitido
+indexação correta
+schema coerente
+canonical correto
+og:url correto
+links internos coerentes
+compliance aplicável
+necessidade ou não de proteção
+
+
+39. Checklist decisório por página
+
+Cada página deve responder com clareza:
+
+qual intenção de busca atende
+qual entidade fortalece
+se é pública ou restrita
+se pode ser indexada
+qual CTA é permitido
+se há risco de confusão entre Brasil e mercados legalizados
+se há risco regulatório
+se há risco de canibalização com outra página
+quais blocos centralizados usa
+se o menu foi definido corretamente pelo briefing
+
+
+40. Regra de não omissão de contexto
+
+Na consolidação de páginas ou documentos:
+
+não omitir conhecimento válido já adquirido
+não apagar restrições normativas
+não apagar exceções operacionais relevantes
+não apagar aprendizados técnicos úteis
+
+Ao mesmo tempo:
+
+separar regra universal de caso específico
+separar padrão HLF de experimento
+separar template de norma
+
+
+PARTE V — TEMPLATES
+
+41. Papel dos templates
+
+Os templates existem como:
+
+referência de implementação
+base de padronização
+aceleradores de produção
+ponto de partida controlado
+
+Eles não substituem o briefing.
+
+
+42. Regras de uso dos templates
+
+42.1. Templates podem sugerir
+
+estrutura de head
+estrutura de footer
+estrutura de topbar
+estrutura de menu
+JSON-LD base
+robots
+sitemap
+componentes comuns
+
+42.2. Templates não podem impor
+
+menu universal
+mesma navegação para todos os projetos
+mesmas entidades em todos os contextos
+mesma política de indexação para toda página
+
+
+43. Templates que devem existir no repositório documental
+
+43.1. Template de briefing
+
+Deve conter:
+
+BASE_URL
+BASE_PATH
+tipo de projeto
+menu por briefing
+footer por briefing
+tipo de indexação
+entidade principal
+CTA principal
+escopo geográfico
+compliance aplicável
+
+43.2. Template de head
+
+Com:
+
+title
+description
+robots
+canonical
+og
+hreflang
+preload de fontes quando aplicável
+CSS base
+
+43.3. Template de robots.txt
+
+Com separação entre:
+
+público
+doc
+data
+scripts
+
+43.4. Template de sitemap.xml
+
+Com estrutura mínima de URLs indexáveis.
+
+43.5. Template de JSON-LD
+
+Com:
+
+Website
+WebPage
+Person
+Organization/Business
+sameAs
+referência por @id
+
+43.6. Template de footer
+
+Com:
+
+navegação institucional
+privacidade
+termos
+identidade adequada ao projeto
+
+43.7. Template de menu/topbar
+
+Apenas como sugestão estrutural.
+Uso sempre condicionado ao briefing.
+
+43.8. Template de página pública indexável
+
+Para páginas de autoridade e busca.
+
+43.9. Template de página pública não indexável
+
+Para páginas com restrição de valor, kit, condição comercial ou uso operacional.
+
+43.10. Template de página educativa Bioniq Brasil
+
+Com:
+
+posicionamento educativo
+sem venda
+sem disponibilidade implícita
+CTA consultivo
+disclaimers claros
+
+43.11. Template de página de acesso a mercados legalizados
+
+Com:
+
+separação geográfica
+aviso regulatório
+fluxo de cadastro adequado
+ausência de confusão com Brasil
+
+
+44. Regra de referência aos templates
+
+Todo template deve ser citado na documentação final pelo nome da sua função, e não apenas por trecho solto de código.
+
+O item Templates deve permanecer no final do documento exatamente como seção de referência operacional.
+
+
+45. Encerramento normativo
+
+Este documento passa a funcionar como referência-mãe para:
+
+arquitetura
+SEO
+E-E-A-T
+indexação
+compliance
+governança
+implementação em GitHub Pages
+manutenção em VSCode
+expansão orgânica do ecossistema HLF
+
+A prioridade permanente é:
+
+precisão
+consistência
+conformidade
+autoridade
+separação clara entre intenção educativa, consultiva e comercial
+
+Riscos ou pontos de atenção
+
+O ponto mais sensível continua sendo a separação explícita entre Brasil educativo e mercados legalizados.
+O segundo ponto mais sensível é não deixar templates virarem regra automática sem briefing.
+O terceiro ponto é não misturar norma universal com aditivo experimental na implementação futura.
+
+Próximo passo sugerido
+
+Posso seguir em uma destas duas direções:
+
+refinar este documento para versão final editorial, com linguagem mais formal e pronta para salvar no repositório  
+transformar este documento em estrutura operacional de arquivos, por exemplo:00-documento-mestre.md
+01-norma-universal.md
+02-norma-hlf.md
+03-padroes-experimentais.md
+04-templates.md
+
+Autorrevisão: preservei as decisões e o conhecimento consolidado, mas ainda há um ponto que pode exigir detalhamento futuro: a política exata de indexação por tipo de página HLF específica, porque ela depende do inventário real de páginas já existentes no repositório.  
