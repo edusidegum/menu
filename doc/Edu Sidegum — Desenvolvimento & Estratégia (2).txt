@@ -1,0 +1,175 @@
+# Edu Sidegum — Desenvolvimento & Estratégia
+
+## **PLANO DE 70 DIAS — BACKEND DE QUALIDADE, PRESENÇA HERBALIFE E DOMÍNIO DE LLMS**
+
+*Construção de foco com base em análise cognitivo-comportamental (TCC)*
+
+**21 de julho de 2026**
+
+---
+
+### 1. DIAGNÓSTICO DE PARTIDA
+
+Este plano estabelece a rota de transição técnica e estabilização emocional para o período de **21/07 a 29/09/2026**. O foco central é a superação do ciclo de evitação através da entrega constante de incrementos de software e presença digital.
+
+| Dimensão | Status Atual | Meta 70 Dias |
+| :--- | :--- | :--- |
+| **Técnica** | Frontend estático (GitHub Pages) | **Fullstack (Node/Supabase) + Agentes LLM** |
+| **Herbalife** | Presença digital dispersa | **Site autoridade (Astro) + SEO orgânico** |
+| **Hardware** | Limitado (G400S / X40) | **Fluxo 100% Cloud (Codespaces/Render)** |
+| **Emocional** | 🟡 Em reconstrução (Padrão de evitação) | 🟢 **Execução consistente (Padrão de ação)** |
+
+---
+
+### 2. OS 3 PILARES + FUNDAÇÃO TCC (REGRAS DE OURO)
+
+A estrutura de tempo é dividida para garantir que a evolução técnica não canibalize a geração de renda e a saúde mental.
+
+- **Pilar Principal (60% — 14h às 17h30):** Desenvolvimento de **Backend** e soluções para pequenos negócios.
+- **Pilar Herbalife (20% — 17h30 às 18h30):** Páginas de autoridade e conversão direta.
+- **Pilar LLM Evolution (20% — 18h30 às 20h):** Estudo de agentes e automação.
+
+#### Fundação TCC — As 5 Regras de Blindagem
+
+1. **LEI DO FEITO > PERFEITO:** O padrão de entrega é a funcionalidade, não a estética impecável. O refinamento é uma tarefa de segunda ordem.
+2. **REGRA DOS 5 MINUTOS:** Diante da paralisia analítica, comprometa-se com apenas 5 minutos de código. A inércia é o maior inimigo; o movimento gera motivação, não o contrário.
+3. **ATIVAÇÃO COMPORTAMENTAL:** Registro obrigatório de uma linha diária: "Hoje executei **[X]** e o nível de ansiedade foi **[Y]**".
+4. **DESCATÁSTROFE:** Um dia de interrupção no plano não anula o progresso. O retorno imediato no dia seguinte é a única métrica de resiliência que importa.
+5. **NADA DE NOVO:** Ideias disruptivas fora do escopo atual devem ser registradas no **"Estacionamento"** e ignoradas até **29/09**.
+
+---
+
+### 3. STACK RECOMENDADA (FOCO EM CLOUD E SEO)
+
+Full-stack não é opcional — é a linha de base para desenvolver agentes especializados por camada. Abaixo, a stack escolhida cobre as 4 camadas do espectro full-stack, com justificativa técnica para cada escolha.
+
+| Camada Full-Stack | Stack | Tecnologia | Justificativa Técnica |
+| :--- | :--- | :--- | :--- |
+| **Frontend** | Site Herbalife | **Astro + GitHub Pages** | SSG nativo, SEO impecável, zero custo |
+| **Frontend** | Apps Cliente | **HTMX + Tailwind** | Menos JS no bundle, ideal para hardware limitado |
+| **Backend** | API | **Node.js + Fastify** | Suporte nativo a SDKs de IA (Vercel AI, OpenAI) |
+| **Banco de Dados** | Persistência | **Supabase (Postgres)** | Free tier robusto, Auth, RLS |
+| **DevOps** | Infra/Deploy | **GitHub Codespaces + Render** | Processamento cloud, CI/CD integrado |
+
+---
+
+### 4. ROADMAP SEMANAL (10 SEMANAS)
+
+Cada semana toca TODAS as camadas full-stack, mas com ênfase alternada para construir competência em espiral:
+
+#### SEMANA 1 — Fundação + Contrato Psicológico (21-27 Jul)
+- **Foco TCC:** Estabelecer a rotina como âncora. Combater a dispersão inicial.
+- [ ] Setup do repositório monorepo no GitHub.
+- [ ] Configuração do ambiente **Codespaces** com Node.js.
+- [ ] Primeiro "Hello World" do backend implantado no **Render.com**.
+- [ ] Início do Diário TCC (Registro de Intenção).
+- **Camadas trabalhadas:** DevOps (setup cloud, CI/CD), Backend (hello world)
+
+#### SEMANA 2 — CRUD + Primeira Página Herbalife (28 Jul-03 Ago)
+- **Foco TCC:** Exposição gradual. Aceitar o código "sujo" funcional.
+- [ ] Implementação de rotas básicas (**Create, Read, Update, Delete**).
+- [ ] Estrutura inicial do site Herbalife em **Astro**.
+- [ ] Conexão do backend com **Supabase**.
+- **Camadas trabalhadas:** Backend (CRUD), Banco (schema SQLite/Supabase), Frontend (Astro Herbalife)
+
+#### SEMANA 3 — SEO Técnico + Schema.org (04-10 Ago)
+- [ ] Implementação de **JSON-LD** e Meta Tags avançadas no site Herbalife.
+- [ ] Estudo de indexação para LLMs (uso de arquivos `llms.txt`).
+- [ ] Primeira página de produto Herbalife com foco em conversão orgânica.
+- **Camadas trabalhadas:** Frontend (SEO, JSON-LD), Banco (structured data)
+
+#### SEMANA 4 — Auth + Multi-Tenant (11-17 Ago)
+- [ ] Integração de login social via **Supabase Auth**.
+- [ ] Estruturação de banco de dados para suportar múltiplos pequenos clientes.
+- [ ] Catálogo Herbalife dinâmico via JSON.
+- **Camadas trabalhadas:** Backend (auth, multi-tenant), Banco (RLS, policies)
+
+#### SEMANA 5 — Frontend do Painel + Blog (18-24 Ago)
+- [ ] Criação de dashboard administrativo simples para o backend.
+- [ ] Implementação de blog no site Herbalife (foco em autoridade de conteúdo).
+- **Camadas trabalhadas:** Frontend (dashboard, blog), Backend (integração)
+
+#### SEMANA 6 — Templates + Performance (25-31 Ago)
+- [ ] Otimização de **Core Web Vitals** (LCP, FID, CLS).
+- [ ] Criação de templates reutilizáveis para sites de pequenos negócios.
+- **Camadas trabalhadas:** Frontend (templates, performance), DevOps (Core Web Vitals)
+
+#### SEMANA 7 — LLM Visibility + Automações (01-07 Set)
+- **Foco TCC:** Transição para a fase de confiança técnica.
+- [ ] Configuração de agentes de busca para indexar o portfólio.
+- [ ] Automação básica de leads Herbalife via Webhook.
+- **Camadas trabalhadas:** Todas — LLM como integrador entre camadas
+
+#### SEMANA 8 — Primeiro Projeto Real (08-14 Set)
+- **Foco TCC:** Enfrentar o medo da entrega. Lançamento em "Beta Aberto".
+- [ ] Publicação de um site/app para um cliente real ou case de estudo.
+- [ ] Validação de métricas de SEO.
+- **Camadas trabalhadas:** Todas — ciclo completo do projeto real
+
+#### SEMANA 9 — Refinamento de Agentes LLM (15-21 Set)
+- [ ] Implementação de um **"Agente de Briefing"** usando Vercel AI SDK.
+- [ ] Documentação técnica completa do ecossistema desenvolvido.
+- **Camadas trabalhadas:** Todas — testes, documentação, agente de briefing
+
+#### SEMANA 10 — Portfólio + Retrospectiva (22-29 Set)
+- **Foco TCC:** Consolidação da nova identidade profissional.
+- [ ] Atualização do `edusidegum.github.io` com os novos projetos.
+- [ ] Fechamento do ciclo de 70 dias e análise de métricas emocionais.
+- **Camadas trabalhadas:** Todas — portfólio, comercial, retrospectiva
+
+---
+
+### 5. ROTINA DIÁRIA (14H-20H)
+
+O bloco **14h-20h** é contínuo e **100% dedicado** ao projeto. A consistência do horário é a ferramenta de regulação da ansiedade.
+
+| Horário | Atividade | Nota TCC |
+| :--- | :--- | :--- |
+| **14:00 - 14:05** | **Diário TCC (1 linha)** | Registro de prontidão emocional |
+| **14:05 - 14:15** | **Planejamento do Bloco** | Quebrar tarefas grandes em micro-ações |
+| **14:15 - 17:00** | **PILAR PRINCIPAL — Backend** | Foco profundo (Pomodoro 50/10) |
+| **17:00 - 18:30** | **HERBALIFE + CONTEÚDO** | Site, SEO, atendimento, catálogo |
+| **18:30 - 19:30** | **LLM EVOLUTION** | Agentes, automação, experimentação |
+| **19:30 - 20:00** | **Encerramento + Revisão** | Consolidar aprendizado do dia |
+
+- **Sábado:** 14h às 17h (Revisão e Herbalife).
+- **Domingo:** **OFF TOTAL.** Proibido abrir o computador.
+
+---
+
+### 6. PROGRESSÃO LLM (DOMÍNIO DE AGENTES)
+
+O aprendizado de IA não deve ser passivo, mas integrado ao fluxo de trabalho:
+
+1. **Nível 1 (Semanas 1-3):** LLM como Copiloto. Foco em *Prompt Engineering* para geração de código e depuração.
+2. **Nível 2 (Semanas 4-6):** LLM como Integrador. Uso de APIs para gerar conteúdo SEO automaticamente.
+3. **Nível 3 (Semanas 7-10):** LLM como Agente. Desenvolvimento de um sistema que recebe um problema de um pequeno negócio e sugere a estrutura de site/SEO.
+
+Ao final dos 70 dias, você terá condições de projetar agentes específicos por camada:
+- **Agente de Frontend:** geração de componentes e validação de acessibilidade
+- **Agente de Backend:** scaffolding de APIs e validação de segurança
+- **Agente de Dados:** análise de schema e geração de queries
+- **Agente de DevOps:** automação de deploy e monitoramento
+Isso é o que diferencia o profissional que usa IA como ferramenta do que é usado por ela.
+
+---
+
+### 7. PLANO DE RECAÍDA EMOCIONAL (PROTOCOLO DE EMERGÊNCIA)
+
+Se o loop "Interrupção → Bloqueio → Frustração" for ativado:
+
+1. **Suspensão do Julgamento:** Aceite que o cérebro buscou proteção na evitação. Não tente "compensar" o tempo perdido dobrando a carga horária.
+2. **Redução de Escopo:** Se a paralisia persistir, a meta do dia vira: "Abrir o VS Code e escrever 1 comentário de código".
+3. **Retorno ao Padrão:** No dia seguinte, retome a rotina das 14h como se nada tivesse ocorrido. O plano é resiliente a falhas pontuais.
+
+---
+
+### 8. MÉTRICAS DE SUCESSO (29/SETEMBRO)
+
+- **Técnico:** Backend funcional em produção com autenticação e banco de dados.
+- **Herbalife:** Site com pontuação **SEO > 90** e indexação confirmada no Google/Bing.
+- **Comercial:** Um projeto de "Presença Digital" pronto para ser replicado para pequenos negócios.
+- **Emocional:** Redução do tempo de recuperação após um dia perdido (falha técnica ou emocional).
+- **Full-Stack:** Capacidade de explicar e transitar entre as 4 camadas (Frontend, Backend, Banco, DevOps) sem depender de terceiros para integração.
+
+*Documento elaborado em 21 de julho de 2026. As informações contidas são de responsabilidade do solicitante.*
