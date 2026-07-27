@@ -1,0 +1,60 @@
+<!--
+  Arquivo: bloco-ga4-gtm.html
+  Projeto: freepme — Templates Genéricos para Pequenos Negócios
+  Repositório: https://github.com/edusidegum/menu/freepme/
+  Adaptações: Reconstruído com placeholders {{GTM_ID}} e {{GA4_MEASUREMENT_ID}}.
+               O GTM e o GA4 só são carregados após consentimento explícito de cookies (lgpd_cookies_aceitos).
+               Se o usuário rejeitar ou não responder, NENHUM script de tracking é inserido.
+  Uso:       Injetado via bloco-incluir.js. Substituir placeholders pelos IDs do projeto.
+  Licença:   MIT
+-->
+
+<!-- Google Tag Manager (carregamento condicional via lgpd_cookies_aceitos) -->
+<script>
+(function(){
+  // Só carrega GTM/GA4 se o usuário consentiu explicitamente
+  if (localStorage.getItem('lgpd_cookies') !== 'aceitos') return;
+
+  // --- Google Tag Manager ---
+  (function(w,d,s,l,i){
+    w[l]=w[l]||[];
+    w[l].push({'gtm.start': new Date().getTime(), event:'gtm.js'});
+    var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),
+        dl=l!='dataLayer'?'&l='+l:'';
+    j.async=true;
+    j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+    f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','{{GTM_ID}}');
+
+  // --- Google Analytics 4 (gtag) ---
+  var gtagScript = document.createElement('script');
+  gtagScript.async = true;
+  gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id={{GA4_MEASUREMENT_ID}}';
+  document.head.appendChild(gtagScript);
+
+  gtagScript.onload = function(){
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', '{{GA4_MEASUREMENT_ID}}', {
+      anonymize_ip: true,
+      cookie_flags: 'SameSite=None;Secure'
+    });
+  };
+})();
+</script>
+
+<!-- GTM Fallback noscript (só renderizado se consentido) -->
+<noscript id="gtm-noscript" style="display:none;">
+  <iframe src="https://www.googletagmanager.com/ns.html?id={{GTM_ID}}"
+          height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<script>
+(function(){
+  if (localStorage.getItem('lgpd_cookies') === 'aceitos') {
+    var ns = document.getElementById('gtm-noscript');
+    if (ns) ns.style.display = '';
+  }
+})();
+</script>
