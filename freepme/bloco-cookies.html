@@ -1,0 +1,99 @@
+<!--
+  Arquivo: bloco-cookies.html
+  Projeto: freepme — Templates Genéricos para Pequenos Negócios
+  Repositório: https://github.com/edusidegum/menu/freepme/
+  Baseado em: menu/compartilhado/bloco-cookies.html
+  Adaptações: Placeholders {{URL_POLITICA}} apontando para a política de privacidade do projeto.
+               Links de "Saiba mais" genéricos.
+  Uso:       Injetado via bloco-incluir.js. Não requer edição se a política estiver em
+             /politicadeprivacidade.html na raiz do mesmo domínio.
+  Licença:   MIT
+-->
+<div id="cookie-banner" style="
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border-top: 1px solid #e0e0e0;
+  box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
+  padding: 16px 20px;
+  z-index: 99999;
+  display: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.9rem;
+  color: #333;
+  line-height: 1.5;
+">
+  <div style="
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+  ">
+    <div style="flex: 1 1 300px;">
+      🍪 Este site utiliza cookies para melhorar sua experiência.
+      Ao continuar navegando, você concorda com nossa
+      <a href="{{URL_POLITICA}}"
+         style="color: #2563eb; text-decoration: underline; font-weight: 500;">Política de Privacidade</a>.
+      <span style="display: block; margin-top: 2px; font-size: 0.8rem; color: #888;">
+        Cookies analíticos (GA4) são ativados apenas com seu consentimento.
+      </span>
+    </div>
+    <div style="display: flex; gap: 8px; flex-shrink: 0;">
+      <button id="cookie-reject" style="
+        background: #f5f5f5;
+        color: #555;
+        border: 1px solid #ddd;
+        padding: 9px 18px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.85rem;
+        font-weight: 500;
+        transition: background 0.2s;
+      ">Apenas Necessários</button>
+      <button id="cookie-accept" style="
+        background: #2563eb;
+        color: #fff;
+        border: none;
+        padding: 9px 18px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.85rem;
+        font-weight: 500;
+        transition: background 0.2s;
+      ">Aceitar Todos</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var banner = document.getElementById('cookie-banner');
+  if (!banner) return;
+
+  // Exibe o banner apenas se o usuário ainda não tiver feito uma escolha
+  if (localStorage.getItem('lgpd_cookies') === null) {
+    banner.style.display = 'block';
+  }
+
+  function hideBanner() {
+    banner.style.display = 'none';
+  }
+
+  document.getElementById('cookie-accept').addEventListener('click', function(){
+    localStorage.setItem('lgpd_cookies', 'aceitos');
+    // Dispara evento para carregar scripts condicionais (GA4/GTM)
+    window.dispatchEvent(new CustomEvent('lgpd_cookies_aceitos'));
+    hideBanner();
+  });
+
+  document.getElementById('cookie-reject').addEventListener('click', function(){
+    localStorage.setItem('lgpd_cookies', 'rejeitados');
+    hideBanner();
+  });
+})();
+</script>
