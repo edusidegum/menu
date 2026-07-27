@@ -31,7 +31,7 @@
       .then(function(html){
         // Substitui placeholder da URL da política
         var urlPolitica = window.location.origin + '/politicadeprivacidade.html';
-        html = html.replace(/\{\{URL_POLITICA\}\}/g, urlPolitica);
+        html = html.replace(/{{URL_POLITICA}}/g, urlPolitica);
 
         div.innerHTML = html;
 
@@ -104,9 +104,26 @@
   }
 
   /* ================================================================
-     4. INJETAR CRÉDITO DO AUTOR (obrigatório — Projeto Visibilidade)
+     4. INJETAR CRÉDITO DO AUTOR (configurável via <meta>)
+        - <meta name="credito-autor" content="false"> → NÃO injeta crédito
+        - <meta name="credito-autor" content="Desenvolvido por <e/> e-Sid"> → texto customizado
+        - Sem meta → padrão: "Projeto Visibilidade — por Eduardo Sidegum"
+        O link para https://edusidegum.github.io/edusidegum/ está sempre presente
+        (exceto quando false), inserido como ícone 🔗 discreto.
      ================================================================ */
   function injectCreditoAutor() {
+    // Verifica se crédito está desativado
+    var metaCredito = document.querySelector('meta[name="credito-autor"]');
+    if (metaCredito && metaCredito.getAttribute('content') === 'false') return;
+
+    // Define o texto do crédito
+    var textoCredito;
+    if (metaCredito && metaCredito.getAttribute('content') && metaCredito.getAttribute('content') !== 'true') {
+      textoCredito = metaCredito.getAttribute('content');
+    } else {
+      textoCredito = 'Projeto Visibilidade — por Eduardo Sidegum';
+    }
+
     var footer = document.querySelector('footer');
     if (!footer) {
       footer = document.createElement('footer');
@@ -117,10 +134,11 @@
     var credito = document.createElement('div');
     credito.style.cssText = 'margin-top:6px;font-size:0.78rem;color:#aaa;';
     credito.innerHTML =
-      'Projeto Visibilidade — por ' +
-      '<a href="https://edusidegum.github.io/edusidegum/" ' +
+      textoCredito +
+      ' <a href="https://edusidegum.github.io/edusidegum/" ' +
       'target="_blank" rel="noopener" ' +
-      'style="color:#2563eb;text-decoration:none;font-weight:500;">Eduardo Sidegum</a>';
+      'style="color:#aaa;text-decoration:none;" ' +
+      'title="Desenvolvido por Eduardo Sidegum">🔗</a>';
     footer.appendChild(credito);
   }
 
@@ -146,7 +164,7 @@
     injectCookies();        // Banner LGPD
     injectGA4GTM();         // GA4 + GTM (condicional)
     injectLinkPolitica();   // Link para política de privacidade no rodapé
-    injectCreditoAutor();   // Crédito do autor (Eduardo Sidegum)
+    injectCreditoAutor();   // Crédito do autor (configurável)
     injectProtecao();       // Proteção anti-cópia (opcional)
   }
 
