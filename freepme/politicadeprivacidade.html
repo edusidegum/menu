@@ -1,12 +1,15 @@
 <!--
-  Arquivo: politicadeprivacidade.html
+  Arquivo: politicadeprivacidade.html (fonte em freepme/)
+  Destino: privacidade.html (na raiz do projeto do cliente)
   Projeto: freepme — Templates Genéricos para Pequenos Negócios
   Repositório: https://github.com/edusidegum/menu/freepme/
-  Baseado em: menu/compartilhado/politicadeprivacidade.html
-  Adaptações: Generalizado com placeholders {{NOME_EMPRESA}}, {{EMAIL_CONTATO}}, {{DATA_ATUALIZACAO}}.
+  Adaptações: Placeholders padronizados (NOME_DA_EMPRESA, EMAIL_CONTATO, DATA_ATUALIZACAO, URL_BASE).
                JSON-LD padronizado para schema.org/Organization.
+               Seção de formulários removida (modelo é HTML estático puro).
+               Ano gerado dinamicamente via JavaScript.
                Contém noindex, follow para não competir com a página principal do negócio.
-  Uso:       Substituir placeholders e salvar no repositório do projeto como politicadeprivacidade.html
+  Uso:       Copiar para a raiz do projeto como privacidade.html.
+               Substituir placeholders e salvar.
   Licença:   MIT — uso livre para qualquer pequeno negócio.
 -->
 <!DOCTYPE html>
@@ -14,30 +17,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Política de Privacidade — {{NOME_EMPRESA}}</title>
+  <title>Política de Privacidade — NOME_DA_EMPRESA</title>
   <meta name="robots" content="noindex, follow">
-  <meta name="description" content="Política de Privacidade da {{NOME_EMPRESA}}, em conformidade com a Lei Geral de Proteção de Dados (LGPD — Lei 13.709/2018).">
-
+  <meta name="description" content="Política de Privacidade da NOME_DA_EMPRESA, em conformidade com a Lei Geral de Proteção de Dados (LGPD — Lei 13.709/2018).">
   <!-- Open Graph -->
-  <meta property="og:title" content="Política de Privacidade — {{NOME_EMPRESA}}">
+  <meta property="og:title" content="Política de Privacidade — NOME_DA_EMPRESA">
   <meta property="og:description" content="Saiba como tratamos seus dados pessoais conforme a LGPD.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="{{URL_BASE}}/politicadeprivacidade.html">
-
-  <!-- Favicon (genérico — substituir pelo ícone do projeto) -->
+  <meta property="og:url" content="URL_BASE/privacidade.html">
+  <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>🔒</text></svg>">
-
   <!-- JSON-LD: Schema.org WebPage -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "Política de Privacidade — {{NOME_EMPRESA}}",
-    "url": "{{URL_BASE}}/politicadeprivacidade.html",
+    "name": "Política de Privacidade — NOME_DA_EMPRESA",
+    "url": "URL_BASE/privacidade.html",
     "isPartOf": {
       "@type": "WebSite",
-      "name": "{{NOME_EMPRESA}}",
-      "url": "{{URL_BASE}}/"
+      "name": "NOME_DA_EMPRESA",
+      "url": "URL_BASE/"
     },
     "about": {
       "@type": "Thing",
@@ -45,118 +45,61 @@
     }
   }
   </script>
-
   <style>
-    :root {
-      --bg: #fafafa;
-      --card: #ffffff;
-      --text: #1a1a1a;
-      --text-secondary: #555;
-      --border: #e0e0e0;
-      --accent: #2563eb;
-      --radius: 8px;
-    }
+    :root { --bg: #fafafa; --card: #ffffff; --text: #1a1a1a; --text-secondary: #555; --border: #e0e0e0; --accent: #2563eb; --radius: 8px; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-      padding: 24px 16px 64px;
-    }
-    .container {
-      max-width: 780px;
-      margin: 0 auto;
-    }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 32px 28px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    }
-    h1 {
-      font-size: 1.6rem;
-      margin-bottom: 6px;
-      color: #111;
-    }
-    .meta {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      margin-bottom: 28px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--border);
-    }
-    h2 {
-      font-size: 1.15rem;
-      margin: 28px 0 10px;
-      color: #222;
-    }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; padding: 24px 16px 64px; }
+    .container { max-width: 780px; margin: 0 auto; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    h1 { font-size: 1.6rem; margin-bottom: 6px; color: #111; }
+    .meta { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+    h2 { font-size: 1.15rem; margin: 28px 0 10px; color: #222; }
     p, li { font-size: 0.95rem; color: var(--text); }
     ul { padding-left: 22px; margin: 8px 0 16px; }
     li { margin-bottom: 6px; }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
-    .footer-note {
-      margin-top: 32px;
-      padding-top: 16px;
-      border-top: 1px solid var(--border);
-      font-size: 0.82rem;
-      color: #999;
-    }
+    .footer-note { margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 0.82rem; color: #999; }
     hr { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
   </style>
 </head>
 <body>
 <div class="container">
   <div class="card">
-
     <h1>Política de Privacidade</h1>
     <p class="meta">
-      <strong>{{NOME_EMPRESA}}</strong><br>
-      Última atualização: <strong>{{DATA_ATUALIZACAO}}</strong>
+      <strong>NOME_DA_EMPRESA</strong><br>
+      Última atualização: <strong>DATA_ATUALIZACAO</strong>
     </p>
 
     <h2>1. Compromisso com a sua Privacidade</h2>
-    <p>
-      A <strong>{{NOME_EMPRESA}}</strong> valoriza a privacidade de visitantes, clientes e parceiros.
-      Esta política descreve como tratamos informações pessoais em conformidade com a
-      <strong>Lei Geral de Proteção de Dados Pessoais (LGPD — Lei nº 13.709/2018)</strong>.
-    </p>
+    <p>A <strong>NOME_DA_EMPRESA</strong> valoriza a privacidade de visitantes, clientes e parceiros. Esta política descreve como tratamos informações pessoais em conformidade com a <strong>Lei Geral de Proteção de Dados Pessoais (LGPD — Lei nº 13.709/2018)</strong>.</p>
 
     <h2>2. Quais Dados Coletamos</h2>
     <p><strong>2.1 — Dados fornecidos voluntariamente por você:</strong></p>
     <ul>
-      <li>Nome, e-mail e telefone (quando você preenche um formulário de contato).</li>
-      <li>Mensagens enviadas via WhatsApp, Instagram Direct ou redes sociais vinculadas.</li>
+      <li>Nome, e-mail e telefone (quando você entra em contato via WhatsApp, Instagram Direct, e-mail ou redes sociais vinculadas).</li>
+      <li>Mensagens enviadas através dos canais de atendimento divulgados no site.</li>
     </ul>
-
     <p><strong>2.2 — Dados coletados automaticamente (logs passivos):</strong></p>
     <ul>
       <li>Endereço IP, data e hora de acesso, páginas visitadas, navegador e sistema operacional.</li>
-      <li>Esses dados são coletados automaticamente pelo servidor de hospedagem (GitHub Pages) e
-          são armazenados em logs por período limitado, exclusivamente para fins de segurança e
-          diagnóstico técnico.</li>
+      <li>Esses dados são coletados automaticamente pelo servidor de hospedagem (GitHub Pages) e são armazenados em logs por período limitado, exclusivamente para fins de segurança e diagnóstico técnico.</li>
     </ul>
-
     <p><strong>2.3 — O que NÃO coletamos:</strong></p>
     <ul>
       <li>Dados financeiros (cartões, contas bancárias).</li>
       <li>Dados sensíveis (origem racial, religião, saúde, orientação sexual, etc.).</li>
       <li>Dados de navegação entre sites (tracking cross-site).</li>
     </ul>
+    <p><strong>2.4 — Sobre formulários:</strong> Este site é HTML estático e <strong>não possui formulários de coleta ativa</strong> de dados. Todo contato é realizado através de canais externos (WhatsApp, Instagram, e-mail) por iniciativa do visitante. Se no futuro houver formulários, esta política será atualizada.</p>
 
     <h2>3. Cookies e Tecnologias Similares</h2>
-    <p>
-      Este site utiliza <strong>apenas cookies estritamente necessários</strong> ou,
-      quando aplicável, cookies de análise mediante consentimento explícito.
-    </p>
+    <p>Este site utiliza <strong>apenas cookies estritamente necessários</strong> ou, quando aplicável, cookies de análise mediante consentimento explícito.</p>
     <ul>
       <li><strong>Cookies de sessão:</strong> mantêm o funcionamento básico do site (não rastreiam você).</li>
-      <li><strong>Cookies analíticos (opcionais):</strong> ativados somente se você aceitar o banner de cookies,
-          utilizando Google Analytics 4 (GA4) para métricas anônimas de visitação.</li>
-      <li>Você pode gerenciar ou revogar seu consentimento a qualquer momento através do link
-          "Gerenciar Cookies" no rodapé do site.</li>
+      <li><strong>Cookies analíticos (opcionais):</strong> ativados somente se você aceitar o banner de cookies, utilizando Google Analytics 4 (GA4) para métricas anônimas de visitação.</li>
+      <li>Você pode gerenciar ou revogar seu consentimento a qualquer momento através do link "Gerenciar Cookies" no rodapé do site.</li>
     </ul>
 
     <h2>4. Finalidade do Tratamento de Dados</h2>
@@ -170,7 +113,7 @@
     <h2>5. Base Legal (LGPD)</h2>
     <p>O tratamento de dados pessoais neste site fundamenta-se nas seguintes bases legais:</p>
     <ul>
-      <li><strong>Consentimento</strong> (Art. 7º, I) — para cookies analíticos e formulários de contato.</li>
+      <li><strong>Consentimento</strong> (Art. 7º, I) — para cookies analíticos e contatos via canais externos.</li>
       <li><strong>Legítimo interesse</strong> (Art. 7º, IX) — para logs de servidor e segurança da plataforma.</li>
       <li><strong>Execução de contrato</strong> (Art. 7º, V) — para comunicação com clientes e prestação de serviços.</li>
     </ul>
@@ -186,7 +129,7 @@
     <h2>7. Retenção e Exclusão de Dados</h2>
     <ul>
       <li>Logs de servidor do GitHub Pages: retidos por prazo definido pelo GitHub (consulte a política do GitHub).</li>
-      <li>Dados de formulários: mantidos enquanto necessário para a finalidade da comunicação.</li>
+      <li>Dados de canais de contato (WhatsApp, e-mail, redes sociais): mantidos enquanto necessário para a finalidade da comunicação.</li>
       <li>Dados do GA4: retidos conforme configuração da propriedade (padrão: 14 a 26 meses).</li>
       <li>Você pode solicitar a exclusão dos seus dados a qualquer momento pelo e-mail abaixo.</li>
     </ul>
@@ -202,27 +145,17 @@
     </ul>
 
     <h2>9. Contato do Encarregado (DPO)</h2>
-    <p>
-      Para exercer seus direitos ou esclarecer dúvidas sobre esta política, entre em contato:<br>
-      📧 <strong>E-mail:</strong> <a href="mailto:{{EMAIL_CONTATO}}">{{EMAIL_CONTATO}}</a>
-    </p>
+    <p>Para exercer seus direitos ou esclarecer dúvidas sobre esta política, entre em contato:<br>📧 <strong>E-mail:</strong> <a href="mailto:EMAIL_CONTATO">EMAIL_CONTATO</a></p>
 
     <h2>10. Atualizações desta Política</h2>
-    <p>
-      Esta política pode ser atualizada periodicamente. A data da última revisão estará sempre
-      indicada no topo da página. Recomendamos a consulta regular.
-    </p>
+    <p>Esta política pode ser atualizada periodicamente. A data da última revisão estará sempre indicada no topo da página. Recomendamos a consulta regular.</p>
 
     <hr>
-
-    <p class="footer-note">
-      © {{ANO}} {{NOME_EMPRESA}} — Esta política integra o
-      <strong>Modelo de Arquitetura para Pequenos Negócios (Projeto Visibilidade)</strong>,
-      distribuído gratuitamente em
-      <a href="https://github.com/edusidegum/menu" target="_blank" rel="noopener">github.com/edusidegum/menu</a>.
-    </p>
-
+    <p class="footer-note">© <span id="ano-atual"></span> NOME_DA_EMPRESA — Esta política integra o <strong>Modelo de Arquitetura para Pequenos Negócios (Projeto Visibilidade)</strong>, distribuído gratuitamente em <a href="https://github.com/edusidegum/menu" target="_blank" rel="noopener">github.com/edusidegum/menu</a>.</p>
   </div>
 </div>
+<script>
+  document.getElementById('ano-atual').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
