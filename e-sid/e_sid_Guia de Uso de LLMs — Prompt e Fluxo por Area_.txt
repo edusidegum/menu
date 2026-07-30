@@ -1,0 +1,142 @@
+Vibe coding + revisão multi-LLM Vs4# Guia de Uso de IA/LLMs — Prompt Estruturado & Fluxo por Área
+> Versão Vs4 alinhada ao Modelo P.E.R.F.E.I.T.O. (29/07/2026)
+> Documentos base: e_sid_modelo_arquitetura_Web_perfeito_Vs4, e_Sid_Anexo_Operacional_Modelo_PERFEITO
+
+---
+
+## 1. Framework de Prompt — Metodologia P.E.R.F.E.I.T.O.
+
+O Modelo P.E.R.F.E.I.T.O. aplica-se também à engenharia de prompts. Cada letra do acrônimo mapeia uma dimensão do prompt.
+
+### P — Personalidade do Prompt
+Definir identidade, papel e especialização do LLM no início do prompt.
+Exemplo: "Arquiteto de Sistemas Web. Diagnóstico precede intervenção. Revisor crítico, não assistente prestativo."
+
+### E — Escopo e Restrições
+Stack, formato de saída, cláusulas pétreas. Exemplo: "GitHub Pages. HTML5 semântico. INP < 200ms. WCAG 2.2 AA. Sem emojis. llms.txt: não utilizado."
+
+### R — Regras de Execução
+- Proibido inventar APIs, funções, bibliotecas não verificadas
+- Proibido preencher lacunas críticas com suposição implícita
+- Se contexto insuficiente, declarar e perguntar (uma coisa por vez, com sugestão padrão)
+- Precisão > velocidade
+
+### F — Fluxo de Geração (Vibe Coding + Multi-LLM)
+1. Especificação completa (arquitetura, dados, restrições, schemas) — entrada humana
+2. Geração por LLM A — produz código/documento a partir da especificação
+3. Auto-revisão — LLM A verifica própria saída contra checklist
+4. Revisão técnica por LLM B — verifica sintaxe, schemas, restrições, edge cases
+5. Revisão de consistência por LLM C — verifica aderência à especificação original
+6. Validação técnica — Schema.org (Rich Results Test), INP, CLS, A11y
+7. Aprovação humana — validação final do supervisor
+
+### E — Estilo de Escrita
+- Tom: técnico, direto, asséptico. Proibido: "Com certeza", "Ótima pergunta", "Claro", "Entendo", "Faz sentido"
+- Formato: Markdown estruturado, semanticamente limpo, ingerível por LLMs downstream
+- Prioridade: PRECISÃO > VELOCIDADE
+
+### I — Insumos do Prompt
+- Especificação arquitetural completa (stack, schemas, restrições)
+- Dados imutáveis (conteúdo do cliente, métricas, fórmulas) — invioláveis
+- Modelos de referência (CSS, templates, exemplos)
+- Política de IA (crawlers permitidos/bloqueados, AI Overviews)
+
+### T — Template de Prompt para Vibe Coding
+
+```
+## Especificação
+[Arquitetura, stack, restrições]
+
+## Dados Imutáveis
+[Conteúdo inviolável, métricas, fórmulas]
+
+## Schema
+[Schema.org JSON-LD com mainEntity + GEO]
+
+## Design
+[Paleta, tipografia, breakpoints, Nível 5]
+
+## Entregáveis
+[Checklist de saída esperada]
+
+## Regras
+[Cláusulas pétreas, proibições, validações]
+```
+
+---
+
+## 2. Técnicas Complementares (validadas)
+
+### 2.1 Modelo A gera, Modelo B critica, Modelo C valida
+Use três LLMs em papéis complementares — não apenas dois. O terceiro modelo atua como árbitro de consistência entre especificação e entrega. Isso reduz viés de confirmação mais do que qualquer prompt individual.
+
+### 2.2 Controle de temperatura
+- Documentos formais/implementação: ~0.2 (baixa variabilidade)
+- Brainstorming criativo: ~0.8-1.0 (alta variabilidade)
+- Revisão técnica: ~0.1 (máxima determinismo)
+
+### 2.3 Contexto limpo
+Para cada novo projeto/página, inicie um chat separado. Misturar tópicos polui a janela de contexto e aumenta a chance de contaminação cruzada. Esta é uma regra operacional, não uma sugestão.
+
+---
+
+## 3. Matriz de Decisão por Área
+
+| Área | Modelos recomendados | Critério | Notas Vs4 |
+|------|---------------------|----------|-----------|
+| Aprendizado técnico | Claude, Gemini, DeepSeek-R1 | Explicação estruturada, reasoning visível | Modelos com cadeia de raciocínio exposta são superiores |
+| Pesquisa e fundamentação | Perplexity, Gemini (com grounding) | Verificação em tempo real | Claude/GPT-4 sem search alucinam com confiança |
+| Elaboração de documentos | GPT-4, Claude | Temperatura ~0.2 | Alimentar com outline antes do texto completo |
+| Programação — Geração | DeepSeek-Coder, Qwen-Coder | Velocidade, especialização | Modelos especializados para geração bruta |
+| Programação — Revisão | Claude, GPT-4, o1 | Reasoning profundo | O custo maior se justifica pela qualidade |
+| Automação/Workflow | GPT-4, Claude, Gemini | Function calling nativo | Essencial para integrar com APIs |
+| **Revisão Multi-LLM** | **3 modelos distintos** | **Viés complementar** | **LLM A gera → LLM B revisa → LLM C valida consistência** |
+
+---
+
+## 4. Regras de Ouro por Domínio (Vs4)
+
+1. **Fatos → modelo com search.** Nunca confie em conhecimento interno para informações recentes.
+2. **Código → separe geração de revisão.** Especializado para gerar, reasoning forte para revisar.
+3. **Documentos formais → temperatura baixa + outline primeiro.**
+4. **Vibe Coding → especificação completa antes de qualquer geração.** Sem especificação, não há o que validar.
+5. **Revisão multi-LLM → três modelos, não dois.** Geração + Revisão Técnica + Validação de Consistência.
+6. **Sempre que possível, use o Modelo P.E.R.F.E.I.T.O. como framework de prompt.**
+7. **Contexto limpo por projeto.** Um chat por pasta/página.
+
+---
+
+## 5. Checklist de Validação de Prompt (Vs4)
+
+Antes de enviar um prompt, verificar:
+
+- [ ] Identidade e papel definidos no início (P)
+- [ ] Stack e restrições explicitadas (E)
+- [ ] Regras de execução claras (R)
+- [ ] Fluxo de geração e revisão definido (F)
+- [ ] Tom técnico e direto — sem validação social (E)
+- [ ] Dados imutáveis separados do conteúdo gerável (I)
+- [ ] Template de saída especificado (T)
+- [ ] Cláusulas pétreas listadas
+- [ ] Proibido linguagem de validação social ("ótima pergunta", "claro", "com certeza")
+- [ ] Proibido suposições não verificadas tratadas como fato
+- [ ] Prompt é autossuficiente — não depende de contexto externo não fornecido
+- [ ] Temperatura ajustada ao objetivo do prompt
+- [ ] Se tarefa crítica, plano de revisão multi-LLM definido
+- [ ] Contexto limpo — chat específico para esta tarefa
+
+---
+
+## 6. Stack 2026 (Referência para Prompts de Projetos Web)
+
+GitHub Pages (estático). HTML5 semântico. CSS3 utility-first leve. Schema.org (LocalBusiness, Product, Service, FAQ, Article, WebPage + mainEntity). Core Web Vitals (INP < 200ms). WCAG 2.2 AA. llms.txt: não utilizado. Repositório central: edusidegum.github.io/menu/. GEO: JSON-LD com PostalAddress + GeoCoordinates. AIO: factual density markers. Robots.txt multi-agente (GPTBot, Claude-Web, Google-Extended, CCBot, PerplexityBot).
+
+---
+
+## 7. Ecossistema de Documentos (Ordem de Consulta)
+
+1. e_Sid_Documento_Proposta_Implementacao — briefing do projeto (obrigatório primeiro)
+2. e_sid_modelo_arquitetura_Web_perfeito_Vs4 — modelo P.E.R.F.E.I.T.O. completo
+3. e_sid_modelo_Templates_arquitetura_Web_perfeito_Vs4 — templates de código
+4. e_Sid_Anexo_Operacional_Modelo_PERFEITO — refinamentos operacionais
+5. e_Sid_ecossitema_HLF — especificação do ecossistema HLFPensei

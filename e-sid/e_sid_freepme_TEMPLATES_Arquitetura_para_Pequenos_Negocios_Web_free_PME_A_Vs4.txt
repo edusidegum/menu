@@ -1,0 +1,582 @@
+Documento analisado contra a v2.3. 2 erros encontrados — ambos já identificados na revisão anterior e corrigidos no documento v2.3, mas não aplicados nos arquivos do repositório que compõem este documento.
+
+
+Erros no documento enviado
+
+🔴 Erro 1 — bloco-incluir.js ainda usa console.warn
+
+Local: seção 4, todas as funções catch/onerror
+
+O repositório ainda tem console.warn em 7 ocorrências. A v2.3 determinou console.log para não alarmar usuários no DevTools.
+
+🔴 Erro 2 — bloco-protecao.js ainda bloqueia Ctrl+S e Ctrl+P
+
+Local: seção 5, linhas 83 e 80
+
+if (e.ctrlKey && e.keyCode === 83) { e.preventDefault(); return false; } // Ctrl+S
+if (e.ctrlKey && e.keyCode === 80) { e.preventDefault(); return false; } // Ctrl+P
+
+A v2.3 removeu estes bloqueios — não agregam segurança e prejudicam UX.
+
+
+Documento corrigido abaixo com as 2 alterações aplicadas (nada mais foi alterado).
+
+
+freepme — Arquivos Genéricos (Templates)
+
+Repositório: https://github.com/edusidegum/menu/freepme/
+Modelos prontos para qualquer projeto do ecossistema. Todos os projetos apontam para esta subpasta.
+
+
+Estrutura
+
+menu/
+└── freepme/
+    ├── politicadeprivacidade.html   ← LGPD genérica (copiar como privacidade.html no projeto)
+    ├── bloco-cookies.html           ← Banner de cookies (injetado)
+    ├── bloco-ga4-gtm.html           ← GA4 + GTM condicional (injetado)
+    ├── bloco-incluir.js             ← Motor de injeção v2.3 (console.log)
+    ├── bloco-protecao.js            ← Proteção anti-cópia v2.3 (sem Ctrl+S/P)
+    └── README.md                    ← Este arquivo
+
+Arquivos obrigatórios na raiz de cada projeto (não estão no freepme/, mas devem ser criados):
+
+meu-projeto/
+├── .nojekyll          ← Arquivo VAZIO — desativa o Jekyll (obrigatório!)
+├── _config.yml        ← Configuração mínima do GitHub Pages
+├── index.html
+├── nativa.html
+├── privacidade.html   ← Cópia de freepme/politicadeprivacidade.html com placeholders substituídos
+├── robots.txt
+├── llms.txt
+└── sitemap.xml
+
+Por que .nojekyll é obrigatório: O GitHub Pages processa sites via Jekyll por padrão. O Jekyll (Liquid) interpreta {{ }} como variáveis de template e quebra placeholders como {{URL_POLITICA}}. O arquivo .nojekyll (vazio) desativa completamente o Jekyll e serve os arquivos como HTML estático puro. Sem ele, o site pode quebrar silenciosamente.
+
+
+
+
+Como usar em qualquer projeto
+
+Adicione uma única linha no <head> do index.html:
+
+<script src="https://edusidegum.github.io/menu/freepme/bloco-incluir.js" defer></script>
+
+Isso automaticamente:
+
+# Funcionalidade Condição
+1 Banner de cookies (LGPD) Sempre
+2 GA4 + GTM Só carrega após aceite de cookies
+3 Link "Política de Privacidade" no rodapé Sempre
+4 Crédito "Projeto Visibilidade — por Eduardo Sidegum" Sempre (configurável via meta tag)
+5 Proteção anti-cópia Se houver <meta name="protecao-copia" content="true">
+
+
+Placeholders para substituir
+
+Formato padronizado: todos os placeholders usam NOME_EM_MAIUSCULAS (sem {{}}), compatível com ou sem .nojekyll.
+
+Arquivo Placeholder Descrição
+politicadeprivacidade.html NOME_DA_EMPRESA Nome do negócio
+politicadeprivacidade.html EMAIL_CONTATO E-mail de contato (DPO)
+politicadeprivacidade.html DATA_ATUALIZACAO Data da última revisão (ex: 27/07/2026)
+politicadeprivacidade.html URL_BASE URL raiz do projeto
+bloco-ga4-gtm.html GTM_ID ID do Google Tag Manager (ex: GTM-XXXXXXX)
+bloco-ga4-gtm.html GA4_MEASUREMENT_ID ID do GA4 (ex: G-XXXXXXXXXX)
+
+Nota sobre {{URL_POLITICA}} no bloco-cookies.html: este placeholder usa {{}} porque é substituído em tempo de execução pelo bloco-incluir.js (regex), não em tempo de build. Não requer .nojekyll porque o arquivo é carregado via fetch(), não processado pelo Jekyll.
+
+
+
+Nota sobre o ano: o rodapé da politicadeprivacidade.html gera o ano dinamicamente via JavaScript (new Date().getFullYear()). Nenhum placeholder de ano é necessário.
+
+
+
+
+Nomenclatura dos arquivos
+
+Arquivo no freepme/ (fonte) Arquivo no projeto do cliente (destino)
+politicadeprivacidade.html privacidade.html
+
+Regra: o template fonte mantém o nome longo em freepme/. Ao copiar para o projeto do cliente, renomear para privacidade.html. O bloco-incluir.js já aponta para /privacidade.html (via window.location.origin).
+
+
+Diagrama de Injeção
+
+bloco-incluir.js (carregado no <head>)
+ │
+ ├─[1] fetch bloco-cookies.html → injeta no <body>  [try/catch — log silencioso]
+ │      └─ Se aceito: dispara evento lgpd_cookies_aceitos
+ │
+ ├─[2] fetch bloco-ga4-gtm.html → injeta no <head>  [try/catch — log silencioso]
+ │      └─ Internamente verifica localStorage lgpd_cookies === 'aceitos'
+ │
+ ├─[3] Cria/usa <footer> com link para /privacidade.html  [null check]
+ │
+ ├─[4] Adiciona crédito "Projeto Visibilidade — por Eduardo Sidegum"  [null check]
+ │
+ └─[5] Se <meta name="protecao-copia" content="true"> → carrega bloco-protecao.js
+
+
+Indexação — Nota Importante
+
+bloco-protecao.js bloqueia apenas interações de UI (botão direito, teclas, seleção). NÃO afeta indexação. Googlebot, Bingbot e crawlers de IA ignoram bloqueios de UI e leem o HTML estático normalmente.
+privacidade.html (cópia de politicadeprivacidade.html) usa noindex, follow para não competir com a página principal nos rankings.
+bloco-protecao.js não interage com o <footer> — apenas adiciona event listeners e um <style>. Não requer null check de footer.
+
+
+Licença: MIT — uso livre para qualquer pequeno negócio.
+Mantenedor: Eduardo Sidegum — github.com/edusidegum
+
+
+Templates
+
+1. politicadeprivacidade.html
+
+<!--
+  Arquivo: politicadeprivacidade.html (fonte em freepme/)
+  Destino: privacidade.html (na raiz do projeto do cliente)
+  Projeto: freepme — Templates Genéricos para Pequenos Negócios
+  Repositório: https://github.com/edusidegum/menu/freepme/
+  Adaptações: Placeholders padronizados (NOME_DA_EMPRESA, EMAIL_CONTATO, DATA_ATUALIZACAO, URL_BASE).
+               JSON-LD padronizado para schema.org/Organization.
+               Seção de formulários removida (modelo é HTML estático puro).
+               Ano gerado dinamicamente via JavaScript.
+               Contém noindex, follow para não competir com a página principal do negócio.
+  Uso:       Copiar para a raiz do projeto como privacidade.html.
+               Substituir placeholders e salvar.
+  Licença:   MIT — uso livre para qualquer pequeno negócio.
+-->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Privacidade — NOME_DA_EMPRESA</title>
+  <meta name="robots" content="noindex, follow">
+  <meta name="description" content="Política de Privacidade da NOME_DA_EMPRESA, em conformidade com a Lei Geral de Proteção de Dados (LGPD — Lei 13.709/2018).">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Política de Privacidade — NOME_DA_EMPRESA">
+  <meta property="og:description" content="Saiba como tratamos seus dados pessoais conforme a LGPD.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="URL_BASE/privacidade.html">
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>🔒</text></svg>">
+  <!-- JSON-LD: Schema.org WebPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Política de Privacidade — NOME_DA_EMPRESA",
+    "url": "URL_BASE/privacidade.html",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "NOME_DA_EMPRESA",
+      "url": "URL_BASE/"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "Privacidade e Proteção de Dados"
+    }
+  }
+  </script>
+  <style>
+    :root { --bg: #fafafa; --card: #ffffff; --text: #1a1a1a; --text-secondary: #555; --border: #e0e0e0; --accent: #2563eb; --radius: 8px; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; padding: 24px 16px 64px; }
+    .container { max-width: 780px; margin: 0 auto; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    h1 { font-size: 1.6rem; margin-bottom: 6px; color: #111; }
+    .meta { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+    h2 { font-size: 1.15rem; margin: 28px 0 10px; color: #222; }
+    p, li { font-size: 0.95rem; color: var(--text); }
+    ul { padding-left: 22px; margin: 8px 0 16px; }
+    li { margin-bottom: 6px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .footer-note { margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 0.82rem; color: #999; }
+    hr { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="card">
+    <h1>Política de Privacidade</h1>
+    <p class="meta">
+      <strong>NOME_DA_EMPRESA</strong><br>
+      Última atualização: <strong>DATA_ATUALIZACAO</strong>
+    </p>
+    <h2>1. Compromisso com a sua Privacidade</h2>
+    <p>A <strong>NOME_DA_EMPRESA</strong> valoriza a privacidade de visitantes, clientes e parceiros. Esta política descreve como tratamos informações pessoais em conformidade com a <strong>Lei Geral de Proteção de Dados Pessoais (LGPD — Lei nº 13.709/2018)</strong>.</p>
+    <h2>2. Quais Dados Coletamos</h2>
+    <p><strong>2.1 — Dados fornecidos voluntariamente por você:</strong></p>
+    <ul>
+      <li>Nome, e-mail e telefone (quando você entra em contato via WhatsApp, Instagram Direct, e-mail ou redes sociais vinculadas).</li>
+      <li>Mensagens enviadas através dos canais de atendimento divulgados no site.</li>
+    </ul>
+    <p><strong>2.2 — Dados coletados automaticamente (logs passivos):</strong></p>
+    <ul>
+      <li>Endereço IP, data e hora de acesso, páginas visitadas, navegador e sistema operacional.</li>
+      <li>Esses dados são coletados automaticamente pelo servidor de hospedagem (GitHub Pages) e são armazenados em logs por período limitado, exclusivamente para fins de segurança e diagnóstico técnico.</li>
+    </ul>
+    <p><strong>2.3 — O que NÃO coletamos:</strong></p>
+    <ul>
+      <li>Dados financeiros (cartões, contas bancárias).</li>
+      <li>Dados sensíveis (origem racial, religião, saúde, orientação sexual, etc.).</li>
+      <li>Dados de navegação entre sites (tracking cross-site).</li>
+    </ul>
+    <p><strong>2.4 — Sobre formulários:</strong> Este site é HTML estático e <strong>não possui formulários de coleta ativa</strong> de dados. Todo contato é realizado através de canais externos (WhatsApp, Instagram, e-mail) por iniciativa do visitante. Se no futuro houver formulários, esta política será atualizada.</p>
+    <h2>3. Cookies e Tecnologias Similares</h2>
+    <p>Este site utiliza <strong>apenas cookies estritamente necessários</strong> ou, quando aplicável, cookies de análise mediante consentimento explícito.</p>
+    <ul>
+      <li><strong>Cookies de sessão:</strong> mantêm o funcionamento básico do site (não rastreiam você).</li>
+      <li><strong>Cookies analíticos (opcionais):</strong> ativados somente se você aceitar o banner de cookies, utilizando Google Analytics 4 (GA4) para métricas anônimas de visitação.</li>
+      <li>Você pode gerenciar ou revogar seu consentimento a qualquer momento através do link "Gerenciar Cookies" no rodapé do site.</li>
+    </ul>
+    <h2>4. Finalidade do Tratamento de Dados</h2>
+    <ul>
+      <li>Responder a solicitações de contato e orçamento.</li>
+      <li>Melhorar a experiência de navegação (métricas agregadas via GA4, quando consentido).</li>
+      <li>Cumprir obrigações legais ou regulatórias.</li>
+      <li>Garantir a segurança da plataforma (prevenção a fraudes e ataques).</li>
+    </ul>
+    <h2>5. Base Legal (LGPD)</h2>
+    <p>O tratamento de dados pessoais neste site fundamenta-se nas seguintes bases legais:</p>
+    <ul>
+      <li><strong>Consentimento</strong> (Art. 7º, I) — para cookies analíticos e contatos via canais externos.</li>
+      <li><strong>Legítimo interesse</strong> (Art. 7º, IX) — para logs de servidor e segurança da plataforma.</li>
+      <li><strong>Execução de contrato</strong> (Art. 7º, V) — para comunicação com clientes e prestação de serviços.</li>
+    </ul>
+    <h2>6. Compartilhamento de Dados</h2>
+    <p>Seus dados <strong>não são vendidos, alugados ou compartilhados</strong> com terceiros para fins comerciais. Eventuais compartilhamentos ocorrem apenas:</p>
+    <ul>
+      <li>Com o GitHub (hospedagem) — logs de acesso padrão.</li>
+      <li>Com o Google (análise) — somente se você consentir com os cookies analíticos.</li>
+      <li>Por determinação legal ou ordem judicial.</li>
+    </ul>
+    <h2>7. Retenção e Exclusão de Dados</h2>
+    <ul>
+      <li>Logs de servidor do GitHub Pages: retidos por prazo definido pelo GitHub (consulte a política do GitHub).</li>
+      <li>Dados de canais de contato (WhatsApp, e-mail, redes sociais): mantidos enquanto necessário para a finalidade da comunicação.</li>
+      <li>Dados do GA4: retidos conforme configuração da propriedade (padrão: 14 a 26 meses).</li>
+      <li>Você pode solicitar a exclusão dos seus dados a qualquer momento pelo e-mail abaixo.</li>
+    </ul>
+    <h2>8. Seus Direitos (LGPD — Art. 18)</h2>
+    <ul>
+      <li>Confirmar a existência de tratamento de dados.</li>
+      <li>Acessar seus dados pessoais.</li>
+      <li>Corrigir dados incompletos, inexatos ou desatualizados.</li>
+      <li>Solicitar a eliminação dos dados tratados com consentimento.</li>
+      <li>Revogar o consentimento a qualquer momento.</li>
+      <li>Solicitar a portabilidade dos dados a outro fornecedor.</li>
+    </ul>
+    <h2>9. Contato do Encarregado (DPO)</h2>
+    <p>Para exercer seus direitos ou esclarecer dúvidas sobre esta política, entre em contato:<br>📧 <strong>E-mail:</strong> <a href="mailto:EMAIL_CONTATO">EMAIL_CONTATO</a></p>
+    <h2>10. Atualizações desta Política</h2>
+    <p>Esta política pode ser atualizada periodicamente. A data da última revisão estará sempre indicada no topo da página. Recomendamos a consulta regular.</p>
+    <hr>
+    <p class="footer-note">© <span id="ano-atual"></span> NOME_DA_EMPRESA — Esta política integra o <strong>Modelo de Arquitetura para Pequenos Negócios (Projeto Visibilidade)</strong>, distribuído gratuitamente em <a href="https://github.com/edusidegum/menu" target="_blank" rel="noopener">github.com/edusidegum/menu</a>.</p>
+  </div>
+</div>
+<script>
+  document.getElementById('ano-atual').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
+
+
+2. bloco-cookies.html
+
+<!--
+  Arquivo: bloco-cookies.html
+  Projeto: freepme — Templates Genéricos para Pequenos Negócios
+  Repositório: https://github.com/edusidegum/menu/freepme/
+  Adaptações: {{URL_POLITICA}} é placeholder de RUNTIME (substituído via regex pelo bloco-incluir.js).
+               Não requer .nojekyll porque é carregado via fetch(), não processado pelo Jekyll.
+  Uso:       Injetado via bloco-incluir.js. Não requer edição manual.
+  Licença:   MIT
+-->
+<div id="cookie-banner" style="
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: #ffffff; border-top: 1px solid #e0e0e0;
+  box-shadow: 0 -2px 12px rgba(0,0,0,0.08); padding: 16px 20px;
+  z-index: 99999; display: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.9rem; color: #333; line-height: 1.5;">
+  <div style="max-width: 960px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px;">
+    <div style="flex: 1 1 300px;">
+      🍪 Este site utiliza cookies para melhorar sua experiência.
+      Ao continuar navegando, você concorda com nossa
+      <a href="{{URL_POLITICA}}" style="color: #2563eb; text-decoration: underline; font-weight: 500;">Política de Privacidade</a>.
+      <span style="display: block; margin-top: 2px; font-size: 0.8rem; color: #888;">
+        Cookies analíticos (GA4) são ativados apenas com seu consentimento.
+      </span>
+    </div>
+    <div style="display: flex; gap: 8px; flex-shrink: 0;">
+      <button id="cookie-reject" style="background: #f5f5f5; color: #555; border: 1px solid #ddd; padding: 9px 18px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; font-weight: 500; transition: background 0.2s;">Apenas Necessários</button>
+      <button id="cookie-accept" style="background: #2563eb; color: #fff; border: none; padding: 9px 18px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; font-weight: 500; transition: background 0.2s;">Aceitar Todos</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var banner = document.getElementById('cookie-banner');
+  if (!banner) return;
+  if (localStorage.getItem('lgpd_cookies') === null) {
+    banner.style.display = 'block';
+  }
+  function hideBanner() { banner.style.display = 'none'; }
+  document.getElementById('cookie-accept').addEventListener('click', function(){
+    localStorage.setItem('lgpd_cookies', 'aceitos');
+    window.dispatchEvent(new CustomEvent('lgpd_cookies_aceitos'));
+    hideBanner();
+  });
+  document.getElementById('cookie-reject').addEventListener('click', function(){
+    localStorage.setItem('lgpd_cookies', 'rejeitados');
+    hideBanner();
+  });
+})();
+</script>
+
+
+3. bloco-ga4-gtm.html
+
+<!--
+  Arquivo: bloco-ga4-gtm.html
+  Projeto: freepme — Templates Genéricos para Pequenos Negócios
+  Adaptações: Placeholders padronizados (GTM_ID, GA4_MEASUREMENT_ID).
+               O GTM e o GA4 só são carregados após consentimento explícito de cookies.
+  Uso:       Injetado via bloco-incluir.js. Substituir placeholders pelos IDs do projeto.
+  Licença:   MIT
+-->
+<script>
+(function(){
+  if (localStorage.getItem('lgpd_cookies') !== 'aceitos') return;
+  (function(w,d,s,l,i){
+    w[l]=w[l]||[];
+    w[l].push({'gtm.start': new Date().getTime(), event:'gtm.js'});
+    var f=d.getElementsByTagName(s)[0], j=d.createElement(s), dl=l!='dataLayer'?'&l='+l:'';
+    j.async=true; j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+    f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM_ID');
+  var gtagScript = document.createElement('script');
+  gtagScript.async = true;
+  gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=GA4_MEASUREMENT_ID';
+  document.head.appendChild(gtagScript);
+  gtagScript.onload = function(){
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'GA4_MEASUREMENT_ID', { anonymize_ip: true, cookie_flags: 'SameSite=None;Secure' });
+  };
+})();
+</script>
+<noscript id="gtm-noscript" style="display:none;">
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM_ID" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<script>
+(function(){
+  if (localStorage.getItem('lgpd_cookies') === 'aceitos') {
+    var ns = document.getElementById('gtm-noscript');
+    if (ns) ns.style.display = '';
+  }
+})();
+</script>
+
+
+4. bloco-incluir.js — v2.3
+
+/**
+ * bloco-incluir.js  —  v2.3
+ * Projeto: freepme — Templates Genéricos para Pequenos Negócios
+ * Repositório: https://github.com/edusidegum/menu/freepme/
+ *
+ * Correções v2.3:
+ *   - console.warn substituído por console.log em todas as funções
+ *
+ * Inclui: cookies, GA4/GTM condicional, link política LGPD, crédito autor.
+ * Proteção anti-cópia APENAS se <meta name="protecao-copia" content="true">.
+ *
+ * Uso: <script src="https://edusidegum.github.io/menu/freepme/bloco-incluir.js" defer></script>
+ * Licença: MIT
+ */
+(function(){
+  'use strict';
+  var BASE = 'https://edusidegum.github.io/menu/freepme/';
+
+  function getOrCreateFooter() {
+    var footer = document.querySelector('footer');
+    if (!footer) {
+      footer = document.createElement('footer');
+      footer.style.cssText = 'text-align:center;padding:24px 16px;font-size:0.82rem;color:#999;border-top:1px solid #e0e0e0;margin-top:40px;';
+      document.body.appendChild(footer);
+    }
+    return footer;
+  }
+
+  function injectCookies() {
+    try {
+      var div = document.createElement('div');
+      div.id = 'bloco-cookies-container';
+      document.body.appendChild(div);
+      fetch(BASE + 'bloco-cookies.html')
+        .then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+        .then(function(html){
+          var urlPolitica = window.location.origin + '/privacidade.html';
+          html = html.replace(/\{\{URL_POLITICA\}\}/g, urlPolitica);
+          div.innerHTML = html;
+          var scripts = div.querySelectorAll('script');
+          scripts.forEach(function(s){
+            var ns = document.createElement('script');
+            if (s.src) ns.src = s.src; else ns.textContent = s.textContent;
+            document.body.appendChild(ns);
+          });
+        })
+        .catch(function(err){ console.log('[freepme] bloco-cookies:', err.message); });
+    } catch(e) { console.log('[freepme] Erro cookies:', e.message); }
+  }
+
+  function injectGA4GTM() {
+    try {
+      fetch(BASE + 'bloco-ga4-gtm.html')
+        .then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+        .then(function(html){
+          var div = document.createElement('div');
+          div.style.display = 'none';
+          div.innerHTML = html;
+          document.head.appendChild(div);
+          var scripts = div.querySelectorAll('script');
+          scripts.forEach(function(s){
+            var ns = document.createElement('script');
+            if (s.src) ns.src = s.src; else ns.textContent = s.textContent;
+            document.head.appendChild(ns);
+          });
+        })
+        .catch(function(err){ console.log('[freepme] bloco-ga4-gtm:', err.message); });
+    } catch(e) { console.log('[freepme] Erro GA4:', e.message); }
+  }
+
+  function injectLinkPolitica() {
+    try {
+      var footer = getOrCreateFooter();
+      var ld = document.createElement('div');
+      ld.style.marginBottom = '8px';
+      ld.innerHTML = '<a href="/privacidade.html" style="color:#2563eb;text-decoration:none;font-weight:500;">Política de Privacidade (LGPD)</a>';
+      footer.insertBefore(ld, footer.firstChild);
+    } catch(e) { console.log('[freepme] Erro link LGPD:', e.message); }
+  }
+
+  function injectCreditoAutor() {
+    try {
+      var metaCredito = document.querySelector('meta[name="credito-autor"]');
+      if (metaCredito && metaCredito.getAttribute('content') === 'false') return;
+      var footer = getOrCreateFooter();
+      var textoCredito = (metaCredito && metaCredito.getAttribute('content') !== 'true')
+        ? metaCredito.getAttribute('content')
+        : 'Projeto Visibilidade — por Eduardo Sidegum';
+      var credito = document.createElement('div');
+      credito.style.cssText = 'margin-top:6px;font-size:0.78rem;color:#aaa;';
+      credito.innerHTML = textoCredito + ' <a href="https://edusidegum.github.io/edusidegum/" target="_blank" rel="noopener" style="color:#2563eb;text-decoration:none;font-weight:500;" title="Eduardo Sidegum — Portfólio">🔗</a>';
+      footer.appendChild(credito);
+    } catch(e) { console.log('[freepme] Erro crédito:', e.message); }
+  }
+
+  function injectProtecao() {
+    try {
+      var meta = document.querySelector('meta[name="protecao-copia"]');
+      if (!meta || meta.getAttribute('content') !== 'true') return;
+      var script = document.createElement('script');
+      script.src = BASE + 'bloco-protecao.js';
+      script.defer = true;
+      script.onerror = function(){ console.log('[freepme] bloco-protecao não carregado.'); };
+      document.head.appendChild(script);
+    } catch(e) { console.log('[freepme] Erro proteção:', e.message); }
+  }
+
+  function init() {
+    injectCookies();
+    injectGA4GTM();
+    injectLinkPolitica();
+    injectCreditoAutor();
+    injectProtecao();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else { init(); }
+})();
+
+Alteração v2.3: todos os console.warn substituídos por console.log.
+
+
+
+
+5. bloco-protecao.js — v2.3
+
+/**
+ * bloco-protecao.js  —  v2.3
+ * Projeto: freepme — Templates Genéricos para Pequenos Negócios
+ * Repositório: https://github.com/edusidegum/menu/freepme/
+ *
+ * ⚠️ NÃO AFETA INDEXAÇÃO:
+ *    - Googlebot, Bingbot e crawlers de IA ignoram bloqueios de UI.
+ *    - Atua apenas no navegador do usuário humano (botão direito, teclas, seleção, arraste).
+ *    - NÃO interage com o <footer> — apenas event listeners e <style>.
+ *
+ * Correções v2.3:
+ *   - Bloqueios Ctrl+S (salvar) e Ctrl+P (imprimir) removidos.
+ *     Não agregam segurança real, prejudicam UX do visitante.
+ *
+ * Ativado por: <meta name="protecao-copia" content="true">
+ * Uso: Injetado automaticamente via bloco-incluir.js (item 5).
+ * Licença: MIT
+ */
+(function(){
+  'use strict';
+
+  // Bloquear botão direito
+  document.addEventListener('contextmenu', function(e){
+    e.preventDefault(); return false;
+  });
+
+  // Bloquear teclas de desenvolvedor
+  document.addEventListener('keydown', function(e){
+    if (e.keyCode === 123) { e.preventDefault(); return false; } // F12
+    if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) {
+      e.preventDefault(); return false; // Ctrl+Shift+I/J/C
+    }
+    if (e.ctrlKey && e.keyCode === 85) { e.preventDefault(); return false; } // Ctrl+U
+  });
+
+  // Bloquear Ctrl+A (seleção total) em não-inputs
+  document.addEventListener('keydown', function(e){
+    if (e.ctrlKey && e.keyCode === 65) {
+      var tag = (e.target.tagName || '').toLowerCase();
+      if (tag === 'input' || tag === 'textarea') return;
+      e.preventDefault(); return false;
+    }
+  });
+
+  // Bloquear arraste
+  document.addEventListener('dragstart', function(e){
+    e.preventDefault(); return false;
+  });
+
+  // CSS: desabilitar seleção
+  var style = document.createElement('style');
+  style.textContent = 'body { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; } input, textarea, [contenteditable] { -webkit-user-select: text; -moz-user-select: text; -ms-user-select: text; user-select: text; }';
+  document.head.appendChild(style);
+  console.log('[freepme] Proteção anti-cópia ativada. Indexação NÃO afetada.');
+})();
+
+Alteração v2.3: linhas Ctrl+S (keyCode 83) e Ctrl+P (keyCode 80) removidas.
+
+
+
+
+6. README.md
+
+(Conteúdo acima, da linha 1 até a linha que antecede "# Templates", é o README.md)
+
+
+Versão final revisada v2.3. As duas correções aplicadas exclusivamente foram: console.warn → console.log no bloco-incluir.js e remoção de Ctrl+S/Ctrl+P no bloco-protecao.js. Nenhuma outra alteração.

@@ -1,0 +1,16 @@
+Etapa 0 — Briefing Obrigatório (antes de qualquer execução)
+Solicitar o e_Sid_Documento_Proposta_Implementacao preenchido. O documento consolida todas as decisões de briefing: BASE_URL, BASE_PATH, tipo de projeto (pessoal ou terceiros), menu compartilhado ou específico, footer central ou local, repositório central ou artefatos locais, legais centralizados ou específicos, tema CSS, público-alvo, integrações e conformidade legal. Nenhuma linha de código deve ser escrita antes deste briefing estar registrado.
+Etapa 1 — Diagnóstico Técnico
+Entender o sistema antes de intervir. Separar problema principal de sintomas. Listar restrições técnicas e dependências.
+Etapa 2 — Planejamento
+Quebrar a demanda em subtarefas. Definir ordem de execução. Escolher abordagem mais simples viável.
+Etapa 3 — Ativação dos Componentes
+Importar scripts core do repositório central (edusidegum.github.io/menu/scripts/bloco-incluir.js e bloco-protecao.js). Incluir módulos de tracking e legais conforme decisões do briefing.
+Etapa 4 — Execução por Página
+Seguir a ordem: style.css → bloco-incluir.js → index.html → demais páginas.
+Etapa 5 — Auto-Revisão
+Verificar: a resposta resolveu o problema? Suposição não verificada tratada como fato? Riscos técnicos não mencionados? Formato de saída correto?
+Etapa 6 — Revisão Multi-LLM
+Submeter a saída a pelo menos 2 LLMs distintos antes da aprovação humana final.
+Etapa 7 — Aprovação Humana
+Apresentar resultado. Explicitar critério de teste. Permitir validação externa.

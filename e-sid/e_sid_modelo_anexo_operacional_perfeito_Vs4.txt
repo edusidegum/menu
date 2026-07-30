@@ -1,0 +1,138 @@
+Eduardo Sidegum — e-Sid Tech
+
+E_SID_ANEXO_OPERACIONAL_MODELO_PERFEITO
+
+Anexo Operacional ao Modelo P.E.R.F.E.I.T.O. — Ampliações e Refinamentos de Projetos Reais
+
+29 de julho de 2026
+
+---
+
+### 1. Capítulo 1 — Arquitetura de Includes e Repositório Central
+
+Este capítulo estabelece a governança técnica para o uso de componentes compartilhados, garantindo que a manutenção de scripts e módulos legais seja centralizada e eficiente para todo o ecossistema de projetos.
+
+#### 1.1 Repositório Central de Componentes
+
+O repositório github.com/edusidegum/menu (publicado em edusidegum.github.io/menu/) é a fonte única e centralizada para scripts core (bloco-incluir.js, bloco-protecao.js), módulos de tracking (bloco-cookies.html, bloco-ga4-gtm.html) e documentos legais (politicadeprivacidade.html, Termos_de_Uso_e_Identificacao_Eduardo_Sidegum.html).
+
+
+Regra de path: Usar SEMPRE https://edusidegum.github.io/menu/scripts/ — NUNCA o link "raw" do GitHub. A URL raw apresenta maior latência e não se beneficia do cache do GitHub Pages.
+
+
+#### 1.2 Decisão de Briefing — Menu e Footer
+
+Antes da implementação, as seguintes definições operacionais devem ser respondidas:
+
+1.  **O MENU é compartilhado ou específico?** Se compartilhado, o bloco-incluir injeta o menu padrão central. Se específico, o projeto fornece o header local.
+2.  **O FOOTER será compartilhado?** Recomenda-se o uso do footer central para garantir consistência de rastreamento e autoridade.
+3.  **O projeto é Pessoal ou de Terceiros?** Projetos pessoais utilizam os documentos legais de Eduardo Sidegum; projetos de terceiros seguem as definições contratuais específicas.
+
+#### 1.3 Temas CSS
+
+Três temas base estão disponíveis no repositório central para garantir agilidade visual:
+
+*   style_green.css: Padrão para o ecossistema HLF.
+*   style_white.css: Estilo clean institucional.
+*   style_black.css: Configuração para Dark Mode.
+
+---
+
+### 2. Capítulo 2 — Estratégia de Autoridade por Tipo de Projeto
+
+A definição da autoridade digital varia conforme a natureza do projeto, impactando diretamente o SEO e a percepção de confiança do usuário.
+
+#### 2.1 Link de Autoridade
+
+*   Projeto Pessoal (Eduardo): Apontar para https://edusidegum.github.io/edusidegum/sobre.html.
+*   Projeto de Terceiros: Apontar para https://edusidegum.github.io/edusidegum/index.html como referência institucional do desenvolvedor.
+
+#### 2.2 Rodapé e Documentos Legais
+
+Em projetos pessoais, é obrigatória a exibição da data de publicação no formato "Desenvolvido em dd/mm/aaaa" e o uso dos documentos legais centralizados. Em projetos de terceiros, a identificação segue o contrato, podendo ser necessário criar um include legal específico para o cliente.
+
+---
+
+### 3. Capítulo 3 — CSS Reset e Consistência Visual
+
+Para evitar que estilos inline gerados por ferramentas de IA comprometam a identidade visual (especialmente em temas escuros), deve-se aplicar um reset forte no início do arquivo CSS.
+
+```css
+body {
+  background-color: #0a0e17 !important;
+  color: #e2e8f0;
+}
+.card, .card-body, [class*="card"] {
+  color: #e2e8f0 !important;
+}
+```
+
+---
+
+### 4. Capítulo 4 — Otimizações de Performance
+
+Além das métricas padrão de Core Web Vitals, este capítulo foca em técnicas avançadas para redução de carga e melhoria da interatividade (INP).
+
+#### 4.1 YouTube Embed com Thumbnail Lazy Load
+
+Substituir o carregamento direto de iframes por uma miniatura estática que carrega o vídeo apenas sob demanda. Esta técnica reduz o payload inicial em aproximadamente 940KB e melhora significativamente o TBT.
+
+```html
+'">
+  
+  ▶️
+
+```
+
+#### 4.2 Animações Compositáveis via GPU
+
+Evitar animações que causem reflow (como background-position). Utilizar transform para garantir que a animação seja processada pela GPU, mantendo a fluidez da página.
+
+---
+
+### 5. Capítulo 5 — Página de Redirect com SEO
+
+Páginas de redirecionamento (meta refresh) devem conter metadados completos. O Googlebot processa o cabeçalho antes de seguir o redirecionamento, permitindo a indexação correta da autoridade da página.
+
+
+"O redirecionamento instantâneo (content=0) não prejudica a indexação, desde que as tags canônicas e o JSON-LD estejam presentes e corretos."
+
+
+---
+
+### 6. Capítulo 6 — Vínculo de Entidade Externa (sameAs)
+
+Para reforçar os sinais de E-E-A-T (Experiência, Especialidade, Autoridade e Confiança), deve-se declarar formalmente os perfis externos vinculados à entidade no bloco JSON-LD.
+
+```json
+"sameAs": [
+  "https://catalogoherbalife.com.br/edusidegum",
+  "https://instagram.com/edusidegum",
+  "https://facebook.com/edusidegum",
+  "https://twitter.com/edusidegum"
+]
+```
+
+---
+
+### 7. Capítulo 7 — Sitemap e Segurança
+
+Cada repositório deve possuir seu próprio sitemap.xml na raiz, listando apenas páginas indexáveis. Quanto à segurança, é terminantemente proibido o download direto de executáveis em páginas públicas; tais arquivos devem ser restritos a páginas de instrução técnica, acompanhados de avisos claros de segurança.
+
+---
+
+### 8. Capítulo 8 — Checklist de Qualidade Adicional
+
+Os itens abaixo complementam o checklist do Modelo P.E.R.F.E.I.T.O. para garantir conformidade com este anexo operacional:
+
+*   [ ] Path dos scripts core aponta para edusidegum.github.io/menu/scripts/.
+*   [ ] CSS reset aplicado com !important para consistência de tema.
+*   [ ] YouTube embed utiliza técnica de thumbnail lazy load.
+*   [ ] Animações de interface utilizam transform (GPU).
+*   [ ] sameAs configurado no JSON-LD com perfis oficiais.
+*   [ ] Sitemap.xml presente e validado na raiz do projeto.
+*   [ ] Scripts consolidados em um único bloco ao final do body.
+
+---
+
+Documento elaborado em 29 de julho de 2026. As informações contidas são de responsabilidade do solicitante.

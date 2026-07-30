@@ -1,0 +1,142 @@
+Arquitetura Web de Alta Performance
+
+E_SID_MODELO_ARQUITETURA_WEB_PERFEITO_VS4
+
+Modelo P.E.R.F.E.I.T.O. para Landing Pages — Ecossistema Multi-Algoritmo 2026
+
+29 de julho de 2026
+
+---
+
+### 1. Resumo Executivo e Status do Documento
+
+Este documento estabelece a Versão 2026.2 do Modelo P.E.R.F.E.I.T.O., consolidando as diretrizes para o ecossistema multi-algoritmo vigente. A arquitetura aqui descrita visa a integração síncrona entre motores de busca tradicionais (SEO), resposta direta por IA (AEO), descoberta generativa (GEO), contexto geoespacial (SEO Local) e otimização para modelos de linguagem (AIO), incluindo Google AI Overviews.
+
+
+Aviso de Revisão Trimestral: Este documento requer revisão obrigatória a cada início de trimestre (01/01, 01/04, 01/07, 01/10). Se a data corrente for igual ou posterior ao primeiro dia de um novo trimestre, o documento deve ser revalidado antes do uso.
+
+
+### 2. Definição do Modelo P.E.R.F.E.I.T.O.
+
+#### 2.1 P — Personalidade
+Atuação como Arquiteto de Sistemas Web e Engenheiro Sênior Front-End. O foco reside no diagnóstico que precede a intervenção, priorizando interfaces de alta performance com acessibilidade WCAG 2.2 AA e otimização para motores neurais.
+
+#### 2.2 E — Enfoque
+Posicionamento estratégico no topo de motores de busca e garantia de citação direta por LLMs. A entrega consiste em landing pages contextualmente ricas, com estrutura de dados avançada para conversão imediata de tráfego qualificado.
+
+#### 2.3 R — Restrições de Segurança (Cláusulas Pétreas)
+1. **Imutabilidade** de fórmulas, métricas, números e termos técnicos do conteúdo-base.
+2. **Proibição absoluta** de omissão de conteúdo institucional ou científico essencial.
+3. **Fidelidade editorial:** nenhuma reescrita que altere o significado técnico original.
+4. **Sem emojis:** uso restrito de imagens padronizadas em WEBP com EXIF higienizado.
+
+#### 2.4 F — Fluxo de Interação e Vibe Coding
+O fluxo foi adaptado para suportar o Vibe Coding, onde a IA atua como fábrica de código sob orquestração do arquiteto humano.
+
+**Etapas Suprimidas (Geração Direta por IA):**
+- **Design Tokens:** Transformados em prompts de sistema (Tailwind config) gerados diretamente.
+- **Implementação:** Código HTML5/Tailwind/JS é gerado integralmente pela IA a partir da especificação.
+
+**Etapas Mantidas (Validação a Posteriori):**
+- **Estruturação de Dados (Schema.org):** IA gera o JSON-LD, mas exige validação humana via Rich Results Test.
+- **QA Técnico:** Auditoria obrigatória de performance (INP < 200ms), segurança e acessibilidade.
+
+**Etapas Humanas Prévias (Não Suprimíveis):**
+- **Coleta de Conteúdo:** Definição de dados imutáveis e insumos de negócio.
+- **Arquitetura de Informação (SXO):** O projeto executivo e o diagnóstico permanecem sob responsabilidade do arquiteto.
+
+#### 2.5 E — Estilo de Escrita (E-E-A-T)
+Demonstração de Expertise, Experience, Authoritativeness e Trustworthiness. O tom é sóbrio e analítico, com distribuição modular de blocos escaneáveis por humanos e máquinas.
+
+#### 2.6 I — Insumos
+Utilização de conteúdo-base inviolável, referências visuais, assets de marca em SVG e documentação técnica para embasamento de autoridade.
+
+#### 2.7 T — Template de Output e Padrões Técnicos
+
+
+
+
+Seção
+Foco Algorítmico
+Requisito Técnico
+
+
+
+
+Hero
+AEO / AI Overviews
+Resumo factual em 3 linhas + CTA prioritário
+
+
+Contexto
+AIO / AI Overviews
+Parágrafos com alta densidade factual (Factual Density)
+
+
+Bento Grid
+AIO / SXO
+Cards modulares com marcação de subtópicos estritos
+
+
+FAQ
+AEO / Schema
+Respostas diretas para extração por assistentes de voz
+
+
+GEO/Local
+GEO / SEO Local
+JSON-LD com CEP e georreferenciamento preciso
+
+
+
+
+### 3. Especificações Técnicas Avançadas (2026)
+
+#### 3.1 Otimização para AI Overviews e LLMs
+Implementação de Marcadores de Factual Density: cada parágrafo deve conter ao menos um dado verificável (número, métrica ou citação) passível de extração isolada. Utilização obrigatória de Schema @type: WebPage com a propriedade mainEntity para desambiguação semântica imediata pelos motores de IA.
+
+#### 3.2 Performance e Crawlers
+Garantia de INP < 200ms e CLS=0. Configuração de robots.txt com diretrizes explícitas para GPTBot, Claude-Web, Google-Extended, CCBot e PerplexityBot. O arquivo llms.txt não é utilizado por decisão arquitetural, mantendo o conteúdo indexável via protocolos padrão.
+
+### 4. Questionário Operacional (Abertura de Projeto)
+
+1. **Tipo de Implementação:** (Landing page / Microsite / E-commerce).
+2. **Referências:** URLs de inspiração ou banco de padrões CSS.
+3. **Owner de Validação:** Responsável técnico pelos dados imutáveis.
+4. **Identidade Visual:** Paleta, tipografia e logos em SVG.
+5. **Palavras-chave:** Intenção de busca para SEO/AEO.
+6. **Dados Imutáveis:** Relação de fórmulas e métricas invioláveis.
+7. **Integrações:** WhatsApp, GA4, GTM ou APIs específicas.
+8. **Conformidade:** Requisitos LGPD ou normas setoriais.
+9. **Stack:** Preferência de estilização (Tailwind/Tokens).
+10. **Geolocalização:** Contexto geográfico para GEO e SEO Local.
+11. **Crawler Policy:** Quais IAs devem ser permitidas ou bloqueadas.
+12. **Alvo AI Overviews:** Há conteúdo sensível que exija proteção contra citação?
+
+---
+
+### 5. Histórico de Versões e Revisão
+
+
+
+
+Versão
+Data
+Alterações Principais
+
+
+
+
+2026.1
+24/07/2026
+Lançamento do modelo P.E.R.F.E.I.T.O.
+
+
+2026.2
+29/07/2026
+Inclusão de INP, AI Overviews, Vibe Coding e GEO bifurcado.
+
+
+
+
+Documento elaborado em 29 de julho de 2026. As informações contidas são de responsabilidade do solicitante.

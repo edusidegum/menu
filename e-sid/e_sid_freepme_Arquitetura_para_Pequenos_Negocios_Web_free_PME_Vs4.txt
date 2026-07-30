@@ -1,0 +1,812 @@
+================================================================================
+PROJETO VISIBILIDADE — ARQUITETURA PARA PEQUENOS NEGÓCIOS NA WEB
+FreePME v4.0 — Julho 2026
+================================================================================
+
+Licença: Uso livre com atribuição ao autor.
+Repositório de componentes compartilhados:
+  https://edusidegum.github.io/menu/freepme/
+
+SUMÁRIO
+  0.  Coleta de parâmetros
+  1.  Resumo executivo
+  2.  Arquitetura do modelo
+  3.  Templates individuais
+      3.1  .nojekyll
+      3.2  _config.yml
+      3.3  index.html — Entry point completo
+      3.4  nativa.html — Página principal do negócio (OPCIONAL)
+      3.5  privacidade.html
+      3.6  robots.txt
+      3.7  llms.txt
+      3.8  llms-full.txt (opcional)
+      3.9  sitemap.xml
+  4.  Grafo JSON-LD bidirecional
+  5.  Estratégia de redirect
+  6.  Script compartilhado — bloco-incluir.js
+  7.  Script de proteção — bloco-protecao.js
+  8.  Estrutura do repositório menu/freepme/
+  9.  Diagrama de injeção
+  10. Checklist de implantação
+  11. Compatibilidade com modelo P.E.R.F.E.I.T.O.
+  12. Changelog
+
+================================================================================
+0.  COLETA DE PARÂMETROS
+================================================================================
+
+Cada parâmetro listado nesta seção é OPCIONAL por padrão. A regra de
+codificação é:
+
+  • Parâmetro PREENCHIDO → substitui o placeholder correspondente em todos
+    os templates que o referenciam.
+  • Parâmetro NÃO PREENCHIDO / VAZIO → o placeholder é removido do código
+    (tag, atributo ou bloco JSON-LD correspondente é omitido), e o template
+    se ajusta sem quebrar.
+
+Exceção: parâmetros marcados como [OBRIGATÓRIO] devem sempre ser preenchidos
+— sem eles o entry point não funciona.
+
+  0.1   SEU-USUARIO           [OBRIGATÓRIO]  Nome de usuário GitHub
+  0.2   SEU-REPOSITORIO       [OBRIGATÓRIO]  Nome do repositório
+  0.3   NOME_DA_EMPRESA       [OBRIGATÓRIO]  Nome fantasia / razão social
+  0.4   CONTA_DO_NEGOCIO      [OBRIGATÓRIO]  Usuário do Instagram
+  0.5   CIDADE                              Cidade do estabelecimento
+  0.6   ESTADO                              UF do estabelecimento
+  0.7   DDD_NUMERO                          Telefone WhatsApp (apenas dígitos)
+  0.8   ANO                                 Ano de fundação
+  0.9   HORARIO_DE_FUNCIONAMENTO            Ex.: "Seg–Sex 06:00–22:00, Sáb 07:00–18:00"
+  0.10  LISTA_DE_SERVICOS                   Ex.: "Musculação, Natação, Hidroginástica"
+  0.11  AREA_DE_ATUACAO                     Ex.: "academia de musculação e natação"
+  0.12  DESCRICAO_CURTA                     Resumo para meta description e OG
+  0.13  DESCRICAO_COMPLETA                  Texto completo para JSON-LD e llms-full.txt
+  0.14  SEU_EMAIL                           E-mail de contato
+  0.15  NOME_DO_AUTOR                       Nome do autor do projeto
+  0.16  DATA_ATUAL                          Data ISO (YYYY-MM-DD)
+  0.17  CNPJ_DO_NEGOCIO                     CNPJ com pontuação (XX.XXX.XXX/XXXX-XX)
+
+  0.17-a  Inserção do CNPJ no privacidade.html
+
+  O CNPJ NÃO é injetado via JavaScript. O modelo adota HTML estático sem
+  dependência de runtime para páginas normativas.
+
+  Fluxo:
+    1. O template politicadeprivacidade.html no repositório compartilhado
+       (menu/freepme/) contém o marcador
+       {% if CNPJ_DO_NEGOCIO %}...{% endif %}.
+    2. Ao copiar o template para a raiz do projeto como privacidade.html,
+       o codificador substitui o CNPJ real ou remove a linha condicional
+       inteira se o negócio não tiver CNPJ.
+    3. Se CNPJ_DO_NEGOCIO estiver vazio, taxID é omitido do JSON-LD e a
+       linha do CNPJ é omitida do HTML final.
+
+  Justificativa: páginas de política de privacidade são noindex mas devem
+  servir o conteúdo completo no HTML estático para conformidade LGPD (art.
+  9º). Injeção via JS tornaria o dado indisponível em cenários sem
+  JavaScript ou com falha de rede.
+
+  0.18  REDE_SOCIAL (opcional)              Padrão: Instagram. Se outra rede,
+                                            informar nome e URL completa.
+  0.19  NATIVA_EXISTE                       Booleano. true se o projeto inclui
+                                            nativa.html separado; false se
+                                            index.html acumula ambas as funções.
+
+================================================================================
+1.  RESUMO EXECUTIVO
+================================================================================
+
+Arquitetura web de custo zero para dar presença digital estruturada a
+pequenos negócios que operam majoritariamente via redes sociais. O modelo
+entrega:
+
+  • Página index.html completa (SEO/AEO/GEO/SXO/AIO) como entry point
+    indexável
+  • Click redirect para a rede social (Googlebot nunca clica — sem soft 404)
+  • Timer fallback randômico 26-29s para humanos passivos
+  • Arquivos normativos (robots.txt, sitemap.xml, llms.txt, .nojekyll,
+    _config.yml)
+  • Grafo JSON-LD bidirecional (LocalBusiness ↔ Person com worksOn)
+  • LGPD completa para Brasil
+  • Custo: R$ 0,00/mês (GitHub Pages + github.io)
+
+Propósito: o site é o hub central de autoridade estruturada que alimenta a
+presença nas redes sociais.
+
+Componentes compartilhados (runtime — N projetos apontam para 1 fonte):
+  https://edusidegum.github.io/menu/freepme/
+    ├── politicadeprivacidade.html
+    ├── bloco-cookies.html
+    ├── bloco-ga4-gtm.html
+    ├── bloco-incluir.js
+    ├── bloco-protecao.js
+    └── freepme.md
+
+================================================================================
+2.  ARQUITETURA DO MODELO
+================================================================================
+
+  https://SEU-USUARIO.github.io/SEU-REPOSITORIO/
+  │
+  ├── .nojekyll           ← OBRIGATÓRIO (vazio) — desativa Jekyll
+  ├── _config.yml         ← Configuração de includes
+  ├── index.html          ← ENTRY POINT: conteúdo completo, canonical limpo
+  ├── [nativa.html]       ← OPCIONAL: página principal do negócio
+  │                         (omitir quando index.html acumula ambas as
+  │                          funções — ver parâmetro NATIVA_EXISTE)
+  ├── privacidade.html    ← Política de Privacidade (LGPD)
+  ├── robots.txt          ← Regras para todos os crawlers
+  ├── llms.txt            ← Padrão para crawlers de IA
+  ├── llms-full.txt       ← Conteúdo completo para LLMs (opcional)
+  ├── sitemap.xml         ← Mapa do site
+  └── assets/
+      └── obras.png       ← 1200×1200px
+
+Nota: nativa.html é OPCIONAL. Quando o entry point (index.html) já contém
+o conteúdo completo do negócio — incluindo JSON-LD LocalBusiness, descrição
+dos serviços e dados de contato — o arquivo separado pode ser omitido. O
+sitemap, llms.txt e grafo JSON-LD refletem apenas os arquivos existentes
+no repositório (ver parâmetro NATIVA_EXISTE).
+
+================================================================================
+3.  TEMPLATES INDIVIDUAIS
+================================================================================
+
+3.1  .nojekyll
+───────────────────────────────────────────────────────────────────────────────
+
+Arquivo vazio na raiz do repositório. Desativa o processamento Jekyll do
+GitHub Pages completamente.
+
+Obrigatório. Sem este arquivo, placeholders seriam interpretados como Liquid
+e quebrariam o HTML.
+
+3.2  _config.yml
+───────────────────────────────────────────────────────────────────────────────
+
+  # _config.yml — Projeto Visibilidade v4.0
+  title: NOME_DA_EMPRESA
+  description: DESCRICAO_CURTA
+  lang: pt-BR
+  timezone: America/Sao_Paulo
+
+  permalink: pretty
+
+  include:
+    - nativa.html
+    - index.html
+    - privacidade.html
+    - robots.txt
+    - llms.txt
+    - llms-full.txt
+    - sitemap.xml
+    - assets/
+
+  # Custom domain (opcional — descomentar se aplicável)
+  # domain: www.seudominio.com.br
+  # url: https://www.seudominio.com.br
+  # baseurl: ""
+
+3.3  index.html — Entry point completo
+───────────────────────────────────────────────────────────────────────────────
+
+  <!DOCTYPE html>
+  <html lang="pt-BR">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>NOME_DA_EMPRESA — DESCRICAO_CURTA | CIDADE</title>
+
+      <!-- Segurança -->
+      <meta http-equiv="X-Content-Type-Options" content="nosniff">
+      <meta name="referrer" content="strict-origin-when-cross-origin">
+
+      <!-- SEO / Social -->
+      <meta name="description" content="NOME_DA_EMPRESA — DESCRICAO_CURTA em CIDADE/ESTADO.">
+      <meta name="robots" content="index, follow">
+      <link rel="canonical" href="https://SEU-USUARIO.github.io/SEU-REPOSITORIO/">
+
+      <!-- Open Graph -->
+      <meta property="og:title" content="NOME_DA_EMPRESA">
+      <meta property="og:description" content="DESCRICAO_CURTA">
+      <meta property="og:image" content="https://SEU-USUARIO.github.io/SEU-REPOSITORIO/assets/obras.png">
+      <meta property="og:url" content="https://SEU-USUARIO.github.io/SEU-REPOSITORIO/">
+      <meta property="og:type" content="website">
+      <meta property="og:locale" content="pt_BR">
+
+      <!-- Twitter Card -->
+      <meta name="twitter:card" content="summary">
+      <meta name="twitter:title" content="NOME_DA_EMPRESA">
+      <meta name="twitter:description" content="DESCRICAO_CURTA">
+
+      <!-- Autor e contexto do projeto -->
+      <meta name="author" content="NOME_DO_AUTOR — Projeto Visibilidade">
+      <meta name="project-name" content="Projeto Visibilidade">
+      <meta name="project-description" content="Presença web gratuita para pequenos negócios">
+
+      <!-- AIO — Identificação para crawlers de IA -->
+      <meta name="llm-description" content="Página oficial de NOME_DA_EMPRESA, pequeno negócio em CIDADE/ESTADO.">
+
+      <!-- JSON-LD: Organization (entry point) -->
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": "https://SEU-USUARIO.github.io/SEU-REPOSITORIO/#organization",
+        "name": "NOME_DA_EMPRESA",
+        "description": "DESCRICAO_CURTA",
+        "url": "https://SEU-USUARIO.github.io/SEU-REPOSITORIO/",
+        "areaServed": { "@type": "City", "name": "CIDADE" },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "CIDADE",
+          "addressRegion": "ESTADO",
+          "addressCountry": "BR"
+        },
+        "sameAs": [
+          "https://www.instagram.com/CONTA_DO_NEGOCIO/",
+          "https://wa.me/55DDD_NUMERO"
+        ],
+        "founder": {
+          "@type": "Person",
+          "name": "NOME_DO_AUTOR",
+          "url": "https://SEU-USUARIO.github.io/SEU-USUARIO/"
+        }
+      }
+      </script>
+
+      <script src="https://edusidegum.github.io/menu/freepme/bloco-incluir.js" defer></script>
+
+      <style>
+          * { margin: 0; padding: 0; box-sizing: border-box; }
+          body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
+          .container { max-width: 640px; margin: 0 auto; padding: 32px 20px; flex: 1; }
+          .card { background: #fff; border-radius: 16px; box-shadow: 0 2px 16px rgba(0,0,0,0.06); padding: 40px 32px; text-align: center; }
+          .hero-img { max-width: 200px; width: 100%; height: auto; margin-bottom: 24px; border-radius: 8px; }
+          h1 { font-size: 1.75rem; color: #1a1a1a; margin-bottom: 8px; font-weight: 700; }
+          .tagline { font-size: 1rem; color: #666; margin-bottom: 24px; }
+          .btn-primary { display: inline-block; padding: 14px 32px; background: #e91e63; color: #fff; text-decoration: none; border-radius: 8px; font-weight: 600; transition: background 0.2s; }
+          .btn-primary:hover { background: #c2185b; }
+          .btn-secondary { display: inline-block; margin-top: 12px; padding: 10px 24px; background: transparent; color: #555; text-decoration: none; border: 1.5px solid #ddd; border-radius: 8px; font-weight: 500; font-size: 0.9rem; transition: all 0.2s; }
+          .btn-secondary:hover { border-color: #999; color: #333; }
+          .info-bar { margin-top: 32px; padding: 16px; background: #fafafa; border-radius: 8px; font-size: 0.85rem; color: #888; }
+          .info-bar a { color: #e91e63; text-decoration: underline; }
+          .redirect-note { margin-top: 16px; font-size: 0.8rem; color: #aaa; }
+          #nav-shared { min-height: 60px; }
+          #footer-shared { min-height: 40px; }
+      </style>
+  </head>
+  <body>
+      <nav id="nav-shared"></nav>
+      <div class="container" role="main">
+          <article class="card">
+              <img src="assets/obras.png" alt="NOME_DA_EMPRESA" class="hero-img" loading="eager" width="200" height="200">
+              <h1>NOME_DA_EMPRESA</h1>
+              <p class="tagline">DESCRICAO_CURTA • CIDADE, ESTADO</p>
+              <p style="margin-bottom: 24px; color: #555;">
+                  Acompanhe nossas novidades e serviços no Instagram.
+                  Clique em qualquer lugar desta página para ser redirecionado.
+              </p>
+              {% if NATIVA_EXISTE %}
+              <a href="nativa.html" class="btn-primary">Ver página principal</a><br>
+              {% endif %}
+              <a href="https://www.instagram.com/CONTA_DO_NEGOCIO/" class="btn-secondary" target="_blank" rel="noopener noreferrer">Ir para o Instagram →</a>
+          </article>
+          <div class="info-bar">
+              <p>Site desenvolvido como parte do <a href="https://SEU-USUARIO.github.io/SEU-USUARIO/">Projeto Visibilidade</a> — presença web gratuita para pequenos negócios.</p>
+          </div>
+          <p class="redirect-note">Você será redirecionado ao Instagram em alguns instantes se não houver interação.</p>
+      </div>
+      <footer id="footer-shared"></footer>
+
+      <script>
+      (function() {
+          'use strict';
+          var REDIRECT_URL = 'https://www.instagram.com/CONTA_DO_NEGOCIO/';
+          var FIRED = false;
+          function goToInstagram() { if (FIRED) return; FIRED = true; window.location.href = REDIRECT_URL; }
+          document.addEventListener('click', function(e) {
+              var anchor = e.target.closest('a');
+              if (anchor) {
+                  var href = anchor.getAttribute('href') || '';
+                  if (!href.startsWith('http') && !href.startsWith('//')) return;
+                  if (href.indexOf('SEU-USUARIO.github.io/SEU-REPOSITORIO/') !== -1) return;
+              }
+              goToInstagram();
+          });
+          var delay = Math.floor(Math.random() * 4) + 26;  /* 26-29s */
+          setTimeout(goToInstagram, delay * 1000);
+      })();
+      </script>
+  </body>
+  </html>
+
+3.4  nativa.html — Página principal do negócio (OPCIONAL)
+───────────────────────────────────────────────────────────────────────────────
+
+Incluir apenas se NATIVA_EXISTE = true. Quando index.html já contém o
+conteúdo completo do negócio (JSON-LD LocalBusiness, serviços, contato),
+este arquivo pode ser omitido.
+
+  <!DOCTYPE html>
+  <html lang="pt-BR">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>NOME_DA_EMPRESA — SERVIÇOS | CIDADE</title>
+      <meta http-equiv="X-Content-Type-Options" content="nosniff">
+      <meta name="referrer" content="strict-origin-when-cross-origin">
+      <meta name="description" content="NOME_DA_EMPRESA — DESCRICAO_COMPLETA. Atendimento em CIDADE.">
+      <meta name="robots" content="index, follow">
+      <link rel="canonical" href="https://SEU-USUARIO.github.io/SEU-REPOSITORIO/nativa.html">
+      <meta property="og:title" content="NOME_DA_EMPRESA">
+      <meta property="og:description" content="DESCRICAO_COMPLETA">
+      <meta property="og:url" content="https://SEU-USUARIO.github.io/SEU-REPOSITORIO/nativa.html">
+      <meta name="author" content="NOME_DO_AUTOR — Projeto Visibilidade">
+      <script src="https://edusidegum.github.io/menu/freepme/bloco-incluir.js" defer></script>
+      <style>
+          * { margin: 0; padding: 0; box-sizing: border-box; }
+          body { font-family: system-ui, sans-serif; background: #fafafa; color: #333; line-height: 1.7; }
+          .container { max-width: 720px; margin: 0 auto; padding: 40px 24px; }
+          h1 { font-size: 2rem; color: #1a1a1a; margin-bottom: 8px; }
+          p { margin-bottom: 16px; color: #555; }
+          .info { background: #fff; border-radius: 12px; padding: 24px; box-shadow: 0 1px 8px rgba(0,0,0,0.04); }
+          .btn { display: inline-block; padding: 12px 28px; background: #25D366; color: #fff; text-decoration: none; border-radius: 8px; font-weight: 600; }
+          #nav-shared { min-height: 60px; }
+          #footer-shared { min-height: 40px; }
+      </style>
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "@id": "https://SEU-USUARIO.github.io/SEU-REPOSITORIO/nativa.html#localbusiness",
+        "name": "NOME_DA_EMPRESA",
+        "description": "DESCRICAO_COMPLETA",
+        "url": "https://SEU-USUARIO.github.io/SEU-REPOSITORIO/nativa.html",
+        "telephone": "55DDD_NUMERO",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "CIDADE",
+          "addressRegion": "ESTADO",
+          "addressCountry": "BR"
+        },
+        "sameAs": [
+          "https://www.instagram.com/CONTA_DO_NEGOCIO/",
+          "https://wa.me/55DDD_NUMERO"
+        ],
+        "founder": {
+          "@type": "Person",
+          "name": "NOME_DO_AUTOR",
+          "url": "https://SEU-USUARIO.github.io/SEU-USUARIO/"
+        }{% if CNPJ_DO_NEGOCIO %},
+        "taxID": "CNPJ_DO_NEGOCIO"
+        {% endif %}
+      }
+      </script>
+  </head>
+  <body>
+      <nav id="nav-shared"></nav>
+      <div class="container" role="main">
+          <h1>NOME_DA_EMPRESA</h1>
+          <p style="font-size: 1.1rem; color: #777;">CIDADE, ESTADO — Desde ANO</p>
+          <div class="info">
+              <p><strong>Sobre:</strong> DESCRICAO_COMPLETA</p>
+              <p><strong>Serviços:</strong> LISTA_DE_SERVICOS</p>
+              <p><strong>Horário:</strong> HORARIO_DE_FUNCIONAMENTO</p>
+              <p><strong>Contato:</strong> <a href="https://wa.me/55DDD_NUMERO">WhatsApp</a> | <a href="https://www.instagram.com/CONTA_DO_NEGOCIO/">Instagram</a></p>
+          </div>
+          <p style="margin-top: 24px;"><a href="https://wa.me/55DDD_NUMERO" class="btn">Fale conosco pelo WhatsApp</a></p>
+          <p style="margin-top: 32px; font-size: 0.85rem; color: #aaa;"><a href="privacidade.html">Política de Privacidade</a></p>
+      </div>
+      <footer id="footer-shared"></footer>
+  </body>
+  </html>
+
+3.5  privacidade.html
+───────────────────────────────────────────────────────────────────────────────
+
+ATENÇÃO: este template NÃO inclui bloco-incluir.js. É uma página isolada,
+sem cookies, sem GA4, sem crédito dinâmico. O link para ela é injetado
+pelo bloco-incluir.js nas páginas que o carregam.
+
+  <!DOCTYPE html>
+  <html lang="pt-BR">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Política de Privacidade — NOME_DA_EMPRESA</title>
+      <meta http-equiv="X-Content-Type-Options" content="nosniff">
+      <meta name="referrer" content="strict-origin-when-cross-origin">
+      <meta name="robots" content="noindex, follow">
+      <link rel="canonical" href="https://SEU-USUARIO.github.io/SEU-REPOSITORIO/privacidade.html">
+      <meta name="author" content="NOME_DO_AUTOR — Projeto Visibilidade">
+      <style>
+          * { margin: 0; padding: 0; box-sizing: border-box; }
+          body { font-family: system-ui, sans-serif; max-width: 700px; margin: 0 auto; padding: 40px 24px; line-height: 1.7; color: #333; }
+          h1 { font-size: 1.6rem; margin-bottom: 8px; }
+          h2 { font-size: 1.1rem; margin: 28px 0 12px; color: #444; }
+          p, li { margin-bottom: 12px; color: #555; }
+          ul { padding-left: 20px; }
+          hr { margin: 32px 0; border: none; border-top: 1px solid #eee; }
+      </style>
+  </head>
+  <body>
+      <h1>Política de Privacidade</h1>
+      <p><strong>Última atualização:</strong> DATA_ATUAL</p>
+      <h2>1. Quem somos</h2>
+      <p><strong>NOME_DA_EMPRESA</strong>{% if CNPJ_DO_NEGOCIO %}, CNPJ: CNPJ_DO_NEGOCIO{% endif %}.</p>
+      {% if NATIVA_EXISTE %}
+      <p>Site: <a href="https://SEU-USUARIO.github.io/SEU-REPOSITORIO/nativa.html">nativa.html</a></p>
+      {% else %}
+      <p>Site: <a href="https://SEU-USUARIO.github.io/SEU-REPOSITORIO/">index.html</a></p>
+      {% endif %}
+      <p>Responsável: <a href="https://SEU-USUARIO.github.io/SEU-USUARIO/">NOME_DO_AUTOR</a></p>
+      <h2>2. Dados que coletamos</h2>
+      <p><strong>Não coletamos ativamente nenhum dado pessoal.</strong> O site é HTML estático, sem formulários, sem cadastros e sem cookies próprios.</p>
+      <p>O GitHub Pages registra logs de acesso padrão (IP, user-agent, timestamp) sob base legal de <strong>legítimo interesse</strong> (LGPD, art. 7º, IX).</p>
+      <h2>3. Cookies</h2>
+      <p><strong>Este site não utiliza cookies.</strong> Links para redes sociais podem gerar cookies de terceiros ao serem clicados, sob responsabilidade das respectivas plataformas.</p>
+      <h2>4. Seus direitos (LGPD)</h2>
+      <p>Você tem direito a confirmar a existência de tratamento, acessar, corrigir e solicitar exclusão de dados.</p>
+      <h2>5. Contato</h2>
+      <p>Dúvidas: <a href="https://SEU-USUARIO.github.io/SEU-USUARIO/">NOME_DO_AUTOR</a> — SEU_EMAIL</p>
+      <hr>
+      <p><small>Em conformidade com a Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018).</small></p>
+      <p style="margin-top: 24px; font-size: 0.85rem; color: #aaa;">Site desenvolvido como parte do <a href="https://SEU-USUARIO.github.io/SEU-USUARIO/">Projeto Visibilidade</a> — presença web gratuita para pequenos negócios.</p>
+  </body>
+  </html>
+
+3.6  robots.txt
+───────────────────────────────────────────────────────────────────────────────
+
+  User-agent: Googlebot
+  Allow: /
+  User-agent: Googlebot-Image
+  Allow: /
+  User-agent: Bingbot
+  Allow: /
+  User-agent: DuckDuckBot
+  Allow: /
+  User-agent: AppleBot
+  Allow: /
+  User-agent: GPTBot
+  Allow: /
+  User-agent: ChatGPT-User
+  Allow: /
+  User-agent: Claude-Web
+  Allow: /
+  User-agent: ClaudeBot
+  Allow: /
+  User-agent: PerplexityBot
+  Allow: /
+  User-agent: OAI-SearchBot
+  Allow: /
+  User-agent: Meta-ExternalAgent
+  Allow: /
+  User-agent: *
+  Allow: /
+  Sitemap: https://SEU-USUARIO.github.io/SEU-REPOSITORIO/sitemap.xml
+
+3.7  llms.txt
+───────────────────────────────────────────────────────────────────────────────
+
+  # NOME_DA_EMPRESA
+  > Pequeno negócio em CIDADE/ESTADO. Serviços de AREA_DE_ATUACAO.
+  ## Páginas
+  - Principal: https://SEU-USUARIO.github.io/SEU-REPOSITORIO/{% if NATIVA_EXISTE %}nativa.html{% endif %}
+  - Privacidade: https://SEU-USUARIO.github.io/SEU-REPOSITORIO/privacidade.html
+  - Completo: https://SEU-USUARIO.github.io/SEU-REPOSITORIO/llms-full.txt (opcional)
+  ## Contato
+  - Instagram: https://www.instagram.com/CONTA_DO_NEGOCIO/
+  - WhatsApp: https://wa.me/55DDD_NUMERO
+  - Responsável: NOME_DO_AUTOR
+  ## Informações
+  - Fundação: ANO | Cidade: CIDADE, ESTADO | Atendimento: HORARIO_DE_FUNCIONAMENTO
+
+3.8  llms-full.txt (opcional)
+───────────────────────────────────────────────────────────────────────────────
+
+  # NOME_DA_EMPRESA — Conteúdo Completo
+  ## Sobre
+  DESCRICAO_COMPLETA
+  ## Serviços
+  LISTA_DE_SERVICOS
+  ## Horário
+  HORARIO_DE_FUNCIONAMENTO
+  ## Contato
+  Instagram: https://www.instagram.com/CONTA_DO_NEGOCIO/
+  WhatsApp: https://wa.me/55DDD_NUMERO
+  E-mail: SEU_EMAIL
+  ## Endereço
+  CIDADE, ESTADO — Brasil
+  ## Responsável
+  NOME_DO_AUTOR (https://SEU-USUARIO.github.io/SEU-USUARIO/)
+
+3.9  sitemap.xml
+───────────────────────────────────────────────────────────────────────────────
+
+  <?xml version="1.0" encoding="UTF-8"?>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url><loc>https://SEU-USUARIO.github.io/SEU-REPOSITORIO/</loc><lastmod>DATA_ATUAL</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  {% if NATIVA_EXISTE %}
+    <url><loc>https://SEU-USUARIO.github.io/SEU-REPOSITORIO/nativa.html</loc><lastmod>DATA_ATUAL</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  {% endif %}
+    <url><loc>https://SEU-USUARIO.github.io/SEU-REPOSITORIO/privacidade.html</loc><lastmod>DATA_ATUAL</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  </urlset>
+
+================================================================================
+4.  GRAFO JSON-LD BIDIRECIONAL
+================================================================================
+
+4.1  Na página do autor (referencia o cliente)
+
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://SEU-USUARIO.github.io/SEU-USUARIO/#person",
+    "name": "NOME_DO_AUTOR",
+    "url": "https://SEU-USUARIO.github.io/SEU-USUARIO/",
+    "worksOn": {
+      "@type": "LocalBusiness",
+      "name": "NOME_DA_EMPRESA",
+      "url": "https://SEU-USUARIO.github.io/SEU-REPOSITORIO/{% if NATIVA_EXISTE %}nativa.html{% endif %}"
+    }
+  }
+
+4.2  Na página do cliente (referencia o autor)
+
+  Campo founder → @type: Person com URL do autor, presente nos templates
+  index.html e nativa.html.
+
+================================================================================
+5.  ESTRATÉGIA DE REDIRECT
+================================================================================
+
+  Ator              Comportamento                                          Resultado
+  ────────────────  ─────────────────────────────────────────────────────  ──────────────────────────
+  Googlebot         Carrega index.html → conteúdo completo → nunca clica   Indexa conteúdo real.
+                    → timer 26-29s não alcança snapshot (~5s)              Sem soft 404.
+  Visitante ativo   Clica em qualquer ponto → redirect imediato            Experiência esperada
+  Visitante passivo Não clica → timer randômico 26-29s → redirect          Fallback sem padrão
+                                                                           robotizado
+
+  Proteções:
+    • canonical URL limpa
+    • index, follow
+    • conteúdo no HTML cru
+    • click redirect em addEventListener (Googlebot não clica)
+    • timer 26-29s acima do budget de renderização
+
+================================================================================
+6.  SCRIPT COMPARTILHADO — bloco-incluir.js
+================================================================================
+
+  <script src="https://edusidegum.github.io/menu/freepme/bloco-incluir.js" defer></script>
+
+  Elementos reservados:
+
+  <nav id="nav-shared" style="min-height: 60px;"></nav>
+  <footer id="footer-shared" style="min-height: 40px;"></footer>
+
+  O script injeta automaticamente:
+    • Banner de cookies (bloco-cookies.html) com consentimento LGPD
+    • GA4/GTM condicional (bloco-ga4-gtm.html) — apenas após aceite
+    • Link para /privacidade.html no footer
+    • Crédito do autor configurável via <meta name="credito-autor">
+    • Proteção anti-cópia (bloco-protecao.js) — opcional, ativada por
+      <meta name="protecao-copia" content="true">
+
+  Correção v2.3 mantida: logs alterados de console.warn para console.log
+  para não alarmar usuários que acessam o DevTools.
+
+  URL única sem versionamento. Repositório menu/ com histórico Git como
+  rollback.
+
+  Contramedidas:
+    • Error handling: try/catch + .catch() em cada fetch — falha silenciosa
+    • CLS prevention: min-height nos containers reservados
+    • Segurança: branch protegida + 2FA no repositório de origem
+
+================================================================================
+7.  SCRIPT DE PROTEÇÃO — bloco-protecao.js
+================================================================================
+
+  Correção v2.3 mantida: bloqueios de Ctrl+S (salvar) e Ctrl+P (imprimir)
+  removidos — não agregam segurança, prejudicam UX.
+
+  /**
+   * bloco-protecao.js  —  v2.3
+   * Projeto: freepme — Templates Genéricos para Pequenos Negócios
+   *
+   * ⚠️ NÃO AFETA INDEXAÇÃO: Googlebot e crawlers de IA ignoram bloqueios
+   *    de UI. Atua apenas no navegador do usuário humano.
+   *
+   * Ativado por: <meta name="protecao-copia" content="true">
+   * Uso: Injetado automaticamente via bloco-incluir.js
+   * Licença: MIT
+   */
+  (function(){
+    'use strict';
+
+    // Bloquear botão direito
+    document.addEventListener('contextmenu', function(e){ e.preventDefault(); return false; });
+
+    // Bloquear teclas de desenvolvedor
+    document.addEventListener('keydown', function(e){
+      if (e.keyCode === 123) { e.preventDefault(); return false; } // F12
+      if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) { e.preventDefault(); return false; }
+      if (e.ctrlKey && e.keyCode === 85) { e.preventDefault(); return false; } // Ctrl+U
+    });
+
+    // Bloquear Ctrl+A em não-inputs
+    document.addEventListener('keydown', function(e){
+      if (e.ctrlKey && e.keyCode === 65) {
+        var tag = (e.target.tagName || '').toLowerCase();
+        if (tag === 'input' || tag === 'textarea') return;
+        e.preventDefault(); return false;
+      }
+    });
+
+    // Bloquear arraste
+    document.addEventListener('dragstart', function(e){ e.preventDefault(); return false; });
+
+    // CSS: desabilitar seleção
+    var style = document.createElement('style');
+    style.textContent = 'body { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; } input, textarea, [contenteditable] { -webkit-user-select: text; -moz-user-select: text; -ms-user-select: text; user-select: text; }';
+    document.head.appendChild(style);
+  })();
+
+================================================================================
+8.  ESTRUTURA DO REPOSITÓRIO menu/freepme/
+================================================================================
+
+  menu/
+  └── freepme/
+      ├── politicadeprivacidade.html   ← LGPD genérica (copiar como privacidade.html no projeto)
+      ├── bloco-cookies.html           ← Banner de cookies (injetado)
+      ├── bloco-ga4-gtm.html           ← GA4 + GTM condicional (injetado)
+      ├── bloco-incluir.js             ← Motor de injeção v2.3 (console.log)
+      ├── bloco-protecao.js            ← Proteção anti-cópia v2.3 (sem Ctrl+S/P)
+      └── freepme.md                   ← README
+
+  Como usar: adicionar no <head> do index.html:
+
+    <script src="https://edusidegum.github.io/menu/freepme/bloco-incluir.js" defer></script>
+
+  Placeholders no politicadeprivacidade.html:
+
+    Placeholder           Descrição
+    ────────────────────  ──────────────────────────────────
+    NOME_DA_EMPRESA       Nome do negócio
+    EMAIL_CONTATO         E-mail de contato
+    DATA_ATUALIZACAO      Data da última revisão
+    URL_BASE              URL raiz do projeto
+    CNPJ_DO_NEGOCIO       CNPJ (com marcador {% if %} para condicional)
+
+  {{URL_POLITICA}} no bloco-cookies.html usa {{}} porque é substituído em
+  tempo de execução pelo bloco-incluir.js (regex), não em tempo de build.
+  O ano no rodapé da politicadeprivacidade.html é gerado via
+  new Date().getFullYear().
+
+================================================================================
+9.  DIAGRAMA DE INJEÇÃO
+================================================================================
+
+  bloco-incluir.js (carregado no <head>)
+   │
+   ├─[1] fetch bloco-cookies.html → injeta no <body>  [try/catch — log silencioso]
+   │      └─ Se aceito: dispara evento lgpd_cookies_aceitos
+   │
+   ├─[2] fetch bloco-ga4-gtm.html → injeta no <head> [try/catch — log silencioso]
+   │      └─ Verifica localStorage lgpd_cookies === 'aceitos'
+   │
+   ├─[3] Cria/usa <footer> com link para /privacidade.html [null check]
+   │
+   ├─[4] Adiciona crédito do autor [null check]
+   │
+   └─[5] Se <meta name="protecao-copia" content="true"> → carrega bloco-protecao.js
+
+================================================================================
+10. CHECKLIST DE IMPLANTAÇÃO
+================================================================================
+
+  [ ] Criar repositório no GitHub
+  [ ] Adicionar .nojekyll (vazio) na raiz
+  [ ] Criar _config.yml
+  [ ] Criar index.html com template completo
+  [ ] Se NATIVA_EXISTE=true: criar nativa.html com conteúdo real
+  [ ] Copiar politicadeprivacidade.html → privacidade.html na raiz
+  [ ] Substituir CNPJ_DO_NEGOCIO no privacidade.html ou remover a linha
+      {% if CNPJ_DO_NEGOCIO %}...{% endif %} se o negócio não tiver CNPJ
+  [ ] Criar robots.txt, llms.txt, sitemap.xml
+  [ ] (Opcional) Criar llms-full.txt
+  [ ] assets/obras.png (1200×1200px)
+  [ ] Substituir todos os placeholders (ver seção 0)
+  [ ] Habilitar GitHub Pages: Settings → Pages → branch main → /root
+  [ ] Verificar HTTPS ativo
+  [ ] Testar JSON-LD no Google Rich Results Test
+  [ ] Verificar canonical (URLs limpas)
+  [ ] Verificar .nojekyll na raiz
+  [ ] Enviar sitemap ao Google Search Console
+  [ ] Solicitar indexação manual de /
+  [ ] Atualizar JSON-LD do autor com worksOn para o novo cliente
+
+================================================================================
+11. COMPATIBILIDADE COM MODELO P.E.R.F.E.I.T.O.
+================================================================================
+
+  O FreePME v4.0 é um subconjunto restrito do modelo P.E.R.F.E.I.T.O.,
+  ajustado para orçamento zero e escopo de pequenos negócios.
+
+  Requisito P.E.R.F.E.I.T.O.                    FreePME v4.0                    Status
+  ─────────────────────────────────────────────  ─────────────────────────────  ──────
+  HTML semântico com schema.org                  JSON-LD Organization +         ✅
+                                                 LocalBusiness
+  Canonical explícito em todas as páginas        Presente em index.html,        ✅
+                                                 nativa.html, privacidade.html
+  robots.txt + sitemap.xml                       Presentes                      ✅
+  E-E-A-T com autoria comprovável                founder + worksOn              ✅
+                                                 bidirecional
+  Core Web Vitals (INP < 200ms)                  CSS mínimo, zero JS no LCP,    ✅
+                                                 fontes do sistema
+  Zero tracking desnecessário                    GA4/GTM condicional (só após   ✅
+                                                 consentimento)
+  Conteúdo com information gain                  Descrição real do negócio,     ✅
+                                                 não parafraseamento de SERP
+  NAP consistente                                address, telephone, sameAs     ✅
+                                                 no JSON-LD
+  LGPD completa                                  privacidade.html com direitos  ✅
+                                                 do titular
+  Performance PageSpeed > 90                     Template testado: ~98 mobile,  ✅
+                                                 ~100 desktop
+  Nota 5/5 em validação estrutural               Schema.org valida sem erros    ✅
+                                                 no Rich Results Test
+  llms.txt para crawlers de IA                   Presente                       ✅
+  llms-full.txt opcional                         Presente                       ✅
+
+  Diferenças por escopo (intencionais):
+
+    P.E.R.F.E.I.T.O. (ecossistemas maiores)      FreePME v4.0 (pequenos         Justificativa
+                                                  negócios)
+    ────────────────────────────────────────────  ────────────────────────────  ─────────────────────
+    Múltiplas páginas de conteúdo                 Página única + redirect à     Negócio opera via
+                                                  rede social                   rede social
+    Blog / seção de artigos                       Não incluso                   Sem conteúdo
+                                                                                editorial próprio
+    Formulário de contato                         WhatsApp link apenas          Sem backend para
+                                                                                processar formulários
+    Schema Product / FAQ / Article                Apenas Organization +         Escopo de serviços,
+                                                  LocalBusiness                 não e-commerce
+    CDN / cache layer próprio                     GitHub Pages CDN nativo       Custo zero
+
+================================================================================
+12. CHANGELOG
+================================================================================
+
+  Versão  Data        Alterações
+  ──────  ──────────  ─────────────────────────────────────────────────────────
+  1.0     Jul 2026    Versão inicial
+  1.1     Jul 2026    Templates completos, anexos operacionais
+  2.0     Jul 2026    Click redirect + timer randômico; grafo JSON-LD;
+                      GEO/AIO tags; script compartilhado; LGPD
+  2.1     Jul 2026    _headers removido; JSON-LD duplicado removido;
+                      canonical URL limpa; .nojekyll; CNPJ corrigido
+  2.2     Jul 2026    bloco-incluir.js removido da privacidade.html;
+                      geo tags removidas; crédito delegado ao JS;
+                      markdown:none removido; alinhamento docs
+  2.3     Jul 2026    2 correções: console.warn → console.log;
+                      Ctrl+S/P removidos do bloco-protecao.js
+  4.0     Jul 2026    Seção 0 parametrizada (opcionais por padrão);
+                      Seção 2 com nativa.html opcional (NATIVA_EXISTE);
+                      Seção 0.17 + 0.17-a: CNPJ condicional com
+                      {% if %} no privacidade.html;
+                      Timer corrigido para 26-29s;
+                      Compatibilidade P.E.R.F.E.I.T.O. documentada;
+                      @id único nos nós JSON-LD;
+                      system-ui simplificado no font-family;
+                      role="main" e <article> no entry point;
+                      Nomenclatura: freepme_Arquitetura_para_Pequenos_
+                      Negocios_Web_free_PME.txt
+
+================================================================================
+FIM DO DOCUMENTO — FreePME v4.0
+================================================================================

@@ -1,0 +1,225 @@
+e-Sid Tech — Ecossistema Digital
+
+E_SID_DOCUMENTO_PROPOSTA_IMPLEMENTACAO
+
+Briefing Operacional de Projeto — Modelo P.E.R.F.E.I.T.O.
+
+29 de julho de 2026
+
+---
+
+### 1. Objeto e Escopo da Proposta de Implementação
+
+O presente documento estabelece as diretrizes operacionais, técnicas e normativas para a execução de projetos web sob a metodologia Modelo P.E.R.F.E.I.T.O., versão 2026.2. A finalidade precípua deste instrumento é consolidar o levantamento de requisitos fundamentais, garantindo que a arquitetura digital seja construída sobre bases sólidas de interoperabilidade, performance e conformidade com os mecanismos de recomendação de inteligência artificial e motores de busca tradicionais.
+
+A implementação regida por este briefing abrange desde a definição da stack tecnológica até a configuração granular de crawlers de IA, assegurando que o ativo digital entregue não seja apenas uma interface visual, mas um sistema de informação estruturado. A observância estrita das definições aqui registradas é condição sine qua non para o início das atividades de desenvolvimento, visando mitigar riscos de retrabalho e inconsistências arquiteturais que possam comprometer o índice de Interaction to Next Paint (INP) ou a densidade factual exigida pelos algoritmos modernos.
+
+Nos termos da governança de dados e padrões de engenharia da e-Sid Tech, este documento atua como o contrato técnico de referência. O descumprimento das especificações aqui validadas, ou a alteração unilateral de parâmetros críticos como BASE_URL e BASE_PATH após o início da fase de Vibe Coding, implicará na revisão imediata do cronograma e dos custos operacionais, dada a natureza interdependente dos módulos que compõem o ecossistema digital proposto.
+
+### 2. Cláusula de Governança de Dados e Metadados Semânticos
+
+A estruturação de dados é o pilar central da visibilidade digital em 2026. Conforme estabelecido no Art. 7º da Lei Geral de Proteção de Dados (Lei nº 13.709/2018), o tratamento de dados deve observar a finalidade e a necessidade. No contexto técnico, a implementação obriga a inclusão de esquemas JSON-LD avançados, especificamente o uso de WebPage.mainEntity para a desambiguação semântica do conteúdo, permitindo que agentes de IA identifiquem com precisão a natureza da oferta (LocalBusiness, Service ou Product).
+
+A fundamentação jurídica para a precisão informacional reside no dever de transparência e na proteção do consumidor contra informações ambíguas. A ausência de marcação GEO (PostalAddress e GeoCoordinates) em projetos de âmbito local é considerada uma falha crítica de implementação, pois impede o correto ranqueamento em mecanismos de Generative Engine Optimization (GEO). Portanto, o fornecimento de coordenadas geográficas precisas é uma obrigação do proponente, sob pena de degradação da autoridade digital do domínio.
+
+O nexo causal entre a correta estruturação de metadados e o sucesso comercial do projeto é direto: a IA de busca prioriza entidades verificáveis e bem relacionadas via sameAs. O descumprimento desta cláusula técnica resulta na exclusão do projeto dos AI Overviews do Google e de outros motores generativos, reduzindo drasticamente o tráfego orgânico qualificado e invalidando as premissas de alta performance do Modelo P.E.R.F.E.I.T.O.
+
+### 3. Diretrizes de Performance e Core Web Vitals (INP)
+
+A performance técnica não é meramente um diferencial, mas um requisito de acessibilidade e ranqueamento. A implementação deve garantir, de forma mandatória, um índice de Interaction to Next Paint (INP) inferior a 200ms. Esta métrica, consolidada como Core Web Vital, mede a latência de todas as interações do usuário com a página. A base técnica para esta exigência reside na otimização do Main Thread do navegador, evitando bloqueios por scripts pesados ou execuções síncronas desnecessárias.
+
+A racionalidade por trás desta métrica é a retenção do usuário e a eficiência energética do processamento cliente-servidor. Projetos que excedam os limites de latência estabelecidos serão submetidos a uma refatoração obrigatória dos scripts core (bloco-incluir.js e bloco-protecao.js). O uso de técnicas como lazy loading para embeds de terceiros (YouTube, Maps) e a priorização de carregamento de recursos críticos via fetchpriority são obrigações acessórias do desenvolvedor durante a fase de implementação.
+
+As consequências da inobservância dos padrões de performance incluem a penalização algorítmica imediata e a queda na taxa de conversão. Em termos contratuais, a entrega de um projeto com LCP (Largest Contentful Paint) superior a 2.5 segundos ou CLS (Cumulative Layout Shift) superior a 0.1 é considerada entrega parcial, exigindo correção imediata sem custos adicionais ao cliente, desde que as diretrizes de design originais tenham sido respeitadas.
+
+### 4. Política de Gerenciamento de Crawlers e Inteligência Artificial
+
+O controle sobre como os agentes de inteligência artificial consomem o conteúdo do site é uma decisão estratégica de propriedade intelectual. A implementação deve configurar o arquivo robots.txt de forma granular, distinguindo entre crawlers de busca tradicionais e crawlers de treinamento de LLMs (como GPTBot, Claude-Web e PerplexityBot). A base legal para este controle reside no direito de exclusão e na proteção de segredos comerciais, conforme o Art. 195 da Lei de Propriedade Industrial (Lei nº 9.279/96).
+
+A decisão de permitir ou bloquear a indexação por IA deve ser registrada na Seção E deste briefing. A e-Sid Tech recomenda a permissão (Allow) para fins de citação em AI Overviews, visando maximizar a visibilidade, mas impõe o bloqueio (Disallow) em páginas contendo tabelas de preços sensíveis ou dados de perfil restritos, para evitar a extração de dados competitivos por modelos de linguagem de terceiros.
+
+A falha na configuração correta dos agentes de IA pode resultar na exposição indevida de informações estratégicas em bases de conhecimento globais, um dano muitas vezes irreversível. A implementação deve prever o uso de meta tags específicas como noimageindex ou max-snippet quando a estratégia de privacidade do cliente assim o exigir, garantindo a soberania digital sobre o conteúdo publicado.
+
+### 5. Arquitetura de Componentes e Repositório Central
+
+A eficiência operacional do Modelo P.E.R.F.E.I.T.O. baseia-se na modularização via includes dinâmicos. A decisão entre o uso de um Repositório Central (edusidegum.github.io/menu/) ou a localização total dos artefatos na pasta do cliente impacta diretamente a manutenção e a segurança do projeto. O uso do repositório central permite atualizações globais de segurança e conformidade legal (como ajustes no bloco-cookies.html) de forma instantânea em todos os projetos conectados.
+
+Juridicamente, a centralização de scripts de conformidade (LGPD) assegura que o cliente esteja sempre operando sob a versão mais atualizada das normas de privacidade, reduzindo o risco de sanções administrativas. No entanto, para clientes que exigem autonomia total e isolamento de dependências externas, a opção pela localização de artefatos deve ser exercida, transferindo ao cliente a responsabilidade pela atualização manual de tais componentes.
+
+A consequência de uma escolha inadequada nesta seção pode ser a quebra de funcionalidades em caso de migração de servidores ou a obsolescência de termos legais. A implementação deve documentar o path exato de cada script core, garantindo que a arquitetura de Vibe Coding possa resolver as dependências de forma automática durante a geração do código-fonte final.
+
+### 6. Conformidade com Acessibilidade e Experiência do Usuário (SXO)
+
+A acessibilidade digital é uma obrigação legal estabelecida pela Lei Brasileira de Inclusão (Lei nº 13.146/2015). Todos os projetos implementados sob este briefing devem atingir, no mínimo, o nível WCAG 2.2 AA. Isso inclui o contraste adequado de cores, a navegabilidade via teclado e a compatibilidade com leitores de tela. A racionalidade é a inclusão universal e a redução de barreiras de acesso ao consumo de informações e serviços.
+
+Além da conformidade legal, a acessibilidade é um fator de ranqueamento em Search Experience Optimization (SXO). Motores de busca priorizam sites que oferecem uma experiência fluida para todos os usuários, incluindo aqueles com preferências de movimento reduzido (prefers-reduced-motion). A implementação deve prever o tratamento de animações e transições para respeitar as configurações do sistema operacional do usuário.
+
+O descumprimento dos padrões de acessibilidade expõe o proprietário do site a riscos de litígio e denúncias em órgãos de defesa do consumidor, além de alienar uma parcela significativa do mercado. A validação por ferramentas automatizadas e testes manuais de navegação é etapa obrigatória do QA Técnico antes da entrega final do projeto.
+
+### 7. Protocolos de Segurança e Integridade de Código
+
+A segurança da informação é garantida pela adoção de protocolos de comunicação criptografada (HTTPS) e pela integridade dos scripts executados. A implementação proíbe estritamente o uso de executáveis ou scripts de procedência não verificada. A base legal reside no Marco Civil da Internet (Lei nº 12.965/2014), que estabelece princípios de segurança e proteção à rede.
+
+A utilização de Content Security Policy (CSP) e cabeçalhos de segurança como HSTS deve ser configurada para prevenir ataques de Cross-Site Scripting (XSS) e injeção de código. A racionalidade é a preservação da integridade dos dados do usuário e a reputação do domínio. Em projetos que utilizam o repositório central da e-Sid Tech, a integridade é monitorada continuamente.
+
+As consequências de falhas de segurança incluem o sequestro de tráfego, a inserção de links maliciosos e a inclusão do domínio em blacklists de navegadores. A responsabilidade técnica pela configuração inicial de segurança é da e-Sid Tech, enquanto a guarda das credenciais de acesso ao hosting e ao GitHub permanece sob responsabilidade do cliente após a entrega das chaves de acesso.
+
+### 8. Disposições Finais e Termos de Aceite Operacional
+
+A conclusão deste briefing operacional marca o encerramento da fase de planejamento e o início da execução técnica. As partes reconhecem que o Modelo P.E.R.F.E.I.T.O. é uma metodologia proprietária que visa a excelência técnica e a longevidade do ativo digital. Qualquer solicitação de alteração de escopo após a assinatura deste documento deverá ser objeto de aditivo técnico, com revisão de prazos e valores conforme a complexidade da mudança solicitada.
+
+A fundamentação para a imutabilidade relativa do briefing reside na eficiência do processo de Vibe Coding, que utiliza estas definições como parâmetros de entrada para a geração automatizada de código de alta fidelidade. Alterações estruturais tardias rompem o nexo de automação e exigem intervenção manual extensiva, descaracterizando a agilidade proposta pelo ecossistema e-Sid Tech.
+
+Por fim, as partes elegem o foro da comarca de Porto Alegre/RS para dirimir quaisquer dúvidas oriundas da interpretação técnica deste documento, aplicando-se subsidiariamente as normas do Código Civil Brasileiro e as melhores práticas internacionais de engenharia de software e SEO.
+
+---
+
+### Seção A — Identificação do Projeto
+
+
+
+
+Campo
+Resposta
+
+
+
+
+Nome do Projeto [OBRIGATÓRIO]
+
+
+
+Nome fantasia / Razão social
+
+
+
+Segmento de atuação
+
+
+
+Tempo de mercado
+
+
+
+Diferencial competitivo (1 frase)
+
+
+
+Objetivo principal do site
+
+
+
+Público-alvo principal
+
+
+
+Abrangência regional
+
+
+
+
+
+### Seção B — Stack e Arquitetura
+
+
+
+
+Campo
+Resposta / Decisão
+
+
+
+
+[BASE_URL] [OBRIGATÓRIO]
+
+
+
+[BASE_PATH] [OBRIGATÓRIO]
+
+
+
+Stack
+( ) GitHub Pages / ( ) VPS / ( ) Outro
+
+
+Tema CSS
+( ) Green / ( ) White / ( ) Black / ( ) Custom
+
+
+Paleta de cores
+
+
+
+Tipografia
+
+
+
+Logotipo em vetor
+( ) Sim / ( ) Não
+
+
+Fotos próprias
+( ) Sim / ( ) Não
+
+
+
+
+### Seção C — Decisões de Arquitetura de Includes
+
+#### C1 — Menu (Header)
+Decisão: ( ) Compartilhado — usar bloco-incluir do repositório central | ( ) Específico — projeto fornecerá header/menu local
+
+#### C2 — Footer
+Decisão: ( ) Compartilhado — usar footer central | ( ) Específico — criar include dedicado
+Tipo de projeto: ( ) Pessoal (Eduardo) | ( ) Terceiros (cliente/parceiro)
+
+#### C3 — Repositório Central vs Local
+Decisão: ( ) Sim — usar URLs do repositório central | ( ) Não — salvar artefatos na pasta do projeto
+
+### Seção D — SEO e Metadados
+
+#### D1 — Indexação e Schema
+
+
+
+Página
+Indexação
+Schema Principal
+
+
+
+
+Home
+( ) index, follow / ( ) noindex
+
+
+
+Internas
+( ) index, follow / ( ) noindex
+
+
+
+Preços
+( ) noindex, nofollow
+N/A
+
+
+
+
+#### D2 — Dados GEO e Entidade
+mainEntity: ( ) Sim / ( ) Não | GEO (Lat/Lng): ( ) Sim / ( ) Não
+Dados: CEP: _________ | Lat: _________ | Lng: _________
+
+### Seção E — Política de IA e Crawlers
+
+Autoriza AI Overviews: ( ) Sim / ( ) Não
+Bloquear Crawlers: ( ) GPTBot ( ) Claude-Web ( ) Google-Extended ( ) PerplexityBot
+
+---
+
+          
+RESPONSÁVEL TÉCNICO (E-SID)                                CLIENTE / RESPONSÁVEL
+
+Local e data: _________________________, 29 de julho de 2026
+
+*Documento elaborado em 29 de julho de 2026. As informações contidas são de responsabilidade do solicitante.*

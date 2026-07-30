@@ -1,0 +1,226 @@
+e-Sid Tech / Arquitetura Web
+
+E_SID_MODELO_TEMPLATES_ARQUITETURA_WEB_PERFEITO_VS4
+
+Anexo de Templates — Modelo P.E.R.F.E.I.T.O. 2026.2
+
+29 de julho de 2026
+
+---
+
+### 1. Resumo Executivo e Stack
+
+Este documento consolida os templates finais e testados para o ecossistema multi-algoritmo 2026, parametrizados por [BASE_URL] e [BASE_PATH]. A versão 2026.2 (Vs4) introduz conformidade total com AEO, GEO (Generative + Geo-Context), SXO e AIO, incluindo otimizações específicas para Google AI Overviews e métricas de performance INP < 200ms.
+
+
+Stack Técnica: GitHub Pages (estático), HTML semântico, Schema.org (LocalBusiness, Product, FAQ, Article, WebPage + mainEntity), NAP consistente, Core Web Vitals (INP < 200ms), Zero back-button hijack, JS mínimo no LCP, sem tracking desnecessário. llms.txt: não utilizado por decisão arquitetural.
+
+
+---
+
+### 2. Template — Head SEO Completo (Páginas Indexáveis)
+
+Inserir dentro da tag <head>. Este template implementa a desambiguação semântica exigida pelo modelo Vs4 para AIO e AI Overviews através do [MAIN_ENTITY_TYPE] e georreferenciamento completo.
+
+```html
+
+
+
+[TITLE]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+  "@context": "https://schema.org",<br/>
+  "@graph": [
+    {
+      "@type": "Organization",<br/>
+      "@id": "[BASE_URL][BASE_PATH]#business",<br/>
+      "name": "[MAIN_ENTITY_NAME]",<br/>
+      "url": "[BASE_URL][BASE_PATH]",<br/>
+      "address": {<br/>
+        "@type": "PostalAddress",<br/>
+        "addressLocality": "[GEO_CITY]",<br/>
+        "addressRegion": "[GEO_STATE]",<br/>
+        "postalCode": "[GEO_CEP]",<br/>
+        "addressCountry": "BR"
+      },
+      "geo": {<br/>
+        "@type": "GeoCoordinates",<br/>
+        "latitude": [GEO_LAT],<br/>
+        "longitude": [GEO_LNG]
+      }
+    },
+    {
+      "@type": "WebPage",<br/>
+      "@id": "[BASE_URL][BASE_PATH][SLUG].html#webpage",<br/>
+      "url": "[BASE_URL][BASE_PATH][SLUG].html",<br/>
+      "mainEntity": {"@id": "[BASE_URL][BASE_PATH]#[MAIN_ENTITY_TYPE]"}
+    },
+    {
+      "@type": "[MAIN_ENTITY_TYPE]",<br/>
+      "@id": "[BASE_URL][BASE_PATH]#[MAIN_ENTITY_TYPE]",<br/>
+      "name": "[MAIN_ENTITY_NAME]",<br/>
+      "geo": {<br/>
+        "@type": "GeoCoordinates",<br/>
+        "latitude": [GEO_LAT],<br/>
+        "longitude": [GEO_LNG]
+      }
+    }
+  ]
+}
+
+```
+
+---
+
+### 3. Scripts de Sistema (Vibe Coding Ready)
+
+#### 3.1 bloco-incluir.js (Rodapé e LGPD)
+Injeta dinamicamente o footer padrão e o banner de cookies sem bloquear o LCP ou afetar o TBT.
+
+```javascript
+(function(){
+  function init(){
+    var basePath = window.__BASE_PATH__ || '/';
+    var f = document.querySelector('footer.site-footer') || document.createElement('footer');
+    f.className = 'site-footer';
+    f.innerHTML = 'Desenvolvido por e-Sid Tech | Privacidade';
+    if(!f.parentNode) document.body.appendChild(f);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+```
+
+#### 3.2 bloco-protecao.js (UX & A11y)
+Proteção seletiva que respeita a preferência prefers-reduced-motion conforme WCAG 2.2 AA.
+
+```javascript
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.addEventListener('contextmenu', function(e){
+    if (e.target.tagName==='IMG' || e.target.closest('figure')) e.preventDefault();
+  });
+  document.querySelectorAll('[data-protect]').forEach(el => el.style.userSelect = 'none');
+})();
+```
+
+---
+
+### 4. Estrutura de Diretórios e Governança de Crawlers
+
+#### 4.1 robots.txt (Configuração Vs4)
+Diretrizes explícitas para agentes de IA, permitindo indexação total para maximizar a presença em LLMs e Search Generative Experiences.
+
+```text
+User-agent: *
+Allow: /
+Disallow: [BASE_PATH]doc/
+Disallow: [BASE_PATH]data/
+
+User-agent: GPTBot
+Allow: /
+User-agent: Claude-Web
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+```
+
+
+Atenção: O arquivo llms.txt não é utilizado nesta arquitetura. A governança é centralizada via robots.txt para evitar redundância e conflitos de instrução.
+
+
+---
+
+### 5. Checklist de Integração Pós-Deploy (Vs4)
+
+
+
+
+Categoria
+Item de Verificação
+Status
+
+
+
+
+Performance
+INP < 200ms verificado via Lighthouse
+[ ]
+
+
+AIO/GEO
+WebPage.mainEntity presente e desambiguada
+[ ]
+
+
+GEO Local
+PostalAddress + GeoCoordinates no JSON-LD
+[ ]
+
+
+IA Crawlers
+Permissões explícitas para GPTBot e Google-Extended
+[ ]
+
+
+Acessibilidade
+Conformidade WCAG 2.2 AA e prefers-reduced-motion
+[ ]
+
+
+SXO
+Zero back-button hijack e LCP otimizado
+[ ]
+
+
+
+
+---
+
+### 6. Histórico de Versões
+
+
+
+
+Versão
+Data
+Alterações Principais
+
+
+
+
+v1.0
+01/01/2024
+Templates base iniciais.
+
+
+Vs4
+29/07/2026
+Alinhamento P.E.R.F.E.I.T.O. 2026.2, INP, AI Overviews e GEO.
+
+
+
+
+Local e data: Porto Alegre, 29 de julho de 2026
+
+
+ARQUITETURA DE SISTEMAS E-SID TECH
+
+*Documento elaborado em 29 de julho de 2026. As informações contidas são de responsabilidade do solicitante.*

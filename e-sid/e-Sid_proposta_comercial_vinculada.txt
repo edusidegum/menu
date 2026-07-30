@@ -1,0 +1,134 @@
+e-Sid Tech — Arquitetura Web de Alta Performance
+
+PROPOSTA COMERCIAL DE PRESTAÇÃO DE SERVIÇOS DE TECNOLOGIA
+
+Modelo P.E.R.F.E.I.T.O. — Metodologia de Arquitetura Web Personalizada
+
+29 de julho de 2026
+
+---
+
+## PROPOSTA COMERCIAL DE PRESTAÇÃO DE SERVIÇOS DE TECNOLOGIA
+
+### 1. PREÂMBULO E NATUREZA JURÍDICA DA CONTRATAÇÃO
+
+A presente contratação possui natureza estritamente empresarial (B2B), destinando-se ao fomento da atividade comercial da CONTRATANTE, que adquire a solução tecnológica como insumo para sua operação de mercado, e não como destinatária final nos termos estritos do art. 2º da Lei nº 8.078/90 (Código de Defesa do Consumidor). As partes declaram contratar no exercício de suas atividades econômicas, regendo-se esta relação pelas normas do Código Civil Brasileiro (Lei nº 10.406/02) e legislação empresarial correlata, pautando-se pelos princípios da probidade e boa-fé objetiva.
+
+A CONTRATADA, representada por Eduardo Sidegum, compromete-se a entregar um ativo digital de propriedade plena da CONTRATANTE, eliminando a dependência técnica e financeira de mensalidades de plataformas proprietárias. A metodologia aplicada visa a autonomia do cliente, garantindo que o código-fonte seja um patrimônio da empresa contratante, protegido pela Lei nº 9.609/98 (Lei do Software), permitindo livre gestão, hospedagem e modificação futura sem amarras contratuais vitalícias.
+
+A validade desta proposta é de 30 (trinta) dias corridos a contar da data de sua emissão. O aceite desta proposta, seja por assinatura física ou digital (conforme MP 2.200-2/2001), implica na concordância integral com os termos aqui dispostos, servindo o presente documento como título executivo extrajudicial para todos os fins de direito, nos termos do Código de Processo Civil.
+
+### 2. IDENTIFICAÇÃO DAS PARTES
+
+#### 2.1 CONTRATANTE
+**Nome / Razão Social:** 
+**CPF / CNPJ:** __________________________________
+**Endereço:** 
+**E-mail:** __________________________________
+**Telefone / WhatsApp:** __________________________________
+
+#### 2.2 CONTRATADA
+**Nome:** Eduardo Sidegum
+**CPF:** 013.358.080-05
+**Atividade:** Desenvolvimento de sites e aplicações web — MEI
+**E-mail:** [E-MAIL PARA CONTATO]
+**Telefone / WhatsApp:** (51) 99966-3200
+
+### 3. OBJETO E METODOLOGIA APLICADA
+
+A CONTRATADA obriga-se a prestar à CONTRATANTE os serviços de arquitetura, desenvolvimento e implantação de solução web personalizada, utilizando a metodologia proprietária denominada Modelo P.E.R.F.E.I.T.O.. Esta metodologia compreende as etapas de diagnóstico situacional, arquitetura de informação, estruturação semântica de dados (Schema.org JSON-LD), implementação via Vibe Coding com revisão multi-LLM e validação técnica rigorosa de performance, acessibilidade e SEO.
+
+A execução dos serviços observa os princípios da autonomia privada e da liberdade contratual previstos no art. 425 do Código Civil. A CONTRATADA garante que a solução entregue possua estruturação semântica de dados via Schema.org JSON-LD, incluindo WebPage.mainEntity para desambiguação semântica e PostalAddress com GeoCoordinates para otimização GEO. O foco central é a criação de um ativo digital de alta performance, validado pelos critérios de Core Web Vitals (INP, LCP e CLS) e acessibilidade WCAG 2.2 AA.
+
+O descumprimento de qualquer etapa metodológica prevista nesta cláusula, desde que tecnicamente comprovado, ensejará a revisão técnica do projeto sem custos adicionais à CONTRATANTE, no prazo de 15 (quinze) dias úteis. A CONTRATADA reserva-se o direito de utilizar ferramentas de Inteligência Artificial como aceleradores de produtividade, mantendo, contudo, a responsabilidade técnica integral e a supervisão humana sobre cada linha de código gerada, garantindo a segurança e a originalidade da entrega.
+
+### 4. ESCOPO DOS SERVIÇOS E ENTREGÁVEIS
+
+#### 4.1 Produto Contratado
+Assinalar o produto objeto desta contratação:
+( ) **Landing Page Simples** — R$ 1.500,00 a R$ 2.500,00
+( ) **Landing Page Completa** — R$ 2.500,00 a R$ 4.500,00
+( ) **Microsite Institucional (3 a 5 páginas)** — R$ 4.500,00 a R$ 7.000,00
+
+#### 4.2 Entregáveis Obrigatórios
+Independentemente do produto selecionado, a CONTRATADA entregará o código-fonte completo em HTML5 semântico, CSS3 e JavaScript ES6+ modular. A entrega inclui a estruturação de dados semânticos via Schema.org JSON-LD, configuração de arquivo robots.txt com diretrizes granulares para crawlers de busca tradicionais e de inteligência artificial (GPTBot, Claude-Web, PerplexityBot, etc.), e arquivo sitemap.xml otimizado. A solução será entregue com performance validada (INP < 200ms) e acessibilidade nível AA.
+
+A CONTRATADA também fornecerá documentação técnica simplificada, permitindo que a CONTRATANTE realize alterações básicas de conteúdo sem dependência técnica. Está inclusa a implementação de banner de cookies em conformidade com a Lei nº 13.709/2018 (LGPD), com armazenamento de preferências em localStorage, e a integração de CTA de WhatsApp com rastreamento de origem. A inobservância de normas setoriais não especificadas no Documento de Proposta de Implementação (briefing) não caracterizará inadimplemento contratual.
+
+Estão expressamente excluídos do escopo (fora de escopo): criação de logotipos ou identidade visual, produção de textos e fotografias, registro de domínios, contratação de hospedagem e serviços de gestão de tráfego pago. Qualquer serviço adicional não listado nesta cláusula deverá ser objeto de aditivo contratual ou nova proposta comercial, sob pena de desequilíbrio econômico-financeiro do contrato original.
+
+### 5. PLANO DE ACOMPANHAMENTO (OPCIONAL)
+
+A CONTRATANTE poderá aderir voluntariamente ao Plano de Acompanhamento, serviço de suporte contínuo regido pelas regras gerais das obrigações de fazer do Código Civil. Este plano não é obrigatório para o funcionamento do site, que é um ativo independente. A adesão visa garantir a longevidade técnica e a atualização constante frente às mudanças nos algoritmos de recomendação e inteligência artificial.
+
+As faixas de serviço compreendem: Básico (R$ 97/mês) para atualizações de conteúdo e segurança; Padrão (R$ 197/mês) incluindo análise trimestral de performance e ajustes de SEO; e Premium (R$ 297/mês) com suporte prioritário, relatórios mensais de presença em AI Overviews e horas de alterações estruturais inclusas. O SLA de resposta varia de 24 a 72 horas úteis, conforme a faixa contratada.
+
+O Plano de Acompanhamento tem vigência mensal com renovação automática, podendo ser rescindido por qualquer das partes mediante notificação prévia de 15 (quinze) dias. A rescisão do plano não afeta a propriedade do código nem o funcionamento da solução web, permanecendo todos os direitos de propriedade intelectual com a CONTRATANTE conforme pactuado na Cláusula 6.
+
+### 6. INVESTIMENTO E CONDIÇÕES DE PAGAMENTO
+
+O valor total do projeto é de R$ ___________ (__________________ reais). O pagamento deverá ser efetuado conforme a modalidade escolhida: à vista na assinatura, ou parcelado conforme negociação registrada no campo específico desta proposta. A CONTRATADA emitirá o documento fiscal correspondente após a quitação de cada parcela ou do valor total, conforme o caso.
+
+Em caso de atraso no pagamento, incidirá multa moratória de 2% (dois por cento) e juros de mora de 1% (um por cento) ao mês, calculados pro rata die, conforme autoriza o art. 406 do Código Civil. O atraso superior a 30 (trinta) dias faculta à CONTRATADA a suspensão imediata da prestação dos serviços e da entrega de arquivos finais, sem prejuízo da cobrança judicial dos valores devidos.
+
+Os valores aqui pactuados são fixos e irreajustáveis durante a execução do projeto original. Caso haja contratação do Plano de Acompanhamento, o valor mensal poderá ser reajustado anualmente com base na variação positiva do IPCA/IBGE. Eventuais impostos incidentes sobre a prestação de serviços já estão inclusos no valor total da proposta, salvo alteração legislativa superveniente que majore a carga tributária.
+
+### 7. PROPRIEDADE INTELECTUAL E DIREITOS AUTORAIS
+
+Nos termos do art. 4º da Lei nº 9.609/98, a CONTRATADA transfere à CONTRATANTE a propriedade plena e exclusiva do código-fonte desenvolvido especificamente para este projeto, mediante a quitação integral dos valores pactuados. Esta transferência é irrevogável e garante à CONTRATANTE total autonomia sobre seu ativo digital, permitindo modificações por terceiros e livre escolha de provedores de hospedagem.
+
+A metodologia Modelo P.E.R.F.E.I.T.O., bem como os templates base e know-how operacional da CONTRATADA, permanecem como sua propriedade intelectual protegida pela Lei nº 9.279/96. A CONTRATANTE recebe uma licença de uso perpétua e não exclusiva sobre os componentes reutilizáveis integrados ao projeto. Esta distinção visa proteger o segredo de negócio da CONTRATADA enquanto garante a funcionalidade plena do produto entregue.
+
+A CONTRATADA reserva-se o direito de exibir o projeto finalizado em seu portfólio profissional e canais de divulgação, como prova de capacidade técnica, salvo se houver cláusula de confidencialidade específica assinada entre as partes. A CONTRATANTE autoriza, desde já, a inclusão de um link discreto de autoria ("Desenvolvido por e-Sid Tech") no rodapé do site, conforme os padrões de mercado.
+
+### 8. SIGILO, CONFIDENCIALIDADE E LGPD
+
+As partes obrigam-se a manter o mais absoluto sigilo sobre todas as informações técnicas, comerciais e estratégicas trocadas durante a execução deste contrato, em estrita observância ao dever de boa-fé objetiva previsto no art. 422 do Código Civil. Esta obrigação de confidencialidade estende-se a empregados e colaboradores de ambas as partes e perdurará por 2 (dois) anos após o encerramento da relação contratual.
+
+No tratamento de dados pessoais, a CONTRATADA atuará como operadora, seguindo as diretrizes da CONTRATANTE (controladora), em total conformidade com a Lei nº 13.709/2018 (LGPD). A CONTRATADA implementará medidas técnicas de segurança para proteger os dados contra acessos não autorizados e situações acidentais ou ilícitas de destruição, perda ou alteração, limitando o tratamento ao estritamente necessário para a execução do escopo.
+
+Em conformidade com o Marco Civil da Internet (Lei nº 12.965/2014), a CONTRATADA não manterá registros de acesso ou dados de usuários após o término do contrato, exceto quando houver obrigação legal de guarda ou contratação do Plano de Acompanhamento. A CONTRATANTE declara possuir base legal válida para o tratamento de dados de seus clientes, isentando a CONTRATADA de responsabilidade por eventuais irregularidades na coleta original dos dados.
+
+### 9. GARANTIA E RESPONSABILIDADE TÉCNICA
+
+A CONTRATADA oferece garantia técnica de funcionamento pelo prazo de 90 (noventa) dias a contar da entrega final, cobrindo correções de erros de programação (bugs) que impeçam o uso normal da solução. Esta garantia contratual complementa a garantia legal prevista no art. 26 do CDC (se aplicável) e no art. 441 do Código Civil, reforçando o compromisso com a qualidade da entrega técnica.
+
+A garantia será automaticamente extinta caso o código-fonte sofra alterações por parte da CONTRATANTE ou de terceiros não autorizados, ou se houver mau uso da plataforma de hospedagem. Problemas decorrentes de atualizações em APIs de terceiros (como Google Maps ou WhatsApp) ou mudanças drásticas nos navegadores após a data de entrega não estão cobertos pela garantia, sendo considerados manutenção evolutiva fora de escopo.
+
+A responsabilidade civil da CONTRATADA limita-se ao valor total pago pelo projeto, excluindo-se expressamente a responsabilidade por lucros cessantes, danos indiretos ou perda de dados decorrente de invasões externas, salvo se comprovado dolo ou culpa grave. Esta limitação de responsabilidade é pactuada com base no princípio da razoabilidade e no equilíbrio econômico do contrato, conforme jurisprudência do Superior Tribunal de Justiça.
+
+### 10. CRONOGRAMA E FASES DE EXECUÇÃO
+
+O projeto será executado em fases sequenciais: (1) Diagnóstico e Arquitetura; (2) Estruturação Semântica e SEO; (3) Implementação via Vibe Coding; (4) Validação Técnica e Revisão; (5) Homologação e Entrega. O prazo total estimado é de _____ dias úteis, iniciando-se após a entrega de todos os insumos e do briefing operacional devidamente preenchido pela CONTRATANTE.
+
+O atraso no fornecimento de informações ou materiais pela CONTRATANTE suspende a contagem do prazo de entrega. Caso o atraso da CONTRATANTE supere 15 (quinze) dias, a CONTRATADA poderá reprogramar o cronograma conforme sua disponibilidade de agenda, sem prejuízo da cobrança de taxas de ociosidade se pactuadas. A entrega final será formalizada mediante o envio dos arquivos ou publicação em ambiente de produção.
+
+Eventuais solicitações de alteração de escopo durante a execução (change requests) impactarão necessariamente o cronograma e o investimento, devendo ser formalizadas por escrito. A CONTRATADA compromete-se a informar tempestivamente qualquer intercorrência técnica que possa afetar os prazos estabelecidos, agindo sempre com transparência e cooperação mútua.
+
+### 11. RESCISÃO E PENALIDADES
+
+Qualquer das partes poderá rescindir o contrato em caso de descumprimento de obrigação essencial, mediante notificação prévia de 15 (quinze) dias para purgação da mora, conforme o art. 475 do Código Civil. A rescisão imotivada pela CONTRATANTE após o início da fase de implementação ensejará o pagamento de multa compensatória de 20% (vinte por cento) sobre o saldo remanescente do contrato, além do pagamento proporcional aos serviços já executados.
+
+A rescisão por culpa da CONTRATADA obriga a entrega imediata de todo o material produzido até a data da interrupção, sem custos adicionais. Em qualquer hipótese de rescisão, as cláusulas de sigilo e propriedade intelectual permanecem vigentes. As partes elegem a mediação amigável como etapa preliminar obrigatória antes de qualquer medida judicial, visando a celeridade e a preservação da relação profissional.
+
+A falência, recuperação judicial ou insolvência civil de qualquer das partes autoriza a rescisão imediata do contrato, independentemente de notificação prévia. Penalidades por atraso na entrega por culpa exclusiva da CONTRATADA serão aplicadas na forma de desconto de 1% (um por cento) por semana de atraso, limitado a 10% do valor total do projeto, garantindo a equidade nas sanções contratuais.
+
+### 12. DISPOSIÇÕES GERAIS E FORO
+
+Fica eleito o foro da comarca de Teutônia/RS para dirimir quaisquer controvérsias oriundas deste contrato, com renúncia expressa a qualquer outro, por mais privilegiado que seja, conforme o art. 63 do Código de Processo Civil. A escolha justifica-se pela proximidade com o domicílio das partes e facilidade de instrução processual na região de referência.
+
+Este contrato constitui o acordo integral entre as partes, substituindo quaisquer negociações verbais anteriores. A tolerância de qualquer das partes quanto ao descumprimento de cláusulas não constituirá novação ou renúncia de direitos. Caso qualquer disposição deste instrumento seja considerada nula ou ineficaz por decisão judicial, as demais cláusulas permanecerão em pleno vigor e efeito.
+
+As comunicações oficiais serão realizadas por e-mail ou WhatsApp, sendo consideradas válidas para todos os fins jurídicos. O presente contrato é firmado em 2 (duas) vias de igual teor e forma, na presença de 2 (duas) testemunhas, ou mediante assinatura digital certificada, possuindo força de título executivo extrajudicial.
+
+---
+
+          
+CONTRATANTE                                                CONTRATADO (Eduardo Sidegum)
+
+          
+Testemunha 1                                                Testemunha 2
+
+Local e data: _________________________, 29 de julho de 2026
+
+*Documento elaborado em 29 de julho de 2026. As informações contidas são de responsabilidade do solicitante.*

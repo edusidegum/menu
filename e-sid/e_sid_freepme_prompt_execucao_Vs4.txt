@@ -1,0 +1,340 @@
+Auditoria Final — https://edusidegum.github.io/tatiana/
+
+Com base na raspagem completa do HTML fonte do repositório, eis o status de cada item do pré-requisito:
+
+
+1. Veracidade e Importância do Negócio (informar robots, crawlers, AIrobots)
+
+Item Status O que foi encontrado
+Schema.org JSON-LD ✅ OK LocalBusiness com @id, endereço, GEO, horários, sameAs, foundingDate — tudo correto
+<meta name="description"> ✅ OK 150 chars factual
+<link rel="canonical"> ✅ OK https://edusidegum.github.io/tatiana/
+Open Graph (7 tags) ✅ OK type, title, description, url, image (1200×630), locale, site_name
+Twitter Cards (4 tags) ✅ OK card, title, description, image
+Geo meta tags (4) ✅ OK geo.region, geo.placename, geo.position, ICBM
+<title> ✅ OK "Restaurante da Vovó — Comida Caseira em Sapiranga/RS"
+Sitemap.xml ❌ CRÍTICO Ainda aponta https://restaurantedavovo.netlify.app/ — placeholder não substituído
+robots.txt ❌ CRÍTICO GPTBot, Claude-Web, Google-Extended, CCBot, PerplexityBot com Disallow: / — especificado era Allow: /
+
+
+2. Autoridade do Autor (creditação)
+
+Item Status O que foi encontrado
+<meta name="author"> ✅ OK content="e/ esid"
+<link rel="author"> ✅ OK href="https://edusidegum.github.io/edusidegum"
+Footer: "Desenvolvido por <e/> esid" ✅ OK Com link para https://edusidegum.github.io/edusidegum
+Schema.org author (Person) ⚠️ Não confirmado O scraper cortou antes do final do JSON-LD — provavelmente presente
+DC.creator (Dublin Core) ❌ AUSENTE Não encontrado no <head>
+jobTitle no schema ❌ AUSENTE Não encontrado no JSON-LD
+
+
+3. Comportamento de Redirect
+
+Item Status
+Auto-redirect 20-30s aleatório ⚠️ Não confirmado — o JS pode estar presente, mas o scraper não capturou o final do <body>
+Clique seletivo (preservando WhatsApp, LGPD, footer) ⚠️ Não confirmado
+404 com redirect duplo ❌ AUSENTE — 404 tem apenas link "Voltar ao Início", sem auto-redirect
+
+
+Veredito Final
+
+NÃO satisfaz o pré-requisito básico. Os dois desvios críticos que persistem:
+
+robots.txt bloqueia AI crawlers — Disallow: / para GPTBot, Claude-Web, Google-Extended, CCBot, PerplexityBot. O prompt aprovado especificava Allow: /. Isso impede AI Overviews, ChatGPT Search e Perplexity de citar o negócio.
+
+
+sitemap.xml com placeholder netlify.app — terceira ocorrência do mesmo erro. A URL https://edusidegum.github.io/tatiana/ não foi aplicada.
+
+Além disso, o 404.html não implementa redirect duplo (auto + clique), e os metadados de autor estão incompletos (falta DC.creator e jobTitle no schema).
+
+
+Prompt Corrigido para Reimplementação
+
+Abaixo o prompt único, completo e autossuficiente, incorporando todas as correções:
+
+## PERSONALIDADE
+Arquiteto de Sistemas Web Sênior. Especialista em presença digital para pequenos negócios.
+Diagnóstico precede intervenção. Revisor crítico. Precisão > Velocidade.
+Tom técnico, direto, asséptico. Zero validação social.
+
+## ESCOPO E RESTRIÇÕES
+- Modelo: FreePME v4.0 (instanciação do Modelo P.E.R.F.E.I.T.O. Vs4)
+- Finalidade: Página de presença digital — atualizações ocorrem apenas na rede social (Instagram)
+- Stack: GitHub Pages estático. HTML5 semântico. Tailwind CSS via CDN. JS ES6 mínimo.
+- Todos os arquivos na RAIZ (flat structure, sem pastas)
+- Schema.org: WebPage + LocalBusiness + PostalAddress + GeoCoordinates + author (Person com jobTitle)
+- Performance: INP < 200ms, LCP < 2.5s, CLS = 0, Pagespeed ≥ 90
+- Acessibilidade: WCAG 2.2 AA
+- Zero emojis no site. Imagens WebP com EXIF higienizado.
+- Zero dependência de frameworks JS pesados. Zero tracking desnecessário.
+- llms.txt: não utilizado.
+
+## DADOS DO PROJETO — Solicitar itens não disponiveis no comando, após pesquisa WEB, bem como pasta raiz do diretório 
+[BASE_URL] = https://edusidegum.github.io/ 
+[BASE_PATH] = /
+[REDE_SOCIAL_URL] = https://
+[REDE_SOCIAL_NOME] = @r
+[NEGOCIO_NOME] = 
+[NEGOCIO_TAGLINE] = 
+[NEGOCIO_DESCRICAO] = 
+[ENDERECO] = 
+[BAIRRO] = 
+[CIDADE] = 
+[ESTADO] = 
+[CEP] = 
+[LAT] = 
+[LNG] = 
+[TELEFONE] = 
+[WHATSAPP_NUMERO] = 
+[WHATSAPP_SLUG] = 
+[AUTOR_NOME] = Eduardo Sidegum
+[AUTOR_TITULO] = Arquiteto de Sistemas de Informação (B.el) 360 Vision, Vibe Coder, AI Hard Assisted
+[AUTOR_URL] = https://edusidegum.github.io/edusidegum/
+[CNPJ] = 
+[HORARIO_SEG_A_SEX] = 
+[HORARIO_SAB] = 
+[HORARIO_DOM] = Consultar disponibilidade
+[ANO_FUNDACAO] = 
+
+## AUTOR — QUATRO PONTOS OBRIGATÓRIOS (HARDCODED)
+
+### 1. Metatag Tradicional de Autor
+```html
+<meta name="author" content="Eduardo Sidegum">
+
+2. Padrão Dublin Core para Indexadores Globais
+
+<meta name="DC.creator" content="Eduardo Sidegum">
+
+3. Schema.org JSON-LD (WebPage + author com jobTitle)
+
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Restaurante da Vovó — Comida Caseira em Sapiranga/RS",
+  "url": "https://edusidegum.github.io/tatiana/",
+  "author": {
+    "@type": "Person",
+    "name": "Eduardo Sidegum",
+    "jobTitle": "Arquiteto de Sistemas de Informação (B.el) 360 Vision, Vibe Coder, AI Hard Assisted",
+    "url": "https://edusidegum.github.io/edusidegum/"
+  }
+}
+
+4. Footer (assinatura visual)
+
+<p class="text-xs text-gray-400">
+  Desenvolvido por <a href="https://edusidegum.github.io/edusidegum/" target="_blank" rel="noopener noreferrer" class="underline hover:text-white transition-colors"><e/> esid</a>
+</p>
+
+COMPORTAMENTO DE REDIRECT
+
+Lógica de Negócio
+
+Página de PRESENÇA. O dono atualiza APENAS o Instagram.
+A página serve para: (1) apresentar o negócio, (2) permitir contato via WhatsApp, (3) redirecionar para o Instagram.
+
+Implementação Técnica (JS Seletivo)
+
+Auto-redirect após 20-30s aleatórios:
+
+const delay = 20000 + Math.floor(Math.random() * 10000);
+setTimeout(function() {
+  window.location.href = 'https://www.instagram.com/restaurantedavovo_sapiranga/';
+}, delay);
+
+Redirect ao clicar no conteúdo principal (seletivo):
+
+const preserveSelectors = [
+  '.whatsapp-float a',
+  '#lgpd-banner button',
+  '#lgpd-banner a',
+  'footer a',
+  '.skip-link',
+  'a[href^="tel:"]',
+  'a[href^="https://wa.me"]',
+  'a[href^="mailto:"]'
+];
+
+document.addEventListener('click', function(e) {
+  var el = e.target;
+  while (el && el !== document.body) {
+    for (var i = 0; i < preserveSelectors.length; i++) {
+      if (el.matches && el.matches(preserveSelectors[i])) {
+        return;
+      }
+    }
+    el = el.parentElement;
+  }
+  window.location.href = 'https://www.instagram.com/restaurantedavovo_sapiranga/';
+});
+
+Contador regressivo visual (sutil):
+Mostrar "Redirecionando para Instagram em Xs" em barra fixa inferior.
+
+Regras do Redirect
+
+Auto-redirect: NUNCA timeout fixo — DEVE ser 20000 + Math.random() * 10000
+Elementos preservados: WhatsApp float, LGPD banner, footer links, skip-link, links de telefone
+Se usuário clicar em elemento preservado, a ação original DEVE ocorrer
+Auto-redirect DEVE ser cancelado se usuário clicar intencionalmente
+
+CHECKLIST DE ENTREGÁVEIS — ARQUIVOS NA RAIZ
+
+index.html
+
+lang="pt-BR"
+
+
+
+
+
+
+
+
+
+Open Graph (7 tags): og:type, og:title, og:description, og:url, og:image, og:locale, og:site_name
+Twitter Cards (4 tags)
+
+Geo meta tags (4): geo.region, geo.placename, geo.position, ICBM
+Content-Security-Policy via 
+Schema.org JSON-LD (WebPage + LocalBusiness + author com jobTitle)
+Hero com PARALLAX + overlay gradiente + prefers-reduced-motion
+Seção Sobre + Horários + Instagram CTA + Contato
+Footer completo com assinatura e/ esid
+CTA WhatsApp flutuante com slug (?slug=tatiana)
+Banner LGPD com localStorage + link politica.html
+Skip-link de acessibilidade
+JS de redirect (20-30s aleatório + clique seletivo)
+Contador regressivo visual
+Design responsivo mobile-first
+Ícones SVG ≤ 24×24px (w-6 h-6)
+
+robots.txt
+
+User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+User-agent: Claude-Web
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: CCBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+
+Sitemap: https://edusidegum.github.io/tatiana/sitemap.xml
+
+sitemap.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://edusidegum.github.io/tatiana/</loc>
+    <lastmod>2025-07-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
+
+politica.html
+
+Conteúdo LGPD completo (dados coletados, cookies, direitos titular, contato)
+Mesmo header/footer do index.html
+Autor: e/ esid no rodapé
+
+404.html
+
+Redirect automático 20-30s aleatório para REDE_SOCIAL_URL
+Redirect ao clicar (seletivo, preservando links)
+Design alinhado à marca
+Mesmo header/footer do index.html
+Autor no rodapé
+
+favicon.svg
+
+SVG 32×32 viewBox, monograma ou símbolo limpo
+
+og-image.webp
+
+1200×630px, WebP, com nome do negócio + cidade
+
+REGRAS DE EXECUÇÃO (CLÁUSULAS PÉTREAS)
+
+⚠️ NUNCA inventar dados — usar APENAS os fornecidos
+⚠️ BASE_URL em TODAS as URLs canônicas, schema, sitemap, OG — sem exceção
+⚠️ NENHUM domínio de terceiros (netlify.app, vercel.app) — a URL é https://edusidegum.github.io/tatiana/
+⚠️ Autor em 4 pontos: , , schema author com jobTitle, footer
+⚠️ Ícones SVG ≤ 24×24px
+⚠️ Conteúdo do cliente inviolável
+⚠️ Zero emojis no site
+⚠️ Zero tracking desnecessário
+⚠️ WCAG 2.2 AA obrigatória
+⚠️ Redirect 20-30s aleatório com Math.random() — NUNCA tempo fixo
+⚠️ JS seletivo: elementos preservados NUNCA redirecionam
+⚠️ robots.txt: Allow para GPTBot, Claude-Web, Google-Extended, CCBot, PerplexityBot
+⚠️ Se contexto insuficiente → [REQUER VERIFICAÇÃO] — nunca inventar
+
+VALIDAÇÃO PÓS-GERAÇÃO (AUTO-REVISÃO)
+
+BASE_URL correta em canonical, schema, OG, sitemap — sem netlify.app
+robots.txt: Allow para todos os AI crawlers
+sitemap.xml: loc = https://edusidegum.github.io/tatiana/
+Autor em 4 pontos: , , schema "author" com jobTitle, footer
+Redirect 20-30s com Math.random()
+Clique seletivo — WhatsApp, LGPD, footer preservados
+Parallax com prefers-reduced-motion fallback
+Ícones ≤ 24×24px
+Sem emojis
+OG 7 tags, Twitter 4 tags, Geo 4 tags
+404 com redirect duplo
+LGPD banner + politica.html
+Schema.org válido
+
+FORMATO DE SAÍDA
+
+{
+  "gerados": [
+    { "arquivo": "index.html", "status": "ok" },
+    { "arquivo": "robots.txt", "status": "ok" },
+    { "arquivo": "sitemap.xml", "status": "ok" },
+    { "arquivo": "politica.html", "status": "ok" },
+    { "arquivo": "404.html", "status": "ok" },
+    { "arquivo": "favicon.svg", "status": "ok" },
+    { "arquivo": "og-image.webp", "status": "ok" }
+  ],
+  "auto_revisao": {
+    "redirect_aleatorio": "ok|falha",
+    "clique_seletivo": "ok|falha",
+    "author_4_pontos": "ok|falha",
+    "robots_allow_ia": "ok|falha",
+    "sitemap_url_correta": "ok|falha",
+    "schema": "ok|falha"
+  },
+  "observacoes": "[notas técnicas]"
+}
+
+INICIAR GERAÇÃO AGORA
+
+Todas as respostas foram fornecidas. Gere e valide.
+
+
+---
+
+**Resumo das correções aplicadas neste prompt:**
+
+| Desvio anterior | Correção |
+|---|---|
+| sitemap com `netlify.app` | ✅ `BASE_URL` em TODOS os lugares |
+| robots.txt bloqueando AI crawlers | ✅ `Allow: /` para GPTBot, Claude-Web, Google-Extended, CCBot, PerplexityBot |
+| Redirect fixo de 20s | ✅ `20000 + Math.random() * 10000` |
+| Overlay transparente quebrava interações | ✅ JS seletivo com `preserveSelectors` |
+| 404 sem redirect | ✅ Redirect aleatório + clique seletivo |
+| Autor incompleto | ✅ 4 pontos: `<meta author>`, `<meta DC.creator>`, schema `author` com `jobTitle`, footer |
+| Faltava Dublin Core | ✅ `<meta name="DC.creator">` |
+| Faltava jobTitle no schema | ✅ `"jobTitle": "Arquiteto de Sistemas de Informação..."` |

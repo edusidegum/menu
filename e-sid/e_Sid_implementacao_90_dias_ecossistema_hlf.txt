@@ -1,0 +1,340 @@
+A_implementacao_90_dias_ecossistema_HLF
+
+Arquitetura de Visibilidade Online — Suplementação Premium (18+, B+)
+
+Confirmado. Prossigo com a estrutura técnica, semântica e operacional baseada em:
+
+Público: 18+, classe B+, intenção primária = performance > emagrecimento > bem-estar
+Canais: SEO (prioridade 1) → Redes Sociais → WhatsApp (CTA)
+Métrica: Leads qualificados > Vendas > E-E-A-T > Retenção
+
+
+1. ARQUITETURA SEMÂNTICA & ENTIDADES
+
+Hierarquia de Entidades
+
+┌─ Edu Sidegum (Autoridade Principal)
+│  └─ Método: diagnóstico sistêmico + resultado mensurável
+│  └─ E-E-A-T: Sistemas de Informação + experiência corporativa + prática Herbalife
+│
+├─ Ecossistema Herbalife (Operação Atual)
+│  └─ Consultoria + acompanhamento + portfólio estruturado
+│  └─ Compliance: Brasil = diagnóstico/consultoria; Mercados liberados = venda
+│
+└─ Bioniq / Nutrição de Precisão (Frente de Autoridade Futura)
+   └─ Campo semântico: biomarcadores, personalização, alto rendimento
+   └─ Disclaimer obrigatório: "Não disponível no Brasil — aguardando regulação"
+
+Clusters de Intenção (SEO)
+
+Cluster Intenção Primária Público CTA Permitido
+Performance & Alto Rendimento "Como otimizar performance com suplementação" Atletas, profissionais exigentes Diagnóstico
+Emagrecimento Estruturado "Perder peso com método, não dieta" 18-45, classe B+ Diagnóstico
+Biomarcadores & Nutrição de Precisão "Qual suplementação meu corpo realmente precisa" Conscientes de saúde, 25-50 Diagnóstico
+Energia & Rotina "Mais energia sem estimulantes" Profissionais ocupados Diagnóstico
+Composição Corporal "Ganho muscular + redução de gordura" 18-40, fitness-aware Diagnóstico
+
+
+2. MAPA DE PÁGINAS (90 DIAS)
+
+Camada 1 — Autoridade (Fundação)
+
+Página URL Sugerida H1 Objetivo SEO CTA
+Sobre / Método /sobre "Diagnóstico Sistêmico em Nutrição" E-E-A-T (autoria + experiência) Contato
+Como Funciona o Diagnóstico /diagnostico-nutricional "Entenda o Método de Diagnóstico" Explicar processo WhatsApp
+Princípios de Suplementação Personalizada /suplementacao-personalizada "Por Que Suplementação Genérica Falha" Information gain Diagnóstico
+Compliance & Transparência /compliance "Nossas Práticas de Transparência" Confiança + legal —
+FAQ Institucional /faq "Perguntas Frequentes" Capturar queries longas Diagnóstico
+
+Schema.org obrigatório: LocalBusiness (NAP), Person (Edu Sidegum), FAQPage
+
+
+Camada 2 — Clusters (Páginas-Mãe)
+
+Cluster 1: Performance & Alto Rendimento
+
+Página URL H1 Palavra-chave Primária CTA
+Pilar /performance-suplementacao "Suplementação para Alto Rendimento" "suplementação performance" Diagnóstico
+Secundária 1 /biomarcadores-performance "Biomarcadores que Indicam Seu Potencial" "biomarcadores performance" Diagnóstico
+Secundária 2 /erros-suplementacao-atletas "5 Erros Que Atletas Cometem em Suplementação" "suplementação atletas" Diagnóstico
+FAQ /faq-performance "Dúvidas Sobre Suplementação para Performance" Long-tail Diagnóstico
+
+Schema: Article + FAQPage
+
+
+Cluster 2: Emagrecimento Estruturado
+
+Página URL H1 Palavra-chave Primária CTA
+Pilar /emagrecimento-personalizado "Emagrecimento Com Método, Não Dieta" "emagrecimento suplementação" Diagnóstico
+Secundária 1 /composicao-corporal "Composição Corporal: Além da Balança" "composição corporal" Diagnóstico
+Secundária 2 /metabolismo-personalizado "Seu Metabolismo é Único — Suplementação Também" "metabolismo personalizado" Diagnóstico
+FAQ /faq-emagrecimento "Dúvidas Sobre Emagrecimento Personalizado" Long-tail Diagnóstico
+
+
+Cluster 3: Biomarcadores & Nutrição de Precisão
+
+Página URL H1 Palavra-chave Primária CTA
+Pilar /nutrição-de-precisão "Nutrição de Precisão: Suplementação Baseada em Dados" "nutrição de precisão" Diagnóstico
+Secundária 1 /biomarcadores-saude "Quais Biomarcadores Importam Para Sua Saúde" "biomarcadores saúde" Diagnóstico
+Secundária 2 /bioniq-tecnologia "Bioniq: Tecnologia de Nutrição Personalizada" "Bioniq" Contato (disclaimer: não disponível BR)
+FAQ /faq-biomarcadores "Dúvidas Sobre Biomarcadores e Nutrição" Long-tail Diagnóstico
+
+Disclaimer obrigatório em Bioniq: "Bioniq não está disponível no Brasil. Aguardamos regulação local. [Contato para lista de interesse]"
+
+
+Cluster 4: Energia & Rotina
+
+Página URL H1 Palavra-chave Primária CTA
+Pilar /energia-rotina "Mais Energia, Sem Estimulantes Agressivos" "energia suplementação" Diagnóstico
+Secundária 1 /cansaco-cronico "Cansaço Crônico: Diagnóstico Nutricional" "cansaço crônico" Diagnóstico
+FAQ /faq-energia "Dúvidas Sobre Energia e Suplementação" Long-tail Diagnóstico
+
+
+Camada 3 — Conversão (Brasil)
+
+Página URL Função CTA
+Diagnóstico Inicial /diagnostico Capturar intenção de compra WhatsApp + Email
+Contato /contato Formulário + WhatsApp WhatsApp
+Lista de Interesse (Bioniq) /bioniq-lista-interesse Capturar demanda futura Email
+
+
+3. CAMPO SEMÂNTICO & PALAVRAS-CHAVE
+
+Intenção: Informacional (Educar)
+
+biomarcadores saúde
+nutrição de precisão
+suplementação personalizada
+composição corporal
+metabolismo personalizado
+performance atlética
+emagrecimento com método
+
+Intenção: Navegacional (Marca)
+
+Edu Sidegum nutrição
+Herbalife diagnóstico
+Bioniq Brasil
+
+Intenção: Transacional (Diagnóstico/Consultoria)
+
+diagnóstico nutricional online
+consultoria suplementação
+avaliação performance
+teste biomarcadores
+
+Fonte de validação: Google Search Console (após 30 dias) + Ahrefs/SEMrush (queries reais do público 18+, B+)
+
+
+4. CHECKLIST TÉCNICO (90 DIAS)
+
+SEO On-Page
+
+Title: 50-60 chars, palavra-chave primária + marca (ex: "Performance & Suplementação Personalizada | Edu Sidegum")
+Meta Description: 150-160 chars, CTA implícito (ex: "Diagnóstico nutricional baseado em biomarcadores. Descubra sua suplementação ideal.")
+H1: 1 por página, contém palavra-chave primária, diferente do title
+H2/H3: Estrutura lógica, suporta intenção da página
+Canonical: Explícito em toda página (self-referential ou apontando para versão preferida)
+Schema.org: LocalBusiness (NAP) + Person (Edu Sidegum) + Article + FAQPage (onde aplicável)
+Internal Links: Trilha lógica entre clusters (pilar → secundárias → FAQ)
+Image Alt: Descritivo, contém contexto (não genérico)
+
+SEO Técnico
+
+Sitemap.xml: Todas as páginas, prioridade por cluster
+Robots.txt: Allow /, Disallow /admin, Sitemap URL
+Core Web Vitals: INP < 200ms, LCP < 2.5s, CLS < 0.1
+Mobile-first: Viewport correto, touch targets ≥ 48px
+HTTPS: Certificado válido, redirect HTTP → HTTPS
+Velocidade: Lazy load images, minify CSS/JS, cache headers
+
+Compliance & Transparência
+
+Disclaimer Brasil: "Bioniq não disponível no Brasil" em todas as menções
+Autoria Visível: Byline + foto + bio em artigos principais
+Fonte de Dados: Citação de estudos/pesquisa (Google, Microsoft, Meta best practices)
+Política Editorial: Página /compliance explicando critérios de conteúdo
+
+
+5. CONTEÚDO INICIAL (Semanas 1-4)
+
+Semana 1: Fundação
+
+Página Sobre — Reforçar E-E-A-T
+
+Formação (Sistemas de Informação)
+Experiência (Microsoft + Herbalife)
+Método (diagnóstico sistêmico)
+Foto profissional + bio
+
+
+Página Diagnóstico — Explicar processo
+
+O que é diagnóstico nutricional
+Como funciona (3-5 passos)
+Tempo estimado
+CTA: WhatsApp
+
+
+Página Compliance — Transparência
+
+Critérios editoriais
+Disclaimer Brasil/Bioniq
+Fontes de pesquisa
+
+Semana 2-3: Clusters Pilares
+
+Performance & Alto Rendimento (Pilar)
+
+Introdução ao tema
+Por que suplementação genérica falha
+Método de diagnóstico aplicado a performance
+CTA: Diagnóstico
+
+
+Emagrecimento Personalizado (Pilar)
+
+Diferença entre dieta e suplementação estruturada
+Composição corporal vs peso
+Método aplicado a emagrecimento
+CTA: Diagnóstico
+
+
+Nutrição de Precisão (Pilar)
+
+O que são biomarcadores
+Por que importam
+Bioniq como exemplo (com disclaimer)
+CTA: Diagnóstico ou Lista de Interesse
+
+Semana 4: FAQ & Secundárias
+
+FAQ Institucional — Capturar queries longas
+
+"O que é suplementação personalizada?"
+"Como funciona o diagnóstico?"
+"Qual é a diferença entre Herbalife e Bioniq?"
+"Bioniq está disponível no Brasil?"
+
+
+Secundárias Rápidas (1-2 por cluster)
+
+"5 Erros em Suplementação para Atletas"
+"Composição Corporal: Além da Balança"
+"Biomarcadores Que Importam"
+
+
+6. REDES SOCIAIS (90 DIAS) — Suporte a SEO
+
+TikTok (Descoberta + Autoridade)
+
+Formato: 15-30s, educativo, sem venda direta
+
+Semana Tema Exemplo Objetivo
+1-2 Biomarcadores "Seu peso não diz tudo — veja esses 3 biomarcadores" Awareness
+3-4 Erros Comuns "Erro #1: Suplementação genérica para corpo único" Engagement
+5-6 Performance "Atletas que medem performance medem biomarcadores" Authority
+7-8 Emagrecimento "Composição corporal > peso na balança" Engagement
+9-12 Método "Como funciona diagnóstico nutricional" Conversion
+
+CTA: "Saiba mais em [link bio]" → Diagnóstico
+
+Instagram (Relacionamento + Confiança)
+
+Formato: Carrossel + Stories + Reels (derivados de TikTok)
+
+Carrossel: Explicação de conceito (biomarcadores, composição corporal)
+Stories: Behind-the-scenes, dúvidas de seguidores
+Reels: Versão Instagram de TikToks (com ajuste de duração)
+
+Frequência: 3x/semana (terça, quinta, sábado)
+
+LinkedIn (B2B + Autoridade)
+
+Formato: Artigo + reflexão sobre método
+
+"Por que diagnóstico precede intervenção em nutrição"
+"Sistemas de Informação aplicados a bem-estar"
+"Biomarcadores como dados de saúde"
+
+Frequência: 2x/semana
+
+
+7. FUNIL DE CONVERSÃO (Leads Qualificados)
+
+Topo (Awareness)
+├─ TikTok / Instagram / Busca Orgânica
+├─ Conteúdo educativo (sem CTA agressivo)
+└─ Objetivo: Tráfego qualificado
+
+Meio (Consideração)
+├─ Página de cluster (Performance, Emagrecimento, etc.)
+├─ FAQ + Secundárias
+└─ Objetivo: Entender método
+
+Fundo (Decisão)
+├─ Página Diagnóstico
+├─ WhatsApp / Contato
+└─ Objetivo: Lead qualificado (email + telefone)
+
+Pós-Conversão (Retenção)
+├─ Email: Confirmação + próximos passos
+├─ WhatsApp: Agendamento de diagnóstico
+└─ Objetivo: Venda de consultoria / Bioniq (quando liberado)
+
+
+8. KPIs (90 DIAS)
+
+Fase 1: Indexação & Tráfego Inicial
+
+Métrica Meta Ferramenta
+Páginas indexadas 15+ Google Search Console
+Impressões (busca) 500+ Google Search Console
+Cliques (busca) 50+ Google Search Console
+Tráfego orgânico 200+ sessões Google Analytics 4
+Queries reconhecidas 10+ Google Search Console
+CTR médio 3-5% Google Search Console
+
+Fase 2: Autoridade & Engajamento (180 dias)
+
+Métrica Meta Ferramenta
+Tráfego orgânico 1.000+ sessões GA4
+Leads qualificados 20+ CRM / Email
+Tempo médio na página 2+ min GA4
+Taxa de rejeição < 50% GA4
+Seguidores (TikTok) 500+ TikTok Analytics
+Engajamento (Instagram) 5%+ Instagram Insights
+
+
+9. CHECKLIST DE COMPLIANCE (OBRIGATÓRIO)
+
+Brasil
+
+Disclaimer em toda menção a Bioniq: "Não disponível no Brasil"
+Nenhuma página de venda direta do novo produto
+CTA permitido: Diagnóstico, Consultoria, Contato
+Herbalife: Operação legal, sem promessas de ganho
+Autoria visível em conteúdo educativo
+
+Mercados Liberados (se aplicável)
+
+Páginas geográficas separadas (ex: /en/bioniq)
+Disclaimer claro: "Disponível em [países]"
+Compliance local por país
+
+
+10. PRÓXIMOS PASSOS (Semana 1)
+
+Validar arquitetura com você (esta resposta)
+Criar estrutura de pastas (GitHub Pages / CMS)
+Implementar Schema.org (LocalBusiness + Person)
+Publicar 3 páginas pilares (Sobre, Diagnóstico, Performance)
+Configurar Google Search Console + Google Analytics 4
+Iniciar TikTok (1 vídeo teste)
+
+
+Pontos frágeis desta arquitetura:
+
+Dependência de tráfego inicial (SEO leva 60-90 dias para ganhar volume)
+Risco de canibalização se Herbalife e Bioniq não forem semanticamente separadas
+Compliance Brasil vs mercados liberados exige disciplina editorial rigorosa

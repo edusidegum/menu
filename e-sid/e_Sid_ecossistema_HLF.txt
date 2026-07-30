@@ -1,0 +1,159 @@
+Eduardo Sidegum — Engenharia de Sistemas
+
+E_SID_ECOSSISTEMA_HLF
+
+Documento Mestre de Refatoração e Arquitetura Web Nível 5
+
+29 de julho de 2026
+
+---
+
+### 1. Finalidade e Escopo
+
+Este documento define a arquitetura, especificação técnica e plano de execução para a refatoração completa do Ecossistema HLF. A operação consiste na migração do diretório D:/GitHub/HLF/ para D:/GitHub/myHLF/, elevando o padrão de design do Nível 1 para o Nível 5. O projeto está integralmente alinhado ao Modelo P.E.R.F.E.I.T.O. Vs4 (2026.2), visando a dominância em mecanismos de indexação e recomendação para 2026, incluindo SEO, AEO, GEO (Generative + Geo-Context), SXO e AIO (Google AI Overviews).
+
+#### 1.1 Responsável Técnico
+**Eduardo Sidegum** — Microsoft System Engineer, Bacharel em Sistemas de Informação, Distribuidor Independente Herbalife em Novo Hamburgo/RS.
+- **Contato:** `wa.me/5551999663200`
+- **Portfólio:** `https://edusidegum.github.io/edusidegum/sobre.html`
+
+#### 1.2 Stack Tecnológica Consolidada
+- **Hospedagem:** GitHub Pages (Ambiente Estático)
+- **Linguagens:** HTML5 Semântico, CSS3 (Utility-first leve), JS ES6+ Modular
+- **Performance:** INP < 200ms, CLS = 0, LCP < 2.5s
+- **Acessibilidade:** WCAG 2.2 AA
+- **Governança de IA:** Robots.txt multi-agente (IA Crawlers) e decisão llms.txt documentada
+
+---
+
+### 2. Princípios Arquiteturais (Modelo P.E.R.F.E.I.T.O.)
+
+#### 2.1 P — Personalidade
+Arquiteto de Sistemas Web e Engenheiro Sênior Front-End. O diagnóstico técnico precede qualquer intervenção estética. Foco em interfaces de alta performance com acessibilidade rigorosa e otimização para motores neurais.
+
+#### 2.2 E — Enfoque
+Garantia de citação direta por LLMs e AI Overviews. Conversão de tráfego qualificado em leads via WhatsApp através de autoridade técnica e clareza de dados.
+
+#### 2.3 R — Restrições (Cláusulas Pétreas)
+- **Imutabilidade:** Fórmulas, métricas e termos técnicos (tabelas de preços, cálculos de custo por refeição) são invioláveis.
+- **Conformidade Herbalife:** Páginas com valores e preços (/perfil/, /tabelas/, /cadastro.html) devem permanecer em noindex, nofollow com bloqueio total para TODOS os crawlers (incluindo IA).
+- **Estética:** Proibição absoluta de emojis no site. Uso exclusivo de imagens WebP com EXIF higienizado.
+
+#### 2.4 F — Fluxo de Interação (Vibe Coding)
+O fluxo de trabalho adota o modo Vibe Coding para aceleração de entrega:
+- **Etapas Suprimidas (IA):** Design tokens e Implementação de código.
+- **Etapas de Validação (Humana):** Auditoria de Schema.org e QA Técnico rigoroso.
+- **Etapas Prévias (Humana):** Coleta de dados e Arquitetura de Informação.
+- **Orquestração:** Revisão cruzada por múltiplos LLMs antes da validação final.
+
+---
+
+### 3. Estrutura do Ecossistema
+
+#### 3.1 Arquitetura de Diretórios (myHLF)
+```text
+myHLF/
+├── index.html                          # Home Nível 5
+├── robots.txt                          # Regras de IA Crawlers
+├── sitemap.xml                         # Apenas URLs indexáveis
+├── perfil/                             # Noindex / Bloqueio IA
+│   └── perfil.html                     
+├── hypedrink/                          # Product Showcase
+├── tabelas/                            # Dados Imutáveis (Noindex)
+└── assets/
+    ├── js/
+    │   ├── dados-kits.js               # 33 produtos (Inviolável)
+    │   ├── calculadora-kit.js          # Lógica de negócio
+    │   └── bloco-protecao.js           # v1.1 Anti-cópia
+```
+
+#### 3.2 Mapeamento de Design e Semântica
+
+
+
+Página
+Modelo CSS
+Schema Principal
+Indexação
+
+
+
+
+Home
+Modelo 2/4
+LocalBusiness + mainEntity
+Sim
+
+
+Hype Drink
+Modelo 8
+Product + mainEntity
+Sim
+
+
+Perfil
+Modelo 9
+WebApplication
+Não
+
+
+Tabelas
+Minimal
+Dataset
+Não
+
+
+
+
+---
+
+### 4. Especificações Técnicas Vs4
+
+#### 4.1 Performance e AIO (AI Overviews)
+- **INP < 200ms:** Verificação obrigatória via Lighthouse.
+- **Factual Density:** Cada parágrafo deve conter ao menos um dado verificável extraível isoladamente por LLMs.
+- **MainEntity:** Desambiguação semântica obrigatória em páginas indexáveis via `@type: WebPage`.
+
+#### 4.2 GEO (Generative Engine Optimization)
+- **Geo-Context:** JSON-LD contendo `PostalAddress` (CEP, cidade, estado) e `GeoCoordinates` (latitude, longitude) para alimentar o SEO Local e buscas generativas baseadas em localização (Novo Hamburgo/RS).
+
+#### 4.3 Gerenciamento de Crawlers de IA
+Páginas Públicas: Allow total para GPTBot, Claude-Web, Google-Extended, CCBot e PerplexityBot.
+Páginas Restritas (Valores): Disallow absoluto para todos os agentes acima. A conformidade Herbalife exige que dados de valores não sejam processados por modelos de linguagem.
+
+
+"llms.txt: Não utilizado por decisão arquitetural. A governança é centralizada via robots.txt para evitar redundância."
+
+
+---
+
+### 5. Questionário Operacional (Abertura de Projeto)
+
+1. **Tipo de implementação:** Landing page / Microsite / Utilitário?
+2. **Página de referência:** Qual dos 10 modelos CSS será a base?
+3. **Dados imutáveis:** Quais fórmulas ou métricas não podem ser alteradas?
+4. **Palavras-chave:** Qual a intenção de busca alvo (SEO/AEO)?
+5. **Geolocalização:** O contexto GEO Local está configurado para Novo Hamburgo/RS?
+6. **Política de IA:** Esta página permite citação em AI Overviews?
+7. **Vibe Coding:** Quais componentes serão gerados via IA e quais serão codificados manualmente?
+
+---
+
+### 6. Validação Final (Checklist)
+
+- [ ] **INP < 200ms** verificado em ambiente de produção.
+- [ ] **Schema JSON-LD** validado sem erros no Schema Markup Validator.
+- [ ] **WebPage.mainEntity** presente em todas as páginas indexáveis.
+- [ ] **Robots.txt** bloqueando explicitamente IA crawlers nas pastas de valores.
+- [ ] **WCAG 2.2 AA:** Contraste e navegação por teclado validados.
+- [ ] **Disclaimer:** "Distribuidor Independente" visível em todas as páginas.
+
+---
+
+
+EDUARDO SIDEGUM
+Responsável Técnico — CREA/OAB/Registro: [SISTEMAS]
+
+Local e data: Novo Hamburgo, 29 de julho de 2026
+
+*Documento elaborado em 29 de julho de 2026. As informações contidas são de responsabilidade do solicitante.*
