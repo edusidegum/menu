@@ -1,5 +1,57 @@
+# Bloqueio geral de indexação e rastreamento
 User-agent: *
 Disallow: /
-Allow: /menu/compartilhado/termosdeusodistribuidorindependenteHerbalife.html
-Allow: /menu/compartilhado/politicadeprivacidade.html
-Allow: /menu/compartilhado/em-Obras.html
+
+X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+
+# OpenAI
+User-agent: GPTBot
+Disallow: /
+
+User-agent: OAI-SearchBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+# Anthropic
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+# Google
+User-agent: Googlebot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+# Microsoft / Bing
+User-agent: bingbot
+Disallow: /
+
+# Common Crawl
+User-agent: CCBot
+Disallow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Disallow: /
+
+# Meta
+User-agent: FacebookBot
+Disallow: /
+
+# Amazon
+User-agent: Amazonbot
+Disallow: /
+
+# Apple
+User-agent: Applebot
+Disallow: /
+
+# X/Twitter
+User-agent: Twitterbot
+Disallow: /
